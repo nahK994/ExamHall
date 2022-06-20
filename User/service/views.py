@@ -11,32 +11,32 @@ def getAllUser(request):
     users = UserModel.objects.all()
     serializer = UserSerializer(users, many=True)
 
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# @api_view(['GET'])
-# def getUser(request, user_id):
-#     user = UserModel.objects.filter(userId = user_id)
-#     serializer = UserSerializer(user, many=True)
-#     print(serializer.data.name)
-#     return Response(user)
+@api_view(['GET'])
+def getUser(request, user_id):
+    user = UserModel.objects.filter(userId = user_id)
+    serializer = UserSerializer(user, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
 def createUser(request):
     serializer = UserSerializer(data = request.data)
     users = UserModel.objects.filter(email = request.data['email'])
-    notUniqueEmailExceptionMessage = "Email has been used"
 
     try:
         if len(users):
-            raise Exception(notUniqueEmailExceptionMessage)
+            raise Exception("Email has been used")
 
         if serializer.is_valid():
             serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response(notUniqueEmailExceptionMessage, status=status.HTTP_403_FORBIDDEN)
+        else:
+            raise Exception("Invalid request")
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['PUT'])

@@ -1,8 +1,8 @@
 version: '3'
 services:
 
-  user:
-    container_name: user
+  db:
+    container_name: db
     image: postgres
     restart: always
     ports:
@@ -10,4 +10,3 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=user
