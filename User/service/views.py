@@ -41,22 +41,24 @@ def createUser(request):
 
 @api_view(['PUT'])
 def updateUser(request, user_id):
-    user = UserModel.objects.get(userId = user_id)
-    serializer = UserSerializer(user, data = request.data)
-
     try:
+        if 'email' in request.data:
+            raise Exception("Email cannot be changed")
+
+        user = UserModel.objects.get(userId = user_id)
+        serializer = UserSerializer(user, data = request.data)
+
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
-    except:
-        return Response("", status=status.HTTP_403_FORBIDDEN)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
 
 @api_view(['DELETE'])
 def deleteUser(request, user_id):
-    user = UserModel.objects.get(userId = user_id)
-
     try:
+        user = UserModel.objects.get(userId = user_id)
         user.delete()
         return Response("", status=status.HTTP_200_OK)
     except:
