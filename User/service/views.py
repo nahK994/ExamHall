@@ -5,15 +5,21 @@ from rest_framework import status
 from .models import UserModel
 from .serializers import UserSerializer
 
-from rest_framework.parsers import JSONParser
-
 
 @api_view(['GET'])
-def getUser(request):
+def getAllUser(request):
     users = UserModel.objects.all()
     serializer = UserSerializer(users, many=True)
 
     return Response(serializer.data)
+
+
+# @api_view(['GET'])
+# def getUser(request, user_id):
+#     user = UserModel.objects.filter(userId = user_id)
+#     serializer = UserSerializer(user, many=True)
+#     print(serializer.data.name)
+#     return Response(user)
 
 
 @api_view(['POST'])
@@ -33,20 +39,25 @@ def createUser(request):
         return Response(notUniqueEmailExceptionMessage, status=status.HTTP_403_FORBIDDEN)
 
 
-# @api_view(['PUT'])
-# def updateUser(request, user_id):
-#     user = UserModel.objects.get(userId = user_id)
-#     data = JSONParser().parse(request)
-#     serializer = UserSerializer(user, data = data)
-    
-#     print("HAHA ==> ", request.data, user_id)
-#     print("HiHi ===> ", user)
-#     # serializer.update({
-#     #     "name": request.data['name']
-#     # })
-#     try:
-#         if serializer.is_valid():
-#             serializer.save()
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     except:
-#         return Response("", status=status.HTTP_403_FORBIDDEN)
+@api_view(['PUT'])
+def updateUser(request, user_id):
+    user = UserModel.objects.get(userId = user_id)
+    serializer = UserSerializer(user, data = request.data)
+
+    try:
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response("", status=status.HTTP_403_FORBIDDEN)
+
+
+@api_view(['DELETE'])
+def deleteUser(request, user_id):
+    user = UserModel.objects.get(userId = user_id)
+
+    try:
+        user.delete()
+        return Response("", status=status.HTTP_200_OK)
+    except:
+        return Response("", status=status.HTTP_403_FORBIDDEN)
