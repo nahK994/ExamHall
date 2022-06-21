@@ -2,29 +2,29 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import UserExamResultModel
-from .serializers import UserExamResultSerializer
+from .models import UserExamResultInfoModel
+from .serializers import UserExamResultInfoSerializer
 
 
 @api_view(['GET'])
-def getAllUserExamResult(request):
+def getAllUserExamResultInfo(request):
     pass
 
 
 @api_view(['GET'])
-def getUserExamResult(request, id):
+def getUserExamResultInfo(request, id):
     pass
 
 
 @api_view(['POST'])
-def createUserExamResult(request):
+def createUserExamResultInfo(request):
     pass
 
 
 @api_view(['PUT'])
-def updateUserExamResult(request, id):
+def updateUserExamResultInfo(request, id):
     pass
 
 @api_view(['DELETE'])
-def deleteUserExamResult(request, id):
+def deleteUserExamResultInfo(request, id):
     pass

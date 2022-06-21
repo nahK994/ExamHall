@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from . import models
 
-class UserExamResultSerializer(serializers.ModelSerializer):
+class UserExamResultInfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.UserExamResultModel
+        model = models.UserExamResultInfoModel
         fields = '__all__'
