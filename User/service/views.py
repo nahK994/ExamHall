@@ -4,6 +4,7 @@ from rest_framework import status
 
 from .models import UserModel
 from .serializers import UserSerializer
+from  .publisher import publish_message
 
 
 @api_view(['GET'])
@@ -32,6 +33,9 @@ def createUser(request):
 
         if serializer.is_valid():
             serializer.save()
+            user = UserModel.objects.get(email = request.data['email'])
+            publish_message("POST", user)
+
         else:
             raise Exception("Invalid request")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -42,14 +46,19 @@ def createUser(request):
 @api_view(['PUT'])
 def updateUser(request, user_id):
     try:
-        if 'email' in request.data:
-            raise Exception("Email cannot be changed")
-
+        user = UserModel.objects.filter(email = request.data['email'])
+        if len(user) > 0:
+            for data in user.values():
+                if data['userId'] != user_id:
+                    raise Exception("Email already exists")
+                
         user = UserModel.objects.get(userId = user_id)
         serializer = UserSerializer(user, data = request.data)
 
         if serializer.is_valid():
             serializer.save()
+            user = UserModel.objects.get(userId = user_id)
+            publish_message("PUT", user)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
@@ -59,6 +68,7 @@ def updateUser(request, user_id):
 def deleteUser(request, user_id):
     try:
         user = UserModel.objects.get(userId = user_id)
+        publish_message("DELETE", user)
         user.delete()
         return Response("", status=status.HTTP_200_OK)
     except:
