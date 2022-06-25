@@ -4,7 +4,7 @@ import json
 
 import os, django
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Archives.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Archive.settings")
 django.setup()
 from service.models import UserModel
 from service.views import manageUserData
@@ -16,12 +16,12 @@ while True:
         channel = connection.channel()
 
         channel.exchange_declare(exchange='user', exchange_type='fanout')
-        channel.queue_declare(queue='archives_queue', exclusive=True)
-        channel.queue_bind(exchange='user', queue='archives_queue')
-        print("archives consumer online")
+        channel.queue_declare(queue='archive_queue', exclusive=True)
+        channel.queue_bind(exchange='user', queue='archive_queue')
+        print("archive consumer online")
         break
     except:
-        print("archives consumer failed")
+        print("archive consumer failed")
         time.sleep(3)
 
 def callback(ch, method, properties, body):
@@ -39,8 +39,8 @@ def callback(ch, method, properties, body):
     manageUserData(data)
 
 
-channel.basic_consume(queue='archives_queue', on_message_callback=callback, auto_ack=True)
+channel.basic_consume(queue='archive_queue', on_message_callback=callback, auto_ack=True)
 
-print("archives consumer")
+print("archive consumer")
 print(' [*] Waiting for messages. To exit press CTRL+C')
 channel.start_consuming()
