@@ -8,7 +8,9 @@ from .serializers import QuestionSerializer, UserSerializer
 
 @api_view(['GET'])
 def getAllArchives(request):
-    pass
+    users = UserModel.objects.all()
+    serializers = UserSerializer(users, many=True)
+    return Response(serializers.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
