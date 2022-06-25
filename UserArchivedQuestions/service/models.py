@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class QuestionModel(models.Model):
-    questionId = models.BigAutoField(primary_key=True)
+    questionId = models.BigIntegerField(primary_key=True)
     questionText = models.CharField(max_length=100, default=None)
     option1 = models.CharField(max_length=100, default=None)
     option2 = models.CharField(max_length=100, default=None)
@@ -15,7 +15,7 @@ class QuestionModel(models.Model):
     topicId = models.BigIntegerField(default=None)
 
 class UserModel(models.Model):
-    userId = models.BigAutoField(primary_key=True)
+    userId = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=40)
