@@ -28,8 +28,7 @@ def createTopic(request):
         topic = TopicSerializer(data = request.data)
         if topic.is_valid():
             topic.save()
-        createdTopic = TopicModel.objects.get(name = request.data['name'])
-        return Response(createdTopic, status=status.HTTP_200_OK)
+        return Response(topic.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

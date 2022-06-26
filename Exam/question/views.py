@@ -4,6 +4,9 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from topic.serializers import TopicSerializer
+
+from topic.models import TopicModel
 
 from .models import QuestionModel
 from .serializers import QuestionSerializer
@@ -26,11 +29,24 @@ def getQuestion(request, question_id):
 @api_view(['POST'])
 def createQuestion(request):
     try:
-        question = QuestionSerializer(data = request.data)
-        if question.is_valid():
-            question.save()
-        createdQuestion = QuestionModel.objects.get(name = request.data['questionText'])
-        return Response(createdQuestion, status=status.HTTP_200_OK)
+        request = request.data
+        question = QuestionModel(
+            questionText = request['questionText'],
+            option1 = request['option1'],
+            option2 = request['option2'],
+            option3 = request['option3'],
+            option4 = request['option4'],
+            option5 = request['option5'],
+            option6 = request['option6'],
+            answer = request['answer'],
+            explaination = request['explaination'],
+
+            topic = TopicModel.objects.get(topicId = request['topicId'])
+        )
+        question.save()
+
+        serializer = QuestionSerializer([question], many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
