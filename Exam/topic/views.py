@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from topic.publisher import publish_message
+
 from .models import TopicModel
 from .serializers import TopicSerializer
 
@@ -28,6 +30,11 @@ def createTopic(request):
         topic = TopicSerializer(data = request.data)
         if topic.is_valid():
             topic.save()
+            topicInfo = TopicModel(
+                topicId = topic.data['topicId'],
+                name = topic.data['name']
+            )
+            publish_message("POST", topicInfo)
         return Response(topic.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
@@ -42,6 +49,7 @@ def updateTopic(request, topic_id):
 
         if serializer.is_valid():
             serializer.save()
+            publish_message("PUT", topic)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
@@ -50,6 +58,7 @@ def updateTopic(request, topic_id):
 def deleteTopic(request, topic_id):
     try:
         topic = TopicModel.objects.get(topicId = topic_id)
+        publish_message("DELETE", topic)
         topic.delete()
         return Response("", status=status.HTTP_200_OK)
     except Exception as e:

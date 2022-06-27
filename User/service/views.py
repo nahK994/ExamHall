@@ -1,3 +1,4 @@
+from unicodedata import name
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -33,7 +34,12 @@ def createUser(request):
 
         if serializer.is_valid():
             serializer.save()
-            user = UserModel.objects.get(email = request.data['email'])
+            user = UserModel(
+                userId = serializer.data['userId'],
+                name = serializer.data['name'],
+                email = serializer.data['email'],
+                password = serializer.data['password']
+            )
             publish_message("POST", user)
 
         else:
@@ -57,7 +63,12 @@ def updateUser(request, user_id):
 
         if serializer.is_valid():
             serializer.save()
-            user = UserModel.objects.get(userId = user_id)
+            user = UserModel(
+                userId = serializer.data['userId'],
+                name = serializer.data['name'],
+                email = serializer.data['email'],
+                password = serializer.data['password']
+            )
             publish_message("PUT", user)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:

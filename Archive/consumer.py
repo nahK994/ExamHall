@@ -43,14 +43,17 @@ while True:
 
 def userInfoCallback(ch, method, properties, body):
     data = json.loads(body.decode('ASCII'))
+    print("user ==> ", data)
     manageUserData(data)
 
 def questionInfoCallback(ch, method, properties, body):
     data = json.loads(body.decode('ASCII'))
+    print("question ==> ", data)
     manageQuestionData(data)
 
 def topicInfoCallback(ch, method, properties, body):
     data = json.loads(body.decode('ASCII'))
+    print("topic ==> ", data)
     manageTopicData(data)
 
 channel.basic_consume(queue='archive_user', on_message_callback=userInfoCallback, auto_ack=True)

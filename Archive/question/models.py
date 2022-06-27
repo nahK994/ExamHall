@@ -4,7 +4,7 @@ from topic.models import TopicModel
 
 # Create your models here.
 class QuestionModel(models.Model):
-    questionId = models.BigAutoField(primary_key=True)
+    questionId = models.BigIntegerField(primary_key=True)
     questionText = models.CharField(max_length=100)
     option1 = models.CharField(max_length=100, null=True)
     option2 = models.CharField(max_length=100, null=True)

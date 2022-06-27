@@ -61,13 +61,14 @@ def manageTopicData(data: dict):
     actionType = data['actionType']
 
     topicInfo = {}
-    topicInfo["topicId"] = data["topicId"]
+    topicInfo["topicId"] = data["topicId"] 
     if actionType != "DELETE":
         topicInfo["name"] = data["name"]
 
     if actionType == "POST":
         try:
             topic = TopicModel(
+                topicId = topicInfo["topicId"],
                 name = topicInfo["name"]
             )
             topic.save()
