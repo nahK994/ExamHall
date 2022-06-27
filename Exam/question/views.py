@@ -68,7 +68,7 @@ def updateQuestionInfo(question_id: int, request: dict):
     question.option6 = request['option6']
     question.answer = request['answer']
     question.explaination = request['explaination']
-    question.topic = TopicModel.objects.get(topicId = request['topicId'])
+    question.topic = TopicModel.objects.get(topicId = request['topic'])
     question.save()
 
     return question
@@ -85,7 +85,7 @@ def saveQuestion(request: dict):
         answer = request['answer'],
         explaination = request['explaination'],
 
-        topic = TopicModel.objects.get(topicId = request['topicId'])
+        topic = TopicModel.objects.get(topicId = request['topic'])
     )
     question.save()
 
