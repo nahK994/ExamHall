@@ -1,0 +1,24 @@
+{
+    "name": "Math"
+}
+
+{
+    "questionText": "What is my name?",
+    "option1": "HaHa",
+    "option2": "HaHa",
+    "option3": "Shomi Khan",
+    "option4": "HaHa",
+    "option5": "null",
+    "option6": "null",
+    "answer": "Shomi Khan",
+    "explaination": "That's what my name is",
+    "topicId": 1
+}
+
+{
+    "name": "Math BCS",
+    "numberForCorrectAnswer": 1,
+    "numberForIncorrectAnswer": -0.25,
+    "numberOfSeats": 50,
+    "questionIds": [6, 7]
+}
