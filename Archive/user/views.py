@@ -1,3 +1,4 @@
+import email
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -43,10 +44,14 @@ def manageUserData(data: dict):
         userInfo["password"] = data["password"]
 
     if actionType == "POST":
-        serializer = UserSerializer(data = userInfo)
+        user = UserModel(
+            userId = userInfo["userId"],
+            name = userInfo["name"],
+            email = userInfo["email"],
+            password = userInfo["password"]
+        )
         try:
-            if serializer.is_valid():
-                serializer.save()
+            user.save()
         except Exception as e:
             print(str(e))
 
@@ -66,10 +71,12 @@ def manageUserData(data: dict):
                         raise Exception("Email already exists")
                     
             user = UserModel.objects.get(userId = userInfo['userId'])
-            serializer = UserSerializer(user, data = userInfo)
+            user.name = userInfo["name"]
+            user.email = userInfo["email"]
+            user.password = userInfo["password"]
+            user.save()
 
-            if serializer.is_valid():
-                serializer.save()
+            serializer = UserSerializer([user], many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             print(str(e))

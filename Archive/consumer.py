@@ -7,8 +7,6 @@ import os, django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Archive.settings")
 django.setup()
 
-from service.models import UserModel
-
 from topic.views import manageTopicData
 from question.views import manageQuestionData
 from user.views import manageUserData

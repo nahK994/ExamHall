@@ -3,16 +3,16 @@
 }
 
 {
-    "questionText": "What is my name?",
+    "questionText": "What so serious???",
     "option1": "HaHa",
     "option2": "HaHa",
-    "option3": "Shomi Khan",
+    "option3": "Because I am scared",
     "option4": "HaHa",
     "option5": "null",
     "option6": "null",
-    "answer": "Shomi Khan",
+    "answer": "Because I am scared",
     "explaination": "That's what my name is",
-    "topicId": 1
+    "topic": 14
 }
 
 {
@@ -21,4 +21,10 @@
     "numberForIncorrectAnswer": -0.25,
     "numberOfSeats": 50,
     "questionIds": [6, 7]
+}
+
+{
+    "name": "counting stars",
+    "email": "counting.stars@gmail.com",
+    "password": "asdf"
 }
