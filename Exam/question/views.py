@@ -2,6 +2,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from question.publisher import publish_message
 
 from topic.models import TopicModel
 
@@ -27,8 +28,8 @@ def getQuestion(request, question_id):
 def createQuestion(request):
     try:
         question = saveQuestion(request.data)
-
         serializer = QuestionSerializer([question], many=True)
+        publish_message("POST", question)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
@@ -39,7 +40,7 @@ def createQuestion(request):
 def updateQuestion(request, question_id):
     try:        
         question = updateQuestionInfo(question_id, request.data)
-
+        publish_message("PUT", question)
         serializer = QuestionSerializer([question], many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
@@ -49,6 +50,7 @@ def updateQuestion(request, question_id):
 def deleteQuestion(request, question_id):
     try:
         question = QuestionModel.objects.get(questionId = question_id)
+        publish_message("DELETE", question)
         question.delete()
         return Response("", status=status.HTTP_200_OK)
     except Exception as e:

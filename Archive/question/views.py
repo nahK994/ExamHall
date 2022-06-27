@@ -75,6 +75,7 @@ def updateQuestionInfo(question_id: int, request: dict):
 
 def saveQuestion(request: dict):
     question = QuestionModel(
+        questionId = request['questionId'],
         questionText = request['questionText'],
         option1 = request['option1'],
         option2 = request['option2'],
