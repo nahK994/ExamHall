@@ -6,6 +6,7 @@ from question.models import QuestionModel
 
 from .models import ExamModel
 from .serializers import ExamSerializer
+from topic.models import TopicModel
 
 @api_view(['GET'])
 def getAllExam(request):
@@ -65,8 +66,14 @@ def updateExamInfo(exam_id: int, request: dict):
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
         )
-    exam.save()
+    
+    exam.topics.clear()
+    for topicId in request['topicIds']:
+        exam.topics.add(
+            TopicModel.objects.get(topicId = topicId)
+        )
 
+    exam.save()
     return exam
 
 def saveExam(request: dict):
@@ -81,6 +88,11 @@ def saveExam(request: dict):
     for questionId in request['questionIds']:
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
+        )
+    
+    for topicId in request['topicIds']:
+        exam.topics.add(
+            TopicModel.objects.get(topicId = topicId)
         )
 
     return exam

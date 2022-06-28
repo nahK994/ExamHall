@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from topic.models import TopicModel
 from question.models import QuestionModel
 
 from .models import ExamModel
@@ -34,6 +35,13 @@ def updateExamInfo(exam_id: int, request: dict):
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
         )
+
+    exam.topics.clear()
+    for topicId in request['topicIds']:
+        exam.topics.add(
+            TopicModel.objects.get(topicId = topicId)
+        )
+
     exam.save()
 
 
@@ -49,6 +57,11 @@ def saveExam(request: dict):
     for questionId in request['questionIds']:
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
+        )
+    
+    for topicId in request['topicIds']:
+        exam.topics.add(
+            TopicModel.objects.get(topicId = topicId)
         )
 
 
