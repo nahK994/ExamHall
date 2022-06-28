@@ -35,6 +35,7 @@ while True:
         channel.queue_bind(exchange='topic', queue='result_topic')
         print("result topic consumer online")
 
+
         channel.exchange_declare(exchange='exam', exchange_type='fanout')
         channel.queue_declare(queue='result_exam', exclusive=True)
         channel.queue_bind(exchange='exam', queue='result_exam')

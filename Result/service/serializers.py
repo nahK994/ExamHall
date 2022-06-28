@@ -5,3 +5,8 @@ class ResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ResultModel
         fields = '__all__'
+
+class UserResultInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.UserResultInfoModel
+        fields = '__all__'
