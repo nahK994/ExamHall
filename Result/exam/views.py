@@ -21,37 +21,6 @@ def getExam(request, exam_id):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['POST'])
-def createExam(request):
-    try:
-        exam = saveExam(request.data)
-        serializer = ExamSerializer([exam], many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        print(str(e))
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['PUT'])
-def updateExam(request, exam_id):
-    try:        
-        exam = updateExamInfo(exam_id, request.data)
-        serializer = ExamSerializer([exam], many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
-
-@api_view(['DELETE'])
-def deleteExam(request, exam_id):
-    try:
-        exam = ExamModel.objects.get(examId = exam_id)
-        exam.delete()
-        return Response("", status=status.HTTP_200_OK)
-    except Exception as e:
-        print(str(e))
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
 def updateExamInfo(exam_id: int, request: dict):
     exam = ExamModel.objects.get(examId = exam_id)
 
@@ -67,7 +36,6 @@ def updateExamInfo(exam_id: int, request: dict):
         )
     exam.save()
 
-    return exam
 
 def saveExam(request: dict):
     exam = ExamModel(
@@ -83,4 +51,36 @@ def saveExam(request: dict):
             QuestionModel.objects.get(questionId = questionId)
         )
 
-    return exam
+
+
+def manageExamData(data: dict):
+    actionType = data['actionType']
+
+    examInfo = {}
+    examInfo["examId"] = data["examId"]
+    if actionType != "DELETE":
+        examInfo["name"] = data["name"]
+        examInfo["numberForCorrectAnswer"] = data["numberForCorrectAnswer"]
+        examInfo["numberForIncorrectAnswer"] = data["numberForIncorrectAnswer"]
+        examInfo["numberOfSeats"] = data["numberOfSeats"]
+        examInfo["questions"] = data["questions"]
+
+    if actionType == "POST":
+        try:
+            saveExam(examInfo)
+        except Exception as e:
+            print(str(e))
+
+
+    elif actionType == "DELETE":
+        try:
+            question = ExamModel.objects.get(examId = examInfo['examId'])
+            question.delete()
+        except Exception as e:
+            print(str(e))
+
+    elif actionType == "PUT":        
+        try:        
+            updateExamInfo(examInfo['examId'], examInfo)
+        except Exception as e:
+            print(str(e))

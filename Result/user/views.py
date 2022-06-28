@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import UserModel
 from .serializers import UserSerializer
 
+
 @api_view(['GET'])
 def getAllUsers(request):
     users = UserModel.objects.all()
@@ -15,21 +16,6 @@ def getAllUsers(request):
 @api_view(['GET'])
 def getUser(request, user_id):
     pass
-
-
-# @api_view(['POST'])
-# def createUser(request):
-#     pass
-
-
-# @api_view(['PUT'])
-# def updateUser(request, user_id):
-#     pass
-
-
-# @api_view(['DELETE'])
-# def deleteUser(request, user_id):
-#     pass
 
 # Create your views here.
 def manageUserData(data: dict):
