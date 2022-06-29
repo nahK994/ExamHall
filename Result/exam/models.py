@@ -1,4 +1,5 @@
 from django.db import models
+from topic.models import TopicModel
 
 from question.models import QuestionModel
 

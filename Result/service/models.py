@@ -5,13 +5,19 @@ from exam.models import ExamModel
 
 # Create your models here.
 class ResultModel(models.Model):
-    resultId = models.BigAutoField(primary_key=True)
-    exam = models.ForeignKey(ExamModel, related_name="result", on_delete=models.CASCADE)
+    exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
     cutMarks = models.BigIntegerField()
 
-class UserResultInfoModel(models.Model):
-    result = models.ForeignKey(ResultModel, related_name="userResultInfo", on_delete=models.CASCADE)
+class UserDetailedResultInfoModel(models.Model):
+    exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
     topicId = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
     userId = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     numberOfCorrectAnswer = models.BigIntegerField()
     numberOfIncorrectAnswer = models.BigIntegerField()
+    totalMarks = models.BigIntegerField()
+
+
+class UserResultInfoModel(models.Model):
+    exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
+    userId = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    totalMarks = models.BigIntegerField()
