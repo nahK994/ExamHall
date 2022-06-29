@@ -1,12 +1,12 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-
-from question.models import QuestionModel
+from service.publisher import publish_message
 
 from .models import ExamModel
 from .serializers import ExamSerializer
 from topic.models import TopicModel
+from question.models import QuestionModel
 
 @api_view(['GET'])
 def getAllExam(request):
@@ -26,6 +26,7 @@ def getExam(request, exam_id):
 def createExam(request):
     try:
         exam = saveExam(request.data)
+        publish_message("POST", exam)
         serializer = ExamSerializer([exam], many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
@@ -37,15 +38,18 @@ def createExam(request):
 def updateExam(request, exam_id):
     try:        
         exam = updateExamInfo(exam_id, request.data)
+        publish_message("PUT", exam)
         serializer = ExamSerializer([exam], many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
+
 @api_view(['DELETE'])
 def deleteExam(request, exam_id):
     try:
         exam = ExamModel.objects.get(examId = exam_id)
+        publish_message("DELETE", exam)
         exam.delete()
         return Response("", status=status.HTTP_200_OK)
     except Exception as e:
@@ -75,6 +79,7 @@ def updateExamInfo(exam_id: int, request: dict):
 
     exam.save()
     return exam
+
 
 def saveExam(request: dict):
     exam = ExamModel(

@@ -77,13 +77,13 @@ def manageExamData(data: dict):
         examInfo["numberForIncorrectAnswer"] = data["numberForIncorrectAnswer"]
         examInfo["numberOfSeats"] = data["numberOfSeats"]
         examInfo["questions"] = data["questions"]
+        examInfo["topics"] = data["topics"]
 
     if actionType == "POST":
         try:
             saveExam(examInfo)
         except Exception as e:
             print(str(e))
-
 
     elif actionType == "DELETE":
         try:
