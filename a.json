@@ -2,43 +2,51 @@
 {
     "name": "Math"
 }
-
 // Question
 {
-    "questionText": "What so serious???",
+    "questionText": "What is my name???",
     "option1": "HaHa",
     "option2": "HaHa",
-    "option3": "Because I am scared",
+    "option3": "Shomi Khan",
     "option4": "HaHa",
     "option5": "null",
     "option6": "null",
-    "answer": "Because I am scared",
-    "explaination": "That's what my name is",
-    "topic": 14
+    "answer": "Shomi Khan",
+    "explaination": "SKhan",
+    "topic": 19
 }
-
 // Exam
 {
     "name": "Math BCS",
-    "numberForCorrectAnswer": 1,
-    "numberForIncorrectAnswer": -0.25,
+    "numberForCorrectAnswer": 2,
+    "numberForIncorrectAnswer": -1,
     "numberOfSeats": 50,
-    "questionIds": [6, 7]
+    "questions": [
+        19,
+        20
+    ],
+    "topics": [
+        18,
+        19
+    ]
 }
-
 // User
 {
-    "name": "counting stars",
-    "email": "counting.stars@gmail.com",
+    "name": "Kaizu",
+    "email": "kaizu@gmail.com",
     "password": "asdf"
 }
-
 // Result
 {
     "answerSheet": [
         {
-           " questionId": 1,
-           "answer": "HaHa"
+            "questionId": 19,
+            "answer": "Because I am scared"
+        },
+        {
+            "questionId": 20,
+            "answer": "Because I am scared"
         }
     ]
 }
+// http://localhost:8003/result/exam/10/user/43/

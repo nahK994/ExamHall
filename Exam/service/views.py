@@ -66,13 +66,13 @@ def updateExamInfo(exam_id: int, request: dict):
     exam.numberOfSeats = request['numberOfSeats']
 
     exam.questions.clear()
-    for questionId in request['questionIds']:
+    for questionId in request['questions']:
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
         )
     
     exam.topics.clear()
-    for topicId in request['topicIds']:
+    for topicId in request['topics']:
         exam.topics.add(
             TopicModel.objects.get(topicId = topicId)
         )
@@ -90,12 +90,12 @@ def saveExam(request: dict):
     )
 
     exam.save()
-    for questionId in request['questionIds']:
+    for questionId in request['questions']:
         exam.questions.add(
             QuestionModel.objects.get(questionId = questionId)
         )
     
-    for topicId in request['topicIds']:
+    for topicId in request['topics']:
         exam.topics.add(
             TopicModel.objects.get(topicId = topicId)
         )

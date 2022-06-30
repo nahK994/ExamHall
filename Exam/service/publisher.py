@@ -1,5 +1,10 @@
 import pika
+
+from service.serializers import ExamSerializer
+
 from . import models
+from question.serializers import QuestionSerializer
+from topic.serializers import TopicSerializer
 import json
 
 def publish_message(actionType, examInfo: models.ExamModel):
@@ -12,10 +17,14 @@ def publish_message(actionType, examInfo: models.ExamModel):
         data['numberForCorrectAnswer'] = examInfo.numberForCorrectAnswer
         data['numberForIncorrectAnswer'] = examInfo.numberForIncorrectAnswer
         data['numberOfSeats'] = examInfo.numberOfSeats
-        data['questions'] = examInfo.questions
-        data['name'] = examInfo.topics
+        data['questions'] = []
+        for question in QuestionSerializer(examInfo.questions, many=True).data:
+            data['questions'].append(question['questionId'])
+        data['topics'] = []
+        for topic in TopicSerializer(examInfo.topics, many=True).data:
+            data['topics'].append(topic['topicId'])
 
-    print("HIHI ===> ", data, examInfo)
+    # print("HIHI ===> ", data, examInfo)
     data = json.dumps(data)
     params = pika.URLParameters('amqps://eykbbnzj:nytVuZcErKh3WFkY5DawOnZGKrHl9fF4@shrimp.rmq.cloudamqp.com/eykbbnzj')
     connection = pika.BlockingConnection(params)

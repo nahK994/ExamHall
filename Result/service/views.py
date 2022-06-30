@@ -1,19 +1,23 @@
+from ast import Return
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from user.models import UserModel
+from topic.models import TopicModel
+from topic.serializers import TopicSerializer
 
 from question.models import QuestionModel
 from exam.models import ExamModel
 
 from .models import ResultModel, UserDetailedResultInfoModel, UserResultInfoModel
-from .serializers import UserResultInfoSerializer
+from .serializers import UserDetailedResultInfoSerializer, UserResultInfoSerializer
 
 
 @api_view(['GET'])
 def getAllUserRank(request, exam_id):
     try:
         rankList = UserResultInfoModel.objects.filter(exam = exam_id).order_by('-totalMarks')
-        serializer = UserResultInfoSerializer(rankList.values(), many=True)
+        serializer = UserResultInfoSerializer(rankList, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
@@ -24,7 +28,7 @@ def getAllUserRank(request, exam_id):
 def getUserResult(request, user_id, exam_id):
     try:
         rankList = UserDetailedResultInfoModel.objects.filter(exam = exam_id, userId = user_id)
-        serializer = UserDetailedResultInfoModel(rankList.values(), many=True)
+        serializer = UserDetailedResultInfoSerializer(rankList, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
@@ -37,22 +41,26 @@ def createResult(request, exam_id, user_id):
     answerSheet = request.data['answerSheet']
     exam: ExamModel = ExamModel.objects.get(examId = exam_id)
     topicWiseResult = {}
-    
-    for topicId in ExamModel.objects.get(examId = exam_id).topics:
+    topicIds = []
+    for topic in TopicSerializer(ExamModel.objects.get(examId = exam_id).topics, many=True).data:
+        topicIds.append(topic['topicId'])
+
+    for topicId in topicIds:
         topicWiseResult[topicId] = UserDetailedResultInfo()
 
     for userAnswer in answerSheet:
         questionId = userAnswer['questionId']
         answer = userAnswer['answer']
         question: QuestionModel = QuestionModel.objects.get(questionId = questionId)
+        topicId = question.topic.topicId
         if question.answer == answer:
-            topicWiseResult[question.topic].numberOfCorrectAnswer = topicWiseResult[question.topic].numberOfCorrectAnswer+1
+            topicWiseResult[topicId].numberOfCorrectAnswer = topicWiseResult[topicId].numberOfCorrectAnswer+1
         else:
-            topicWiseResult[question.topic].numberOfIncorrectAnswer = topicWiseResult[question.topic].numberOfIncorrectAnswer+1
+            topicWiseResult[topicId].numberOfIncorrectAnswer = topicWiseResult[topicId].numberOfIncorrectAnswer+1
 
 
     userTotalMarks: int = 0
-    for topicId in ExamModel.objects.get(examId = exam_id).topics:
+    for topicId in topicIds:
         numberForCorrectAnswer = exam.numberForCorrectAnswer
         numberForIncorrectAnswer = exam.numberForIncorrectAnswer
         numberOfCorrectAnswer = topicWiseResult[topicId].numberOfCorrectAnswer
@@ -60,9 +68,9 @@ def createResult(request, exam_id, user_id):
         topicWiseResult[topicId].totalMarks = numberForCorrectAnswer*numberOfCorrectAnswer + numberForIncorrectAnswer*numberOfIncorrectAnswer
 
         userDetailedResultInfo = UserDetailedResultInfoModel(
-            exam = exam.examId,
-            userId = user_id,
-            topicId = topicId,
+            exam = exam,
+            userId = UserModel.objects.get(userId = user_id),
+            topicId = TopicModel.objects.get(topicId = topicId),
             numberOfCorrectAnswer = numberOfCorrectAnswer,
             numberOfIncorrectAnswer = numberOfIncorrectAnswer,
             totalMarks = topicWiseResult[topicId].totalMarks
@@ -71,13 +79,13 @@ def createResult(request, exam_id, user_id):
         userTotalMarks = userTotalMarks + topicWiseResult[topicId].totalMarks
     
     UserResultInfoModel(
-        exam = exam.examId,
-        userId = user_id,
+        exam = exam,
+        userId = UserModel.objects.get(userId = user_id),
         totalMarks = userTotalMarks
     ).save()
 
     allRankersResult = UserResultInfoModel.objects.filter(exam = exam_id).order_by('-totalMarks')[: exam.numberOfSeats]
-    allRankersResultSerializer = UserResultInfoSerializer(allRankersResult.values(), many = True)
+    allRankersResultSerializer = UserResultInfoSerializer(allRankersResult, many = True)
 
     cutMarks = allRankersResultSerializer.data[len(allRankersResultSerializer.data)-1]['totalMarks']
     result = ResultModel.objects.filter(exam = exam_id)
@@ -90,7 +98,7 @@ def createResult(request, exam_id, user_id):
         result = result.get(exam = exam_id)
         result.cutMarks = cutMarks
         result.save()
-    
+    return Response("", status=status.HTTP_200_OK)
 
 
 # @api_view(['PUT'])
