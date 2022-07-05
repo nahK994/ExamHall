@@ -4,7 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/<int:user_id>/user', views.getUserArchivedQuestions),
-    path('create/<int:user_id>/user/<int:question_id>/question', views.createArchive),
-    path('delete/<int:user_id>/user/<int:question_id>/question', views.deleteUserArchive),
+    path('get/user/<int:user_id>/', views.getUserArchivedQuestions),
+    path('create/user/<int:user_id>/question/<int:question_id>/', views.createArchive),
+    path('delete/user/<int:user_id>/question/<int:question_id>/', views.deleteUserArchive),
 ]
