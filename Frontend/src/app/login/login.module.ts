@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LoginService } from './login.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule
+  ],
+  providers:[
+    LoginService
   ]
 })
 export class LoginModule { }
