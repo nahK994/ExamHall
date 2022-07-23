@@ -4,4 +4,32 @@
     position: absolute;
     top: 0px;
     left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0f2f1;
+}
+
+.card-style{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 12px;
+
+    .form-style{
+        display: flex;
+        flex-direction: column;
+        column-gap: 8px;
+
+        .action{
+            background-color: #00796b;
+        }
+    }
+
+    .role{
+        width: 200px;
+    }
 }
