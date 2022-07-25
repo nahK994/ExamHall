@@ -1,0 +1,39 @@
+:host{
+    width: 500px;
+}
+
+.question{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    color: #1a237e;
+    row-gap: 4px;
+
+    .question-text{
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .option{
+        font-size: 200;
+        font-size: 16px;
+    }
+
+    .action{
+        display: flex;
+        column-gap: 8px;
+        margin-top: 8px;
+    }
+
+    .answer{
+        font-size: 220;
+        font-size: 16px;
+        margin-top: 12px;
+    }
+    
+    .explanation{
+        font-size: 220;
+        font-size: 16px;
+        margin-top: 12px;
+        width: max-content;
+    }
+}

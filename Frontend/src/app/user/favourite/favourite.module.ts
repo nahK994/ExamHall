@@ -4,6 +4,7 @@ import { FavouriteComponent } from './favourite.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FavouriteRoutingModule } from './favourite-routing.module';
+import { QuestionModule } from 'src/app/shared/question/question.module';
 
 
 
@@ -15,7 +16,8 @@ import { FavouriteRoutingModule } from './favourite-routing.module';
     CommonModule,
     FavouriteRoutingModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    QuestionModule
   ]
 })
 export class FavouriteModule { }

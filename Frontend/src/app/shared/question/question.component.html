@@ -1,0 +1,18 @@
+<div class="question">
+    <div class="question-text">{{info?.questionText}}</div>
+    
+    <div class="option">{{info?.option1}}</div>
+    <div class="option">{{info?.option2}}</div>
+    <div class="option">{{info?.option3}}</div>
+    <div class="option">{{info?.option4}}</div>
+    <div class="option">{{info?.option5}}</div>
+    <div class="option">{{info?.option6}}</div>
+
+    <div class="action">
+        <button class="action" mat-raised-button color="primary" (click)="seeAnswer()">Answer</button>
+        <button class="action" mat-raised-button color="primary" (click)="seeExplanation()">Explanation</button>
+    </div>
+
+    <div class="answer" *ngIf="displayAnswer">{{info?.answer}}</div>
+    <div class="answer" *ngIf="displayExplanation">{{info?.explaination}}</div>
+</div>
