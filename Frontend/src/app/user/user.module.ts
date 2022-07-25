@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserService } from './user.service';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -12,7 +13,8 @@ import { UserService } from './user.service';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    MatButtonModule
   ],
   providers: [
     UserService

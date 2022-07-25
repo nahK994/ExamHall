@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _activateRoute: ActivatedRoute,
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  goModelTests() {
+    this._router.navigate(['model-tests'], {
+      relativeTo: this._activateRoute
+    })
+  }
+
+  goToFavourite() {
+    this._router.navigate(['favourites'], {
+      relativeTo: this._activateRoute
+    })
   }
 
 }

@@ -7,7 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: UserComponent
-  }
+  },
+  {
+    path: 'model-tests',
+    loadChildren: () => import('./model-test/model-test.module').then(m => m.ModelTestModule)
+  },
+  {
+    path: 'favourites',
+    loadChildren: () => import('./favourite/favourite.module').then(m => m.FavouriteModule)
+  },
 ];
 
 @NgModule({
