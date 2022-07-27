@@ -6,7 +6,9 @@
     .top-bar{
         width: 100%;
         display: flex;
-        padding: 12px 12px;
+        .back-button{
+            margin: 12px;
+        }
     }
 
     .content{

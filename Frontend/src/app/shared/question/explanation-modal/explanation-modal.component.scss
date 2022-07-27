@@ -1,0 +1,11 @@
+.explaination-modal{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    .action{
+        margin-top: 12px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}

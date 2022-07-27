@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
 
 export interface question {
   questionText: string;
@@ -21,25 +23,23 @@ export interface question {
 export class QuestionComponent implements OnInit {
 
   displayAnswer: boolean = false;
-  displayExplanation: boolean = false;
   @Input() info: question | undefined;
 
-  constructor() { }
+  constructor(
+    private _dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
 
   seeExplanation() {
-    if(this.displayAnswer) {
-      this.displayAnswer = false;
-    }
-    this.displayExplanation = !this.displayExplanation;
+    let explaination = this.info?.explaination;
+    this._dialog.open(ExplanationModalComponent, {
+      data: explaination
+    })
   }
 
   seeAnswer() {
-    if(this.displayExplanation) {
-      this.displayExplanation = false;
-    }
     this.displayAnswer = !this.displayAnswer;
   }
 
