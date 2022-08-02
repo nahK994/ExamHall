@@ -15,6 +15,17 @@ def getAllUser(request):
 
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['POST'])
+def login(request):
+    try:
+        user = UserModel.objects.get(email=request.data['email'])
+        if user.password == request.data['password']:
+            return Response(user.userId, status=status.HTTP_200_OK)
+        else:
+            return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+
 
 @api_view(['GET'])
 def getUser(request, user_id):
@@ -25,26 +36,27 @@ def getUser(request, user_id):
 
 @api_view(['POST'])
 def createUser(request):
-    serializer = UserSerializer(data = request.data)
     users = UserModel.objects.filter(email = request.data['email'])
 
     try:
         if len(users):
             raise Exception("Email has been used")
 
+        serializer = UserSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
+            serialized_data = serializer.data
             user = UserModel(
-                userId = serializer.data['userId'],
-                name = serializer.data['name'],
-                email = serializer.data['email'],
-                password = serializer.data['password']
+                userId = serialized_data['userId'],
+                name = serialized_data['name'],
+                email = serialized_data['email'],
+                password = serialized_data['password']
             )
             publish_message("POST", user)
 
         else:
             raise Exception("Invalid request")
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(user.userId, status=status.HTTP_201_CREATED)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 

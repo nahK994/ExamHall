@@ -1,0 +1,7 @@
+<div class="question-paper">
+    <ng-container *ngFor="let question of exam?.questions">
+        <question-item (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
+    </ng-container>
+
+    <button mat-raised-button (click)="submit()">submit</button>
+</div>

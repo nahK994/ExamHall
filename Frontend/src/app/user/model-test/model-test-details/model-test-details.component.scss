@@ -1,0 +1,47 @@
+.model-test-details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .top-bar{
+        width: 100%;
+        display: flex;
+        .back-button{
+            margin: 12px;
+        }
+    }
+
+    .content{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.result-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 12px;
+    width: 100%;
+
+    .item{
+        width: 500px;
+
+        display: flex;
+        column-gap: 12px;
+
+        font-size: 20px;
+        font-weight: 500;
+
+        .name {
+            width: 400px;
+        }
+        .number {
+            width: 100px;
+        }
+    }
+}

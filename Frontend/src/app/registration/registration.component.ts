@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,16 +13,19 @@ export class RegistrationComponent {
   registrationForm: FormGroup;
 
   constructor(
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _registrationService: RegistrationService,
+    private _router: Router
   ) {
     this.registrationForm = this._fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      role:['', [Validators.required]]
+      name: ['', Validators.required],
+      password: ['', Validators.required]
     })
   }
 
-  createUser() {
-
+  async createUser() {
+    let userId = await this._registrationService.createUser(this.registrationForm.value);
+    this._router.navigate(['user', userId])
   }
 }

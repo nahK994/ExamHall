@@ -29,7 +29,19 @@ def getUserResult(request, user_id, exam_id):
     try:
         rankList = UserDetailedResultInfoModel.objects.filter(exam = exam_id, userId = user_id)
         serializer = UserDetailedResultInfoSerializer(rankList, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        response = []
+        for data in serializer.data:
+            topic = TopicModel.objects.get(topicId=data['topicId'])
+            serialized_topic_data = TopicSerializer([topic], many=True)
+            resp = {
+                "numberOfCorrectAnswer": data['numberOfCorrectAnswer'],
+                "numberOfIncorrectAnswer": data['numberOfIncorrectAnswer'],
+                "totalMarks": data['totalMarks'],
+                "topic": serialized_topic_data.data[0]
+            }
+            response.append(resp)
+
+        return Response(response, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

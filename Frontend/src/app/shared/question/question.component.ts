@@ -1,19 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Question } from 'src/app/user/model-test/model-test.service';
 import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
-
-export interface question {
-  questionText: string;
-  option1: string;
-  option2: string;
-  option3: string;
-  option4: string;
-  option5: string;
-  option6: string;
-  answer: string;
-  explaination: string;
-  topic: string;
-}
 
 @Component({
   selector: 'question',
@@ -23,7 +11,7 @@ export interface question {
 export class QuestionComponent implements OnInit {
 
   displayAnswer: boolean = false;
-  @Input() info: question | undefined;
+  @Input() info: Question | undefined;
 
   constructor(
     private _dialog: MatDialog,

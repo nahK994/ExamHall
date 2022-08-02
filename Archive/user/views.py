@@ -14,7 +14,9 @@ def getAllUsers(request):
 
 @api_view(['GET'])
 def getUser(request, user_id):
-    pass
+    user = UserModel.objects.get(userId = user_id)    
+    serializer = UserSerializer([user], many = True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 # @api_view(['POST'])

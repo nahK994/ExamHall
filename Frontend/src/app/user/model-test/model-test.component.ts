@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ExamListItem, ModelTestService } from './model-test.service';
 
 @Component({
   selector: 'app-model-test',
@@ -10,14 +11,24 @@ export class ModelTestComponent implements OnInit {
 
   constructor(
     private _activateRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _modelTestService: ModelTestService
   ) { }
 
-  ngOnInit(): void {
+  examList: ExamListItem[] = [];
+
+  async ngOnInit(): Promise<void> {
+    this.examList = await this._modelTestService.getExamList();
   }
 
   goBack() {
     this._router.navigate(['..'], {
+      relativeTo: this._activateRoute
+    })
+  }
+
+  goToExam(exam: ExamListItem) {
+    this._router.navigate([exam.examId], {
       relativeTo: this._activateRoute
     })
   }

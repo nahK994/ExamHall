@@ -5,21 +5,49 @@ from service.publisher import publish_message
 
 from .models import ExamModel
 from .serializers import ExamSerializer
+from question.serializers import QuestionSerializer
+from topic.serializers import TopicSerializer
 from topic.models import TopicModel
 from question.models import QuestionModel
 
 @api_view(['GET'])
 def getAllExam(request):
     exams = ExamModel.objects.all()
-    serializer = ExamSerializer(exams, many = True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    exam_list = []
+    for exam in exams:
+        exam_list.append({
+            "examId": exam.examId,
+            "name": exam.name
+        })
+
+    return Response(exam_list, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def getExam(request, exam_id):
     exam = ExamModel.objects.get(examId = exam_id)
-    serializer = ExamSerializer(exam, many = True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    serializer = ExamSerializer([exam], many = True)
+    exam_info = serializer.data[0]
+    
+    # prepare questions
+    questions = []
+    for exam_question in exam_info['questions']:
+        question = QuestionModel.objects.get(questionId=exam_question)
+        questions.append(question)
+
+    serialized_questions = QuestionSerializer(questions, many=True)
+    exam_info['questions'] = serialized_questions.data
+
+    #prepare topics
+    topics = []
+    for exam_topic in exam_info['topics']:
+        topic = TopicModel.objects.get(topicId=exam_topic)
+        topics.append(topic)
+    
+    serialized_topics = TopicSerializer(topics, many=True)
+    exam_info['topics'] = serialized_topics.data
+
+    return Response(exam_info, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])

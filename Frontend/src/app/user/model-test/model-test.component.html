@@ -4,4 +4,10 @@
             <mat-icon>arrow_back_ios</mat-icon>
         </button>
     </div>
+
+    <div class="content">
+        <ng-container *ngFor="let exam of examList">
+            <button class="list-item" mat-raised-button (click)="goToExam(exam)">{{exam?.name}}</button>
+        </ng-container>
+    </div>
 </div>

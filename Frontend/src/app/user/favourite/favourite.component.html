@@ -6,6 +6,18 @@
     </div>
 
     <div class="content">
-        <question [info]="question"></question>
+        <mat-form-field appearance="outline">
+            <mat-label>Topic</mat-label>
+            <mat-select [formControl]="topic">
+                <mat-option [value]="''">All</mat-option>
+                <mat-option *ngFor="let val of allTopics" [value]="val?.topicId">{{val?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="questions">
+            <ng-container *ngFor="let question of questions">
+                <question [info]="question"></question>
+            </ng-container>
+        </div>
     </div>
 </div>

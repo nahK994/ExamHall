@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ModelTestComponent
+  },
+  {
+    path: ':examId',
+    loadChildren: () => import('./model-test-details/model-test-details.module').then(m => m.ModelTestDetailsModule)
   }
 ];
 

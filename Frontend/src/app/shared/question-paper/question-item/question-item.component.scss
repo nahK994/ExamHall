@@ -1,0 +1,22 @@
+.question-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 16px;
+    color: #1a237e;
+
+    .question-text{
+        font-size: 20px;
+    }
+
+    .radio-style {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        
+        .option-text{
+            font-size: 14px;
+        }
+    }
+}

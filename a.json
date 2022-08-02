@@ -50,3 +50,25 @@
     ]
 }
 // http://localhost:8003/result/exam/10/user/43/
+
+// user list
+[
+    {
+        "userId": 43,
+        "name": "counting stars",
+        "email": "counting.stars@gmail.com",
+        "password": "asdf"
+    },
+    {
+        "userId": 44,
+        "name": "Kaizu",
+        "email": "kaizu@gmail.com",
+        "password": "asdf"
+    },
+    {
+        "userId": 45,
+        "name": "Kaizu",
+        "email": "kaizu1@gmail.com",
+        "password": "asdf"
+    }
+]

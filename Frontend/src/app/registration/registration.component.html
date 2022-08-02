@@ -2,6 +2,12 @@
     <mat-card class="card-style">
         <form [formGroup]="registrationForm" class="form-style">
             <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" required>
+                <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Email" formControlName="email" required>
                 <mat-error>This field is required</mat-error>
@@ -10,15 +16,6 @@
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
                 <input matInput placeholder="Password" formControlName="password" required>
-                <mat-error>This field is required</mat-error>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Role</mat-label>
-                <mat-select formControlName="role" required>
-                    <mat-option value="admin">Admin</mat-option>
-                    <mat-option value="user">User</mat-option>
-                </mat-select>
                 <mat-error>This field is required</mat-error>
             </mat-form-field>
 
