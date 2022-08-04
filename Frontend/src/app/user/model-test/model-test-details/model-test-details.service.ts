@@ -8,8 +8,8 @@ import { Exam, Result } from '../model-test.service';
 })
 export class ModelTestDetailsService {
 
-  baseUrl_Exam: string = 'http://localhost:8001/';
-  baseUrl_Result: string = 'http://localhost:8000/';
+  baseUrl_Exam: string = 'http://localhost:8002/';
+  baseUrl_Result: string = 'http://localhost:8003/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

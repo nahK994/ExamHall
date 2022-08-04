@@ -10,3 +10,65 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+
+  user:
+    build: User
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./User:/app
+    ports:
+      - 8000:8000
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+
+  archive_consumer:
+    build: Archive
+    restart: always
+    volumes:
+      - ./Archive:/app
+    command: 'python3 -u consumer.py'
+    depends_on:
+      - db
+  
+  archive:
+    build: Archive
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./Archive:/app
+    ports:
+      - 8001:8001
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8001"
+  
+  exam:
+    build: Exam
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./Exam:/app
+    ports:
+      - 8002:8002
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8002"
+  
+  result_consumer:
+    build: Result
+    restart: always
+    volumes:
+      - ./Result:/app
+    command: 'python3 -u consumer.py'
+    depends_on:
+      - db
+  
+  result:
+    build: Result
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./Result:/app
+    ports:
+      - 8003:8003
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8003"
