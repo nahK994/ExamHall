@@ -12,6 +12,7 @@ services:
       - POSTGRES_PASSWORD=root
 
   user:
+    container_name: user
     build: User
     restart: always
     depends_on:
@@ -32,6 +33,7 @@ services:
       - db
   
   archive:
+    container_name: archive
     build: Archive
     restart: always
     depends_on:
@@ -43,6 +45,7 @@ services:
     command: bash -c "python3 manage.py runserver 0.0.0.0:8001"
   
   exam:
+    container_name: exam
     build: Exam
     restart: always
     depends_on:
@@ -63,6 +66,7 @@ services:
       - db
   
   result:
+    container_name: result
     build: Result
     restart: always
     depends_on:
@@ -72,3 +76,16 @@ services:
     ports:
       - 8003:8003
     command: bash -c "python3 manage.py runserver 0.0.0.0:8003"
+  
+  frontend:
+    container_name: frontend
+    build: Frontend
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - user
+      - archive
+      - exam
+      - result
+      - db

@@ -1,7 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Question } from 'src/app/user/model-test/model-test.service';
+import { Question } from 'src/app/home/model-test/model-test.service';
 
 @Component({
   selector: 'question-item',
