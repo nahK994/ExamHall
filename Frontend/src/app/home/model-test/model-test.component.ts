@@ -33,4 +33,8 @@ export class ModelTestComponent implements OnInit {
     })
   }
 
+  logout() {
+    this._router.navigate(['login']);
+  }
+
 }

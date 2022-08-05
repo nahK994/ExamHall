@@ -41,6 +41,10 @@ export class ModelTestDetailsComponent implements OnInit {
     })
   }
 
+  logout() {
+    this._router.navigate(['login']);
+  }
+
   submitAnswer(answerSheet: AnswerSheet) {
     console.log("final ==> ", answerSheet)
   }

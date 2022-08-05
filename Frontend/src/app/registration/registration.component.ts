@@ -28,4 +28,8 @@ export class RegistrationComponent {
     let userId = await this._registrationService.createUser(this.registrationForm.value);
     this._router.navigate(['user', userId])
   }
+
+  goBack() {
+    this._router.navigate(['login']);
+  }
 }

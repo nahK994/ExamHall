@@ -56,6 +56,10 @@ export class FavouriteComponent implements OnInit, OnDestroy {
     })
   }
 
+  logout() {
+    this._router.navigate(['login']);
+  }
+
   ngOnDestroy(): void {
     
   }

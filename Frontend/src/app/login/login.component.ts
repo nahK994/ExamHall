@@ -15,7 +15,7 @@ export class LoginComponent {
   constructor(
     private _fb: FormBuilder,
     private _loginService: LoginService,
-    private _router: Router,
+    private _router: Router
   ) {
     this.loginForm = this._fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,6 +30,10 @@ export class LoginComponent {
   async login() {
     let userId = await this._loginService.loginUser(this.loginForm.value);
     this._router.navigate(['user', userId])
+  }
+
+  registration() {
+    this._router.navigate(['registration']);
   }
 
 }

@@ -1,14 +1,11 @@
 .model-test{
     display: flex;
     flex-direction: column;
-    width: 100%;
 
     .top-bar{
-        width: 100%;
         display: flex;
-        .back-button{
-            margin: 12px;
-        }
+        justify-content: space-between;
+        padding: 12px;
     }
 
     .content{

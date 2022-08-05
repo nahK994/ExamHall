@@ -25,4 +25,8 @@ export class HomeComponent {
     })
   }
 
+  logout() {
+    this._router.navigate(['login']);
+  }
+
 }
