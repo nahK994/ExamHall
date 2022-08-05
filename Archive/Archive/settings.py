@@ -86,7 +86,7 @@ DATABASES = {
     	'NAME': 'archive_db', 
     	'USER': 'root',
     	'PASSWORD': 'root',
-    	'HOST': 'db', 
+    	'HOST': 'archive_db', 
     	'PORT': '5432', 
 	}
 }
