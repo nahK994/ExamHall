@@ -27,6 +27,16 @@ def login(request):
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
 
+@api_view(['POST'])
+def admin_login(request):
+    data = request.data
+    print(data)
+    if data['email'] == "nkskl6@gmail.com" and data['password'] == "root":
+        return Response("", status=status.HTTP_200_OK)
+    else:
+        return Response("", status=status.HTTP_403_FORBIDDEN)
+
+
 @api_view(['GET'])
 def getUser(request, user_id):
     user = UserModel.objects.filter(userId = user_id)

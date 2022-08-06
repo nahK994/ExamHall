@@ -9,15 +9,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./user/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule)
+    loadChildren: () => import('./user/registration/registration.module').then(m => m.RegistrationModule)
   },
   {
     path: 'home/:userId',
-    loadChildren: () => import('./home/home.module').then(m=>m.HomeModule)
+    loadChildren: () => import('./user/home/home.module').then(m=>m.HomeModule)
+  },
+  {
+    path: 'admin/home',
+    loadChildren: () => import('./admin/home/home.module').then(m=>m.HomeModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/login/login.module').then(m=>m.LoginModule)
   }
 ];
 

@@ -1,0 +1,22 @@
+<div class="create-exam">
+    <div class="top-bar">
+        <button class="back-button" mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-raised-button (click)="logout()">logout</button>
+    </div>
+
+    <div class="content">
+        <div>
+            <button mat-raised-button (click)="createTopic()">Create Topic</button>
+            <button mat-raised-button (click)="createQuestion()">Create Question</button>
+        </div>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Topic</mat-label>
+            <mat-select [formControl]="topic">
+                <mat-option *ngFor="let val of allTopics" [value]="val?.topicId">{{val?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Question, Topic } from '../model-test/model-test.service';
-import { UserFavourite } from './favourite.component';
 
 @Injectable({
   providedIn: 'root'

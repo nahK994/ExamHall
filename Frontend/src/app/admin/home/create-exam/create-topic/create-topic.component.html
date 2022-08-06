@@ -1,0 +1,17 @@
+<div class="create-topic">
+    <div class="top-bar">
+        <button class="back-button" mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-raised-button (click)="logout()">logout</button>
+    </div>
+    <div class="content">
+        <form [formGroup]="topic">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter topic name</mat-label>
+                <input matInput placeholder="Enter topic name" formControlName="name" required>
+            </mat-form-field>
+        </form>
+        <button mat-raised-button (click)="submit()">Submit</button>
+    </div>
+</div>

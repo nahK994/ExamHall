@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Exam, Question } from 'src/app/home/model-test/model-test.service';
+import { Exam, Question } from 'src/app/user/home/model-test/model-test.service';
 
 export interface ResultItem {
     questionId: number,

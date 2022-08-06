@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Question } from 'src/app/home/model-test/model-test.service';
+import { Question } from 'src/app/user/home/model-test/model-test.service';
 
 @Component({
   selector: 'question-item',

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Question } from 'src/app/home/model-test/model-test.service';
+import { Question } from 'src/app/user/home/model-test/model-test.service';
 import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
 
 @Component({

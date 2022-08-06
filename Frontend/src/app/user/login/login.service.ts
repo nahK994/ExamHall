@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
-interface LoginInfo {
+export interface LoginInfo {
   email: string,
   password: string;
 }

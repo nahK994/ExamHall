@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
 @Component({
@@ -23,17 +23,14 @@ export class LoginComponent {
     })
   }
 
-  setRole(role: string) {
-    this.loginForm.get('role')?.setValue(role);
-  }
-
   async login() {
-    let userId = await this._loginService.loginUser(this.loginForm.value);
-    this._router.navigate(['home', userId])
-  }
-
-  registration() {
-    this._router.navigate(['registration']);
+    try {
+      await this._loginService.isAdminChecking(this.loginForm.value);
+      this._router.navigate(['admin', 'home'])
+    }
+    catch (e) {
+      console.log(e)
+    }
   }
 
 }
