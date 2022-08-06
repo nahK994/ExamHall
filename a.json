@@ -72,3 +72,9 @@
         "password": "asdf"
     }
 ]
+
+// admin credential
+{
+    "userName": "root",
+    "password": "root"
+}

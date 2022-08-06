@@ -11,3 +11,6 @@ class ExamModel(models.Model):
     numberOfSeats = models.IntegerField(default=0)
     questions = models.ManyToManyField(QuestionModel, related_name="exams")
     topics = models.ManyToManyField(TopicModel, related_name="exams")
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.examId})"

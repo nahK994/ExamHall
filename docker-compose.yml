@@ -111,6 +111,8 @@ services:
     restart: always
     ports:
       - 8080:80
+    volumes:
+      - ./Frontend:/app
     depends_on:
       - user
       - archive

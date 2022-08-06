@@ -29,7 +29,7 @@ export class LoginComponent {
 
   async login() {
     let userId = await this._loginService.loginUser(this.loginForm.value);
-    this._router.navigate(['user', userId])
+    this._router.navigate(['home', userId])
   }
 
   registration() {

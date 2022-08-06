@@ -15,3 +15,6 @@ class QuestionModel(models.Model):
     answer = models.CharField(max_length=100)
     explaination = models.CharField(max_length=500)
     topic = models.ForeignKey(TopicModel, related_name="questions", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.questionText} ({self.questionId})"

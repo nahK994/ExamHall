@@ -9,3 +9,6 @@ class UserModel(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=40)
     questions = models.ManyToManyField(QuestionModel, related_name="users")
+
+    def __str__(self):
+        return f"{self.name} ({self.userId})"
