@@ -5,6 +5,8 @@ import { QuestionItemComponent } from './question-item/question-item.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { QuestionPaperService } from './question-paper.service';
 
 
 @NgModule({
@@ -16,10 +18,14 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   exports: [
     QuestionPaperComponent,
+  ],
+  providers: [
+    QuestionPaperService
   ]
 })
 export class QuestionPaperModule { }

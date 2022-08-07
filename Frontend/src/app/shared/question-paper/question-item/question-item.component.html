@@ -1,5 +1,8 @@
 <div class="question-item">
-    <div class="question-text">{{question?.questionText}}</div>
+    <div class="question-text">
+        <div>{{question?.questionText}}</div>
+        <button mat-stroked-button (click)="markAsFavourite()">mark as favourite</button>
+    </div>
     <mat-radio-group [formControl]="answer" class="radio-style">
         <mat-radio-button class="option-text" [value]="question?.option1">
             {{question?.option1}}

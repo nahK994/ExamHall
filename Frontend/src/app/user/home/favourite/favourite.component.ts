@@ -24,13 +24,14 @@ export class FavouriteComponent implements OnInit, OnDestroy {
   topic: FormControl = new FormControl('')
 
   constructor(
-    private _activateRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private _favouriteService: FavouriteService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.allQuestions = await this._favouriteService.getUserFavourites(43);
+    let userId = this._activatedRoute.snapshot.params['userId'];
+    this.allQuestions = await this._favouriteService.getUserFavourites(userId);
     this.allTopics = await this._favouriteService.getTopics();
     this.questions = this.allQuestions;
 
@@ -52,7 +53,7 @@ export class FavouriteComponent implements OnInit, OnDestroy {
 
   goBack() {
     this._router.navigate(['..'], {
-      relativeTo: this._activateRoute
+      relativeTo: this._activatedRoute
     })
   }
 

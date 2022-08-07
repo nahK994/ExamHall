@@ -1,6 +1,9 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/user/home/model-test/model-test.service';
+import { QuestionPaperService } from '../question-paper.service';
 
 @Component({
   selector: 'question-item',
@@ -23,7 +26,10 @@ export class QuestionItemComponent implements OnInit {
 
   answer: FormControl = new FormControl('');
 
-  constructor() { }
+  constructor(
+    private _questionPaperService: QuestionPaperService,
+    private _activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.answer.valueChanges.subscribe(res => {
@@ -32,6 +38,13 @@ export class QuestionItemComponent implements OnInit {
         "answer": res
       });
     })
+  }
+
+  async markAsFavourite() {
+    if(this.question) {
+      let userId = this._activatedRoute.snapshot.params['userId'];
+      await this._questionPaperService.markQuestionAsFavourite(this.question.questionId, userId);
+    }
   }
 
 }

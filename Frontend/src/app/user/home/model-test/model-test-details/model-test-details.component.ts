@@ -31,8 +31,6 @@ export class ModelTestDetailsComponent implements OnInit {
     if(!this.result.length) {
       this.exam = await this._modelTestDetailsService.getExam(examId);
     }
-    console.log("HIHI result ==+++> ", this.result)
-    console.log("HIHI exam ==> ", this.exam)
   }
 
   goBack() {
