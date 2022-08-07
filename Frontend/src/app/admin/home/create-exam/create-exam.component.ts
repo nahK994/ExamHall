@@ -15,6 +15,7 @@ export class CreateExamComponent implements OnInit {
   questions: Question[] = [];
   allQuestions: Question[] = [];
   topic: FormControl = new FormControl('')
+  topicListForQuestionSelection: Topic[] = [];
 
   form: FormGroup;
 
@@ -76,6 +77,12 @@ export class CreateExamComponent implements OnInit {
     let topics = this.form.get('topics')?.value;
     topics.push(topicId);
     this.form.get('topics')?.setValue(topics);
+
+    for(let topic of this.allTopics) {
+      if(topic.topicId === topicId) {
+        this.topicListForQuestionSelection.push(topic);
+      }
+    }
   }
 
   deSelectTopic(topicId: number) {
@@ -83,6 +90,9 @@ export class CreateExamComponent implements OnInit {
     let index = topics.indexOf(topicId);
     topics.splice(index, 1);
     this.form.get('topics')?.setValue(topics);
+
+    index = this.topicListForQuestionSelection.findIndex(item => item.topicId === topicId);
+    this.topicListForQuestionSelection.splice(index, 1);
   }
 
   selectQuestion(questionId: number) {
@@ -96,6 +106,29 @@ export class CreateExamComponent implements OnInit {
     let index = questions.indexOf(questionId);
     questions.splice(index, 1);
     this.form.get('questions')?.setValue(questions);
+  }
+
+  isSelectedQuestion(question: Question) {
+    return this.form.get('questions')?.value.includes(question.questionId)
+  }
+
+  createExam() {
+    try {
+      let numberForCorrectAnswer = Number(this.form.get('numberForCorrectAnswer')?.value);
+      let numberForIncorrectAnswer = Number(this.form.get('numberForIncorrectAnswer')?.value);
+      let numberOfSeats = Number(this.form.get('numberOfSeats')?.value);
+
+      this.form.get('numberForCorrectAnswer')?.setValue(numberForCorrectAnswer);
+      this.form.get('numberForIncorrectAnswer')?.setValue(numberForIncorrectAnswer);
+      this.form.get('numberOfSeats')?.setValue(numberOfSeats);
+
+      this._createExamService.createExam(this.form.value)
+      this.form.reset();
+      this.topicListForQuestionSelection = [];
+    }
+    catch (e) {
+      console.log(e);
+    }
   }
 
 }

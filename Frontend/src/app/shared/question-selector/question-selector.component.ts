@@ -9,7 +9,7 @@ import { Question } from 'src/app/user/home/model-test/model-test.service';
 })
 export class QuestionSelectorComponent {
 
-  isSelected: boolean = false;
+  @Input() isSelected: boolean = false;
   @Input() question: Question | undefined;
   
   @Output() selectQuestion = new EventEmitter();

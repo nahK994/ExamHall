@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Question, Topic } from 'src/app/user/home/model-test/model-test.service';
+import { Exam, Question, Topic } from 'src/app/user/home/model-test/model-test.service';
 
 export interface CreateTopicModel {
   name: string
@@ -45,6 +45,13 @@ export class CreateExamService {
   async createQuestion(question: Question) {
     let updateURL_extention = 'question/create/';
     let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, question, this.httpOptions));
+
+    return response;
+  }
+
+  async createExam(exam: Exam) {
+    let updateURL_extention = 'exam/create/';
+    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, exam, this.httpOptions));
 
     return response;
   }
