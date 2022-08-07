@@ -28,6 +28,13 @@ export class CreateExamService {
     return response;
   }
 
+  async getQuestions() {
+    let updateURL_extention = 'question/get/';
+    let response = await lastValueFrom(this.http.get<Question[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
+
+    return response;
+  }
+
   async createTopic(topic: CreateTopicModel) {
     let updateURL_extention = 'topic/create/';
     let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, topic, this.httpOptions));

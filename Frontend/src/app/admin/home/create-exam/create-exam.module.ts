@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CreateExamService } from './create-exam.service';
 import { MatSelectModule } from '@angular/material/select';
+import { TopicSelectorModule } from 'src/app/shared/topic-selector/topic-selector.module';
+import { QuestionSelectorModule } from 'src/app/shared/question-selector/question-selector.module';
 
 
 
@@ -32,7 +34,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    TopicSelectorModule,
+    QuestionSelectorModule,
+    MatCardModule
   ],
   providers: [
     CreateExamService

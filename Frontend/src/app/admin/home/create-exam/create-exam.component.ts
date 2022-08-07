@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Topic } from 'src/app/user/home/model-test/model-test.service';
+import { Question, Topic } from 'src/app/user/home/model-test/model-test.service';
 import { CreateExamService } from './create-exam.service';
 
 @Component({
@@ -12,17 +12,42 @@ import { CreateExamService } from './create-exam.service';
 export class CreateExamComponent implements OnInit {
 
   allTopics: Topic[] = [];
-
+  questions: Question[] = [];
+  allQuestions: Question[] = [];
   topic: FormControl = new FormControl('')
+
+  form: FormGroup;
 
   constructor(
     private _activateRoute: ActivatedRoute,
     private _router: Router,
-    private _createExamService: CreateExamService
-  ) { }
+    private _createExamService: CreateExamService,
+    private _fb: FormBuilder
+  ) {
+    this.form = this._fb.group({
+      name: ['', [Validators.required]],
+      numberForCorrectAnswer: [, [Validators.required]],
+      numberForIncorrectAnswer: [, [Validators.required]],
+      numberOfSeats: [, [Validators.required]],
+      questions: [[]],
+      topics: [[]]
+    })
+  }
 
   async ngOnInit(): Promise<void> {
     this.allTopics = await this._createExamService.getTopics();
+    this.allQuestions = await this._createExamService.getQuestions();
+
+    this.topic.valueChanges.subscribe(res => {
+      let questions: Question[] = [];
+      for(let question of this.allQuestions) {
+        if(question.topic === res) {
+          questions.push(question);
+        }
+      }
+
+      this.questions = questions;
+    })
   }
 
   goBack() {
@@ -45,6 +70,32 @@ export class CreateExamComponent implements OnInit {
     this._router.navigate(['create-question'], {
       relativeTo: this._activateRoute
     })
+  }
+
+  selectTopic(topicId: number) {
+    let topics = this.form.get('topics')?.value;
+    topics.push(topicId);
+    this.form.get('topics')?.setValue(topics);
+  }
+
+  deSelectTopic(topicId: number) {
+    let topics = this.form.get('topics')?.value;
+    let index = topics.indexOf(topicId);
+    topics.splice(index, 1);
+    this.form.get('topics')?.setValue(topics);
+  }
+
+  selectQuestion(questionId: number) {
+    let questions = this.form.get('questions')?.value;
+    questions.push(questionId);
+    this.form.get('questions')?.setValue(questions);
+  }
+
+  deSelectQuestion(questionId: number) {
+    let questions = this.form.get('questions')?.value;
+    let index = questions.indexOf(questionId);
+    questions.splice(index, 1);
+    this.form.get('questions')?.setValue(questions);
   }
 
 }

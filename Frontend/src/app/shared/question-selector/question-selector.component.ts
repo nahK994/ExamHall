@@ -1,16 +1,20 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Question } from 'src/app/user/home/model-test/model-test.service';
 
 @Component({
-  selector: 'app-question-selector',
+  selector: 'question-selector',
   templateUrl: './question-selector.component.html',
   styleUrls: ['./question-selector.component.scss']
 })
-export class QuestionSelectorComponent implements OnInit {
+export class QuestionSelectorComponent {
 
-  @Input() info: Question | undefined;
+  isSelected: boolean = false;
+  @Input() question: Question | undefined;
+  
   @Output() selectQuestion = new EventEmitter();
+  @Output() deSelectQuestion = new EventEmitter();
+
   form: FormGroup;
 
   constructor(
@@ -21,7 +25,14 @@ export class QuestionSelectorComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  takeAction() {
+    this.isSelected = !this.isSelected;
+    if(this.isSelected) {
+      this.selectQuestion.emit(this.question?.questionId);
+    }
+    else {
+      this.deSelectQuestion.emit(this.question?.questionId);
+    }
   }
 
 }

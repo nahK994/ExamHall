@@ -1,11 +1,11 @@
-<div class="question-selector">
-    <question-viewer [question]="question"></question-viewer>
-    <button mat-icon-button (click)="takeAction()">
+<button mat-stroked-button (click)="takeAction()">
+    <div class="topic-selector">
+        <div>{{topic?.name}}</div>
         <ng-container *ngIf="!isSelected; else isSelectedTemp">
             <mat-icon>add</mat-icon>
         </ng-container>
         <ng-template #isSelectedTemp>
             <mat-icon>remove</mat-icon>
         </ng-template>
-    </button>
-</div>
+    </div>
+</button>

@@ -11,7 +11,7 @@ import { ExplanationModalComponent } from './explanation-modal/explanation-modal
 export class QuestionViewerComponent implements OnInit {
 
   displayAnswer: boolean = false;
-  @Input() info: Question | undefined;
+  @Input() question: Question | undefined;
 
   constructor(
     private _dialog: MatDialog,
@@ -21,7 +21,7 @@ export class QuestionViewerComponent implements OnInit {
   }
 
   seeExplanation() {
-    let explaination = this.info?.explaination;
+    let explaination = this.question?.explaination;
     this._dialog.open(ExplanationModalComponent, {
       data: explaination
     })

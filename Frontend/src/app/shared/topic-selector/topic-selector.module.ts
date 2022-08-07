@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuestionSelectorComponent } from './question-selector.component';
-import { QuestionViewerModule } from '../question-viewer/question-viewer.module';
+import { TopicSelectorComponent } from './topic-selector.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 
+
 @NgModule({
   declarations: [
-    QuestionSelectorComponent
+    TopicSelectorComponent,
   ],
   imports: [
     CommonModule,
-    QuestionViewerModule,
     MatButtonModule,
     MatIconModule
   ],
   exports: [
-    QuestionSelectorComponent
+    TopicSelectorComponent
   ]
 })
-export class QuestionSelectorModule { }
+export class TopicSelectorModule { }
