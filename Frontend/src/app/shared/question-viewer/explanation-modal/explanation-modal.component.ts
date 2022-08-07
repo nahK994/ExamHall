@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './explanation-modal.component.html',
   styleUrls: ['./explanation-modal.component.scss']
 })
-export class ExplanationModalComponent implements OnInit {
+export class ExplanationModalComponent {
 
   explaination: string | undefined;
 
@@ -23,5 +23,6 @@ export class ExplanationModalComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
 
 }
