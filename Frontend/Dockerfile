@@ -1,9 +1,10 @@
 FROM node:14 as node
-RUN npm install npm@latest
+
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN ng build
+# RUN ng build
+RUN node_modules/.bin/ng serve
 # RUN node_modules/.bin/ng build
 
 
