@@ -110,9 +110,9 @@ services:
     build: Frontend
     restart: always
     ports:
-      - 8080:4200
-    stdin_open: true
-    tty: true
+      - 8080:80
+    # stdin_open: true
+    # tty: true
     depends_on:
       - user
       - archive
