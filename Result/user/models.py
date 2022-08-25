@@ -2,6 +2,7 @@ from django.db import models
 
 from question.models import QuestionModel
 
+
 # Create your models here.
 class UserModel(models.Model):
     userId = models.BigIntegerField(primary_key=True)

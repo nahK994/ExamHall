@@ -78,3 +78,10 @@
     "userName": "root",
     "password": "root"
 }
+
+// user list
+[
+    "shomi.khan@gmail.com",
+    "selise@gmail.com",
+    "sniper@gmail.com"
+]

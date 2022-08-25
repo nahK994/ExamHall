@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Exam, Result } from '../model-test.service';
+import { AnswerSheet } from './model-test-details.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,14 @@ export class ModelTestDetailsService {
 
   async getResult(examId: number, userId: number) {
     let updateURL_extention = 'result/exam/'+examId+'/user/'+userId;
-    let response = await lastValueFrom(this.http.get<Result[]>(this.baseUrl_Result+updateURL_extention, this.httpOptions));
+    let response = await lastValueFrom(this.http.get<Result>(this.baseUrl_Result+updateURL_extention, this.httpOptions));
+
+    return response;
+  }
+
+  async createResult(answerSheet: AnswerSheet, examId: number, userId: number) {
+    let updateURL_extention = 'result/exam/'+examId+'/user/'+userId+'/create/';
+    let response = await lastValueFrom(this.http.post<AnswerSheet>(this.baseUrl_Result+updateURL_extention, answerSheet, this.httpOptions));
 
     return response;
   }

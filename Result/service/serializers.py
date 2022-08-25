@@ -1,17 +1,26 @@
 from rest_framework import serializers
 from . import models
 
-class ResultSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ResultModel
-        fields = '__all__'
+from user.models import UserModel
+
+# class ResultSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = models.ResultModel
+#         fields = '__all__'
 
 class UserDetailedResultInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserDetailedResultInfoModel
         fields = '__all__'
 
-class UserResultInfoSerializer(serializers.ModelSerializer):
+# class UserResultInfoSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = models.UserResultInfoModel
+#         fields = '__all__'
+
+
+class RankListSerializer(serializers.ModelSerializer):
+    totalMarks = serializers.FloatField(max_value=None, min_value=None)
     class Meta:
-        model = models.UserResultInfoModel
-        fields = '__all__'
+        model = UserModel
+        fields = ['name', 'email', 'userId', 'totalMarks']

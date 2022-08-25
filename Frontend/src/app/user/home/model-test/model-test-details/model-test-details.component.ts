@@ -15,8 +15,8 @@ export interface AnswerSheet {
 })
 export class ModelTestDetailsComponent implements OnInit {
 
-  exam !: Exam;
-  result !: Result[];
+  exam: Exam | undefined;
+  result: Result | undefined;
 
   constructor(
     private _activateRoute: ActivatedRoute,
@@ -28,7 +28,7 @@ export class ModelTestDetailsComponent implements OnInit {
     let examId = this._activateRoute.snapshot.params['examId'];
     let userId = this._activateRoute.snapshot.params['userId'];
     this.result = await this._modelTestDetailsService.getResult(examId, userId);
-    if(!this.result.length) {
+    if(!this.result) {
       this.exam = await this._modelTestDetailsService.getExam(examId);
     }
   }
@@ -43,8 +43,11 @@ export class ModelTestDetailsComponent implements OnInit {
     this._router.navigate(['login']);
   }
 
-  submitAnswer(answerSheet: AnswerSheet) {
+  async submitAnswer(answerSheet: AnswerSheet) {
     console.log("final ==> ", answerSheet)
+    let examId = this._activateRoute.snapshot.params['examId'];
+    let userId = this._activateRoute.snapshot.params['userId'];
+    await this._modelTestDetailsService.createResult(answerSheet, examId, userId);
   }
 
 }

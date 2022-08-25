@@ -7,18 +7,18 @@
     </div>
 
     <div class="content">
-        <ng-container *ngIf="exam; else resultView">
-            <question-paper (submitAnswer)="submitAnswer($event)" [exam]="exam"></question-paper>
-        </ng-container>
-        <ng-template #resultView>
+        <ng-container *ngIf="result">
             <div class="result-view">
-                <ng-container *ngFor="let resultItem of result">
+                <ng-container *ngFor="let resultItem of result?.userResult">
                     <div class="item">
                         <div class="name">{{resultItem?.topic?.name}}</div>
                         <div class="number">{{resultItem?.totalMarks}}</div>
                     </div>
                 </ng-container>
             </div>
-        </ng-template>
+        </ng-container>
+        <ng-container *ngIf="exam">
+            <question-paper (submitAnswer)="submitAnswer($event)" [exam]="exam"></question-paper>
+        </ng-container>
     </div>
 </div>

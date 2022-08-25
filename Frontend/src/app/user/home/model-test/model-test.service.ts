@@ -37,10 +37,24 @@ export interface Exam {
 }
 
 export interface Result {
-  numberOfCorrectAnswer: number,
-  numberOfIncorrectAnswer: number,
-  totalMarks: number,
-  topic: Topic
+  examInfo: {
+    numberForCorrectAnswer: number,
+    numberForIncorrectAnswer: number,
+    name: string,
+    numberOfSeats: number,
+    cutMark: number
+  },
+  userResult: {
+    numberOfCorrectAnswer: number,
+    numberOfIncorrectAnswer: number,
+    totalMarks: number,
+    topic: Topic
+  }[],
+  rankList: {
+    name: string,
+    email: string,
+    totalMarks: number
+  }[]
 }
 
 @Injectable({
