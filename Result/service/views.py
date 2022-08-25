@@ -9,8 +9,8 @@ from topic.serializers import TopicSerializer
 from question.models import QuestionModel
 from exam.models import ExamModel
 
-from .models import UserDetailedResultInfoModel
-from .serializers import UserDetailedResultInfoSerializer
+from .models import ResultModel
+from .serializers import ResultSerializer
 from django.db.models import Sum
 
 from .serializers import RankListSerializer
@@ -43,10 +43,10 @@ def get_cut_marks(exam, rank_list):
 @api_view(['GET'])
 def getUserResult(request, user_id, exam_id):
     try:
-        rank_list = UserDetailedResultInfoModel.objects.filter(exam=exam_id, userId=user_id)
+        rank_list = ResultModel.objects.filter(exam=exam_id, userId=user_id)
         if not rank_list:
             return Response(None, status=status.HTTP_200_OK)
-        serializer = UserDetailedResultInfoSerializer(rank_list, many=True)
+        serializer = ResultSerializer(rank_list, many=True)
 
         user_result_info = []
         for data in serializer.data:
@@ -108,9 +108,8 @@ def createResult(request, exam_id, user_id):
             topicWiseResult[topicId].numberOfIncorrectAnswer += 1
             topicWiseResult[topicId].totalMarks += numberForIncorrectAnswer
 
-    userTotalMarks: int = 0
     for topicId in topicIds:
-        userDetailedResultInfo = UserDetailedResultInfoModel(
+        userDetailedResultInfo = ResultModel(
             exam=exam,
             userId=UserModel.objects.get(userId=user_id),
             topicId=TopicModel.objects.get(topicId=topicId),
@@ -119,38 +118,9 @@ def createResult(request, exam_id, user_id):
             totalMarks=topicWiseResult[topicId].totalMarks
         )
         userDetailedResultInfo.save()
-        # userTotalMarks = userTotalMarks + topicWiseResult[topicId].totalMarks
 
-    # UserResultInfoModel(
-    #     exam=exam,
-    #     userId=UserModel.objects.get(userId=user_id),
-    #     totalMarks=userTotalMarks
-    # ).save()
-
-    # allRankersResult = UserResultInfoModel.objects.filter(exam=exam_id).order_by('-totalMarks')[: exam.numberOfSeats]
-    # allRankersResultSerializer = UserResultInfoSerializer(allRankersResult, many=True)
-
-    # cutMarks = allRankersResultSerializer.data[len(allRankersResultSerializer.data) - 1]['totalMarks']
-    # result = ResultModel.objects.filter(exam=exam_id)
-    # if len(result.values()) == 0:
-    #     ResultModel(
-    #         exam=exam,
-    #         cutMarks=cutMarks
-    #     ).save()
-    # else:
-    #     result = result.get(exam=exam_id)
-    #     result.cutMarks = cutMarks
-    #     result.save()
     return Response("", status=status.HTTP_200_OK)
 
-
-# @api_view(['PUT'])
-# def updateResult(request, result_id):
-#     pass
-
-# @api_view(['DELETE'])
-# def deleteResult(request, result_id):
-#     pass
 
 class UserDetailedResultInfo:
     numberOfCorrectAnswer: int = 0

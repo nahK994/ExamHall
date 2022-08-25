@@ -3,20 +3,10 @@ from . import models
 
 from user.models import UserModel
 
-# class ResultSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = models.ResultModel
-#         fields = '__all__'
-
-class UserDetailedResultInfoSerializer(serializers.ModelSerializer):
+class ResultSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.UserDetailedResultInfoModel
+        model = models.ResultModel
         fields = '__all__'
-
-# class UserResultInfoSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = models.UserResultInfoModel
-#         fields = '__all__'
 
 
 class RankListSerializer(serializers.ModelSerializer):
