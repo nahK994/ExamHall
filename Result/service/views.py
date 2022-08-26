@@ -26,8 +26,8 @@ def getAllUserRank(request, exam_id):
 
 
 def get_rank_list(exam_id):
-    rank_list = UserModel.objects.filter(userdetailedresultinfomodel__exam=exam_id).annotate(
-        totalMarks=Sum('userdetailedresultinfomodel__totalMarks')).order_by('-totalMarks')
+    rank_list = UserModel.objects.filter(resultmodel__exam=exam_id).annotate(
+        totalMarks=Sum('resultmodel__totalMarks')).order_by('-totalMarks')
     serialized_rank_list = RankListSerializer(rank_list, many=True)
     return serialized_rank_list.data
 
@@ -93,31 +93,31 @@ def createResult(request, exam_id, user_id):
     serialized_topics = TopicSerializer(ExamModel.objects.get(examId=exam_id).topics, many=True)
     topicIds = [topic['topicId'] for topic in serialized_topics.data]
 
-    for topicId in topicIds:
-        topicWiseResult[topicId] = UserDetailedResultInfo()
+    for topic_id in topicIds:
+        topicWiseResult[topic_id] = UserDetailedResultInfo()
 
-    numberForCorrectAnswer = exam.numberForCorrectAnswer
-    numberForIncorrectAnswer = exam.numberForIncorrectAnswer
+    number_for_correct_answer = exam.numberForCorrectAnswer
+    number_for_incorrect_answer = exam.numberForIncorrectAnswer
     for userAnswer in answerSheet:
         question: QuestionModel = QuestionModel.objects.get(questionId=userAnswer['questionId'])
-        topicId = question.topic.topicId
+        topic_id = question.topic.topicId
         if question.answer == userAnswer['answer']:
-            topicWiseResult[topicId].numberOfCorrectAnswer += + 1
-            topicWiseResult[topicId].totalMarks += numberForCorrectAnswer
+            topicWiseResult[topic_id].numberOfCorrectAnswer += + 1
+            topicWiseResult[topic_id].totalMarks += number_for_correct_answer
         else:
-            topicWiseResult[topicId].numberOfIncorrectAnswer += 1
-            topicWiseResult[topicId].totalMarks += numberForIncorrectAnswer
+            topicWiseResult[topic_id].numberOfIncorrectAnswer += 1
+            topicWiseResult[topic_id].totalMarks += number_for_incorrect_answer
 
-    for topicId in topicIds:
-        userDetailedResultInfo = ResultModel(
+    for topic_id in topicIds:
+        result_info = ResultModel(
             exam=exam,
             userId=UserModel.objects.get(userId=user_id),
-            topicId=TopicModel.objects.get(topicId=topicId),
-            numberOfCorrectAnswer=topicWiseResult[topicId].numberOfCorrectAnswer,
-            numberOfIncorrectAnswer=topicWiseResult[topicId].numberOfIncorrectAnswer,
-            totalMarks=topicWiseResult[topicId].totalMarks
+            topicId=TopicModel.objects.get(topicId=topic_id),
+            numberOfCorrectAnswer=topicWiseResult[topic_id].numberOfCorrectAnswer,
+            numberOfIncorrectAnswer=topicWiseResult[topic_id].numberOfIncorrectAnswer,
+            totalMarks=topicWiseResult[topic_id].totalMarks
         )
-        userDetailedResultInfo.save()
+        result_info.save()
 
     return Response("", status=status.HTTP_200_OK)
 
