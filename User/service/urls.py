@@ -4,11 +4,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/', views.getAllUser),
-    path('login/', views.login),
-    path('get/user/<int:user_id>/', views.getUser),
-    path('create/', views.createUser),
-    path('user/<int:user_id>/update/', views.updateUser),
-    path('user/<int:user_id>/delete/', views.deleteUser),
-    path('admin/', views.admin_login),
+    path('', views.get_all_user),
+    path('<int:user_id>', views.get_user),
+    path('login', views.login),
+    path('create', views.create_user),
+    path('<int:user_id>/update', views.update_user),
+    path('<int:user_id>/delete', views.delete_user),
+    path('admin', views.admin_login),
 ]
