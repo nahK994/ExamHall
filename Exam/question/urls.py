@@ -4,9 +4,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/', views.getAllQuestion),
-    path('get/<int:question_id>/', views.getQuestion),
-    path('create/', views.createQuestion),
-    path('<int:question_id>/update/', views.updateQuestion),
-    path('<int:question_id>/delete/', views.deleteQuestion),
+    path('', views.get_all_question),
+    path('<int:question_id>', views.get_question),
+    path('create', views.create_question),
+    path('<int:question_id>/update', views.update_question),
+    path('<int:question_id>/delete', views.delete_question),
 ]

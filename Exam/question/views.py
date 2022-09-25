@@ -11,23 +11,23 @@ from .serializers import QuestionSerializer
 
 
 @api_view(['GET'])
-def getAllQuestion(request):
+def get_all_question(request):
     questions = QuestionModel.objects.all()
     serializer = QuestionSerializer(questions, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def getQuestion(request, question_id):
-    question = QuestionModel.objects.get(questionId = question_id)
-    serializer = QuestionSerializer(question, many=True)
+def get_question(request, question_id):
+    question = QuestionModel.objects.get(questionId=question_id)
+    serializer = QuestionSerializer(question)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
-def createQuestion(request):
+def create_question(request):
     try:
-        question = saveQuestion(request.data)
+        question = save_question(request.data)
         serializer = QuestionSerializer([question], many=True)
         publish_message("POST", question)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -37,8 +37,8 @@ def createQuestion(request):
 
 
 @api_view(['PUT'])
-def updateQuestion(request, question_id):
-    try:        
+def update_question(request, question_id):
+    try:
         question = updateQuestionInfo(question_id, request.data)
         publish_message("PUT", question)
         serializer = QuestionSerializer([question], many=True)
@@ -46,10 +46,11 @@ def updateQuestion(request, question_id):
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
+
 @api_view(['DELETE'])
-def deleteQuestion(request, question_id):
+def delete_question(request, question_id):
     try:
-        question = QuestionModel.objects.get(questionId = question_id)
+        question = QuestionModel.objects.get(questionId=question_id)
         publish_message("DELETE", question)
         question.delete()
         return Response("", status=status.HTTP_200_OK)
@@ -59,7 +60,7 @@ def deleteQuestion(request, question_id):
 
 
 def updateQuestionInfo(question_id: int, request: dict):
-    question = QuestionModel.objects.get(questionId = question_id)
+    question = QuestionModel.objects.get(questionId=question_id)
 
     question.questionText = request['questionText']
     question.option1 = request['option1']
@@ -70,24 +71,24 @@ def updateQuestionInfo(question_id: int, request: dict):
     question.option6 = request['option6']
     question.answer = request['answer']
     question.explaination = request['explaination']
-    question.topic = TopicModel.objects.get(topicId = request['topic'])
+    question.topic = request['topic']
     question.save()
 
     return question
 
-def saveQuestion(request: dict):
-    question = QuestionModel(
-        questionText = request['questionText'],
-        option1 = request['option1'],
-        option2 = request['option2'],
-        option3 = request['option3'],
-        option4 = request['option4'],
-        option5 = request['option5'],
-        option6 = request['option6'],
-        answer = request['answer'],
-        explaination = request['explaination'],
 
-        topic = TopicModel.objects.get(topicId = request['topic'])
+def save_question(request: dict):
+    question = QuestionModel(
+        questionText=request['questionText'],
+        option1=request['option1'],
+        option2=request['option2'],
+        option3=request['option3'],
+        option4=request['option4'],
+        option5=request['option5'],
+        option6=request['option6'],
+        answer=request['answer'],
+        explaination=request['explaination'],
+        topic=request['topic']
     )
     question.save()
 

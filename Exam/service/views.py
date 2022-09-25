@@ -4,58 +4,36 @@ from rest_framework import status
 from service.publisher import publish_message
 
 from .models import ExamModel
-from .serializers import ExamSerializer
-from question.serializers import QuestionSerializer
-from topic.serializers import TopicSerializer
+from .serializers import ExamSerializer, ExamListSerializer
 from topic.models import TopicModel
 from question.models import QuestionModel
 
+
 @api_view(['GET'])
-def getAllExam(request):
+def get_all_exam(request):
     exams = ExamModel.objects.all()
-    exam_list = []
-    for exam in exams:
-        exam_list.append({
-            "examId": exam.examId,
-            "name": exam.name
-        })
+    serialized_exams = ExamListSerializer(exams, many=True)
 
-    return Response(exam_list, status=status.HTTP_200_OK)
+    return Response(serialized_exams.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def getExam(request, exam_id):
-    exam = ExamModel.objects.get(examId = exam_id)
-    serializer = ExamSerializer([exam], many = True)
-    exam_info = serializer.data[0]
-    
-    # prepare questions
-    questions = []
-    for exam_question in exam_info['questions']:
-        question = QuestionModel.objects.get(questionId=exam_question)
-        questions.append(question)
+def get_exam(request, exam_id):
+    filtered_exam = ExamModel.objects.filter(examId=exam_id)
+    if not filtered_exam:
+        return Response("no such exam", status=status.HTTP_403_FORBIDDEN)
+    exam = filtered_exam[0]
+    serialized_exam = ExamSerializer(exam)
 
-    serialized_questions = QuestionSerializer(questions, many=True)
-    exam_info['questions'] = serialized_questions.data
-
-    #prepare topics
-    topics = []
-    for exam_topic in exam_info['topics']:
-        topic = TopicModel.objects.get(topicId=exam_topic)
-        topics.append(topic)
-    
-    serialized_topics = TopicSerializer(topics, many=True)
-    exam_info['topics'] = serialized_topics.data
-
-    return Response(exam_info, status=status.HTTP_200_OK)
+    return Response(serialized_exam.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
-def createExam(request):
+def create_exam(request):
     try:
-        exam = saveExam(request.data)
+        exam = save_exam(request.data)
         publish_message("POST", exam)
-        serializer = ExamSerializer([exam], many=True)
+        serializer = ExamSerializer(exam)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         print(str(e))
@@ -63,20 +41,24 @@ def createExam(request):
 
 
 @api_view(['PUT'])
-def updateExam(request, exam_id):
-    try:        
-        exam = updateExamInfo(exam_id, request.data)
+def update_exam(request, exam_id):
+    try:
+        exam = update_exam_info(exam_id, request.data)
         publish_message("PUT", exam)
-        serializer = ExamSerializer([exam], many=True)
+        serializer = ExamSerializer(exam)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
 
 @api_view(['DELETE'])
-def deleteExam(request, exam_id):
+def delete_exam(request, exam_id):
     try:
-        exam = ExamModel.objects.get(examId = exam_id)
+        filtered_exam = ExamModel.objects.filter(examId=exam_id)
+        if not filtered_exam:
+            return Response("no such exam", status=status.HTTP_403_FORBIDDEN)
+        exam = filtered_exam[0]
+
         publish_message("DELETE", exam)
         exam.delete()
         return Response("", status=status.HTTP_200_OK)
@@ -85,8 +67,8 @@ def deleteExam(request, exam_id):
         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-def updateExamInfo(exam_id: int, request: dict):
-    exam = ExamModel.objects.get(examId = exam_id)
+def update_exam_info(exam_id: int, request: dict):
+    exam = ExamModel.objects.get(examId=exam_id)
 
     exam.name = request['name']
     exam.numberForCorrectAnswer = request['numberForCorrectAnswer']
@@ -95,37 +77,29 @@ def updateExamInfo(exam_id: int, request: dict):
 
     exam.questions.clear()
     for questionId in request['questions']:
-        exam.questions.add(
-            QuestionModel.objects.get(questionId = questionId)
-        )
-    
+        exam.questions.add(questionId)
+
     exam.topics.clear()
     for topicId in request['topics']:
-        exam.topics.add(
-            TopicModel.objects.get(topicId = topicId)
-        )
+        exam.topics.add(topicId)
 
     exam.save()
     return exam
 
 
-def saveExam(request: dict):
+def save_exam(request: dict):
     exam = ExamModel(
-        name = request['name'],
-        numberForCorrectAnswer = request['numberForCorrectAnswer'],
-        numberForIncorrectAnswer = request['numberForIncorrectAnswer'],
-        numberOfSeats = request['numberOfSeats'],
+        name=request['name'],
+        numberForCorrectAnswer=request['numberForCorrectAnswer'],
+        numberForIncorrectAnswer=request['numberForIncorrectAnswer'],
+        numberOfSeats=request['numberOfSeats'],
     )
 
     exam.save()
     for questionId in request['questions']:
-        exam.questions.add(
-            QuestionModel.objects.get(questionId = questionId)
-        )
-    
+        exam.questions.add(questionId)
+
     for topicId in request['topics']:
-        exam.topics.add(
-            TopicModel.objects.get(topicId = topicId)
-        )
+        exam.topics.add(topicId)
 
     return exam
