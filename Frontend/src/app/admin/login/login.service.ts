@@ -17,9 +17,9 @@ export class LoginService {
     private http: HttpClient
   ) { }
 
-  async isAdminChecking(loginInfo: LoginInfo) {
-    let updateURL_extention = 'user/admin/';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_User+updateURL_extention, loginInfo, this.httpOptions));
+  async loginAdmin(loginInfo: LoginInfo) {
+    let updateURL_extention = 'users/admin';
+    let response = await lastValueFrom(this.http.post<string>(this.baseUrl_User+updateURL_extention, loginInfo, this.httpOptions));
 
     return response;
   }

@@ -1,0 +1,14 @@
+<div class="exam-details-page">
+    <div class="nav">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+    </div>
+    <pre class="exam-info">
+        <div>{{exam | json}}</div>
+    </pre>
+    <h2>Cut marks: {{cutMarks}}</h2>
+    <pre class="rank-list">
+        <div>{{rankList | json}}</div>
+    </pre>
+</div>

@@ -4,5 +4,8 @@
     </div>
     <div class="content">
         <button mat-raised-button (click)="createExam()">Create Exam</button>
+        <ng-container *ngFor="let exam of examList">
+            <div class="exam-bar" mat-raised-button (click)="goToExamDetails(exam.examId)">{{exam?.name}}</div>
+        </ng-container>
     </div>
 </div>
