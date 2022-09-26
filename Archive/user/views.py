@@ -3,35 +3,22 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import UserModel
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserListSerializer
+
 
 @api_view(['GET'])
-def getAllUsers(request):
+def get_all_users(request):
     users = UserModel.objects.all()
-    serializers = UserSerializer(users, many=True)
+    serializers = UserListSerializer(users, many=True)
     return Response(serializers.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
-def getUser(request, user_id):
-    user = UserModel.objects.get(userId = user_id)    
-    serializer = UserSerializer([user], many = True)
+def get_user(request, user_id):
+    user = UserModel.objects.get(userId=user_id)
+    serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-
-# @api_view(['POST'])
-# def createUser(request):
-#     pass
-
-
-# @api_view(['PUT'])
-# def updateUser(request, user_id):
-#     pass
-
-
-# @api_view(['DELETE'])
-# def deleteUser(request, user_id):
-#     pass
 
 # Create your views here.
 def manageUserData(data: dict):
@@ -46,10 +33,10 @@ def manageUserData(data: dict):
 
     if actionType == "POST":
         user = UserModel(
-            userId = userInfo["userId"],
-            name = userInfo["name"],
-            email = userInfo["email"],
-            password = userInfo["password"]
+            userId=userInfo["userId"],
+            name=userInfo["name"],
+            email=userInfo["email"],
+            password=userInfo["password"]
         )
         try:
             user.save()
@@ -58,20 +45,20 @@ def manageUserData(data: dict):
 
     elif actionType == "DELETE":
         try:
-            user = UserModel.objects.get(userId = userInfo['userId'])
+            user = UserModel.objects.get(userId=userInfo['userId'])
             user.delete()
         except Exception as e:
             print(str(e))
 
     elif actionType == "PUT":
         try:
-            user = UserModel.objects.filter(email = userInfo['email'])
+            user = UserModel.objects.filter(email=userInfo['email'])
             if len(user) > 0:
                 for data in user.values():
                     if data['userId'] != userInfo['userId']:
                         raise Exception("Email already exists")
-                    
-            user = UserModel.objects.get(userId = userInfo['userId'])
+
+            user = UserModel.objects.get(userId=userInfo['userId'])
             user.name = userInfo["name"]
             user.email = userInfo["email"]
             user.password = userInfo["password"]

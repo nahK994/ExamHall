@@ -2,6 +2,7 @@ from django.db import models
 
 from topic.models import TopicModel
 
+
 # Create your models here.
 class QuestionModel(models.Model):
     questionId = models.BigIntegerField(primary_key=True)

@@ -18,46 +18,13 @@ def getAllQuestion(request):
 
 @api_view(['GET'])
 def getQuestion(request, question_id):
-    question = QuestionModel.objects.get(questionId = question_id)
-    serializer = QuestionSerializer(question, many=True)
+    question = QuestionModel.objects.get(questionId=question_id)
+    serializer = QuestionSerializer(question)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# @api_view(['POST'])
-# def createQuestion(request):
-#     try:
-#         question = saveQuestion(request.data)
-
-#         serializer = QuestionSerializer([question], many=True)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     except Exception as e:
-#         print(str(e))
-#         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-# @api_view(['PUT'])
-# def updateQuestion(request, question_id):
-#     try:        
-#         question = updateQuestionInfo(question_id, request.data)
-
-#         serializer = QuestionSerializer([question], many=True)
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     except Exception as e:
-#         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
-
-# @api_view(['DELETE'])
-# def deleteQuestion(request, question_id):
-#     try:
-#         question = QuestionModel.objects.get(questionId = question_id)
-#         question.delete()
-#         return Response("", status=status.HTTP_200_OK)
-#     except Exception as e:
-#         print(str(e))
-#         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
 def updateQuestionInfo(question_id: int, request: dict):
-    question = QuestionModel.objects.get(questionId = question_id)
+    question = QuestionModel.objects.get(questionId=question_id)
 
     question.questionText = request['questionText']
     question.option1 = request['option1']
@@ -68,29 +35,30 @@ def updateQuestionInfo(question_id: int, request: dict):
     question.option6 = request['option6']
     question.answer = request['answer']
     question.explaination = request['explaination']
-    question.topic = TopicModel.objects.get(topicId = request['topic'])
+    question.topic = request['topic']
     question.save()
 
     return question
 
+
 def saveQuestion(request: dict):
     question = QuestionModel(
-        questionId = request['questionId'],
-        questionText = request['questionText'],
-        option1 = request['option1'],
-        option2 = request['option2'],
-        option3 = request['option3'],
-        option4 = request['option4'],
-        option5 = request['option5'],
-        option6 = request['option6'],
-        answer = request['answer'],
-        explaination = request['explaination'],
-
-        topic = TopicModel.objects.get(topicId = request['topic'])
+        questionId=request['questionId'],
+        questionText=request['questionText'],
+        option1=request['option1'],
+        option2=request['option2'],
+        option3=request['option3'],
+        option4=request['option4'],
+        option5=request['option5'],
+        option6=request['option6'],
+        answer=request['answer'],
+        explaination=request['explaination'],
+        topic=request['topic']
     )
     question.save()
 
     return question
+
 
 def manageQuestionData(data: dict):
     actionType = data['actionType']
@@ -107,24 +75,24 @@ def manageQuestionData(data: dict):
         questionInfo["option6"] = data["option6"]
         questionInfo["answer"] = data["answer"]
         questionInfo["explaination"] = data["explaination"]
-        questionInfo["topic"] = data["topic"]
+        questionInfo["topic"] = TopicModel.objects.get(topicId=data['topic'])
 
     if actionType == "POST":
         try:
-            question = saveQuestion(questionInfo)
+            saveQuestion(questionInfo)
         except Exception as e:
             print(str(e))
 
 
     elif actionType == "DELETE":
         try:
-            question = QuestionModel.objects.get(questionId = questionInfo['questionId'])
+            question = QuestionModel.objects.get(questionId=questionInfo['questionId'])
             question.delete()
         except Exception as e:
             print(str(e))
 
-    elif actionType == "PUT":        
-        try:        
-            question = updateQuestionInfo(questionInfo["questionId"], questionInfo)
+    elif actionType == "PUT":
+        try:
+            updateQuestionInfo(questionInfo["questionId"], questionInfo)
         except Exception as e:
             print(str(e))

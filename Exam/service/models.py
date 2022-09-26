@@ -3,6 +3,7 @@ from topic.models import TopicModel
 
 from question.models import QuestionModel
 
+
 class ExamModel(models.Model):
     examId = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)

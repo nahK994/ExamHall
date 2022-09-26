@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import UserDetailedResultInfoModel
+from .models import ResultModel
 
-admin.site.register(UserDetailedResultInfoModel)
+admin.site.register(ResultModel)

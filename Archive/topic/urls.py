@@ -4,6 +4,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/', views.getAllTopic),
-    path('get/<int:topic_id>/', views.getTopic)
+    path('<int:topic_id>', views.get_topic),
+    path('', views.get_all_topic)
 ]

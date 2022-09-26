@@ -28,7 +28,7 @@ def get_question(request, question_id):
 def create_question(request):
     try:
         question = save_question(request.data)
-        serializer = QuestionSerializer([question], many=True)
+        serializer = QuestionSerializer(question)
         publish_message("POST", question)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Exception as e:
@@ -88,7 +88,7 @@ def save_question(request: dict):
         option6=request['option6'],
         answer=request['answer'],
         explaination=request['explaination'],
-        topic=request['topic']
+        topic=TopicModel.objects.get(topicId=request['topic'])
     )
     question.save()
 
