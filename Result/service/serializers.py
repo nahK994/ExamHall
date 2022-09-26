@@ -3,6 +3,7 @@ from . import models
 
 from user.models import UserModel
 
+
 class ResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ResultModel
@@ -11,6 +12,7 @@ class ResultSerializer(serializers.ModelSerializer):
 
 class RankListSerializer(serializers.ModelSerializer):
     totalMarks = serializers.FloatField(max_value=None, min_value=None)
+
     class Meta:
         model = UserModel
-        fields = ['name', 'email', 'userId', 'totalMarks']
+        fields = ['userId', 'name', 'totalMarks']

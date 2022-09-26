@@ -4,6 +4,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/', views.getAllExam),
-    path('get/<int:exam_id>/', views.getExam),
+    path('<int:exam_id>', views.get_exam),
+    path('', views.get_all_exam),
 ]

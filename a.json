@@ -40,12 +40,16 @@
 {
     "answerSheet": [
         {
-            "questionId": 19,
-            "answer": "Because I am scared"
+            "questionId": 1,
+            "answer": "Shomi Khan"
         },
         {
-            "questionId": 20,
-            "answer": "Because I am scared"
+            "questionId": 2,
+            "answer": "Shomi Khan"
+        },
+        {
+            "questionId": 3,
+            "answer": "Shomi Khan"
         }
     ]
 }

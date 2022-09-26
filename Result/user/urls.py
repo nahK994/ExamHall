@@ -4,6 +4,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('get/', views.getAllUsers),
-    path('get/<int:user_id>/', views.getUser)
+    path('<int:user_id>', views.get_user),
+    path('', views.get_all_users)
 ]

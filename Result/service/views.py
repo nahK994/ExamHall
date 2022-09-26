@@ -17,7 +17,7 @@ from .serializers import RankListSerializer
 
 
 @api_view(['GET'])
-def getAllUserRank(request, exam_id):
+def get_all_user_rank(request, exam_id):
     try:
         return Response(get_rank_list(exam_id), status=status.HTTP_200_OK)
     except Exception as e:
@@ -41,7 +41,7 @@ def get_cut_marks(exam, rank_list):
 
 
 @api_view(['GET'])
-def getUserResult(request, user_id, exam_id):
+def get_user_result(request, user_id, exam_id):
     try:
         rank_list = ResultModel.objects.filter(exam=exam_id, userId=user_id)
         if not rank_list:
@@ -85,37 +85,35 @@ def getUserResult(request, user_id, exam_id):
 
 
 @api_view(['POST'])
-def createResult(request, exam_id, user_id):
-    answerSheet = request.data['answerSheet']
-    exam: ExamModel = ExamModel.objects.get(examId=exam_id)
-    topicWiseResult = {}
+def create_result(request, exam_id, user_id):
+    answer_sheet = request.data['answerSheet']
+    exam = ExamModel.objects.get(examId=exam_id)
+    topicIds = [topic.topicId for topic in exam.topics.all()]
 
-    serialized_topics = TopicSerializer(ExamModel.objects.get(examId=exam_id).topics, many=True)
-    topicIds = [topic['topicId'] for topic in serialized_topics.data]
-
+    topic_wise_result = {}
     for topic_id in topicIds:
-        topicWiseResult[topic_id] = UserDetailedResultInfo()
+        topic_wise_result[topic_id] = UserDetailedResultInfo()
 
     number_for_correct_answer = exam.numberForCorrectAnswer
     number_for_incorrect_answer = exam.numberForIncorrectAnswer
-    for userAnswer in answerSheet:
-        question: QuestionModel = QuestionModel.objects.get(questionId=userAnswer['questionId'])
+    for userAnswer in answer_sheet:
+        question = QuestionModel.objects.get(questionId=userAnswer['questionId'])
         topic_id = question.topic.topicId
         if question.answer == userAnswer['answer']:
-            topicWiseResult[topic_id].numberOfCorrectAnswer += + 1
-            topicWiseResult[topic_id].totalMarks += number_for_correct_answer
+            topic_wise_result[topic_id].numberOfCorrectAnswer += 1
+            topic_wise_result[topic_id].totalMarks += number_for_correct_answer
         else:
-            topicWiseResult[topic_id].numberOfIncorrectAnswer += 1
-            topicWiseResult[topic_id].totalMarks += number_for_incorrect_answer
+            topic_wise_result[topic_id].numberOfIncorrectAnswer += 1
+            topic_wise_result[topic_id].totalMarks += number_for_incorrect_answer
 
     for topic_id in topicIds:
         result_info = ResultModel(
             exam=exam,
             userId=UserModel.objects.get(userId=user_id),
             topicId=TopicModel.objects.get(topicId=topic_id),
-            numberOfCorrectAnswer=topicWiseResult[topic_id].numberOfCorrectAnswer,
-            numberOfIncorrectAnswer=topicWiseResult[topic_id].numberOfIncorrectAnswer,
-            totalMarks=topicWiseResult[topic_id].totalMarks
+            numberOfCorrectAnswer=topic_wise_result[topic_id].numberOfCorrectAnswer,
+            numberOfIncorrectAnswer=topic_wise_result[topic_id].numberOfIncorrectAnswer,
+            totalMarks=topic_wise_result[topic_id].totalMarks
         )
         result_info.save()
 
