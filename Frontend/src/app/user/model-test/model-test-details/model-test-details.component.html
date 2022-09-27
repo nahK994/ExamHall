@@ -15,6 +15,12 @@
                         <div class="number">{{resultItem?.totalMarks}}</div>
                     </div>
                 </ng-container>
+                <div style="margin-top: 40px;">
+                    <h2>Rank list</h2>
+                    <pre>
+                        {{result.rankList | json}}
+                    </pre>
+                </div>
             </div>
         </ng-container>
         <ng-container *ngIf="exam">

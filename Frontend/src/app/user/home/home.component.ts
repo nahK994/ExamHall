@@ -9,20 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
 
   constructor(
-    private _activateRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute
   ) { }
 
   goModelTests() {
-    this._router.navigate(['model-tests'], {
-      relativeTo: this._activateRoute
-    })
+    let userId = this._activatedRoute.snapshot.params['userId'];
+    this._router.navigate(['model-tests', userId])
   }
 
   goToFavourite() {
-    this._router.navigate(['favourites'], {
-      relativeTo: this._activateRoute
-    })
+    let userId = this._activatedRoute.snapshot.params['userId'];
+    this._router.navigate(['favourites', userId])
   }
 
   logout() {

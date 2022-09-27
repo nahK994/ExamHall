@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/app/user/home/model-test/model-test.service';
+import { Question } from 'src/app/user/user.service';
 import { QuestionPaperService } from '../question-paper.service';
 
 @Component({

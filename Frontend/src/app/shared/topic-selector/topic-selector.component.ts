@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Topic } from 'src/app/user/home/model-test/model-test.service';
+import { Topic } from 'src/app/user/user.service';
 
 @Component({
   selector: 'topic-selector',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExamListItem, ModelTestService } from './model-test.service';
+import { ExamListItem } from '../user.service';
+import { ModelTestService } from './model-test.service';
 
 @Component({
   selector: 'app-model-test',
@@ -10,7 +11,7 @@ import { ExamListItem, ModelTestService } from './model-test.service';
 export class ModelTestComponent implements OnInit {
 
   constructor(
-    private _activateRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _router: Router,
     private _modelTestService: ModelTestService
   ) { }
@@ -22,14 +23,13 @@ export class ModelTestComponent implements OnInit {
   }
 
   goBack() {
-    this._router.navigate(['..'], {
-      relativeTo: this._activateRoute
-    })
+    let userId = this._activatedRoute.snapshot.params['userId'];
+    this._router.navigate(['home', userId])
   }
 
   goToExam(exam: ExamListItem) {
-    this._router.navigate([exam.examId], {
-      relativeTo: this._activateRoute
+    this._router.navigate(['exam', exam.examId], {
+      relativeTo: this._activatedRoute
     })
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Topic } from 'src/app/user/home/model-test/model-test.service';
+import { Topic } from 'src/app/user/user.service';
 import { CreateExamService } from '../create-exam.service';
 
 @Component({

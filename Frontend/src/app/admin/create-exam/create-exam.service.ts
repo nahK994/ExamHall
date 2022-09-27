@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Exam, Question, Topic } from 'src/app/user/home/model-test/model-test.service';
+import { Exam, Question, Topic } from 'src/app/user/user.service';
 
 export interface CreateTopicModel {
   name: string

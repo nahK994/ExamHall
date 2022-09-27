@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Exam } from '../user/home/model-test/model-test.service';
-import { LoginInfo } from '../user/login/login.service';
+import { Exam, LoginInfo } from '../user/user.service';
 
 export interface ExamList {
   examId: number,

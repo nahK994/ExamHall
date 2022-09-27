@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
 import { ModelTestComponent } from './model-test.component';
 
 
@@ -9,8 +10,8 @@ const routes: Routes = [
     component: ModelTestComponent
   },
   {
-    path: ':examId',
-    loadChildren: () => import('./model-test-details/model-test-details.module').then(m => m.ModelTestDetailsModule)
+    path: 'exam/:examId',
+    component: ModelTestDetailsComponent
   }
 ];
 

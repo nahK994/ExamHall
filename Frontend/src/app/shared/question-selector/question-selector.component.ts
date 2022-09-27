@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Question } from 'src/app/user/home/model-test/model-test.service';
+import { Question } from 'src/app/user/user.service';
 
 @Component({
   selector: 'question-selector',

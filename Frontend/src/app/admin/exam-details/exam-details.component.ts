@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Exam } from 'src/app/user/home/model-test/model-test.service';
+import { Exam } from 'src/app/user/user.service';
 import { AdminService, UserRank } from '../admin.service';
 
 @Component({

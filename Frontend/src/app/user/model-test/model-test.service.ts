@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Exam, Result } from '../model-test.service';
-import { AnswerSheet } from './model-test-details.component';
+import { Exam, ExamListItem, Result } from '../user.service';
+import { AnswerSheet } from './model-test-details/model-test-details.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModelTestDetailsService {
+export class ModelTestService {
 
   baseUrl_Exam: string = 'http://localhost:8002/';
   baseUrl_Result: string = 'http://localhost:8003/';
@@ -20,8 +20,15 @@ export class ModelTestDetailsService {
     private http: HttpClient
   ) { }
 
+  async getExamList() {
+    let updateURL_extention = 'exams';
+    let response = await lastValueFrom(this.http.get<ExamListItem[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
+
+    return response;
+  }
+
   async getExam(examId: number) {
-    let updateURL_extention = 'exam/get/'+examId;
+    let updateURL_extention = 'exams/'+examId;
     let response = await lastValueFrom(this.http.get<Exam>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
 
     return response;
@@ -30,12 +37,11 @@ export class ModelTestDetailsService {
   async getResult(examId: number, userId: number) {
     let updateURL_extention = 'result/exam/'+examId+'/user/'+userId;
     let response = await lastValueFrom(this.http.get<Result>(this.baseUrl_Result+updateURL_extention, this.httpOptions));
-
     return response;
   }
 
   async createResult(answerSheet: AnswerSheet, examId: number, userId: number) {
-    let updateURL_extention = 'result/exam/'+examId+'/user/'+userId+'/create/';
+    let updateURL_extention = 'result/exam/'+examId+'/user/'+userId+'/create';
     let response = await lastValueFrom(this.http.post<AnswerSheet>(this.baseUrl_Result+updateURL_extention, answerSheet, this.httpOptions));
 
     return response;

@@ -27,7 +27,7 @@ def login(request):
         if user.password == request.data['password']:
             return Response(user.userId, status=status.HTTP_200_OK)
         else:
-            return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+            return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
     except Exception as e:
         return Response(str(e), status=status.HTTP_403_FORBIDDEN)
 
