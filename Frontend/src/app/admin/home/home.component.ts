@@ -1,41 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
-import { ExamList, HomeService } from './home.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService, ExamList } from '../admin.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   examList!: ExamList[];
 
   constructor(
     private _router: Router,
-    private _activatedRoute: ActivatedRoute,
-    private _homeService: HomeService
+    private _adminService: AdminService,
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.examList = await this._homeService.getExamList();
+    this.examList = await this._adminService.getExamList();
   }
 
   goToExamDetails(examId: number) {
-    this._router.navigate(['exam-details', examId], {
-      relativeTo: this._activatedRoute
-    })
+    this._router.navigate(['admin', 'exam-details', examId])
   }
 
   createExam() {
-    this._router.navigate(['create-exam'], {
-      relativeTo: this._activatedRoute
-    });
+    this._router.navigate(['admin', 'create-exam']);
   }
 
   logout() {
-    this._router.navigate(['admin', 'login']);
+    this._router.navigate(['admin']);
   }
 
 }

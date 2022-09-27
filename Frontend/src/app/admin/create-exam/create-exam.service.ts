@@ -22,35 +22,35 @@ export class CreateExamService {
   ) { }
 
   async getTopics() {
-    let updateURL_extention = 'topic/get/';
+    let updateURL_extention = 'topics';
     let response = await lastValueFrom(this.http.get<Topic[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
 
     return response;
   }
 
   async getQuestions() {
-    let updateURL_extention = 'question/get/';
+    let updateURL_extention = 'questions';
     let response = await lastValueFrom(this.http.get<Question[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
 
     return response;
   }
 
   async createTopic(topic: CreateTopicModel) {
-    let updateURL_extention = 'topic/create/';
+    let updateURL_extention = 'topics/create';
     let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, topic, this.httpOptions));
 
     return response;
   }
 
   async createQuestion(question: Question) {
-    let updateURL_extention = 'question/create/';
+    let updateURL_extention = 'questions/create';
     let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, question, this.httpOptions));
 
     return response;
   }
 
   async createExam(exam: Exam) {
-    let updateURL_extention = 'exam/create/';
+    let updateURL_extention = 'exams/create';
     let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, exam, this.httpOptions));
 
     return response;

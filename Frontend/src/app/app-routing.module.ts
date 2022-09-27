@@ -20,12 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./user/home/home.module').then(m=>m.HomeModule)
   },
   {
-    path: 'admin/login',
-    loadChildren: () => import('./admin/login/login.module').then(m=>m.LoginModule)
-  },
-  {
     path: 'admin',
-    loadChildren: () => import('./admin/home/home.module').then(m=>m.HomeModule)
+    loadChildren: () => import('./admin/admin.module').then(m=>m.AdminModule)
   }
 ];
 

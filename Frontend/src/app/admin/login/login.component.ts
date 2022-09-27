@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/user/login/login.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,8 @@ export class LoginComponent {
 
   constructor(
     private _fb: FormBuilder,
-    private _loginService: LoginService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _adminService: AdminService,
+    private _router: Router
   ) {
     this.loginForm = this._fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -26,8 +26,8 @@ export class LoginComponent {
 
   async login() {
     try {
-      await this._loginService.loginAdmin(this.loginForm.value);
-      this._router.navigate(['admin']);
+      await this._adminService.loginAdmin(this.loginForm.value);
+      this._router.navigate(['admin', 'home']);
     }
     catch (e) {
       console.log(e)

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Exam } from 'src/app/user/home/model-test/model-test.service';
+import { Exam } from '../user/home/model-test/model-test.service';
+import { LoginInfo } from '../user/login/login.service';
 
 export interface ExamList {
   examId: number,
@@ -17,10 +18,12 @@ export interface UserRank {
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class AdminService {
 
+  baseUrl_User: string = 'http://localhost:8004/';
   baseUrl_Exam: string = 'http://localhost:8002/';
   baseUrl_Result: string = 'http://localhost:8003/';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -28,6 +31,13 @@ export class HomeService {
   constructor(
     private http: HttpClient
   ) { }
+
+  async loginAdmin(loginInfo: LoginInfo) {
+    let updateURL_extention = 'users/admin';
+    let response = await lastValueFrom(this.http.post<string>(this.baseUrl_User+updateURL_extention, loginInfo, this.httpOptions));
+
+    return response;
+  }
 
   async getExamList() {
     let updateURL_extention = 'exams';

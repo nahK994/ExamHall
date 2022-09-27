@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Exam } from 'src/app/user/home/model-test/model-test.service';
-import { HomeService, UserRank } from '../home.service';
+import { AdminService, UserRank } from '../admin.service';
 
 @Component({
-  selector: 'app-exam-details-page',
-  templateUrl: './exam-details-page.component.html',
-  styleUrls: ['./exam-details-page.component.scss']
+  selector: 'app-exam-details',
+  templateUrl: './exam-details.component.html',
+  styleUrls: ['./exam-details.component.scss']
 })
-export class ExamDetailsPageComponent implements OnInit {
+export class ExamDetailsComponent implements OnInit {
 
   exam!: Exam;
   rankList!: UserRank[];
@@ -17,18 +17,18 @@ export class ExamDetailsPageComponent implements OnInit {
   constructor(
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
-    private _homeService: HomeService
+    private _adminService: AdminService,
   ) { }
 
   async ngOnInit(): Promise<void> {
     let examId = this._activatedRoute.snapshot.params['id'];
-    this.exam = await this._homeService.getExamDetails(examId);
-    this.rankList = await this._homeService.getUserRankList(examId);
+    this.exam = await this._adminService.getExamDetails(examId);
+    this.rankList = await this._adminService.getUserRankList(examId);
     this.cutMarks = this.rankList[this.exam.numberOfSeats-1].totalMarks
   }
 
   goBack() {
-    this._router.navigate(['admin'])
+    this._router.navigate(['admin', 'home'])
   }
 
 }
