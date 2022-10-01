@@ -6,11 +6,11 @@ def publish_message(actionType, userInfo: models.UserModel):
     # data = json.dumps(user.dict())
     data = {}
     data['actionType'] = actionType
-    data['userId'] = userInfo.userId
+    data['id'] = userInfo.id
     if actionType == "POST" or actionType == "PUT":
         data['email'] = userInfo.email
         data['name'] = userInfo.name
-        data['password'] = userInfo.password
+        data['username'] = userInfo.username
 
     print("HIHI ===> ", data, userInfo)
     data = json.dumps(data)
