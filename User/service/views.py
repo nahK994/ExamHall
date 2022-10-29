@@ -5,16 +5,7 @@ from rest_framework import status, permissions
 from .models import UserModel
 from .serializers import UserSerializer, UserListSerializer
 from .publisher import publish_message
-from rest_framework_simplejwt.tokens import RefreshToken
 
-
-def get_tokens_for_user(user):
-    refresh = RefreshToken.for_user(user)
-
-    return {
-        'refresh': str(refresh),
-        'access': str(refresh.access_token),
-    }
 
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
@@ -34,7 +25,7 @@ def login(request):
         user = filtered_user[0]
 
         if user.check_password(request.data['password']):
-            return Response(get_tokens_for_user(user), status=status.HTTP_200_OK)
+            return Response("", status=status.HTTP_200_OK)
         else:
             return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
     except Exception as e:

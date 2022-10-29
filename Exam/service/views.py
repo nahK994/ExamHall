@@ -5,8 +5,6 @@ from service.publisher import publish_message
 
 from .models import ExamModel
 from .serializers import ExamSerializer, ExamListSerializer
-from topic.models import TopicModel
-from question.models import QuestionModel
 
 
 @api_view(['GET'])
