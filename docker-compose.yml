@@ -2,24 +2,24 @@ version: '3'
 services:
 
   db:
-    container_name: user
+    container_name: db
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=user_db
+      - POSTGRES_DB=db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
 
   user:
     container_name: user
-    build: User
+    build: App
     restart: always
     depends_on:
       - db
     volumes:
-      - ./User:/app
+      - ./App:/app
     ports:
-      - 8004:8004
+      - 8000:8000
     command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
 #
 #  user_db:

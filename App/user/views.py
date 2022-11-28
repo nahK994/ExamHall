@@ -64,7 +64,6 @@ def create_user(request):
 
         user = UserModel(
             name=request.data['name'],
-            username=request.data['username'],
             email=request.data['email']
         )
         user.set_password(request.data['password'])
