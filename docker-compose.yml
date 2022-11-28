@@ -1,14 +1,35 @@
 version: '3'
 services:
 
-  user_db:
-    container_name: user_db
+  db:
+    container_name: user
     image: postgres
     restart: always
     environment:
       - POSTGRES_DB=user_db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+
+  user:
+    container_name: user
+    build: User
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./User:/app
+    ports:
+      - 8004:8004
+    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+#
+#  user_db:
+#    container_name: user_db
+#    image: postgres
+#    restart: always
+#    environment:
+#      - POSTGRES_DB=user_db
+#      - POSTGRES_USER=root
+#      - POSTGRES_PASSWORD=root
 
 #  archive_db:
 #    container_name: archive_db
@@ -37,17 +58,17 @@ services:
 #      - POSTGRES_USER=root
 #      - POSTGRES_PASSWORD=root
 
-  user:
-    container_name: user
-    build: User
-    restart: always
-    depends_on:
-      - user_db
-    volumes:
-      - ./User:/app
-    ports:
-      - 8004:8004
-    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8004"
+#  user:
+#    container_name: user
+#    build: User
+#    restart: always
+#    depends_on:
+#      - user_db
+#    volumes:
+#      - ./User:/app
+#    ports:
+#      - 8004:8004
+#    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8004"
 
 #  archive_consumer:
 #    container_name: archive_consumer
@@ -105,14 +126,14 @@ services:
 #      - 8003:8003
 #    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8003"
   
-  # frontend:
-  #   container_name: frontend
-  #   build: Frontend
-  #   restart: always
-  #   ports:
-  #     - 8080:80
-  #   depends_on:
-  #     - user
-  #     - archive
-  #     - exam
-  #     - result
+#   frontend:
+#     container_name: frontend
+#     build: Frontend
+#     restart: always
+#     ports:
+#       - 8080:80
+#     depends_on:
+#       - user
+#       - archive
+#       - exam
+#       - result
