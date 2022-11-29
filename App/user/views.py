@@ -15,6 +15,7 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
+
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def get_all_user(request):
@@ -32,13 +33,12 @@ def login(request):
             return Response("no such user", status=status.HTTP_403_FORBIDDEN)
         user = filtered_user[0]
 
-        user = user.check_password(request.data['password'])
-        if user:
+        if user.check_password(request.data['password']):
             return Response(get_tokens_for_user(user), status=status.HTTP_200_OK)
         else:
             return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
     except Exception as e:
-        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['GET'])
@@ -79,35 +79,30 @@ def update_user(request, user_id):
     if user_id != request.user.id:
         return Response({'message': 'You are not allowed to access other user details'}, status=status.HTTP_403_FORBIDDEN)
 
-    try:
+    if 'email' in request.data:
         user = UserModel.objects.filter(email=request.data['email'])
         if user:
             return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
 
-        filtered_user = UserModel.objects.filter(id=user_id)
-        filtered_user.update(
-            name=request.data['name'],
-            username=request.data['username'],
-            email=request.data['email']
-        )
+    filtered_user = UserModel.objects.filter(id=user_id)
+
+    serialized_user = UserSerializer(filtered_user[0], data=request.data)
+    if serialized_user.is_valid():
+        serialized_user.save()
+
+    if 'password' in request.data:
         user = filtered_user[0]
         user.set_password(request.data['password'])
-        serializer = UserSerializer(user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+    return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 
 @api_view(['DELETE'])
 @permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def delete_user(request, user_id):
-    try:
-        filtered_user = UserModel.objects.filter(id=user_id)
-        if not filtered_user:
-            return Response("no such user", status=status.HTTP_404_NOT_FOUND)
-        user = filtered_user[0]
+    filtered_user = UserModel.objects.filter(id=user_id)
+    if not filtered_user:
+        return Response("no such user", status=status.HTTP_404_NOT_FOUND)
+    user = filtered_user[0]
 
-        user.delete()
-        return Response("", status=status.HTTP_200_OK)
-    except:
-        return Response("", status=status.HTTP_403_FORBIDDEN)
+    user.delete()
+    return Response("user deleted", status=status.HTTP_200_OK)
