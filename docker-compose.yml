@@ -10,8 +10,8 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
 
-  user:
-    container_name: user
+  application:
+    container_name: application
     build: App
     restart: always
     depends_on:
@@ -21,6 +21,18 @@ services:
     ports:
       - 8000:8000
     command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+
+#  user:
+#    container_name: user
+#    build: App
+#    restart: always
+#    depends_on:
+#      - db
+#    volumes:
+#      - ./App:/app
+#    ports:
+#      - 8000:8000
+#    command: bash -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
 #
 #  user_db:
 #    container_name: user_db
