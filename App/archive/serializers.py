@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from . import models
 from user.serializers import UserSerializer
-from questions.serializers import QuestionSerializer
+from question.serializers import QuestionSerializer
 
 
 class UserArchivedQuestion(serializers.ModelSerializer):

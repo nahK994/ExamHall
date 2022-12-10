@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
+    'topic',
+    'question',
+    'exam',
+    'result',
+    'archive',
     'rest_framework',
     'corsheaders'
 ]
@@ -86,7 +91,7 @@ DATABASES = {
     	'NAME': 'db',
     	'USER': 'root',
     	'PASSWORD': 'root',
-    	'HOST': 'localhost',
+    	'HOST': 'db',
     	'PORT': '5432',
 	}
 }
