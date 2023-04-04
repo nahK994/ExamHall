@@ -27,18 +27,15 @@ def get_all_user(request):
 
 @api_view(['POST'])
 def login(request):
-    try:
-        filtered_user = UserModel.objects.filter(email=request.data['email'])
-        if not filtered_user:
-            return Response("no such user", status=status.HTTP_403_FORBIDDEN)
-        user = filtered_user[0]
+    filtered_user = UserModel.objects.filter(email=request.data['email'])
+    if not filtered_user:
+        return Response("no such user", status=status.HTTP_403_FORBIDDEN)
+    user = filtered_user[0]
 
-        if user.check_password(request.data['password']):
-            return Response(get_tokens_for_user(user), status=status.HTTP_200_OK)
-        else:
-            return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
-    except Exception as e:
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if user.check_password(request.data['password']):
+        return Response(get_tokens_for_user(user), status=status.HTTP_200_OK)
+    else:
+        return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
 
 
 @api_view(['GET'])
@@ -62,13 +59,15 @@ def create_user(request):
         if users:
             return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
 
-        user = UserModel(
-            name=request.data['name'],
-            email=request.data['email']
-        )
-        user.set_password(request.data['password'])
-        user.save()
-        return Response(user.id, status=status.HTTP_201_CREATED)
+        serialized_user = UserSerializer(data=request.data)
+        if serialized_user.is_valid():
+            user_obj = serialized_user.save()
+        else:
+            return Response(serialized_user.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        user_obj.set_password(request.data['password'])
+        # user.save()
+        return Response(user_obj.id, status=status.HTTP_201_CREATED)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
