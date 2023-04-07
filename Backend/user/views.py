@@ -5,6 +5,7 @@ from rest_framework import status, permissions
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import UserModel
 from .serializers import UserSerializer, UserListSerializer
+from django.contrib.auth import get_user_model
 
 
 def get_tokens_for_user(user):
@@ -33,7 +34,9 @@ def login(request):
     user = filtered_user[0]
 
     if user.check_password(request.data['password']):
-        return Response(get_tokens_for_user(user), status=status.HTTP_200_OK)
+        user_info = get_tokens_for_user(user)
+        user_info['isAdmin'] = user.is_admin
+        return Response(user_info, status=status.HTTP_200_OK)
     else:
         return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
 
@@ -54,19 +57,11 @@ def get_user(request, user_id):
 
 @api_view(['POST'])
 def create_user(request):
-    users = UserModel.objects.filter(email=request.data['email'])
     try:
-        if users:
+        if len(UserModel.objects.filter(email=request.data['email'])):
             return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
 
-        serialized_user = UserSerializer(data=request.data)
-        if serialized_user.is_valid():
-            user_obj = serialized_user.save()
-        else:
-            return Response(serialized_user.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        user_obj.set_password(request.data['password'])
-        # user.save()
+        user_obj = get_user_model().objects.create_user(**request.data)
         return Response(user_obj.id, status=status.HTTP_201_CREATED)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
@@ -74,24 +69,19 @@ def create_user(request):
 
 @api_view(['PUT'])
 @permission_classes([permissions.IsAuthenticated])
-def update_user(request, user_id):
-    if user_id != request.user.id:
-        return Response({'message': 'You are not allowed to access other user details'}, status=status.HTTP_403_FORBIDDEN)
-
+def update_user(request):
+    user = request.user
     if 'email' in request.data:
-        user = UserModel.objects.filter(email=request.data['email'])
-        if user:
+        filtered_user = UserModel.objects.filter(email=request.data['email'])
+        if filtered_user and filtered_user[0] != user:
             return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
+    filtered_user.update(**request.data)
 
-    filtered_user = UserModel.objects.filter(id=user_id)
-
-    serialized_user = UserSerializer(filtered_user[0], data=request.data)
-    if serialized_user.is_valid():
-        serialized_user.save()
-
+    user = filtered_user[0]
     if 'password' in request.data:
-        user = filtered_user[0]
         user.set_password(request.data['password'])
+    user.save()
+    serialized_user = UserSerializer(user)
     return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 

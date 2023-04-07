@@ -5,8 +5,8 @@ from topic.models import TopicModel
 
 # Create your models here.
 class QuestionModel(models.Model):
-    questionId = models.BigAutoField(primary_key=True)
-    questionText = models.CharField(max_length=100)
+    question_id = models.BigAutoField(primary_key=True)
+    question_text = models.CharField(max_length=100)
     option1 = models.CharField(max_length=100, null=True)
     option2 = models.CharField(max_length=100, null=True)
     option3 = models.CharField(max_length=100, null=True)

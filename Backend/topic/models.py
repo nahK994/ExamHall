@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class TopicModel(models.Model):
-    topicId = models.BigAutoField(primary_key=True)
+    topic_id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
 
     def __str__(self):

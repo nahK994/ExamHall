@@ -6,11 +6,11 @@ from exam.models import ExamModel
 
 class ResultModel(models.Model):
     exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
-    topicId = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
-    userId = models.ForeignKey(UserModel, on_delete=models.CASCADE)
-    numberOfCorrectAnswer = models.BigIntegerField()
-    numberOfIncorrectAnswer = models.BigIntegerField()
-    totalMarks = models.BigIntegerField()
+    topic = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    number_of_correct_answer = models.FloatField(default=0)
+    number_of_incorrect_answer = models.FloatField(default=0)
+    marks = models.FloatField(default=0)
 
     def __str__(self):
-        return f"{self.userId.name} => {self.totalMarks}"
+        return f"{self.user.name} => {self.marks}"

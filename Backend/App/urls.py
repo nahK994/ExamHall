@@ -23,4 +23,5 @@ urlpatterns = [
     path('questions/', include('question.urls')),
     path('favourite-questions/', include('archive.urls')),
     path('result/', include('result.urls')),
+    path('exams/', include('exam.urls'))
 ]

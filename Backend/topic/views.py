@@ -1,6 +1,6 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 
 from .models import TopicModel
 from .serializers import TopicSerializer
@@ -16,40 +16,38 @@ def get_all_topic(request):
 @api_view(['GET'])
 def get_topic(request, topic_id):
     topic = TopicModel.objects.get(topicId=topic_id)
-    serializer = TopicSerializer(topic)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    serialized_topic = TopicSerializer(topic)
+    return Response(serialized_topic.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def create_topic(request):
-    try:
-        topic = TopicSerializer(data=request.data)
-        if topic.is_valid():
-            topic.save()
-            topicInfo = TopicModel(
-                topicId=topic.data['topicId'],
-                name=topic.data['name']
-            )
-        return Response(topic.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        print(str(e))
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    serialized_topic = TopicSerializer(data=request.data)
+    if serialized_topic.is_valid():
+        topic_obj = serialized_topic.save()
+    else:
+        return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
+
+    return Response(topic_obj.topic_id, status=status.HTTP_200_OK)
 
 
 @api_view(['PUT'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def update_topic(request, topic_id):
-    try:
-        topic = TopicModel.objects.get(topicId=topic_id)
-        serializer = TopicSerializer(topic, data=request.data)
+    filtered_topic = TopicModel.objects.filter(topicId=topic_id)
+    if not filtered_topic:
+        return Response("no such topic", status=status.HTTP_400_BAD_REQUEST)
 
-        if serializer.is_valid():
-            serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+    serialized_topic = TopicSerializer(filtered_topic[0], data=request.data)
+
+    if serialized_topic.is_valid():
+        topic_obj = serialized_topic.save()
+    return Response(topic_obj.topic_id, status=status.HTTP_200_OK)
 
 
 @api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def delete_topic(request, topic_id):
     try:
         topic = TopicModel.objects.get(topicId=topic_id)

@@ -1,7 +1,10 @@
+from os import name
+
 from rest_framework import serializers
 from . import models
 
 class TopicSerializer(serializers.ModelSerializer):
+    topicId = serializers.CharField(source='topic_id', required=False)
     class Meta:
         model = models.TopicModel
-        fields = '__all__'
+        fields = ['topicId', 'name']

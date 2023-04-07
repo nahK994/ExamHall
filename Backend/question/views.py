@@ -1,6 +1,6 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 
 from topic.models import TopicModel
 
@@ -9,6 +9,7 @@ from .serializers import QuestionSerializer
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_all_question(request):
     questions = QuestionModel.objects.all()
     serializer = QuestionSerializer(questions, many=True)
@@ -16,75 +17,51 @@ def get_all_question(request):
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_question(request, question_id):
-    question = QuestionModel.objects.get(questionId=question_id)
+    question = QuestionModel.objects.get(question_id=question_id)
     serializer = QuestionSerializer(question)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def create_question(request):
-    try:
-        question = save_question(request.data)
-        serializer = QuestionSerializer(question)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        print(str(e))
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if not TopicModel.objects.filter(topic_id=request.data['topic']).exists():
+        return Response("No such topic", status=status.HTTP_400_BAD_REQUEST)
+
+    serialized_question = QuestionSerializer(data=request.data)
+    if serialized_question.is_valid():
+        question_obj = serialized_question.save()
+    else:
+        return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
+    return Response(question_obj.question_id, status=status.HTTP_200_OK)
 
 
 @api_view(['PUT'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def update_question(request, question_id):
-    try:
-        question = updateQuestionInfo(question_id, request.data)
-        serializer = QuestionSerializer([question], many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    except Exception as e:
-        return Response(str(e), status=status.HTTP_403_FORBIDDEN)
+    filtered_question = QuestionModel.objects.filter(question_id=question_id)
+    if not len(filtered_question):
+        return Response("No such question", status=status.HTTP_400_BAD_REQUEST)
+
+    if not TopicModel.objects.filter(topic_id=request.data['topic']).exists():
+        return Response("No such topic", status=status.HTTP_400_BAD_REQUEST)
+
+    serialized_question = QuestionSerializer(filtered_question[0], data=request.data)
+    if serialized_question.is_valid():
+        question_obj = serialized_question.save()
+    else:
+        return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
+    return Response(question_obj.question_id, status=status.HTTP_200_OK)
 
 
 @api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def delete_question(request, question_id):
-    try:
-        question = QuestionModel.objects.get(questionId=question_id)
-        question.delete()
-        return Response("", status=status.HTTP_200_OK)
-    except Exception as e:
-        print(str(e))
-        return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    filtered_question = QuestionModel.objects.filter(question_id=question_id)
+    if not len(filtered_question):
+        return Response("No such question", status=status.HTTP_400_BAD_REQUEST)
 
-
-def updateQuestionInfo(question_id: int, request: dict):
-    question = QuestionModel.objects.get(questionId=question_id)
-
-    question.questionText = request['questionText']
-    question.option1 = request['option1']
-    question.option2 = request['option2']
-    question.option3 = request['option3']
-    question.option4 = request['option4']
-    question.option5 = request['option5']
-    question.option6 = request['option6']
-    question.answer = request['answer']
-    question.explaination = request['explaination']
-    question.topic = request['topic']
-    question.save()
-
-    return question
-
-
-def save_question(request: dict):
-    question = QuestionModel(
-        questionText=request['questionText'],
-        option1=request['option1'],
-        option2=request['option2'],
-        option3=request['option3'],
-        option4=request['option4'],
-        option5=request['option5'],
-        option6=request['option6'],
-        answer=request['answer'],
-        explaination=request['explaination'],
-        topic=TopicModel.objects.get(topicId=request['topic'])
-    )
-    question.save()
-
-    return question
+    filtered_question[0].delete()
+    return Response("question deleted", status=status.HTTP_200_OK)

@@ -5,7 +5,7 @@ from user.models import UserModel
 
 
 # Create your models here.
-class UserArchivedQuestionModel(models.Model):
+class ArchivedQuestionModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     questions = models.ManyToManyField(QuestionModel)
 

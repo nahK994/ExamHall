@@ -1,0 +1,99 @@
+// Topic
+{
+    "name": "Math"
+},
+// Question
+{
+    "questionText": "What is my name???",
+    "option1": "HaHa",
+    "option2": "HaHa",
+    "option3": "Shomi Khan",
+    "option4": "HaHa",
+    "option5": "null",
+    "option6": "null",
+    "answer": "Shomi Khan",
+    "explaination": "SKhan",
+    "topic": 19
+}
+// Exam
+{
+    "name": "Math BCS",
+    "numberForCorrectAnswer": 2,
+    "numberForIncorrectAnswer": -1,
+    "numberOfSeats": 50,
+    "questions": [
+        19,
+        20
+    ],
+    "topics": [
+        18,
+        19
+    ]
+}
+// User
+{
+    "name": "Kaizu",
+    "email": "kaizu@gmail.com",
+    "password": "asdf"
+}
+// Result
+{
+    "answerSheet": [
+        {
+            "questionId": 1,
+            "answer": "Programming"
+        },
+        {
+            "questionId": 2,
+            "answer": "Shomi Khan"
+        },
+        {
+            "questionId": 3,
+            "answer": "HaHa"
+        },
+        {
+            "questionId": 4,
+            "answer": "Shomi Khan"
+        },
+        {
+            "questionId": 5,
+            "answer": "HiHi"
+        }
+    ]
+}
+// http://localhost:8003/result/exam/10/user/43/
+
+// user list
+[
+    {
+        "userId": 43,
+        "name": "counting stars",
+        "email": "counting.stars@gmail.com",
+        "password": "asdf"
+    },
+    {
+        "userId": 44,
+        "name": "Kaizu",
+        "email": "kaizu@gmail.com",
+        "password": "asdf"
+    },
+    {
+        "userId": 45,
+        "name": "Kaizu",
+        "email": "kaizu1@gmail.com",
+        "password": "asdf"
+    }
+]
+
+// admin credential
+{
+    "email": "nkskl6@gmail.com",
+    "password": "root"
+}
+
+// user list
+[
+    "shomi.khan@gmail.com",
+    "selise@gmail.com",
+    "sniper@gmail.com"
+]

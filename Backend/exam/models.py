@@ -5,11 +5,11 @@ from question.models import QuestionModel
 
 
 class ExamModel(models.Model):
-    examId = models.BigAutoField(primary_key=True)
+    exam_id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    numberForCorrectAnswer = models.IntegerField(default=0)
-    numberForIncorrectAnswer = models.IntegerField(default=0)
-    numberOfSeats = models.IntegerField(default=0)
+    number_for_correct_answer = models.IntegerField(default=0)
+    number_for_incorrect_answer = models.IntegerField(default=0)
+    number_of_seats = models.IntegerField(default=0)
     questions = models.ManyToManyField(QuestionModel, related_name="exams")
     topics = models.ManyToManyField(TopicModel, related_name="exams")
 
