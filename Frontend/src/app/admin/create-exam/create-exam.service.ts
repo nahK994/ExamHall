@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 import { Exam, Question, Topic } from 'src/app/user/user.service';
 
 export interface CreateTopicModel {
@@ -12,46 +13,42 @@ export interface CreateTopicModel {
 })
 export class CreateExamService {
 
-  baseUrl_Exam: string = 'http://localhost:8002/';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private _appService: AppService
   ) { }
 
   async getTopics() {
-    let updateURL_extention = 'topics';
-    let response = await lastValueFrom(this.http.get<Topic[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
+    let topicURL_extention = '/topics';
+    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin+topicURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
   async getQuestions() {
-    let updateURL_extention = 'questions';
-    let response = await lastValueFrom(this.http.get<Question[]>(this.baseUrl_Exam+updateURL_extention, this.httpOptions));
+    let questionURL_extention = '/questions';
+    let response = await lastValueFrom(this.http.get<Question[]>(this._appService.doamin+questionURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
   async createTopic(topic: CreateTopicModel) {
-    let updateURL_extention = 'topics/create';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, topic, this.httpOptions));
+    let topicURL_extention = '/topics/create';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+topicURL_extention, topic, this._appService.httpOptions));
 
     return response;
   }
 
   async createQuestion(question: Question) {
-    let updateURL_extention = 'questions/create';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, question, this.httpOptions));
+    let questionURL_extention = '/questions/create';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+questionURL_extention, question, this._appService.httpOptions));
 
     return response;
   }
 
   async createExam(exam: Exam) {
-    let updateURL_extention = 'exams/create';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Exam+updateURL_extention, exam, this.httpOptions));
+    let examURL_extention = '/exams/create';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+examURL_extention, exam, this._appService.httpOptions));
 
     return response;
   }

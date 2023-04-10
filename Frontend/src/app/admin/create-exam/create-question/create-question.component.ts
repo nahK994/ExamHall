@@ -38,16 +38,6 @@ export class CreateQuestionComponent implements OnInit {
     this.allTopics = await this._createExamService.getTopics();
   }
 
-  goBack() {
-    this._router.navigate(['..'], {
-      relativeTo: this._activateRoute
-    })
-  }
-
-  logout() {
-    this._router.navigate(['admin']);
-  }
-
   async submit() {
     let answer: string = '';
     switch (this.question.value.answer) {

@@ -1,23 +1,11 @@
-.favourite{
+.questions{
     display: flex;
     flex-direction: column;
+    row-gap: 40px;
 
-    .top-bar{
+    .item{
         display: flex;
-        justify-content: space-between;
-        padding: 12px;
-    }
-
-    .content{
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .questions{
-            display: flex;
-            flex-direction: column;
-            row-gap: 40px;
-        }
+        align-items: flex-start;
+        row-gap: 8px;
     }
 }

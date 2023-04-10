@@ -1,30 +1,21 @@
-<div class="model-test-details">
-    <div class="top-bar">
-        <button mat-icon-button (click)="goBack()">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
-        <button mat-raised-button (click)="logout()">logout</button>
-    </div>
-
-    <div class="content">
-        <ng-container *ngIf="result">
-            <div class="result-view">
-                <ng-container *ngFor="let resultItem of result?.userResult">
-                    <div class="item">
-                        <div class="name">{{resultItem?.topic?.name}}</div>
-                        <div class="number">{{resultItem?.totalMarks}}</div>
-                    </div>
-                </ng-container>
-                <div style="margin-top: 40px;">
-                    <h2>Rank list</h2>
-                    <pre>
-                        {{result.rankList | json}}
-                    </pre>
+<page-structure [returnUrl]="'model-tests'">
+    <ng-container *ngIf="result">
+        <div class="result-view">
+            <ng-container *ngFor="let resultItem of result?.userResult">
+                <div class="item">
+                    <div class="name">{{resultItem?.topic?.name}}</div>
+                    <div class="number">{{resultItem?.totalMarks}}</div>
                 </div>
+            </ng-container>
+            <div style="margin-top: 40px;">
+                <h2>Rank list</h2>
+                <pre>
+                    {{result.rankList | json}}
+                </pre>
             </div>
-        </ng-container>
-        <ng-container *ngIf="exam">
-            <question-paper (submitAnswer)="submitAnswer($event)" [exam]="exam"></question-paper>
-        </ng-container>
-    </div>
-</div>
+        </div>
+    </ng-container>
+    <ng-container>
+        <question-paper (submitAnswer)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></question-paper>
+    </ng-container>
+</page-structure>

@@ -1,26 +1,21 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { AppService } from 'src/app/app.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionPaperService {
 
-  baseUrl_Archive: string = 'http://localhost:8001/';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private _appService: AppService
   ) { }
 
-  async markQuestionAsFavourite(questionId: number, userId: number) {
-    
-    let updateURL_extention = 'favourite-questions/create/user/'+userId+'/question/'+questionId+'/';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_Archive+updateURL_extention, {}, this.httpOptions));
-
+  async markQuestionAsFavourite(questionId: number) {
+    let archiveURL_extention = '/favourite-questions/'+questionId+'/create';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+archiveURL_extention, {}, this._appService.httpOptions));
     return response;
   }
 }

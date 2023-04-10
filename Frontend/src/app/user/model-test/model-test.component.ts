@@ -13,7 +13,7 @@ export class ModelTestComponent implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _modelTestService: ModelTestService
+    private _modelTestService: ModelTestService,
   ) { }
 
   examList: ExamListItem[] = [];
@@ -22,19 +22,10 @@ export class ModelTestComponent implements OnInit {
     this.examList = await this._modelTestService.getExamList();
   }
 
-  goBack() {
-    let userId = this._activatedRoute.snapshot.params['userId'];
-    this._router.navigate(['home', userId])
-  }
-
   goToExam(exam: ExamListItem) {
     this._router.navigate(['exam', exam.examId], {
       relativeTo: this._activatedRoute
     })
-  }
-
-  logout() {
-    this._router.navigate(['login']);
   }
 
 }

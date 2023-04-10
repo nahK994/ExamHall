@@ -7,6 +7,7 @@ from .serializers import TopicSerializer
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_all_topic(request):
     topics = TopicModel.objects.all()
     serializer = TopicSerializer(topics, many=True)
@@ -14,6 +15,7 @@ def get_all_topic(request):
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_topic(request, topic_id):
     topic = TopicModel.objects.get(topicId=topic_id)
     serialized_topic = TopicSerializer(topic)

@@ -33,7 +33,10 @@ def get_cut_marks(exam, rank_list):
     if len(rank_list) > exam.number_of_seats:
         cut_mark = rank_list[exam.number_of_seats - 1].total_marks
     else:
-        cut_mark = rank_list[len(rank_list) - 1].total_marks
+        if len(rank_list):
+            cut_mark = rank_list[len(rank_list) - 1].total_marks
+        else:
+            cut_mark = 0
     return cut_mark
 
 

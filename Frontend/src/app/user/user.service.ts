@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { AppService } from '../app.service';
 
 export interface LoginInfo {
   email: string,
@@ -24,7 +25,7 @@ export interface Question {
   option6: string,
   answer: string,
   explaination: string,
-  topic: number
+  topicId: number
 }
 
 export interface Topic {
@@ -35,6 +36,13 @@ export interface Topic {
 export interface ExamListItem {
   examId: number,
   name: string
+}
+
+export interface UserLoginInfo 
+{
+  isAdmin: boolean,
+  refresh: string,
+  access: string
 }
 
 export interface Exam {
@@ -68,55 +76,46 @@ export interface Result {
   }[]
 }
 
-export interface UserArchivedQuestionList {
-  user: {
-    userId: number,
-    name: string
-  },
-  questions: Question[]
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  baseUrl_User: string = 'http://localhost:8004/';
-  baseUrl_Favourite: string = 'http://localhost:8001/';
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private _appService: AppService
   ) { }
 
   async loginUser(loginInfo: LoginInfo) {
-    let updateURL_extention = 'users/login';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_User+updateURL_extention, loginInfo, this.httpOptions));
-
+    let loginURL_extention = '/users/login';
+    let response: UserLoginInfo = await lastValueFrom(this.http.post<UserLoginInfo>(this._appService.doamin + loginURL_extention, loginInfo, this._appService.httpOptions));
     return response;
   }
 
   async createUser(userInfo: UserInfo) {
-    let updateURL_extention = 'users/create';
-    let response = await lastValueFrom(this.http.post<number>(this.baseUrl_User+updateURL_extention, userInfo, this.httpOptions));
+    let updateURL_extention = '/users/create';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin + updateURL_extention, userInfo, this._appService.httpOptions));
 
     return response;
   }
 
-  async getUserFavourites(userId: number) {
-    let updateURL_extention = 'favourite-questions/users/'+userId;
-    let response = await lastValueFrom(this.http.get<UserArchivedQuestionList>(this.baseUrl_Favourite+updateURL_extention, this.httpOptions));
+  async getUserFavourites() {
+    let archiveQuestionURL_extention = '/favourite-questions';
+    let response = await lastValueFrom(this.http.get<Question[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
   async getTopics() {
-    let updateURL_extention = 'topics';
-    let response = await lastValueFrom(this.http.get<Topic[]>(this.baseUrl_Favourite+updateURL_extention, this.httpOptions));
+    let topicURL_extention = '/topics';
+    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin + topicURL_extention, this._appService.httpOptions));
 
+    return response;
+  }
+
+  async deleteQuestionFromArchive(questionId: number) {
+    let archiveURL_extention = '/favourite-questions/'+questionId+'/delete';
+    let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+archiveURL_extention, this._appService.httpOptions));
     return response;
   }
 }

@@ -1,7 +1,13 @@
 <div class="question-item">
     <div class="question-text">
         <div>{{question?.questionText}}</div>
-        <button mat-stroked-button (click)="markAsFavourite()">mark as favourite</button>
+        {{archived}}
+        <ng-container *ngIf="!archived; else Archived">
+            <button mat-stroked-button (click)="markAsFavourite()">mark as favourite</button>
+        </ng-container>
+        <ng-template #Archived>
+            <div style="color: red">Already archived</div>
+        </ng-template>
     </div>
     <mat-radio-group [formControl]="answer" class="radio-style">
         <mat-radio-button class="option-text" [value]="question?.option1">

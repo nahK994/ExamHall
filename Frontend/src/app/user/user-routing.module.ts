@@ -20,15 +20,15 @@ const routes: Routes = [
         component: RegistrationComponent
     },
     {
-        path: 'home/:userId',
+        path: 'home',
         component: HomeComponent
     },
     {
-        path: 'model-tests/:userId',
+        path: 'model-tests',
         loadChildren: () => import('./model-test/model-test.module').then(m=>m.ModelTestModule)
     },
     {
-        path: 'favourites/:userId',
+        path: 'favourites',
         component: FavouritesComponent
     }
 ];

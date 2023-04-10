@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
 
   constructor(
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _router: Router
   ) { }
 
   goModelTests() {
-    let userId = this._activatedRoute.snapshot.params['userId'];
-    this._router.navigate(['model-tests', userId])
+    this._router.navigate(['model-tests'])
   }
 
   goToFavourite() {
-    let userId = this._activatedRoute.snapshot.params['userId'];
-    this._router.navigate(['favourites', userId])
-  }
-
-  logout() {
-    this._router.navigate(['login']);
+    this._router.navigate(['favourites'])
   }
 
 }

@@ -1,17 +1,10 @@
-<div class="create-exam">
-    <div class="top-bar">
-        <button class="back-button" mat-icon-button (click)="goBack()">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
-        <button mat-raised-button (click)="logout()">logout</button>
-    </div>
-
-    <div class="content">
+<page-structure [returnUrl]="'admin'">
+    <div class="layout">
         <div class="actions">
             <button mat-raised-button (click)="createTopic()">Create Topic</button>
             <button mat-raised-button (click)="createQuestion()">Create Question</button>
         </div>
-
+    
         <mat-card class="form">
             <button mat-raised-button (click)="createExam()">Create Exam</button>
             <div [formGroup]="form" class="input-fields">
@@ -19,7 +12,7 @@
                     <mat-label>Name</mat-label>
                     <input matInput placeholder="Name" formControlName="name" required>
                 </mat-form-field>
-
+    
                 <mat-form-field appearance="outline">
                     <mat-label>Number of total seats</mat-label>
                     <input matInput placeholder="Number of total seats" formControlName="numberOfSeats" required>
@@ -53,4 +46,4 @@
             </ng-container>
         </mat-card>
     </div>
-</div>
+</page-structure>

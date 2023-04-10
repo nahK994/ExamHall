@@ -7,14 +7,15 @@ from .serializers import ExamSerializer, ExamListSerializer, ExamCreateSerialize
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_all_exam(request):
     exams = ExamModel.objects.all()
     serialized_exams = ExamListSerializer(exams, many=True)
-
     return Response(serialized_exams.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
 def get_exam(request, exam_id):
     filtered_exam = ExamModel.objects.filter(exam_id=exam_id)
     if not filtered_exam:
@@ -33,7 +34,7 @@ def create_exam(request):
         exam_obj = serialized_exam.save()
     else:
         return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
-    return Response(exam_obj.exam_id, status=status.HTTP_200_OK)
+    return Response(exam_obj.exam_id, status=status.HTTP_201_CREATED)
 
 
 @api_view(['PUT'])

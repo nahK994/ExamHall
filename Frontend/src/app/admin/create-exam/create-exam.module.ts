@@ -4,7 +4,7 @@ import { CreateExamComponent } from './create-exam.component';
 import { CreateTopicComponent } from './create-topic/create-topic.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { CreateExamRoutingModule } from './create-exam-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +15,8 @@ import { CreateExamService } from './create-exam.service';
 import { MatSelectModule } from '@angular/material/select';
 import { TopicSelectorModule } from 'src/app/shared/topic-selector/topic-selector.module';
 import { QuestionSelectorModule } from 'src/app/shared/question-selector/question-selector.module';
+import { AccessTokenInterceptor } from '../../interceptor/token.interceptor';
+import { PageStructureModule } from 'src/app/shared/page-structure/page-structure.module';
 
 
 
@@ -37,9 +39,15 @@ import { QuestionSelectorModule } from 'src/app/shared/question-selector/questio
     MatSelectModule,
     TopicSelectorModule,
     QuestionSelectorModule,
-    MatCardModule
+    MatCardModule,
+    PageStructureModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccessTokenInterceptor,
+      multi: true
+    },
     CreateExamService
   ]
 })

@@ -2,17 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'home',
         pathMatch: 'full'
-    },
-    {
-        path: 'login',
-        component: LoginComponent
     },
     {
         path: 'home',

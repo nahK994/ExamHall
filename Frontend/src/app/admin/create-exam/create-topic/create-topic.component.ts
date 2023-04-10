@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CreateExamService } from '../create-exam.service';
 
 @Component({
@@ -14,23 +13,11 @@ export class CreateTopicComponent {
   
   constructor(
     private _createExamService: CreateExamService,
-    private _router: Router,
-    private _activateRoute: ActivatedRoute,
     private _fb: FormBuilder
   ) {
     this.topic = this._fb.group({
       name: ['', [Validators.required]]
     })
-  }
-
-  goBack() {
-    this._router.navigate(['..'], {
-      relativeTo: this._activateRoute
-    })
-  }
-
-  logout() {
-    this._router.navigate(['admin']);
   }
 
   async submit() {

@@ -5,7 +5,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -15,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { QuestionViewerModule } from '../shared/question-viewer/question-viewer.module';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { UserService } from './user.service';
+import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
+import { PageStructureModule } from '../shared/page-structure/page-structure.module';
 
 
 
@@ -36,9 +38,15 @@ import { UserService } from './user.service';
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
-    QuestionViewerModule
+    QuestionViewerModule,
+    PageStructureModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccessTokenInterceptor,
+      multi: true
+    },
     UserService
   ]
 })

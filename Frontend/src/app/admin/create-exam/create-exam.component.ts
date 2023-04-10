@@ -41,24 +41,14 @@ export class CreateExamComponent implements OnInit {
 
     this.topic.valueChanges.subscribe(res => {
       let questions: Question[] = [];
-      for(let question of this.allQuestions) {
-        if(question.topic === res) {
+      for (let question of this.allQuestions) {
+        if (question.topicId === res) {
           questions.push(question);
         }
       }
 
       this.questions = questions;
     })
-  }
-
-  goBack() {
-    this._router.navigate(['..'], {
-      relativeTo: this._activateRoute
-    })
-  }
-
-  logout() {
-    this._router.navigate(['admin']);
   }
 
   createTopic() {
@@ -78,8 +68,8 @@ export class CreateExamComponent implements OnInit {
     topics.push(topicId);
     this.form.get('topics')?.setValue(topics);
 
-    for(let topic of this.allTopics) {
-      if(topic.topicId === topicId) {
+    for (let topic of this.allTopics) {
+      if (topic.topicId === topicId) {
         this.topicListForQuestionSelection.push(topic);
       }
     }
@@ -125,6 +115,8 @@ export class CreateExamComponent implements OnInit {
       this._createExamService.createExam(this.form.value)
       this.form.reset();
       this.topicListForQuestionSelection = [];
+
+      this._router.navigate(['admin/home']);
     }
     catch (e) {
       console.log(e);

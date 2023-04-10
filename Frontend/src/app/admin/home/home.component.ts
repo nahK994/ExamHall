@@ -28,8 +28,4 @@ export class HomeComponent {
     this._router.navigate(['admin', 'create-exam']);
   }
 
-  logout() {
-    this._router.navigate(['admin']);
-  }
-
 }

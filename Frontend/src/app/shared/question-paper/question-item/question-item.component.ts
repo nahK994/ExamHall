@@ -1,4 +1,3 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +11,7 @@ import { QuestionPaperService } from '../question-paper.service';
 })
 export class QuestionItemComponent implements OnInit {
 
+  archived: boolean = false;
   @Output() answerOut = new EventEmitter();
 
   question: Question | undefined;
@@ -21,14 +21,12 @@ export class QuestionItemComponent implements OnInit {
     }
 
     this.question = question;
-    this.question.questionText
   }
 
   answer: FormControl = new FormControl('');
 
   constructor(
-    private _questionPaperService: QuestionPaperService,
-    private _activatedRoute: ActivatedRoute
+    private _questionPaperService: QuestionPaperService
   ) { }
 
   ngOnInit(): void {
@@ -42,8 +40,12 @@ export class QuestionItemComponent implements OnInit {
 
   async markAsFavourite() {
     if(this.question) {
-      let userId = this._activatedRoute.snapshot.params['userId'];
-      await this._questionPaperService.markQuestionAsFavourite(this.question.questionId, userId);
+      try {
+        await this._questionPaperService.markQuestionAsFavourite(this.question.questionId);
+      }
+      catch(e) {
+        this.archived = true;
+      }
     }
   }
 

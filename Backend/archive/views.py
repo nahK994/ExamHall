@@ -13,6 +13,8 @@ def get_user_archived_questions(request):
     user = request.user
     try:
         filtered_archived_questions = ArchivedQuestionModel.objects.filter(user=user)
+        if not filtered_archived_questions:
+            return Response([], status=status.HTTP_200_OK)
         archived_questions = filtered_archived_questions[0].questions
 
         serialized_archived_questions = QuestionSerializer(archived_questions, many=True)
@@ -38,7 +40,7 @@ def create_archive(request, question_id):
         user_archived_questions = filtered_user_archived_questions[0]
         question = QuestionModel.objects.get(question_id=question_id)
         if question in user_archived_questions.questions.all():
-            return Response("already archived", status=status.HTTP_200_OK)
+            return Response("already archived", status=status.HTTP_400_BAD_REQUEST)
 
         user_archived_questions.questions.add(question)
         user_archived_questions.save()
