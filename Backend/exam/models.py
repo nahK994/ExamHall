@@ -13,9 +13,4 @@ class ExamModel(models.Model):
     topics = models.ManyToManyField(TopicModel, related_name="exams")
 
     def __str__(self):
-        return f"{self.name} ({self.examId})"
-
-    def validate_number_for_incorrect_answer(self, number_for_incorrect_answer):
-        if number_for_incorrect_answer > 1:
-            raise ValueError("Number for incorrect answer must less than 0")
-        return number_for_incorrect_answer
+        return f"{self.name} ({self.exam_id})"

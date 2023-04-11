@@ -16,14 +16,12 @@ export class CreateQuestionComponent implements OnInit {
   
   constructor(
     private _createExamService: CreateExamService,
-    private _router: Router,
-    private _activateRoute: ActivatedRoute,
     private _fb: FormBuilder
   ) {
     this.question = this._fb.group({
       questionText: ['', [Validators.required]],
       explaination: ['', [Validators.required]],
-      topic: [, [Validators.required]],
+      topicId: [, [Validators.required]],
       answer: ['', [Validators.required]],
       option1: ['', [Validators.required]],
       option2: ['', [Validators.required]],

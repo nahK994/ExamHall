@@ -18,4 +18,4 @@ class QuestionModel(models.Model):
     topic = models.ForeignKey(TopicModel, related_name="questions", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.questionText} ({self.questionId})"
+        return f"{self.question_text} ({self.question_id})"

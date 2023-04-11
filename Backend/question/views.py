@@ -27,14 +27,14 @@ def get_question(request, question_id):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated, permissions.IsAdminUser])
 def create_question(request):
-    if not TopicModel.objects.filter(topic_id=request.data['topic']).exists():
+    if not TopicModel.objects.filter(topic_id=request.data['topicId']).exists():
         return Response("No such topic", status=status.HTTP_400_BAD_REQUEST)
 
     serialized_question = QuestionSerializer(data=request.data)
     if serialized_question.is_valid():
         question_obj = serialized_question.save()
     else:
-        return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
+        return Response(serialized_question.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(question_obj.question_id, status=status.HTTP_200_OK)
 
 

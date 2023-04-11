@@ -33,7 +33,7 @@ def create_exam(request):
     if serialized_exam.is_valid():
         exam_obj = serialized_exam.save()
     else:
-        return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
+        return Response(serialized_exam.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(exam_obj.exam_id, status=status.HTTP_201_CREATED)
 
 

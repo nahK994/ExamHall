@@ -6,4 +6,4 @@ class TopicModel(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.name} ({self.topicId})"
+        return f"{self.name} ({self.topic_id})"
