@@ -29,7 +29,6 @@ export class ModelTestDetailsComponent implements OnInit {
     this.examId = this._activateRoute.snapshot.params['examId'];
     this.result = await this._modelTestService.getResult(this.examId);
     this.exam = await this._modelTestService.getExam(this.examId);
-    console.log(this.result)
   }
 
   async submitAnswer(answerSheet: AnswerSheet) {

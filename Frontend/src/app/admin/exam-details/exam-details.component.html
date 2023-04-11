@@ -1,14 +1,11 @@
-<div class="exam-details-page">
-    <div class="nav">
-        <button mat-icon-button (click)="goBack()">
-            <mat-icon>arrow_back</mat-icon>
-        </button>
+<page-container [returnUrl]="'admin/home'">
+    <div class="exam-details-page">
+        <pre class="exam-info">
+            <div>{{exam | json}}</div>
+        </pre>
+        <h2 style="margin-top: 60px;">Cut marks: {{cutMarks}}</h2>
+        <pre class="rank-list">
+            <div>{{rankList | json}}</div>
+        </pre>
     </div>
-    <pre class="exam-info">
-        <div>{{exam | json}}</div>
-    </pre>
-    <h2>Cut marks: {{cutMarks}}</h2>
-    <pre class="rank-list">
-        <div>{{rankList | json}}</div>
-    </pre>
-</div>
+</page-container>

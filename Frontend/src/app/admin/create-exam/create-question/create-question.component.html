@@ -1,5 +1,5 @@
 <page-container [returnUrl]="'admin/create-exam'">
-    <div class="form" [formGroup]="question">
+    <mat-card class="form" [formGroup]="question">
         <mat-form-field appearance="outline">
             <mat-label>Enter question text</mat-label>
             <input matInput placeholder="Enter question text" formControlName="questionText" required>
@@ -68,6 +68,6 @@
                 <mat-option *ngFor="let val of allTopics" [value]="val?.topicId">{{val?.name}}</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
+    </mat-card>
     <button mat-raised-button (click)="submit()">Submit</button>
 </page-container>
