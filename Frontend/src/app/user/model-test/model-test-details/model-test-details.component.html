@@ -1,11 +1,22 @@
-<page-structure [returnUrl]="'model-tests'">
+<page-container [returnUrl]="'model-tests'">
     <ng-container *ngIf="result">
         <div class="result-view">
             <ng-container *ngFor="let resultItem of result?.userResult">
-                <div class="item">
-                    <div class="name">{{resultItem?.topic?.name}}</div>
-                    <div class="number">{{resultItem?.totalMarks}}</div>
-                </div>
+                <mat-card class="item">
+                    <h1>{{resultItem?.topic?.name}}</h1>
+                    <div class="details">
+                        <div class="name">Marks</div>
+                        <div class="number">{{resultItem?.marks}}</div>
+                    </div>
+                    <div class="details">
+                        <div class="name">Number of currect answers</div>
+                        <div class="number">{{resultItem?.numberOfCorrectAnswer}}</div>
+                    </div>
+                    <div class="details">
+                        <div class="name">Number of incurrect answers</div>
+                        <div class="number">{{resultItem?.numberOfIncorrectAnswer}}</div>
+                    </div>
+                </mat-card>
             </ng-container>
             <div style="margin-top: 40px;">
                 <h2>Rank list</h2>
@@ -16,6 +27,6 @@
         </div>
     </ng-container>
     <ng-container>
-        <question-paper (submitAnswer)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></question-paper>
+        <exam-paper (submitAnswer)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></exam-paper>
     </ng-container>
-</page-structure>
+</page-container>

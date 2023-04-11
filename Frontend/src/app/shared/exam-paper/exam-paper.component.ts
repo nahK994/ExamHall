@@ -7,11 +7,11 @@ export interface ResultItem {
 }
 
 @Component({
-  selector: 'question-paper',
-  templateUrl: './question-paper.component.html',
-  styleUrls: ['./question-paper.component.scss']
+  selector: 'exam-paper',
+  templateUrl: './exam-paper.component.html',
+  styleUrls: ['./exam-paper.component.scss']
 })
-export class QuestionPaperComponent implements OnInit {
+export class ExamPaperComponent implements OnInit {
 
   answers: ResultItem[] = [];
   questions: Question[] = [];

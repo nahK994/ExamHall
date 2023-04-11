@@ -1,40 +1,18 @@
-.registration{
+.card-style{
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    column-gap: 12px;
 
-    .top-bar{
-        width: 100%;
-        display: flex;
-        .back-button{
-            margin: 12px;
-        }
-    }
-
-    .content{
-        padding: 20px;
+    .form-style{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        column-gap: 8px;
 
-        .card-style{
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            column-gap: 12px;
-        
-            .form-style{
-                display: flex;
-                flex-direction: column;
-                column-gap: 8px;
-        
-                .action{
-                    background-color: #00796b;
-                }
-            }
+        .action{
+            background-color: #00796b;
         }
     }
 }
-

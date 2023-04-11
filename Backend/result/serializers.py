@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from topic.serializers import TopicSerializer
 from .models import ResultModel
 
 from user.models import UserModel
@@ -7,6 +9,7 @@ from user.models import UserModel
 class ResultSerializer(serializers.ModelSerializer):
     numberOfCorrectAnswer = serializers.FloatField(source='number_of_correct_answer')
     numberOfIncorrectAnswer = serializers.FloatField(source='number_of_incorrect_answer')
+    topic = TopicSerializer()
 
     class Meta:
         model = ResultModel
@@ -18,4 +21,4 @@ class RankListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = ['id', 'name', 'totalMarks']
+        fields = ['name', 'totalMarks']

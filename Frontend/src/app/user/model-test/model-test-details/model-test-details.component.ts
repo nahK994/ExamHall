@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ResultItem } from 'src/app/shared/question-paper/question-paper.component';
+import { ResultItem } from 'src/app/shared/exam-paper/exam-paper.component';
 import { Exam, Result } from '../../user.service';
 import { ModelTestService } from '../model-test.service';
 
@@ -29,6 +29,7 @@ export class ModelTestDetailsComponent implements OnInit {
     this.examId = this._activateRoute.snapshot.params['examId'];
     this.result = await this._modelTestService.getResult(this.examId);
     this.exam = await this._modelTestService.getExam(this.examId);
+    console.log(this.result)
   }
 
   async submitAnswer(answerSheet: AnswerSheet) {

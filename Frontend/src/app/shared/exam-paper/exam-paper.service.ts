@@ -6,7 +6,7 @@ import { AppService } from 'src/app/app.service';
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionPaperService {
+export class ExamPaperService {
 
   constructor(
     private http: HttpClient,

@@ -7,19 +7,25 @@
     width: 100%;
 
     .item{
-        width: 500px;
-
+        width: 450px;
+        color: #455A64;
         display: flex;
+        flex-direction: column;
         column-gap: 12px;
-
+        row-gap: 12px;
         font-size: 20px;
-        font-weight: 500;
+        
+        .details{
+            display: flex;
+            justify-content: space-between;
 
-        .name {
-            width: 400px;
-        }
-        .number {
-            width: 100px;
+            .name {
+                width: 80%;
+            }
+            .number {
+                width: 15%;
+                text-align: end;
+            }
         }
     }
 }

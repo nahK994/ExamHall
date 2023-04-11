@@ -25,8 +25,8 @@ export class RegistrationComponent {
   }
 
   async createUser() {
-    let userId = await this._userService.createUser(this.registrationForm.value);
-    this._router.navigate(['user', userId])
+    await this._userService.createUser(this.registrationForm.value);
+    this._router.navigate(['login']);
   }
 
   goBack() {

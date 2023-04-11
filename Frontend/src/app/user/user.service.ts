@@ -66,7 +66,7 @@ export interface Result {
   userResult: {
     numberOfCorrectAnswer: number,
     numberOfIncorrectAnswer: number,
-    totalMarks: number,
+    marks: number,
     topic: Topic
   }[],
   rankList: {

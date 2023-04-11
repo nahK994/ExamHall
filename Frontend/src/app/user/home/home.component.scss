@@ -1,20 +1,20 @@
-.home{
+.button{
+    height: 150px;
+    width: 400px;
+
     display: flex;
     flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #777888;
 
-    .top-bar{
-        display: flex;
-        justify-content: end;
-        padding: 12px;
+    .icon{
+        font-size: 40px;
     }
-    .content{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        row-gap: 10px;
 
-        width: 100%;
-        min-height: 100%;
+    .text {
+        margin-top: 20px;
     }
 }

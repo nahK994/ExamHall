@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageStructureComponent } from './page-structure.component';
-import { MatIconModule } from '@angular/material/icon';
+import { PageContainerComponent } from './page-container.component';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [
-    PageStructureComponent
+    PageContainerComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule
   ],
   exports: [
-    PageStructureComponent
+    PageContainerComponent
   ]
 })
-export class PageStructureModule { }
+export class PageContainerModule { }

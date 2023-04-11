@@ -3,9 +3,9 @@
     flex-direction: column;
     row-gap: 40px;
 
-    .item{
+    .card{
         display: flex;
-        align-items: flex-start;
-        row-gap: 8px;
+        flex-direction: row;
+        column-gap: 20px;
     }
 }

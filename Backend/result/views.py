@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from user.models import UserModel
 from topic.models import TopicModel
-from topic.serializers import TopicSerializer
 
 from question.models import QuestionModel
 from exam.models import ExamModel

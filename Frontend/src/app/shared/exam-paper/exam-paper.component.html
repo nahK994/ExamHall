@@ -1,4 +1,4 @@
-<div class="question-paper">
+<div class="exam-paper">
     <ng-container *ngFor="let question of exam?.questions">
         <question-item (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
     </ng-container>

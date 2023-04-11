@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TopicSelectorModule } from 'src/app/shared/topic-selector/topic-selector.module';
 import { QuestionSelectorModule } from 'src/app/shared/question-selector/question-selector.module';
 import { AccessTokenInterceptor } from '../../interceptor/token.interceptor';
-import { PageStructureModule } from 'src/app/shared/page-structure/page-structure.module';
+import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 
 
 
@@ -40,7 +40,7 @@ import { PageStructureModule } from 'src/app/shared/page-structure/page-structur
     TopicSelectorModule,
     QuestionSelectorModule,
     MatCardModule,
-    PageStructureModule
+    PageContainerModule
   ],
   providers: [
     {

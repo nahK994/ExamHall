@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
-import { PageStructureModule } from '../shared/page-structure/page-structure.module';
+import { PageContainerModule } from '../shared/page-container/page-container.module';
 
 
 
@@ -29,7 +29,7 @@ import { PageStructureModule } from '../shared/page-structure/page-structure.mod
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    PageStructureModule
+    PageContainerModule
   ],
   providers: [
     {

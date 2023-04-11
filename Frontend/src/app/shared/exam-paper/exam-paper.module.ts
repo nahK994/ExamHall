@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuestionPaperComponent } from './question-paper.component';
+import { ExamPaperComponent } from './exam-paper.component';
 import { QuestionItemComponent } from './question-item/question-item.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { QuestionPaperService } from './question-paper.service';
+import { ExamPaperService } from './exam-paper.service';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
-    QuestionPaperComponent,
+    ExamPaperComponent,
     QuestionItemComponent
   ],
   imports: [
@@ -19,13 +20,14 @@ import { QuestionPaperService } from './question-paper.service';
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   exports: [
-    QuestionPaperComponent,
+    ExamPaperComponent,
   ],
   providers: [
-    QuestionPaperService
+    ExamPaperService
   ]
 })
-export class QuestionPaperModule { }
+export class ExamPaperModule { }

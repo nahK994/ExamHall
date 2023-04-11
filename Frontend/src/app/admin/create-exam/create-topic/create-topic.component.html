@@ -1,4 +1,4 @@
-<page-structure [returnUrl]="'admin/create-exam'">
+<page-container [returnUrl]="'admin/create-exam'">
     <form [formGroup]="topic">
         <mat-form-field appearance="outline">
             <mat-label>Enter topic name</mat-label>
@@ -6,4 +6,4 @@
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="submit()">Submit</button>
-</page-structure>
+</page-container>

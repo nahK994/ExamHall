@@ -7,9 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { ModelTestService } from './model-test.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
-import { QuestionPaperModule } from '../../shared/question-paper/question-paper.module';
 import { AccessTokenInterceptor } from '../../interceptor/token.interceptor';
-import { PageStructureModule } from 'src/app/shared/page-structure/page-structure.module';
+import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
+import { MatCardModule } from '@angular/material/card';
+import { QuestionViewerModule } from 'src/app/shared/question-viewer/question-viewer.module';
+import { ExamPaperModule } from 'src/app/shared/exam-paper/exam-paper.module';
 
 
 
@@ -24,8 +26,10 @@ import { PageStructureModule } from 'src/app/shared/page-structure/page-structur
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    QuestionPaperModule,
-    PageStructureModule
+    ExamPaperModule,
+    PageContainerModule,
+    MatCardModule,
+    QuestionViewerModule
   ],
   providers: [
     {

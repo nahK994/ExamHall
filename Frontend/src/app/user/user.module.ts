@@ -16,7 +16,7 @@ import { QuestionViewerModule } from '../shared/question-viewer/question-viewer.
 import { FavouritesComponent } from './favourites/favourites.component';
 import { UserService } from './user.service';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
-import { PageStructureModule } from '../shared/page-structure/page-structure.module';
+import { PageContainerModule } from '../shared/page-container/page-container.module';
 
 
 
@@ -39,7 +39,7 @@ import { PageStructureModule } from '../shared/page-structure/page-structure.mod
     MatSelectModule,
     MatFormFieldModule,
     QuestionViewerModule,
-    PageStructureModule
+    PageContainerModule
   ],
   providers: [
     {

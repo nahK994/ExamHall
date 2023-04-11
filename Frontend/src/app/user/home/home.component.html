@@ -1,4 +1,10 @@
-<page-structure>
-    <button mat-raised-button (click)="goToFavourite()">Favourite Queations</button>
-    <button mat-raised-button (click)="goModelTests()">Model Tests</button>
-</page-structure>
+<page-container>
+    <button class="button" mat-raised-button (click)="goToFavourite()">
+        <mat-icon class="icon">workspace_premium</mat-icon>
+        <div class="text">Favourite Queations</div>
+    </button>
+    <button class="button" style="margin-top: 20px;" mat-raised-button (click)="goModelTests()">
+        <mat-icon class="icon">assignment</mat-icon>
+        <div class="text">Model Tests</div>
+    </button>
+</page-container>

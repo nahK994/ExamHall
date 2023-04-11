@@ -1,4 +1,4 @@
-<page-structure [returnUrl]="'home'">
+<page-container [returnUrl]="'home'">
     <mat-form-field appearance="outline">
         <mat-label>Topic</mat-label>
         <mat-select [formControl]="topic">
@@ -9,10 +9,12 @@
 
     <div class="questions">
         <ng-container *ngFor="let question of questions">
-            <div class="item">
+            <mat-card class="card">
                 <question-viewer [question]="question"></question-viewer>
-                <button mat-stroked-button (click)="deleteFromArchive(question)">delete from archive</button>
-            </div>
+                <button mat-icon-button (click)="deleteFromArchive(question)">
+                    <mat-icon style="color: red">delete</mat-icon>
+                </button>
+            </mat-card>
         </ng-container>
     </div>
-</page-structure>
+</page-container>

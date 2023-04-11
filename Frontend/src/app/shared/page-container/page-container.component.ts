@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 
 @Component({
-  selector: 'page-structure',
-  templateUrl: './page-structure.component.html',
-  styleUrls: ['./page-structure.component.scss']
+  selector: 'page-container',
+  templateUrl: './page-container.component.html',
+  styleUrls: ['./page-container.component.scss']
 })
-export class PageStructureComponent {
+export class PageContainerComponent {
 
   @Input('returnUrl') returnUrl:any = null;
+  @Input('isLogoutAvailable') isLogoutAvailable: boolean = true;
 
   constructor(
     private _router: Router,
