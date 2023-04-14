@@ -1,7 +1,7 @@
 <div class="login">
     <mat-card class="card-style">
         <form [formGroup]="loginForm" class="form-style">
-            <mat-form-field appearance="outline">
+            <mat-form-field style="width: -webkit-fill-available;" appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Email" formControlName="email" required>
                 <mat-error>This field is required</mat-error>
@@ -9,7 +9,8 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" formControlName="password" required>
+                <input matInput [type]="hide ? 'password' : 'text'"  placeholder="Password" formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-error>This field is required</mat-error>
             </mat-form-field>
 

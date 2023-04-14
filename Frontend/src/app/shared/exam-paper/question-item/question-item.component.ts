@@ -22,6 +22,11 @@ export class QuestionItemComponent implements OnInit {
     this.question = question;
   }
 
+  canSubmit !: boolean;
+  @Input('canSubmit') set setCanSubmit(canSubmit: boolean) {
+    this.canSubmit = canSubmit;
+  }
+
   answer: FormControl = new FormControl('');
 
   constructor(
@@ -43,9 +48,9 @@ export class QuestionItemComponent implements OnInit {
         await this._examPaperService.markQuestionAsFavourite(this.question.questionId);
       }
       catch(e) {
-        this.archived = true;
       }
     }
+    this.archived = true;
   }
 
 }

@@ -24,7 +24,6 @@ export class FavouritesComponent implements OnInit {
     this.userArchivedQuestions = await this._userService.getUserFavourites();
     this.allTopics = await this._userService.getTopics();
     this.questions = this.userArchivedQuestions;
-    console.log(this.userArchivedQuestions)
 
     this.topic.valueChanges.subscribe(res => {
       if(res === '') {
