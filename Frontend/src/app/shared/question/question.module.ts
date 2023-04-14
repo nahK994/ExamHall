@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuestionViewerComponent } from './question-viewer.component';
 import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { QuestionComponent } from './question.component';
 
 
 
 @NgModule({
   declarations: [
-    QuestionViewerComponent,
+    QuestionComponent,
     ExplanationModalComponent
   ],
   imports: [
@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
   ],
   exports: [
-    QuestionViewerComponent
+    QuestionComponent
   ]
 })
-export class QuestionViewerModule { }
+export class QuestionModule { }

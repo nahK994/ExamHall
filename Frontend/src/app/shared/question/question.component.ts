@@ -4,11 +4,11 @@ import { Question } from 'src/app/user/user.service';
 import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
 
 @Component({
-  selector: 'question-viewer',
-  templateUrl: './question-viewer.component.html',
-  styleUrls: ['./question-viewer.component.scss']
+  selector: 'question',
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.scss']
 })
-export class QuestionViewerComponent implements OnInit {
+export class QuestionComponent implements OnInit {
 
   displayAnswer: boolean = false;
   @Input() question: Question | undefined;

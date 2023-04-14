@@ -10,8 +10,8 @@ import { ModelTestDetailsComponent } from './model-test-details/model-test-detai
 import { AccessTokenInterceptor } from '../../interceptor/token.interceptor';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { MatCardModule } from '@angular/material/card';
-import { QuestionViewerModule } from 'src/app/shared/question-viewer/question-viewer.module';
 import { ExamPaperModule } from 'src/app/shared/exam-paper/exam-paper.module';
+import { QuestionModule } from 'src/app/shared/question/question.module';
 
 
 
@@ -29,7 +29,7 @@ import { ExamPaperModule } from 'src/app/shared/exam-paper/exam-paper.module';
     ExamPaperModule,
     PageContainerModule,
     MatCardModule,
-    QuestionViewerModule
+    QuestionModule
   ],
   providers: [
     {

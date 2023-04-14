@@ -1,5 +1,5 @@
 <div class="question-selector">
-    <question-viewer [question]="question"></question-viewer>
+    <question [question]="question"></question>
     <button mat-icon-button (click)="takeAction()">
         <ng-container *ngIf="!isSelected; else isSelectedTemp">
             <mat-icon>add</mat-icon>

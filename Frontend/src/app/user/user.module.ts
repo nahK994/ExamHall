@@ -12,11 +12,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { QuestionViewerModule } from '../shared/question-viewer/question-viewer.module';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { UserService } from './user.service';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
 import { PageContainerModule } from '../shared/page-container/page-container.module';
+import { QuestionModule } from '../shared/question/question.module';
 
 
 
@@ -38,7 +38,7 @@ import { PageContainerModule } from '../shared/page-container/page-container.mod
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
-    QuestionViewerModule,
+    QuestionModule,
     PageContainerModule
   ],
   providers: [

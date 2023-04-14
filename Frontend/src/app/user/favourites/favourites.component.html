@@ -10,7 +10,7 @@
     <div class="questions">
         <ng-container *ngFor="let question of questions">
             <mat-card class="card">
-                <question-viewer [question]="question"></question-viewer>
+                <question [question]="question"></question>
                 <button mat-icon-button (click)="deleteFromArchive(question)">
                     <mat-icon style="color: #855646;">delete</mat-icon>
                 </button>
