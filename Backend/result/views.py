@@ -64,7 +64,7 @@ def get_user_result(request, exam_id):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def create_result(request, exam_id):
-    if ResultModel.objects.filter(user=request.user).exists():
+    if ResultModel.objects.filter(user=request.user, exam__exam_id=exam_id).exists():
         return Response("cannot take part in same exam", status=status.HTTP_400_BAD_REQUEST)
 
     answer_sheet = request.data['answerSheet']
