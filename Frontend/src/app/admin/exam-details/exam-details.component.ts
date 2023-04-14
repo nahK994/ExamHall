@@ -24,7 +24,11 @@ export class ExamDetailsComponent implements OnInit {
     let examId = this._activatedRoute.snapshot.params['id'];
     this.exam = await this._adminService.getExamDetails(examId);
     this.rankList = await this._adminService.getUserRankList(examId);
-    this.cutMarks = this.rankList[this.exam.numberOfSeats-1].totalMarks
+    if(this.exam.numberOfSeats < this.rankList.length)
+      this.cutMarks = this.rankList[this.exam.numberOfSeats-1].totalMarks
+    else
+      this.cutMarks = this.rankList[this.rankList.length-1].totalMarks
+    console.log(this.cutMarks)
   }
 
   goBack() {

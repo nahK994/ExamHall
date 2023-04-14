@@ -36,12 +36,12 @@ class ExamCreateSerializer(serializers.ModelSerializer):
 
 
 class ExamSerializer(serializers.ModelSerializer):
-    examId = serializers.CharField(source='exam_id', required=False)
+    examId = serializers.IntegerField(source='exam_id', required=False)
     questions = QuestionSerializer(many=True, required=False)
     topics = TopicSerializer(many=True, required=False)
-    numberForCorrectAnswer = serializers.CharField(source="number_for_correct_answer")
-    numberForIncorrectAnswer = serializers.CharField(source="number_for_incorrect_answer")
-    numberOfSeats = serializers.CharField(source="number_of_seats")
+    numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer")
+    numberForIncorrectAnswer = serializers.IntegerField(source="number_for_incorrect_answer")
+    numberOfSeats = serializers.IntegerField(source="number_of_seats")
 
     class Meta:
         model = models.ExamModel
