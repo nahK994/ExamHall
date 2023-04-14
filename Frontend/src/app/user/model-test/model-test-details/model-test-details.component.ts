@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ResultItem } from 'src/app/shared/exam-paper/exam-paper.component';
+import { RankListDialogComponent } from 'src/app/shared/rank-list-dialog/rank-list-dialog.component';
 import { Exam, Result } from '../../user.service';
 import { ModelTestService } from '../model-test.service';
 
@@ -23,6 +25,7 @@ export class ModelTestDetailsComponent implements OnInit {
   constructor(
     private _activateRoute: ActivatedRoute,
     private _modelTestService: ModelTestService,
+    private _dialog: MatDialog
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -33,6 +36,12 @@ export class ModelTestDetailsComponent implements OnInit {
 
   async submitAnswer(answerSheet: AnswerSheet) {
     await this._modelTestService.createResult(answerSheet, this.examId);
+  }
+
+  seeRankList() {
+    this._dialog.open(RankListDialogComponent, {
+      data: this.result.rankList
+    })
   }
 
 }

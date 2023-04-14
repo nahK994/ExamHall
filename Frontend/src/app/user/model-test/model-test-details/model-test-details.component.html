@@ -18,11 +18,8 @@
                     </div>
                 </mat-card>
             </ng-container>
-            <div style="margin-top: 40px;">
-                <h2>Rank list</h2>
-                <pre>
-                    {{result.rankList | json}}
-                </pre>
+            <div style="margin: 40px;">
+                <button mat-raised-button (click)="seeRankList()">Rank List</button>
             </div>
         </div>
     </ng-container>

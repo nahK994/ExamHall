@@ -17,9 +17,6 @@ export class ExplanationModalComponent {
     this.explaination = data;
   }
 
-  ngOnInit(): void {
-  }
-
   close() {
     this.dialogRef.close();
   }

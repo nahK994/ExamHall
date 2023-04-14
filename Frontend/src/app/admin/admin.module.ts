@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
 import { PageContainerModule } from '../shared/page-container/page-container.module';
+import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialog.module';
 
 
 
@@ -29,7 +30,8 @@ import { PageContainerModule } from '../shared/page-container/page-container.mod
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    PageContainerModule
+    PageContainerModule,
+    RankListDialogModule
   ],
   providers: [
     {

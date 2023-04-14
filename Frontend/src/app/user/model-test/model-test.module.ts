@@ -12,6 +12,7 @@ import { PageContainerModule } from 'src/app/shared/page-container/page-containe
 import { MatCardModule } from '@angular/material/card';
 import { ExamPaperModule } from 'src/app/shared/exam-paper/exam-paper.module';
 import { QuestionModule } from 'src/app/shared/question/question.module';
+import { RankListDialogModule } from 'src/app/shared/rank-list-dialog/rank-list-dialog.module';
 
 
 
@@ -29,7 +30,8 @@ import { QuestionModule } from 'src/app/shared/question/question.module';
     ExamPaperModule,
     PageContainerModule,
     MatCardModule,
-    QuestionModule
+    QuestionModule,
+    RankListDialogModule
   ],
   providers: [
     {

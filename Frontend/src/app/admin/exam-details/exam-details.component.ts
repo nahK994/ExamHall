@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RankListDialogComponent } from 'src/app/shared/rank-list-dialog/rank-list-dialog.component';
 import { Exam } from 'src/app/user/user.service';
 import { AdminService, UserRank } from '../admin.service';
 
@@ -18,6 +20,7 @@ export class ExamDetailsComponent implements OnInit {
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
     private _adminService: AdminService,
+    private _dialog: MatDialog
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -34,6 +37,12 @@ export class ExamDetailsComponent implements OnInit {
 
   goBack() {
     this._router.navigate(['admin', 'home'])
+  }
+
+  seeRankList() {
+    this._dialog.open(RankListDialogComponent, {
+      data: this.rankList
+    })
   }
 
 }
