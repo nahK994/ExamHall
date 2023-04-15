@@ -12,7 +12,7 @@ def get_user_archived_questions(request):
     user = request.user
     topics = TopicModel.objects.prefetch_related('questions').filter(questions__archived_by_users__in=[user])
     serialized_topics = TopicSerializer(topics, many=True)
-    return Response(serialized_topics.errors, status=status.HTTP_200_OK)
+    return Response(serialized_topics.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
