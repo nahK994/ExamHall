@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from topic.serializers import TopicSerializer
+from topic.serializers import TopicQuerySerializer
 from topic.models import TopicModel
 from question.models import QuestionModel
 
@@ -11,7 +11,7 @@ from question.models import QuestionModel
 def get_user_archived_questions(request):
     user = request.user
     topics = TopicModel.objects.prefetch_related('questions').filter(questions__archived_by_users__in=[user])
-    serialized_topics = TopicSerializer(topics, many=True)
+    serialized_topics = TopicQuerySerializer(topics, many=True)
     return Response(serialized_topics.data, status=status.HTTP_200_OK)
 
 
