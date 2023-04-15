@@ -37,7 +37,13 @@ export class CreateExamComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.allTopics = await this._createExamService.getTopics();
-    this.allQuestions = await this._createExamService.getQuestions();
+    let allQuestions = []
+    for(let topic of this.allTopics) {
+      for(let question of topic.questions) {
+        allQuestions.push(question);
+      }
+    }
+    this.allQuestions = allQuestions;
 
     this.topic.valueChanges.subscribe(res => {
       let questions: Question[] = [];

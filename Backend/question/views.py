@@ -35,7 +35,7 @@ def create_question(request):
         question_obj = serialized_question.save()
     else:
         return Response(serialized_question.errors, status=status.HTTP_400_BAD_REQUEST)
-    return Response(question_obj.question_id, status=status.HTTP_200_OK)
+    return Response(question_obj.question_id, status=status.HTTP_201_CREATED)
 
 
 @api_view(['PUT'])

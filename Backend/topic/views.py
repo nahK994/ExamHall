@@ -3,14 +3,14 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 
 from .models import TopicModel
-from .serializers import TopicSerializer
+from .serializers import TopicSerializer, TopicQuerySerializer
 
 
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated])
 def get_all_topic(request):
-    topics = TopicModel.objects.all()
-    serializer = TopicSerializer(topics, many=True)
+    topics = TopicModel.objects.prefetch_related('questions')
+    serializer = TopicQuerySerializer(topics, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -18,7 +18,7 @@ def get_all_topic(request):
 @permission_classes([permissions.IsAuthenticated])
 def get_topic(request, topic_id):
     topic = TopicModel.objects.get(topicId=topic_id)
-    serialized_topic = TopicSerializer(topic)
+    serialized_topic = TopicQuerySerializer(topic)
     return Response(serialized_topic.data, status=status.HTTP_200_OK)
 
 

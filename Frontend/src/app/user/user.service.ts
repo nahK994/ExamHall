@@ -30,7 +30,8 @@ export interface Question {
 
 export interface Topic {
   topicId: number,
-  name: string
+  name: string,
+  questions: Question[]
 }
 
 export interface ExamListItem {
