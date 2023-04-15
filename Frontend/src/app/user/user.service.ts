@@ -102,7 +102,7 @@ export class UserService {
 
   async getUserFavourites() {
     let archiveQuestionURL_extention = '/favourite-questions';
-    let response = await lastValueFrom(this.http.get<Question[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
 
     return response;
   }

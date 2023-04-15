@@ -21,9 +21,15 @@ export class FavouritesComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.userArchivedQuestions = await this._userService.getUserFavourites();
-    this.allTopics = await this._userService.getTopics();
-    this.questions = this.userArchivedQuestions;
+    this.allTopics = await this._userService.getUserFavourites();
+    let questions = []
+    for(let topic of this.allTopics) {
+      for(let question of topic.questions) {
+        questions.push(question);
+      }
+    }
+    this.userArchivedQuestions = questions;
+    this.questions = questions;
 
     this.topic.valueChanges.subscribe(res => {
       if(res === '') {
