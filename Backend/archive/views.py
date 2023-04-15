@@ -40,4 +40,4 @@ def delete_user_archive(request, question_id):
     question = filtered_questions[0]
     question.archived_by_users.remove(user)
     question.save()
-    return Response("archived", status=status.HTTP_200_OK)
+    return Response("deleted", status=status.HTTP_200_OK)
