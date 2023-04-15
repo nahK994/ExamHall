@@ -31,7 +31,7 @@ def create_topic(request):
     else:
         return Response("Bad request", status=status.HTTP_400_BAD_REQUEST)
 
-    return Response(topic_obj.topic_id, status=status.HTTP_200_OK)
+    return Response(topic_obj.topic_id, status=status.HTTP_201_CREATED)
 
 
 @api_view(['PUT'])

@@ -1,8 +1,6 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status, permissions
-
-from .models import ArchivedQuestionModel
 from topic.serializers import TopicSerializer
 from topic.models import TopicModel
 from question.models import QuestionModel
@@ -12,7 +10,7 @@ from question.models import QuestionModel
 @permission_classes([permissions.IsAuthenticated])
 def get_user_archived_questions(request):
     user = request.user
-    topics = TopicModel.objects.prefetch_related('questions').filter(questions__archived_by_users__in=user)
+    topics = TopicModel.objects.prefetch_related('questions').filter(questions__archived_by_users__in=[user])
     serialized_topics = TopicSerializer(topics, many=True)
     return Response(serialized_topics.errors, status=status.HTTP_200_OK)
 
@@ -42,4 +40,4 @@ def delete_user_archive(request, question_id):
     question = filtered_questions[0]
     question.archived_by_users.remove(user)
     question.save()
-    return Response("archived", status=status.HTTP_201_CREATED)
+    return Response("archived", status=status.HTTP_200_OK)
