@@ -40,7 +40,7 @@ export class AdminService {
   }
 
   async getUserRankList(examId: number) {
-    let updateURL_extention = '/result/exams/'+examId+'/rank-list';
+    let updateURL_extention = '/rank-list/exams/'+examId;
     let response = await lastValueFrom(this.http.get<UserRank[]>(this._appService.doamin+updateURL_extention, this._appService.httpOptions));
 
     return response;

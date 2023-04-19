@@ -59,11 +59,10 @@ class ExamQuerySerializer(serializers.ModelSerializer):
         }
 
         for topic in instance.topics.all():
-            serialized_topic = TopicQuerySerializer(topic)
             data['topics'].append(
                 {
-                    'topicId': serialized_topic.data['id'],
-                    'name': serialized_topic.data['name']
+                    'topicId': topic.id,
+                    'name': topic.name
                 }
             )
 

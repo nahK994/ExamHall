@@ -35,8 +35,8 @@ export class ModelTestService {
     return response;
   }
 
-  async createResult(answerSheet: AnswerSheet, examId: number) {
-    let resultURL_extention = '/result/exams/'+examId+'/create';
+  async createResult(answerSheet: AnswerSheet) {
+    let resultURL_extention = '/result/exams';
     let response = await lastValueFrom(this.http.post<AnswerSheet>(this._appService.doamin+resultURL_extention, answerSheet, this._appService.httpOptions));
 
     return response;

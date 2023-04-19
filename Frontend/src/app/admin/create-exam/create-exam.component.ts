@@ -48,7 +48,7 @@ export class CreateExamComponent implements OnInit {
     this.topic.valueChanges.subscribe(res => {
       let questions: Question[] = [];
       for (let question of this.allQuestions) {
-        if (question.topicId === res) {
+        if (question.topic === res) {
           questions.push(question);
         }
       }

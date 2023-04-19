@@ -42,7 +42,7 @@ router.register("exams", ExamViewset, basename="exams")
 
 router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
 
-router.register("results/exams", UserResultViewset, basename="user-result")
+router.register("result/exams", UserResultViewset, basename="user-result")
 
 router.register("rank-list/exams", ResultViewset, basename="rank-list")
 

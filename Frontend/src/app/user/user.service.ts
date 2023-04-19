@@ -25,7 +25,7 @@ export interface Question {
   option6: string,
   answer: string,
   explaination: string,
-  topicId: number
+  topic: number
 }
 
 export interface Topic {
@@ -43,7 +43,8 @@ export interface UserLoginInfo
 {
   isAdmin: boolean,
   refresh: string,
-  access: string
+  access: string,
+  userId: number
 }
 
 export interface Exam {
@@ -88,13 +89,13 @@ export class UserService {
   ) { }
 
   async loginUser(loginInfo: LoginInfo) {
-    let loginURL_extention = '/users/login';
+    let loginURL_extention = '/login';
     let response: UserLoginInfo = await lastValueFrom(this.http.post<UserLoginInfo>(this._appService.doamin + loginURL_extention, loginInfo, this._appService.httpOptions));
     return response;
   }
 
   async createUser(userInfo: UserInfo) {
-    let updateURL_extention = '/users/create';
+    let updateURL_extention = '/users';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin + updateURL_extention, userInfo, this._appService.httpOptions));
 
     return response;
@@ -115,8 +116,8 @@ export class UserService {
   }
 
   async deleteQuestionFromArchive(questionId: number) {
-    let archiveURL_extention = '/favourite-questions/'+questionId+'/delete';
-    let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+archiveURL_extention, this._appService.httpOptions));
+    let archiveURL_extention = '/favourite-questions/'+questionId;
+    let response = await lastValueFrom(this.http.delete<string>(this._appService.doamin+archiveURL_extention, this._appService.httpOptions));
     return response;
   }
 }

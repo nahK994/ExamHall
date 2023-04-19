@@ -33,21 +33,21 @@ export class CreateExamService {
   }
 
   async createTopic(topic: CreateTopicModel) {
-    let topicURL_extention = '/topics/create';
+    let topicURL_extention = '/topics';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+topicURL_extention, topic, this._appService.httpOptions));
 
     return response;
   }
 
   async createQuestion(question: Question) {
-    let questionURL_extention = '/questions/create';
+    let questionURL_extention = '/questions';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+questionURL_extention, question, this._appService.httpOptions));
 
     return response;
   }
 
   async createExam(exam: Exam) {
-    let examURL_extention = '/exams/create';
+    let examURL_extention = '/exams';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+examURL_extention, exam, this._appService.httpOptions));
 
     return response;

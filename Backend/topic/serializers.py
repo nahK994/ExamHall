@@ -5,10 +5,11 @@ from . import models
 
 class TopicQuerySerializer(serializers.ModelSerializer):
     questions = QuestionQuerySerializer(many=True)
+    topicId = serializers.IntegerField(source='id')
 
     class Meta:
         model = models.TopicModel
-        fields = ['id', 'name', 'questions']
+        fields = ['topicId', 'name', 'questions']
 
 
 class TopicSerializer(serializers.ModelSerializer):

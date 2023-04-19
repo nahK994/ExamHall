@@ -21,7 +21,7 @@ export class CreateQuestionComponent implements OnInit {
     this.question = this._fb.group({
       questionText: ['', [Validators.required]],
       explaination: ['', [Validators.required]],
-      topicId: [, [Validators.required]],
+      topic: [, [Validators.required]],
       answer: ['', [Validators.required]],
       option1: ['', [Validators.required]],
       option2: ['', [Validators.required]],

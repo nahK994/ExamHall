@@ -7,7 +7,8 @@ import { Exam, Result } from '../../user.service';
 import { ModelTestService } from '../model-test.service';
 
 export interface AnswerSheet {
-  answerSheet: ResultItem[]
+  answerSheet: ResultItem[],
+  examId?: number
 }
 
 @Component({
@@ -29,13 +30,14 @@ export class ModelTestDetailsComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.examId = this._activateRoute.snapshot.params['examId'];
+    this.examId = Number(this._activateRoute.snapshot.params['examId']);
     this.result = await this._modelTestService.getResult(this.examId);
     this.exam = await this._modelTestService.getExam(this.examId);
   }
 
   async submitAnswer(answerSheet: AnswerSheet) {
-    await this._modelTestService.createResult(answerSheet, this.examId);
+    answerSheet.examId = this.examId;
+    await this._modelTestService.createResult(answerSheet);
   }
 
   seeRankList() {

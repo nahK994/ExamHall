@@ -38,7 +38,7 @@ export class FavouritesComponent implements OnInit {
       }
       let questions: Question[] = [];
       for(let question of this.userArchivedQuestions) {
-        if(question.topicId === res) {
+        if(question.topic === res) {
           questions.push(question);
         }
       }
