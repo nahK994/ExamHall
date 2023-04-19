@@ -14,14 +14,52 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from rest_framework import routers
+from rest_framework_swagger.views import get_swagger_view
+from question.views import QuestionViewset
+from topic.views import TopicViewset
+from exam.views import ExamViewset
+from archive.views import ArchiveViewset
+from result.views import UserResultViewset, ResultViewset
+from user.views import UserViewset, UserLoginViewset
+from rest_framework_simplejwt.views import TokenRefreshView
+
+
+class OptionalSlashRouter(routers.SimpleRouter):
+    def __init__(self):
+        super().__init__()
+        self.trailing_slash = '/?'
+
+
+router = OptionalSlashRouter()
+
+router.register("topics", TopicViewset, basename="topics")
+
+router.register("questions", QuestionViewset, basename="questions")
+
+router.register("exams", ExamViewset, basename="exams")
+
+router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
+
+router.register("results/exams", UserResultViewset, basename="user-result")
+
+router.register("rank-list/exams", ResultViewset, basename="rank-list")
+
+router.register("users", UserViewset, basename="users")
+
+router.register("login", UserLoginViewset, basename="user-login")
+
+schema_view = get_swagger_view(title='ExamHall', patterns=router.urls)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('users/', include('user.urls')),
-    path('topics/', include('topic.urls')),
-    path('questions/', include('question.urls')),
-    path('favourite-questions/', include('archive.urls')),
-    path('result/', include('result.urls')),
-    path('exams/', include('exam.urls'))
-]
+        path('admin/', admin.site.urls),
+        # path('users/', include('user.urls')),
+        # path('topics/', include('topic.urls')),
+        # path('questions/', include('question.urls')),
+        # path('favourite-questions/', include('archive.urls')),
+        # path('result/', include('result.urls')),
+        # path('exams/', include('exam.urls')),
+        path('users/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
+        re_path('api/docs', schema_view)
+    ] + router.urls

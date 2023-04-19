@@ -6,7 +6,6 @@ from user.models import UserModel
 
 # Create your models here.
 class QuestionModel(models.Model):
-    question_id = models.BigAutoField(primary_key=True)
     question_text = models.CharField(max_length=100)
     option1 = models.CharField(max_length=100, null=True)
     option2 = models.CharField(max_length=100, null=True)
@@ -20,4 +19,4 @@ class QuestionModel(models.Model):
     archived_by_users = models.ManyToManyField(UserModel)
 
     def __str__(self):
-        return f"{self.question_text} ({self.question_id})"
+        return f"{self.question_text} ({self.id})"

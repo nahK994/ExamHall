@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from . import models
-from question.serializers import QuestionSerializer
-from topic.serializers import TopicSerializer
+from question.serializers import QuestionQuerySerializer
+from topic.serializers import TopicQuerySerializer
 
 
 class ExamListSerializer(serializers.ModelSerializer):
@@ -11,15 +11,14 @@ class ExamListSerializer(serializers.ModelSerializer):
         fields = ['examId', 'name']
 
 
-class ExamCreateSerializer(serializers.ModelSerializer):
-    examId = serializers.IntegerField(source='exam_id', required=False)
+class ExamSerializer(serializers.ModelSerializer):
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer")
     numberForIncorrectAnswer = serializers.FloatField(source="number_for_incorrect_answer")
     numberOfSeats = serializers.IntegerField(source="number_of_seats")
 
     class Meta:
         model = models.ExamModel
-        fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
+        fields = ['name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
                   'questions', 'topics']
     
     def validate(self, validated_data):
@@ -35,10 +34,10 @@ class ExamCreateSerializer(serializers.ModelSerializer):
         return validated_data
 
 
-class ExamSerializer(serializers.ModelSerializer):
-    examId = serializers.IntegerField(source='exam_id', required=False)
-    questions = QuestionSerializer(many=True, required=False)
-    topics = TopicSerializer(many=True, required=False)
+class ExamQuerySerializer(serializers.ModelSerializer):
+    examId = serializers.IntegerField(source='id', required=False)
+    questions = QuestionQuerySerializer(many=True, required=False)
+    topics = TopicQuerySerializer(many=True, required=False)
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer")
     numberForIncorrectAnswer = serializers.IntegerField(source="number_for_incorrect_answer")
     numberOfSeats = serializers.IntegerField(source="number_of_seats")
@@ -47,3 +46,25 @@ class ExamSerializer(serializers.ModelSerializer):
         model = models.ExamModel
         fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
                   'questions', 'topics']
+
+    def to_representation(self, instance):
+        data = {
+            'examId': instance.id,
+            'name': instance.name,
+            'numberForCorrectAnswer': instance.number_for_correct_answer,
+            'numberForIncorrectAnswer': instance.number_for_incorrect_answer,
+            'numberOfSeats': instance.number_of_seats,
+            'questions': QuestionQuerySerializer(instance.questions, many=True).data,
+            'topics': []
+        }
+
+        for topic in instance.topics.all():
+            serialized_topic = TopicQuerySerializer(topic)
+            data['topics'].append(
+                {
+                    'topicId': serialized_topic.data['id'],
+                    'name': serialized_topic.data['name']
+                }
+            )
+
+        return data

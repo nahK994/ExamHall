@@ -1,23 +1,18 @@
-from os import name
-
 from rest_framework import serializers
-
-from question.serializers import QuestionSerializer
+from question.serializers import QuestionQuerySerializer
 from . import models
 
 
 class TopicQuerySerializer(serializers.ModelSerializer):
-    topicId = serializers.IntegerField(source='topic_id', required=False)
-    questions = QuestionSerializer(many=True)
+    questions = QuestionQuerySerializer(many=True)
 
     class Meta:
         model = models.TopicModel
-        fields = ['topicId', 'name', 'questions']
+        fields = ['id', 'name', 'questions']
 
 
 class TopicSerializer(serializers.ModelSerializer):
-    topicId = serializers.IntegerField(source='topic_id', required=False)
 
     class Meta:
         model = models.TopicModel
-        fields = ['topicId', 'name']
+        fields = ['name']
