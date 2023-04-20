@@ -54,12 +54,6 @@ schema_view = get_swagger_view(title='ExamHall', patterns=router.urls)
 
 urlpatterns = [
         path('admin/', admin.site.urls),
-        # path('users/', include('user.urls')),
-        # path('topics/', include('topic.urls')),
-        # path('questions/', include('question.urls')),
-        # path('favourite-questions/', include('archive.urls')),
-        # path('result/', include('result.urls')),
-        # path('exams/', include('exam.urls')),
         path('users/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
         re_path('api/docs', schema_view)
     ] + router.urls
