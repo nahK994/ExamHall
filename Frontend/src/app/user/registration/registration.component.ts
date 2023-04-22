@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 export class RegistrationComponent {
 
   registrationForm: FormGroup;
+  hide = true;
 
   constructor(
     private _fb: FormBuilder,

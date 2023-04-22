@@ -9,7 +9,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'"  placeholder="Password" formControlName="password" required>
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" required>
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-error>This field is required</mat-error>
             </mat-form-field>
