@@ -3,7 +3,7 @@ from rest_framework import status, viewsets
 
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import UserModel
-from .serializers import UserSerializer, UserListSerializer
+from .serializers import UserSerializer, UserListSerializer, UserLoginSerializer, UserCreateSerializer
 from django.contrib.auth import get_user_model
 
 
@@ -16,7 +16,9 @@ def get_tokens_for_user(user):
     }
 
 
-class UserLoginViewset(viewsets.ViewSet):
+class UserLoginViewset(viewsets.ModelViewSet):
+    serializer_class = UserLoginSerializer
+    http_method_names = ["post"]
 
     def create(self, request):
         filtered_user = UserModel.objects.filter(email=request.data['email'])
@@ -33,9 +35,12 @@ class UserLoginViewset(viewsets.ViewSet):
             return Response("invalid email or password", status=status.HTTP_403_FORBIDDEN)
 
 
-class UserViewset(viewsets.ViewSet):
+class UserViewset(viewsets.ModelViewSet):
+    serializer_class = UserCreateSerializer
+    http_method_names = ["post", "get", "put", "delete"]
 
     def list(self, request):
+        print(request.user)
         if not request.user.is_admin:
             return Response("not allowed", status=status.HTTP_403_FORBIDDEN)
 
