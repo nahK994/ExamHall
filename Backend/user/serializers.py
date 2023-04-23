@@ -1,4 +1,3 @@
-from pysss import password
 from rest_framework import serializers
 from . import models
 
