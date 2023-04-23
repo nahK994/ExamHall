@@ -8,7 +8,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AppService {
 
-    readonly doamin = "https://skhan1221.pythonanywhere.com";
+    readonly doamin = "https://examhall.pythonanywhere.com";
     // readonly doamin = "http://localhost:8000";
     readonly accessToken = "JWT_TOKEN";
     readonly refreshToken = "REFRESH_TOKEN";
