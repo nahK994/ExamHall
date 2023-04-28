@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
 
-    readonly doamin = "https://examhall.pythonanywhere.com";
-    // readonly doamin = "http://localhost:8000";
+    readonly doamin = environment.domain
     readonly accessToken = "JWT_TOKEN";
     readonly refreshToken = "REFRESH_TOKEN";
 
