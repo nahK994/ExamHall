@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from question.views import QuestionViewset
-from topic.views import TopicViewset
+from question.views import QuestionViewset, TopicViewset
 from exam.views import ExamViewset
 from archive.views import ArchiveViewset
 from result.views import UserResultViewset, ResultViewset

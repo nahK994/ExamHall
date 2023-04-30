@@ -1,10 +1,8 @@
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets
 from user.models import UserModel
-from topic.models import TopicModel
 
-from question.models import QuestionModel
+from question.models import QuestionModel, TopicModel
 from exam.models import ExamModel
 from exam.serializers import ExamSerializer
 

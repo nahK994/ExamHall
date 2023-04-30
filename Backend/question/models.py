@@ -1,10 +1,14 @@
 from django.db import models
-
-from topic.models import TopicModel
 from user.models import UserModel
 
 
-# Create your models here.
+class TopicModel(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name} ({self.id})"
+
+
 class QuestionModel(models.Model):
     question_text = models.CharField(max_length=100)
     option1 = models.CharField(max_length=100, null=True)

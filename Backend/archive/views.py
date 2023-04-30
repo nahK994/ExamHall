@@ -1,8 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets
-from topic.serializers import TopicQuerySerializer
-from topic.models import TopicModel
-from question.models import QuestionModel
+from question.serializers import TopicQuerySerializer
+from question.models import TopicModel, QuestionModel
 
 
 class ArchiveViewset(viewsets.ViewSet):

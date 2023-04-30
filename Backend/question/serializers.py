@@ -19,3 +19,19 @@ class QuestionQuerySerializer(serializers.ModelSerializer):
         model = models.QuestionModel
         fields = ['questionId', 'questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'topic',
                   'explaination', 'answer']
+
+
+class TopicQuerySerializer(serializers.ModelSerializer):
+    questions = QuestionQuerySerializer(many=True)
+    topicId = serializers.IntegerField(source='id')
+
+    class Meta:
+        model = models.TopicModel
+        fields = ['topicId', 'name', 'questions']
+
+
+class TopicSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.TopicModel
+        fields = ['name']

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from topic.serializers import TopicSerializer
+from question.serializers import TopicSerializer
 from .models import ResultModel
 
 from user.models import UserModel
