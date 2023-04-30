@@ -23,6 +23,7 @@ from exam.views import ExamViewset
 from archive.views import ArchiveViewset
 from result.views import UserResultViewset, ResultViewset
 from user.views import UserViewset, UserLoginViewset
+from lectures.views import LectureViewset, ClassViewset
 from rest_framework_simplejwt.views import TokenRefreshView
 
 
@@ -49,6 +50,10 @@ router.register("rank-list/exams", ResultViewset, basename="rank-list")
 router.register("users", UserViewset, basename="users")
 
 router.register("login", UserLoginViewset, basename="user-login")
+
+router.register("classes", ClassViewset, basename="class")
+
+router.register("lectures", LectureViewset, basename="lecture")
 
 schema_view = get_swagger_view(title='ExamHall', patterns=router.urls)
 
