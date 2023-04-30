@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from question.views import QuestionViewset
@@ -23,7 +23,7 @@ from exam.views import ExamViewset
 from archive.views import ArchiveViewset
 from result.views import UserResultViewset, ResultViewset
 from user.views import UserViewset, UserLoginViewset
-from lectures.views import LectureViewset, ClassViewset
+from lecture.views import LectureViewset, ClassViewset
 from rest_framework_simplejwt.views import TokenRefreshView
 
 

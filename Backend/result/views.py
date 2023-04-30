@@ -52,7 +52,7 @@ class UserResultViewset(viewsets.ViewSet):
 
         answer_sheet = request.data['answerSheet']
         exam = ExamModel.objects.get(id=exam_id)
-        topic_ids = [topic.id for topic in exam.topics.all()]
+        topic_ids = [q.topic.id for q in exam.questions.all()]
 
         topic_wise_result = {}
         for topic_id in topic_ids:
@@ -61,7 +61,6 @@ class UserResultViewset(viewsets.ViewSet):
         number_for_correct_answer = exam.number_for_correct_answer
         number_for_incorrect_answer = exam.number_for_incorrect_answer
         for userAnswer in answer_sheet:
-            print(f"HAHA +++> {request.data}")
             question = QuestionModel.objects.get(id=userAnswer['questionId'])
             topic_id = question.topic.id
             if question.answer == userAnswer['answer']:

@@ -35,7 +35,6 @@ class ModelManagerMixin:
         serialized_info = self.get_serializer(data=request_data)
         if serialized_info.is_valid():
             instance = serialized_info.save()
-
             return Response(self.query_serializer_class(instance).data, status=status.HTTP_201_CREATED)
 
         validation_error = self.get_validation_errors(serialized_info)
