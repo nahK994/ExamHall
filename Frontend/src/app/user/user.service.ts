@@ -54,7 +54,7 @@ export interface Exam {
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
   questions: Question[],
-  topics: Topic[]
+  topics?: Topic[]
 }
 
 export interface Result {

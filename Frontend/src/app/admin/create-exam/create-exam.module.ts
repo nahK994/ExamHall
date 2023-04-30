@@ -13,7 +13,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CreateExamService } from './create-exam.service';
 import { MatSelectModule } from '@angular/material/select';
-import { TopicSelectorModule } from 'src/app/shared/topic-selector/topic-selector.module';
 import { QuestionSelectorModule } from 'src/app/shared/question-selector/question-selector.module';
 import { AccessTokenInterceptor } from '../../interceptor/token.interceptor';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
@@ -37,7 +36,6 @@ import { PageContainerModule } from 'src/app/shared/page-container/page-containe
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    TopicSelectorModule,
     QuestionSelectorModule,
     MatCardModule,
     PageContainerModule

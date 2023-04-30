@@ -27,19 +27,14 @@
                     <mat-label>Number for incorrect answer</mat-label>
                     <input matInput placeholder="Number for incorrect answer" formControlName="numberForIncorrectAnswer" required>
                 </mat-form-field>
+
+                <mat-form-field appearance="outline" *ngIf="allTopics.length">
+                    <mat-label>Select question topic</mat-label>
+                    <mat-select [formControl]="topic">
+                        <mat-option *ngFor="let val of allTopics" [value]="val?.topicId">{{val?.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
-            <div class="topic-selection">
-                <ng-container *ngFor="let topic of allTopics">
-                    <topic-selector (selectTopic)="selectTopic($event)" (deSelectTopic)="deSelectTopic($event)" [topic]="topic"></topic-selector>
-                </ng-container>
-            </div>
-    
-            <mat-form-field appearance="outline" *ngIf="topicListForQuestionSelection.length">
-                <mat-label>Select question topic</mat-label>
-                <mat-select [formControl]="topic">
-                    <mat-option *ngFor="let val of topicListForQuestionSelection" [value]="val?.topicId">{{val?.name}}</mat-option>
-                </mat-select>
-            </mat-form-field>
     
             <ng-container *ngFor="let question of questions">
                 <question-selector [isSelected]="isSelectedQuestion(question)" (selectQuestion)="selectQuestion($event)" (deSelectQuestion)="deSelectQuestion($event)" [question]="question"></question-selector>

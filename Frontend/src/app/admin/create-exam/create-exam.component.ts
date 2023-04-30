@@ -14,8 +14,7 @@ export class CreateExamComponent implements OnInit {
   allTopics: Topic[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
-  topic: FormControl = new FormControl('')
-  topicListForQuestionSelection: Topic[] = [];
+  topic: FormControl = new FormControl('');
 
   form: FormGroup;
 
@@ -30,8 +29,7 @@ export class CreateExamComponent implements OnInit {
       numberForCorrectAnswer: [, [Validators.required]],
       numberForIncorrectAnswer: [, [Validators.required]],
       numberOfSeats: [, [Validators.required]],
-      questions: [[]],
-      topics: [[]]
+      questions: [[]]
     })
   }
 
@@ -69,28 +67,6 @@ export class CreateExamComponent implements OnInit {
     })
   }
 
-  selectTopic(topicId: number) {
-    let topics = this.form.get('topics')?.value;
-    topics.push(topicId);
-    this.form.get('topics')?.setValue(topics);
-
-    for (let topic of this.allTopics) {
-      if (topic.topicId === topicId) {
-        this.topicListForQuestionSelection.push(topic);
-      }
-    }
-  }
-
-  deSelectTopic(topicId: number) {
-    let topics = this.form.get('topics')?.value;
-    let index = topics.indexOf(topicId);
-    topics.splice(index, 1);
-    this.form.get('topics')?.setValue(topics);
-
-    index = this.topicListForQuestionSelection.findIndex(item => item.topicId === topicId);
-    this.topicListForQuestionSelection.splice(index, 1);
-  }
-
   selectQuestion(questionId: number) {
     let questions = this.form.get('questions')?.value;
     questions.push(questionId);
@@ -120,7 +96,6 @@ export class CreateExamComponent implements OnInit {
 
       this._createExamService.createExam(this.form.value)
       this.form.reset();
-      this.topicListForQuestionSelection = [];
 
       this._router.navigate(['admin/home']);
     }
