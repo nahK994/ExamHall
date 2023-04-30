@@ -52,7 +52,11 @@ class UserResultViewset(viewsets.ViewSet):
 
         answer_sheet = request.data['answerSheet']
         exam = ExamModel.objects.get(id=exam_id)
-        topic_ids = [q.topic.id for q in exam.questions.all()]
+
+        topic_ids = []
+        for q in exam.questions.all():
+            if q.topic.id not in topic_ids:
+                topic_ids.append(q.topic.id)
 
         topic_wise_result = {}
         for topic_id in topic_ids:

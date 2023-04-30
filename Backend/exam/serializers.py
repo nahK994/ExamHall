@@ -47,7 +47,11 @@ class ExamQuerySerializer(serializers.ModelSerializer):
             'topics': []
         }
 
-        topic_ids = [q.topic.id for q in instance.questions.all()]
+        topic_ids = []
+        for q in instance.questions.all():
+            if q.topic.id not in topic_ids:
+                topic_ids.append(q.topic.id)
+
         for topic in TopicModel.objects.filter(id__in=topic_ids):
             data['topics'].append(
                 {
