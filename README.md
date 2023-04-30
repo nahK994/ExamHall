@@ -17,5 +17,5 @@ API documentation URL: http://localhost:8000/api/docs
 
 
 In production env--
-Frontend is available on-- https://nahk994.github.io/ExamHall
+Frontend is available on-- https://nahk994.github.io/ExamHall/
 API documentation URL: https://examhall.pythonanywhere.com/api/docs
