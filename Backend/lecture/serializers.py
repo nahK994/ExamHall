@@ -2,23 +2,6 @@ from rest_framework import serializers
 from .models import ClassModel, LectureModel
 
 
-class ClassSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=50)
-
-    class Meta:
-        model = ClassModel
-        fields = ['name']
-
-
-class ClassQuerySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(required=False)
-    name = serializers.CharField(max_length=50)
-
-    class Meta:
-        model = ClassModel
-        fields = ['id', 'name']
-
-
 class LectureSerializer(serializers.ModelSerializer):
     title = serializers.CharField(max_length=100)
     classInfo = serializers.IntegerField(source='class_info')
@@ -45,8 +28,32 @@ class LectureSerializer(serializers.ModelSerializer):
 class LectureQuerySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
     title = serializers.CharField(max_length=100)
-    classInfo = ClassQuerySerializer(source='class_info')
 
     class Meta:
         model = LectureModel
-        fields = ['id', 'title', 'serial', 'classInfo']
+        fields = ['id', 'title', 'serial']
+
+
+class ClassSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=50)
+
+    class Meta:
+        model = ClassModel
+        fields = ['name']
+
+
+class ClassQuerySerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
+    name = serializers.CharField(max_length=50)
+
+    class Meta:
+        model = ClassModel
+        fields = ['id', 'name', 'lectures']
+
+    def to_representation(self, instance):
+        data = {
+            "id": instance.id,
+            "name": instance.name,
+            "lectures": LectureQuerySerializer(instance.lectures.order_by("serial"), many=True).data
+        }
+        return data
