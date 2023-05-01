@@ -9,7 +9,7 @@ class LectureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LectureModel
-        fields = ['title', 'serial', 'classInfo']
+        fields = ['title', 'serial', 'classInfo', 'handnote']
 
     def validate(self, attrs):
         filtered_class = ClassModel.objects.filter(id=attrs['class_info'])
@@ -28,10 +28,22 @@ class LectureSerializer(serializers.ModelSerializer):
 class LectureQuerySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
     title = serializers.CharField(max_length=100)
+    handnote = serializers.FileField()
 
     class Meta:
         model = LectureModel
-        fields = ['id', 'title', 'serial']
+        fields = ['id', 'title', 'serial', 'handnote']
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+
+        data = {
+            "id": instance.id,
+            "title": instance.title,
+            "serial": instance.serial,
+            "handnote": request.build_absolute_uri(instance.handnote.url)
+        }
+        return data
 
 
 class ClassSerializer(serializers.ModelSerializer):
@@ -54,6 +66,6 @@ class ClassQuerySerializer(serializers.ModelSerializer):
         data = {
             "id": instance.id,
             "name": instance.name,
-            "lectures": LectureQuerySerializer(instance.lectures.order_by("serial"), many=True).data
+            "lectures": LectureQuerySerializer(instance.lectures.order_by("serial"), many=True, context={"request": self.context.get('request')}).data
         }
         return data

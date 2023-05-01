@@ -24,6 +24,8 @@ from result.views import UserResultViewset, ResultViewset
 from user.views import UserViewset, UserLoginViewset
 from lecture.views import LectureViewset, ClassViewset
 from rest_framework_simplejwt.views import TokenRefreshView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 class OptionalSlashRouter(routers.SimpleRouter):
@@ -60,4 +62,4 @@ urlpatterns = [
         path('admin/', admin.site.urls),
         path('users/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
         path('api/docs', schema_view)
-    ] + router.urls
+    ] + router.urls + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

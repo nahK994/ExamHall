@@ -173,4 +173,6 @@ SWAGGER_SETTINGS = {
     },
 }
 
-STATIC_ROOT='/home/examhall/ExamHall/static'
+STATIC_ROOT = '/home/examhall/ExamHall/static'
+MEDIA_ROOT = BASE_DIR/'uploads'
+MEDIA_URL = 'uploads/'
