@@ -11,6 +11,7 @@ class ClassModel(models.Model):
 
 class LectureModel(models.Model):
     title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
     serial = models.IntegerField(default=0)
     class_info = models.ForeignKey(ClassModel, related_name="lectures", on_delete=models.CASCADE)
     handnote = models.FileField(upload_to='lectures')
