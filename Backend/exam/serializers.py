@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from datetime import datetime
 from question.models import TopicModel
-from .models import ExamModel
+from .models import ExamModel, ExamParticipantModel
 from question.serializers import QuestionQuerySerializer
 
 
@@ -70,3 +70,7 @@ class ExamQuerySerializer(serializers.ModelSerializer):
             )
 
         return data
+
+
+class ExamEnrollmentSerializer(serializers.Serializer):
+    examId = serializers.IntegerField()

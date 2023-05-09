@@ -18,7 +18,7 @@ from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from question.views import QuestionViewset, TopicViewset
-from exam.views import ExamViewset
+from exam.views import ExamViewset, StartExamViewset, EndExamViewset
 from archive.views import ArchiveViewset
 from result.views import UserResultViewset, ResultViewset
 from user.views import UserViewset, UserLoginViewset
@@ -41,6 +41,8 @@ router.register("topics", TopicViewset, basename="topics")
 router.register("questions", QuestionViewset, basename="questions")
 
 router.register("exams", ExamViewset, basename="exams")
+router.register("exam/start", StartExamViewset, basename="exam-start")
+router.register("exam/end", EndExamViewset, basename="exam-end")
 
 router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
 

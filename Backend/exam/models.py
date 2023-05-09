@@ -1,5 +1,7 @@
 from django.db import models
 from question.models import QuestionModel
+from user.models import UserModel
+from utils.constants import ExamEnrollmentStatus
 
 
 class ExamModel(models.Model):
@@ -13,3 +15,11 @@ class ExamModel(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.id})"
+
+
+class ExamParticipantModel(models.Model):
+    exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, default=ExamEnrollmentStatus.not_started)
+    exam_start_time = models.DateTimeField()
+    exam_end_time = models.DateTimeField(default=None, null=True)
