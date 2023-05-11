@@ -8,6 +8,9 @@ class TopicModel(models.Model):
     def __str__(self):
         return f"{self.name} ({self.id})"
 
+    class Meta:
+        db_table = 'topics'
+
 
 class QuestionModel(models.Model):
     question_text = models.CharField(max_length=100)
@@ -24,3 +27,6 @@ class QuestionModel(models.Model):
 
     def __str__(self):
         return f"{self.question_text} ({self.id})"
+
+    class Meta:
+        db_table = 'questions'

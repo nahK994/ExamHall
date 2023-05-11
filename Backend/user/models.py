@@ -53,3 +53,6 @@ class UserModel(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return True
+
+    class Meta:
+        db_table = 'users'

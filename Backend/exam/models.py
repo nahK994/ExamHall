@@ -16,6 +16,9 @@ class ExamModel(models.Model):
     def __str__(self):
         return f"{self.name} ({self.id})"
 
+    class Meta:
+        db_table = 'exams'
+
 
 class ExamParticipantModel(models.Model):
     exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
@@ -23,3 +26,6 @@ class ExamParticipantModel(models.Model):
     status = models.CharField(max_length=20, default=ExamEnrollmentStatus.not_started)
     exam_start_time = models.DateTimeField()
     exam_end_time = models.DateTimeField(default=None, null=True)
+
+    class Meta:
+        db_table = 'exam_participants'

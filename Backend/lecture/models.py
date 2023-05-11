@@ -8,6 +8,9 @@ class ClassModel(models.Model):
     def __str__(self):
         return f"{self.name} ({self.id})"
 
+    class Meta:
+        db_table = 'classes'
+
 
 class LectureModel(models.Model):
     title = models.CharField(max_length=100)
@@ -18,3 +21,6 @@ class LectureModel(models.Model):
 
     def __str__(self):
         return f"{self.title} serial={self.serial} ({self.id})"
+
+    class Meta:
+        db_table = 'lectures'
