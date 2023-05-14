@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework import status, viewsets
+from rest_framework import status, viewsets, permissions
 
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import UserModel
@@ -37,7 +37,8 @@ class UserLoginViewset(viewsets.ModelViewSet):
 
 class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserCreateSerializer
-    http_method_names = ["post", "get", "put", "delete"]
+    http_method_names = ["get", "put", "delete"]
+    permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request):
         print(request.user)
@@ -60,16 +61,6 @@ class UserViewset(viewsets.ModelViewSet):
         user = filtered_user[0]
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def create(self, request):
-        try:
-            if len(UserModel.objects.filter(email=request.data['email'])):
-                return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
-
-            user_obj = get_user_model().objects.create_user(**request.data)
-            return Response(user_obj.id, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, pk=None):
         user = request.user
@@ -98,3 +89,18 @@ class UserViewset(viewsets.ModelViewSet):
 
         user.delete()
         return Response("user deleted", status=status.HTTP_200_OK)
+
+
+class UserRegistrationViewset(viewsets.ModelViewSet):
+    serializer_class = UserCreateSerializer
+    http_method_names = ["post"]
+
+    def create(self, request):
+        try:
+            if len(UserModel.objects.filter(email=request.data['email'])):
+                return Response({'message': 'Email already exists'}, status=status.HTTP_403_FORBIDDEN)
+
+            user_obj = get_user_model().objects.create_user(**request.data)
+            return Response(user_obj.id, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_400_BAD_REQUEST)

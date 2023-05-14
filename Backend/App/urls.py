@@ -20,7 +20,7 @@ from rest_framework_swagger.views import get_swagger_view
 from question.views import QuestionViewset, TopicViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, UserResultViewset, ResultViewset
 from archive.views import ArchiveViewset
-from user.views import UserViewset, UserLoginViewset
+from user.views import UserViewset, UserLoginViewset, UserRegistrationViewset
 from lecture.views import LectureViewset, ClassViewset
 from rest_framework_simplejwt.views import TokenRefreshView
 from django.conf import settings
@@ -50,6 +50,7 @@ router.register("result/exams", UserResultViewset, basename="user-result")
 router.register("rank-list/exams", ResultViewset, basename="rank-list")
 
 router.register("users", UserViewset, basename="users")
+router.register("registration", UserRegistrationViewset, basename="registration")
 
 router.register("login", UserLoginViewset, basename="user-login")
 
