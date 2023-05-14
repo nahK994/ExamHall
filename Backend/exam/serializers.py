@@ -77,6 +77,16 @@ class ExamEnrollmentSerializer(serializers.Serializer):
     examId = serializers.IntegerField()
 
 
+class ExamAnswerSheetSerializer(serializers.Serializer):
+    questionId = serializers.IntegerField()
+    answer = serializers.CharField()
+
+
+class EndExamSerializer(serializers.Serializer):
+    examId = serializers.IntegerField()
+    answerSheet = ExamAnswerSheetSerializer(many=True)
+
+
 class ResultSerializer(serializers.ModelSerializer):
     numberOfCorrectAnswer = serializers.FloatField(source='number_of_correct_answer')
     numberOfIncorrectAnswer = serializers.FloatField(source='number_of_incorrect_answer')

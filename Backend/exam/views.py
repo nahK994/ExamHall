@@ -9,7 +9,7 @@ from utils.mixins import ModelManagerMixin
 from utils.constants import ExamEnrollmentStatus
 from .models import ExamModel, ExamParticipantModel
 from .serializers import ExamSerializer, ExamQuerySerializer, ExamEnrollmentSerializer, ResultSerializer, \
-    RankListSerializer
+    RankListSerializer, EndExamSerializer
 from rest_framework import status, permissions
 from rest_framework.response import Response
 
@@ -53,7 +53,7 @@ class StartExamViewset(viewsets.ModelViewSet):
 
 class EndExamViewset(viewsets.ModelViewSet):
     http_method_names = ['post']
-    serializer_class = ExamEnrollmentSerializer
+    serializer_class = EndExamSerializer
     queryset = ExamParticipantModel.objects.all()
     permission_classes = [permissions.IsAuthenticated]
 
