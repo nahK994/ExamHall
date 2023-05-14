@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from datetime import datetime
 from question.models import TopicModel
-from .models import ExamModel, ExamParticipantModel
-from question.serializers import QuestionQuerySerializer
+from user.models import UserModel
+from .models import ExamModel, ExamParticipantModel, ResultModel
+from question.serializers import QuestionQuerySerializer, TopicSerializer
 
 
 class ExamListSerializer(serializers.ModelSerializer):
@@ -74,3 +75,29 @@ class ExamQuerySerializer(serializers.ModelSerializer):
 
 class ExamEnrollmentSerializer(serializers.Serializer):
     examId = serializers.IntegerField()
+
+
+class ResultSerializer(serializers.ModelSerializer):
+    numberOfCorrectAnswer = serializers.FloatField(source='number_of_correct_answer')
+    numberOfIncorrectAnswer = serializers.FloatField(source='number_of_incorrect_answer')
+    topic = TopicSerializer()
+
+    class Meta:
+        model = ResultModel
+        fields = ['topic', 'numberOfCorrectAnswer', 'numberOfIncorrectAnswer', 'marks']
+
+    def to_representation(self, instance):
+        return {
+            'topic': instance.topic.name,
+            'numberOfCorrectAnswer': instance.number_of_correct_answer,
+            'numberOfIncorrectAnswer': instance.number_of_incorrect_answer,
+            'marks': instance.marks
+        }
+
+
+class RankListSerializer(serializers.ModelSerializer):
+    totalMarks = serializers.FloatField(source='total_marks')
+
+    class Meta:
+        model = UserModel
+        fields = ['name', 'totalMarks']

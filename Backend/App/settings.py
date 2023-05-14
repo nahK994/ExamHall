@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'user',
     'question',
     'exam',
-    'result',
     'archive',
     'lecture',
     'rest_framework',
