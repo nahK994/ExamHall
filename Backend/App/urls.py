@@ -21,7 +21,7 @@ from question.views import QuestionViewset, SubjectViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, UserResultViewset, ResultViewset
 from archive.views import ArchiveViewset
 from user.views import UserViewset, UserLoginViewset, UserRegistrationViewset
-from lecture.views import LectureViewset, ClassViewset
+from lecture.views import LectureViewset, CourseViewset
 from rest_framework_simplejwt.views import TokenRefreshView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -36,26 +36,22 @@ class OptionalSlashRouter(routers.SimpleRouter):
 router = OptionalSlashRouter()
 
 router.register("subjects", SubjectViewset, basename="subjects")
-
 router.register("questions", QuestionViewset, basename="questions")
 
 router.register("exams", ExamViewset, basename="exams")
 router.register("exam/start", StartExamViewset, basename="exam-start")
 router.register("exam/end", EndExamViewset, basename="exam-end")
 
-router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
-
 router.register("result/exams", UserResultViewset, basename="user-result")
-
 router.register("rank-list/exams", ResultViewset, basename="rank-list")
+
+router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
 
 router.register("users", UserViewset, basename="users")
 router.register("registration", UserRegistrationViewset, basename="registration")
-
 router.register("login", UserLoginViewset, basename="user-login")
 
-router.register("classes", ClassViewset, basename="class")
-
+router.register("courses", CourseViewset, basename="class")
 router.register("lectures", LectureViewset, basename="lecture")
 
 schema_view = get_swagger_view(title='ExamHall', patterns=router.urls)

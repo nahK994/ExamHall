@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import ClassModel, LectureModel
+from .models import CourseModel, LectureModel
 
 
 class LectureSerializer(serializers.ModelSerializer):
     title = serializers.CharField(max_length=100)
-    classInfo = serializers.IntegerField(source='class_info')
+    course = serializers.IntegerField()
     serial = serializers.IntegerField(min_value=1)
 
     class Meta:
@@ -12,11 +12,11 @@ class LectureSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, attrs):
-        filtered_class = ClassModel.objects.filter(id=attrs['class_info'])
-        if not filtered_class:
-            raise serializers.ValidationError('no such class')
+        filtered_course = CourseModel.objects.filter(id=attrs['course'])
+        if not filtered_course:
+            raise serializers.ValidationError('no such course')
 
-        attrs['class_info'] = filtered_class[0]
+        attrs['course'] = filtered_course[0]
         return attrs
 
     def create(self, validated_data):
@@ -47,20 +47,20 @@ class LectureQuerySerializer(serializers.ModelSerializer):
         return data
 
 
-class ClassSerializer(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=50)
 
     class Meta:
-        model = ClassModel
+        model = CourseModel
         fields = ['name']
 
 
-class ClassQuerySerializer(serializers.ModelSerializer):
+class CourseQuerySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
     name = serializers.CharField(max_length=50)
 
     class Meta:
-        model = ClassModel
+        model = CourseModel
         fields = ['id', 'name', 'lectures']
 
     def to_representation(self, instance):

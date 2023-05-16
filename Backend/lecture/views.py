@@ -1,14 +1,14 @@
 from rest_framework import viewsets
 
 from utils.mixins import ModelManagerMixin
-from .models import ClassModel, LectureModel
-from .serializers import LectureSerializer, ClassSerializer, ClassQuerySerializer, LectureQuerySerializer
+from .models import CourseModel, LectureModel
+from .serializers import LectureSerializer, CourseSerializer, CourseQuerySerializer, LectureQuerySerializer
 
 
-class ClassViewset(ModelManagerMixin, viewsets.ModelViewSet):
-    serializer_class = ClassSerializer
-    query_serializer_class = ClassQuerySerializer
-    queryset = ClassModel.objects.all()
+class CourseViewset(ModelManagerMixin, viewsets.ModelViewSet):
+    serializer_class = CourseSerializer
+    query_serializer_class = CourseQuerySerializer
+    queryset = CourseModel.objects.all()
 
 
 class LectureViewset(ModelManagerMixin, viewsets.ModelViewSet):
