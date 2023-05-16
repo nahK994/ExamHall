@@ -2,7 +2,7 @@ from django.db import models
 from user.models import UserModel
 
 
-class TopicModel(models.Model):
+class SubjectModel(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class QuestionModel(models.Model):
     option6 = models.CharField(max_length=100, null=True)
     answer = models.CharField(max_length=100)
     explaination = models.CharField(max_length=500)
-    topic = models.ForeignKey(TopicModel, related_name="questions", on_delete=models.CASCADE)
+    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.CASCADE)
     archived_by_users = models.ManyToManyField(UserModel)
 
     def __str__(self):

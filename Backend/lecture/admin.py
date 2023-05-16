@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import LectureModel, ClassModel
+
+admin.site.register(LectureModel)
+admin.site.register(ClassModel)

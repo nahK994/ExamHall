@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from . import models
+from .models import QuestionModel, SubjectModel
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     questionText = serializers.CharField(source='question_text')
 
     class Meta:
-        model = models.QuestionModel
+        model = QuestionModel
         fields = ['questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'explaination',
-                  'topic', 'answer']
+                  'subject', 'answer']
 
 
 class QuestionQuerySerializer(serializers.ModelSerializer):
@@ -16,22 +16,22 @@ class QuestionQuerySerializer(serializers.ModelSerializer):
     questionText = serializers.CharField(source='question_text')
 
     class Meta:
-        model = models.QuestionModel
-        fields = ['questionId', 'questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'topic',
+        model = QuestionModel
+        fields = ['questionId', 'questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'subject',
                   'explaination', 'answer']
 
 
-class TopicQuerySerializer(serializers.ModelSerializer):
+class SubjectQuerySerializer(serializers.ModelSerializer):
     questions = QuestionQuerySerializer(many=True)
-    topicId = serializers.IntegerField(source='id')
+    subjectId = serializers.IntegerField(source='id')
 
     class Meta:
-        model = models.TopicModel
-        fields = ['topicId', 'name', 'questions']
+        model = SubjectModel
+        fields = ['subjectId', 'name', 'questions']
 
 
-class TopicSerializer(serializers.ModelSerializer):
+class SubjectSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.TopicModel
+        model = SubjectModel
         fields = ['name']

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from question.views import QuestionViewset, TopicViewset
+from question.views import QuestionViewset, SubjectViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, UserResultViewset, ResultViewset
 from archive.views import ArchiveViewset
 from user.views import UserViewset, UserLoginViewset, UserRegistrationViewset
@@ -35,7 +35,7 @@ class OptionalSlashRouter(routers.SimpleRouter):
 
 router = OptionalSlashRouter()
 
-router.register("topics", TopicViewset, basename="topics")
+router.register("subjects", SubjectViewset, basename="subjects")
 
 router.register("questions", QuestionViewset, basename="questions")
 

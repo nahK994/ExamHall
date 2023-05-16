@@ -1,5 +1,5 @@
 from django.db import models
-from question.models import QuestionModel, TopicModel
+from question.models import QuestionModel, SubjectModel
 from user.models import UserModel
 from utils.constants import ExamEnrollmentStatus
 
@@ -33,7 +33,7 @@ class ExamParticipantModel(models.Model):
 
 class ResultModel(models.Model):
     exam = models.ForeignKey(ExamModel, on_delete=models.CASCADE)
-    topic = models.ForeignKey(TopicModel, on_delete=models.CASCADE)
+    subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     number_of_correct_answer = models.FloatField(default=0)
     number_of_incorrect_answer = models.FloatField(default=0)

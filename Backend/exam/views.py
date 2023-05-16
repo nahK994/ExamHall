@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 from user.models import UserModel
 from .models import ResultModel
-from question.models import QuestionModel, TopicModel
+from question.models import QuestionModel, SubjectModel
 from utils.mixins import ModelManagerMixin
 from utils.constants import ExamEnrollmentStatus
 from .models import ExamModel, ExamParticipantModel
@@ -91,14 +91,14 @@ class EndExamViewset(viewsets.ModelViewSet):
         answer_sheet = request.data['answerSheet']
         exam = ExamModel.objects.get(id=exam_id)
 
-        topic_ids = []
+        subject_ids = []
         for q in exam.questions.all():
-            if q.topic.id not in topic_ids:
-                topic_ids.append(q.topic.id)
+            if q.subject.id not in subject_ids:
+                subject_ids.append(q.topic.id)
 
         topic_wise_result = {}
-        for topic_id in topic_ids:
-            topic_wise_result[topic_id] = UserDetailedResultInfo()
+        for subject_id in subject_ids:
+            topic_wise_result[subject_id] = UserDetailedResultInfo()
 
         number_for_correct_answer = exam.number_for_correct_answer
         number_for_incorrect_answer = exam.number_for_incorrect_answer
@@ -112,14 +112,14 @@ class EndExamViewset(viewsets.ModelViewSet):
                 topic_wise_result[topic_id].number_of_incorrect_answer += 1
                 topic_wise_result[topic_id].marks += number_for_incorrect_answer
 
-        for topic_id in topic_ids:
+        for subject_id in subject_ids:
             result_info = ResultModel(
                 exam=exam,
                 user=request.user,
-                topic=TopicModel.objects.get(id=topic_id),
-                number_of_correct_answer=topic_wise_result[topic_id].number_of_correct_answer,
-                number_of_incorrect_answer=topic_wise_result[topic_id].number_of_incorrect_answer,
-                marks=topic_wise_result[topic_id].marks
+                subject=SubjectModel.objects.get(id=subject_id),
+                number_of_correct_answer=topic_wise_result[subject_id].number_of_correct_answer,
+                number_of_incorrect_answer=topic_wise_result[subject_id].number_of_incorrect_answer,
+                marks=topic_wise_result[subject_id].marks
             )
             result_info.save()
 

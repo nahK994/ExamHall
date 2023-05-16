@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from datetime import datetime
-from question.models import TopicModel
+from question.models import SubjectModel
 from user.models import UserModel
-from .models import ExamModel, ExamParticipantModel, ResultModel
-from question.serializers import QuestionQuerySerializer, TopicSerializer
+from .models import ExamModel, ResultModel
+from question.serializers import QuestionQuerySerializer, SubjectSerializer
 
 
 class ExamListSerializer(serializers.ModelSerializer):
@@ -54,19 +54,19 @@ class ExamQuerySerializer(serializers.ModelSerializer):
             'questions': QuestionQuerySerializer(instance.questions, many=True).data,
             'date': instance.date,
             'duration': instance.duration,
-            'topics': []
+            'subjects': []
         }
 
-        topic_ids = []
+        subject_ids = []
         for q in instance.questions.all():
-            if q.topic.id not in topic_ids:
-                topic_ids.append(q.topic.id)
+            if q.subject.id not in subject_ids:
+                subject_ids.append(q.subject.id)
 
-        for topic in TopicModel.objects.filter(id__in=topic_ids):
-            data['topics'].append(
+        for subject in SubjectModel.objects.filter(id__in=subject_ids):
+            data['subjects'].append(
                 {
-                    'topicId': topic.id,
-                    'name': topic.name
+                    'subjectId': subject.id,
+                    'name': subject.name
                 }
             )
 
@@ -90,15 +90,15 @@ class EndExamSerializer(serializers.Serializer):
 class ResultSerializer(serializers.ModelSerializer):
     numberOfCorrectAnswer = serializers.FloatField(source='number_of_correct_answer')
     numberOfIncorrectAnswer = serializers.FloatField(source='number_of_incorrect_answer')
-    topic = TopicSerializer()
+    subject = SubjectSerializer()
 
     class Meta:
         model = ResultModel
-        fields = ['topic', 'numberOfCorrectAnswer', 'numberOfIncorrectAnswer', 'marks']
+        fields = ['subject', 'numberOfCorrectAnswer', 'numberOfIncorrectAnswer', 'marks']
 
     def to_representation(self, instance):
         return {
-            'topic': instance.topic.name,
+            'subject': instance.subject.name,
             'numberOfCorrectAnswer': instance.number_of_correct_answer,
             'numberOfIncorrectAnswer': instance.number_of_incorrect_answer,
             'marks': instance.marks
