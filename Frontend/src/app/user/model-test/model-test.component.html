@@ -1,5 +1,0 @@
-<page-container [returnUrl]="'home'">
-    <ng-container *ngFor="let exam of examList">
-        <button class="list-item" mat-raised-button (click)="goToExam(exam)">{{exam?.name}}</button>
-    </ng-container>
-</page-container>

@@ -1,8 +1,0 @@
-<page-container>
-    <button class="create-exam" mat-raised-button (click)="createExam()">
-        Create Exam
-    </button>
-    <ng-container *ngFor="let exam of examList">
-        <button class="list-item" mat-raised-button (click)="goToExamDetails(exam.examId)">{{exam?.name}}</button>
-    </ng-container>
-</page-container>
