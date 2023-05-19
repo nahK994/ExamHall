@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CreateExamService } from '../create-exam.service';
+import { AdminService } from '../admin.service';
+
 
 @Component({
   selector: 'app-create-topic',
@@ -12,7 +13,7 @@ export class CreateTopicComponent {
   topic: FormGroup;
   
   constructor(
-    private _createExamService: CreateExamService,
+    private _adminService: AdminService,
     private _fb: FormBuilder
   ) {
     this.topic = this._fb.group({
@@ -21,7 +22,7 @@ export class CreateTopicComponent {
   }
 
   async submit() {
-    await this._createExamService.createTopic(this.topic.value);
+    await this._adminService.createTopic(this.topic.value);
     this.topic.reset();
   }
 

@@ -1,8 +1,67 @@
 <page-container>
-    <button class="create-exam" mat-raised-button (click)="createExam()">
-        Create Exam
-    </button>
-    <ng-container *ngFor="let exam of examList">
-        <button class="list-item" mat-raised-button (click)="goToExamDetails(exam.examId)">{{exam?.name}}</button>
-    </ng-container>
+    <mat-tab-group class="admin-home">
+        <mat-tab label="Exam Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Exam Section</div>
+                        <div class="sub-title">Here you can see all exam information</div>
+                    </div>
+                    <div class="action">
+                        <button class="create-exam" mat-raised-button (click)="createExam()">
+                            Create Exam
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <ng-container *ngFor="let exam of examList">
+                        <div class="exam-item" (click)="goToExamDetails(exam.examId)">{{exam?.name}}</div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Subject Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Subject Section</div>
+                        <div class="sub-title">Here you can see all subject information</div>
+                    </div>
+                    <div class="action">
+                        <button class="create-exam" mat-raised-button (click)="createTopic()">
+                            Create Subject
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <ng-container *ngFor="let topic of allTopics">
+                        <div class="topic-item">
+                            <div class="text">{{topic?.name}}</div>
+                            <div class="action material-icons" (click)="deleteTopic(topic.subjectId)">
+                                delete
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Question Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Question Section</div>
+                        <div class="sub-title">Here you can see all question information</div>
+                    </div>
+                    <div class="action">
+                        <button class="create-exam" mat-raised-button (click)="createQuestion()">
+                            Create Question
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    Questions list
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </page-container>

@@ -29,7 +29,7 @@ export interface Question {
 }
 
 export interface Topic {
-  topicId: number,
+  subjectId: number,
   name: string,
   questions: Question[]
 }

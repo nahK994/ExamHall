@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Topic } from 'src/app/user/user.service';
-import { CreateExamService } from '../create-exam.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-create-question',
@@ -15,7 +14,7 @@ export class CreateQuestionComponent implements OnInit {
   allTopics: Topic[] = [];
   
   constructor(
-    private _createExamService: CreateExamService,
+    private _adminService: AdminService,
     private _fb: FormBuilder
   ) {
     this.question = this._fb.group({
@@ -33,7 +32,7 @@ export class CreateQuestionComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allTopics = await this._createExamService.getTopics();
+    this.allTopics = await this._adminService.getSubjects();
   }
 
   async submit() {
@@ -60,7 +59,7 @@ export class CreateQuestionComponent implements OnInit {
     }
   
     this.question.get('answer')?.setValue(answer);
-    await this._createExamService.createQuestion(this.question.value);
+    await this._adminService.createQuestion(this.question.value);
     this.question.reset();
   }
 

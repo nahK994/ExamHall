@@ -1,9 +1,5 @@
 <page-container [returnUrl]="'admin'">
     <div class="layout">
-        <div class="actions">
-            <button mat-raised-button (click)="createTopic()">Create Topic</button>
-            <button mat-raised-button (click)="createQuestion()">Create Question</button>
-        </div>
     
         <mat-card class="form">
             <button mat-raised-button (click)="createExam()">Create Exam</button>
@@ -31,7 +27,7 @@
                 <mat-form-field appearance="outline" *ngIf="allTopics.length">
                     <mat-label>Select question topic</mat-label>
                     <mat-select [formControl]="topic">
-                        <mat-option *ngFor="let val of allTopics" [value]="val?.topicId">{{val?.name}}</mat-option>
+                        <mat-option *ngFor="let val of allTopics" [value]="val?.subjectId">{{val?.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

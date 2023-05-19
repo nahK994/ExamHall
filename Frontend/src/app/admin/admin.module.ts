@@ -13,13 +13,22 @@ import { MatInputModule } from '@angular/material/input';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
 import { PageContainerModule } from '../shared/page-container/page-container.module';
 import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialog.module';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { QuestionSelectorModule } from '../shared/question-selector/question-selector.module';
+import { CreateExamComponent } from './create-exam/create-exam.component';
+import { CreateTopicComponent } from './create-topic/create-topic.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ExamDetailsComponent
+    ExamDetailsComponent,
+    CreateExamComponent,
+    CreateTopicComponent,
+    CreateQuestionComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +40,12 @@ import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialo
     MatCardModule,
     MatInputModule,
     PageContainerModule,
-    RankListDialogModule
+    RankListDialogModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    QuestionSelectorModule,
+    MatIconModule
   ],
   providers: [
     {

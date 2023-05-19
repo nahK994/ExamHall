@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Question, Topic } from 'src/app/user/user.service';
-import { CreateExamService } from './create-exam.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-create-exam',
@@ -19,10 +19,9 @@ export class CreateExamComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private _activateRoute: ActivatedRoute,
     private _router: Router,
-    private _createExamService: CreateExamService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _adminService: AdminService
   ) {
     this.form = this._fb.group({
       name: ['', [Validators.required]],
@@ -34,7 +33,7 @@ export class CreateExamComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allTopics = await this._createExamService.getTopics();
+    this.allTopics = await this._adminService.getSubjects();
     let allQuestions = []
     for(let topic of this.allTopics) {
       for(let question of topic.questions) {
@@ -52,18 +51,6 @@ export class CreateExamComponent implements OnInit {
       }
 
       this.questions = questions;
-    })
-  }
-
-  createTopic() {
-    this._router.navigate(['create-topic'], {
-      relativeTo: this._activateRoute
-    })
-  }
-
-  createQuestion() {
-    this._router.navigate(['create-question'], {
-      relativeTo: this._activateRoute
     })
   }
 
@@ -94,7 +81,7 @@ export class CreateExamComponent implements OnInit {
       this.form.get('numberForIncorrectAnswer')?.setValue(numberForIncorrectAnswer);
       this.form.get('numberOfSeats')?.setValue(numberOfSeats);
 
-      this._createExamService.createExam(this.form.value)
+      this._adminService.createExam(this.form.value)
       this.form.reset();
 
       this._router.navigate(['admin/home']);
