@@ -1,7 +1,7 @@
-from .settings import *
 from dotenv import load_dotenv
 load_dotenv(dotenv_path='../.env')
 import os
+from .settings import *
 
 
 DATABASES = {
