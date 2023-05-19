@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Question, Topic } from 'src/app/user/user.service';
+import { Question, Subject } from 'src/app/user/user.service';
 import { AdminService, ExamList } from '../admin.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AdminService, ExamList } from '../admin.service';
 export class HomeComponent {
 
   examList!: ExamList[];
-  allTopics: Topic[] = [];
+  allSubjects: Subject[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
 
@@ -22,10 +22,10 @@ export class HomeComponent {
 
   async ngOnInit(): Promise<void> {
     this.examList = await this._adminService.getExamList();
-    this.allTopics = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getSubjects();
     let allQuestions = []
-    for(let topic of this.allTopics) {
-      for(let question of topic.questions) {
+    for(let subject of this.allSubjects) {
+      for(let question of subject.questions) {
         allQuestions.push(question);
       }
     }
@@ -40,24 +40,24 @@ export class HomeComponent {
     this._router.navigate(['admin', 'create-exam']);
   }
 
-  createTopic() {
-    this._router.navigate(['admin', 'create-topic'])
+  createSubject() {
+    this._router.navigate(['admin', 'create-subject'])
   }
 
   createQuestion() {
     this._router.navigate(['admin', 'create-question'])
   }
 
-  async deleteTopic(topicId: number) {
-    await this._adminService.deleteTopic(topicId);
+  async deleteSubject(subjectId: number) {
+    await this._adminService.deleteSubject(subjectId);
     let subjects = [];
-    for(let i=0 ; i<this.allTopics.length ; i++) {
-      if(this.allTopics[i].subjectId == topicId)
+    for(let i=0 ; i<this.allSubjects.length ; i++) {
+      if(this.allSubjects[i].subjectId == subjectId)
         continue
       
-      subjects.push(this.allTopics[i])
+      subjects.push(this.allSubjects[i])
     }
-    this.allTopics = subjects;
+    this.allSubjects = subjects;
   }
 
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../app.service';
-import { Exam, Question, Topic } from '../user/user.service';
+import { Exam, Question, Subject } from '../user/user.service';
 
 export interface ExamList {
   examId: number,
@@ -15,7 +15,7 @@ export interface UserRank {
   totalMarks: number
 }
 
-export interface CreateTopicModel {
+export interface CreateSubjectModel {
   name: string
 }
 
@@ -51,8 +51,8 @@ export class AdminService {
   }
 
   async getSubjects() {
-    let topicURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin+topicURL_extention, this._appService.httpOptions));
+    let subjectURL_extention = '/subjects';
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }
@@ -64,16 +64,16 @@ export class AdminService {
     return response;
   }
 
-  async createTopic(topic: CreateTopicModel) {
-    let topicURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+topicURL_extention, topic, this._appService.httpOptions));
+  async createSubject(subject: CreateSubjectModel) {
+    let subjectURL_extention = '/subjects';
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+subjectURL_extention, subject, this._appService.httpOptions));
 
     return response;
   }
 
-  async deleteTopic(topicId: number) {
-    let topicURL_extention = '/subjects/'+topicId;
-    let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+topicURL_extention, this._appService.httpOptions));
+  async deleteSubject(subjectId: number) {
+    let subjectURL_extention = '/subjects/'+subjectId;
+    let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }

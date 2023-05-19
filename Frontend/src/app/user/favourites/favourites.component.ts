@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Question, Topic, UserService } from '../user.service';
+import { Question, Subject, UserService } from '../user.service';
 
 @Component({
   selector: 'app-favourites',
@@ -11,9 +11,9 @@ export class FavouritesComponent implements OnInit {
 
   questions: Question[] = [];
   userArchivedQuestions!: Question[];
-  allTopics: Topic[] = [];
+  allSubjects: Subject[] = [];
 
-  topic: FormControl = new FormControl('')
+  subject: FormControl = new FormControl('')
   userId!: number
 
   constructor(
@@ -21,24 +21,24 @@ export class FavouritesComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.allTopics = await this._userService.getUserFavourites();
+    this.allSubjects = await this._userService.getUserFavourites();
     let questions = []
-    for(let topic of this.allTopics) {
-      for(let question of topic.questions) {
+    for(let subject of this.allSubjects) {
+      for(let question of subject.questions) {
         questions.push(question);
       }
     }
     this.userArchivedQuestions = questions;
     this.questions = questions;
 
-    this.topic.valueChanges.subscribe(res => {
+    this.subject.valueChanges.subscribe(res => {
       if(res === '') {
         this.questions = this.userArchivedQuestions;
         return;
       }
       let questions: Question[] = [];
       for(let question of this.userArchivedQuestions) {
-        if(question.topic === res) {
+        if(question.subject === res) {
           questions.push(question);
         }
       }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateExamComponent } from './create-exam/create-exam.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
-import { CreateTopicComponent } from './create-topic/create-topic.component';
+import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { HomeComponent } from './home/home.component';
 
@@ -29,8 +29,8 @@ const routes: Routes = [
         component: CreateQuestionComponent
     },
     {
-        path: 'create-topic',
-        component: CreateTopicComponent
+        path: 'create-subject',
+        component: CreateSubjectComponent
     }
 ];
 

@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { QuestionSelectorModule } from '../shared/question-selector/question-selector.module';
 import { CreateExamComponent } from './create-exam/create-exam.component';
-import { CreateTopicComponent } from './create-topic/create-topic.component';
+import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 
 
@@ -27,7 +27,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
     HomeComponent,
     ExamDetailsComponent,
     CreateExamComponent,
-    CreateTopicComponent,
+    CreateSubjectComponent,
     CreateQuestionComponent
   ],
   imports: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Topic } from 'src/app/user/user.service';
+import { Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AdminService } from '../admin.service';
 export class CreateQuestionComponent implements OnInit {
 
   question: FormGroup;
-  allTopics: Topic[] = [];
+  allSubjects: Subject[] = [];
   
   constructor(
     private _adminService: AdminService,
@@ -20,7 +20,7 @@ export class CreateQuestionComponent implements OnInit {
     this.question = this._fb.group({
       questionText: ['', [Validators.required]],
       explaination: ['', [Validators.required]],
-      topic: [, [Validators.required]],
+      subject: [, [Validators.required]],
       answer: ['', [Validators.required]],
       option1: ['', [Validators.required]],
       option2: ['', [Validators.required]],
@@ -32,7 +32,7 @@ export class CreateQuestionComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allTopics = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getSubjects();
   }
 
   async submit() {

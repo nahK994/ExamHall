@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../app.service';
@@ -25,10 +25,10 @@ export interface Question {
   option6: string,
   answer: string,
   explaination: string,
-  topic: number
+  subject: number
 }
 
-export interface Topic {
+export interface Subject {
   subjectId: number,
   name: string,
   questions: Question[]
@@ -54,7 +54,7 @@ export interface Exam {
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
   questions: Question[],
-  topics?: Topic[]
+  subjects?: Subject[]
 }
 
 export interface Result {
@@ -69,7 +69,7 @@ export interface Result {
     numberOfCorrectAnswer: number,
     numberOfIncorrectAnswer: number,
     marks: number,
-    topic: Topic
+    subject: Subject
   }[],
   rankList: {
     name: string,
@@ -103,14 +103,14 @@ export class UserService {
 
   async getUserFavourites() {
     let archiveQuestionURL_extention = '/favourite-questions';
-    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
-  async getTopics() {
-    let topicURL_extention = '/topics';
-    let response = await lastValueFrom(this.http.get<Topic[]>(this._appService.doamin + topicURL_extention, this._appService.httpOptions));
+  async getSubjects() {
+    let subjectURL_extention = '/subjects';
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin + subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }

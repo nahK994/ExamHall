@@ -4,11 +4,11 @@ import { AdminService } from '../admin.service';
 
 
 @Component({
-  selector: 'app-create-topic',
-  templateUrl: './create-topic.component.html',
-  styleUrls: ['./create-topic.component.scss']
+  selector: 'app-create-subject',
+  templateUrl: './create-subject.component.html',
+  styleUrls: ['./create-subject.component.scss']
 })
-export class CreateTopicComponent {
+export class CreateSubjectComponent {
 
   topic: FormGroup;
   
@@ -22,7 +22,7 @@ export class CreateTopicComponent {
   }
 
   async submit() {
-    await this._adminService.createTopic(this.topic.value);
+    await this._adminService.createSubject(this.topic.value);
     this.topic.reset();
   }
 

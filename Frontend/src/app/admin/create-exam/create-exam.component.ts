@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Question, Topic } from 'src/app/user/user.service';
+import { Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { AdminService } from '../admin.service';
 })
 export class CreateExamComponent implements OnInit {
 
-  allTopics: Topic[] = [];
+  allSubjects: Subject[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
-  topic: FormControl = new FormControl('');
+  subject: FormControl = new FormControl('');
 
   form: FormGroup;
 
@@ -33,19 +33,19 @@ export class CreateExamComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allTopics = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getSubjects();
     let allQuestions = []
-    for(let topic of this.allTopics) {
-      for(let question of topic.questions) {
+    for(let subject of this.allSubjects) {
+      for(let question of subject.questions) {
         allQuestions.push(question);
       }
     }
     this.allQuestions = allQuestions;
 
-    this.topic.valueChanges.subscribe(res => {
+    this.subject.valueChanges.subscribe(res => {
       let questions: Question[] = [];
       for (let question of this.allQuestions) {
-        if (question.topic === res) {
+        if (question.subject === res) {
           questions.push(question);
         }
       }

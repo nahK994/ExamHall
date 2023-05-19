@@ -42,7 +42,6 @@
 
         <mat-form-field appearance="outline">
             <mat-label>Answer</mat-label>
-            <!-- <input matInput placeholder="Answer" formControlName="answer" required> -->
             <mat-select formControlName="answer">
                 <mat-option value="1">Option 1</mat-option>
                 <mat-option value="2">Option 2</mat-option>
@@ -63,9 +62,9 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Topic</mat-label>
-            <mat-select formControlName="topic">
-                <mat-option *ngFor="let val of allTopics" [value]="val?.subjectId">{{val?.name}}</mat-option>
+            <mat-label>Subject</mat-label>
+            <mat-select formControlName="subject">
+                <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
             </mat-select>
         </mat-form-field>
     </mat-card>
