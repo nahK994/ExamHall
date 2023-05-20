@@ -1,7 +1,7 @@
+from .settings import *
 from dotenv import load_dotenv
 load_dotenv(dotenv_path='../.env')
 import os
-from .settings import *
 
 
 DATABASES = {
@@ -14,3 +14,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+]
