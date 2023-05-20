@@ -95,7 +95,7 @@ export class UserService {
   }
 
   async createUser(userInfo: UserInfo) {
-    let updateURL_extention = '/users';
+    let updateURL_extention = '/registration';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin + updateURL_extention, userInfo, this._appService.httpOptions));
 
     return response;
