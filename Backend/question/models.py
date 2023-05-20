@@ -9,7 +9,7 @@ class SubjectModel(models.Model):
         return f"{self.name} ({self.id})"
 
     class Meta:
-        db_table = 'topics'
+        db_table = 'subjects'
 
 
 class QuestionModel(models.Model):
