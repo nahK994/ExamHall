@@ -72,6 +72,34 @@
                     color: red;
                 }
             }
+
+            .questions-item{
+                display: flex;
+                flex-direction: column;
+                row-gap: 40px;
+                width: 100%;
+
+
+                .subject-select{
+                    display: flex;
+                    justify-content: center;
+                }
+            
+                .list{
+                    display: flex;
+                    flex-wrap: wrap;
+                    column-gap: 16px;
+                    row-gap: 16px;
+                    width: 100%;
+
+                    .card{
+                        width: 500px;
+                        .card-content{
+                            display: flex;
+                        }
+                    }
+                }
+            }
         }
     }
 }

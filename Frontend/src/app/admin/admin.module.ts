@@ -20,6 +20,7 @@ import { QuestionSelectorModule } from '../shared/question-selector/question-sel
 import { CreateExamComponent } from './create-exam/create-exam.component';
 import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
+import { QuestionModule } from '../shared/question/question.module';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
     MatFormFieldModule,
     MatSelectModule,
     QuestionSelectorModule,
-    MatIconModule
+    MatIconModule,
+    QuestionModule
   ],
   providers: [
     {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Question, Subject } from 'src/app/user/user.service';
 import { AdminService, ExamList } from '../admin.service';
@@ -14,6 +15,7 @@ export class HomeComponent {
   allSubjects: Subject[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
+  subject: FormControl = new FormControl('')
 
   constructor(
     private _router: Router,
@@ -30,6 +32,22 @@ export class HomeComponent {
       }
     }
     this.allQuestions = allQuestions;
+    this.questions = allQuestions;
+
+    this.subject.valueChanges.subscribe(res => {
+      if(res === '') {
+        this.questions = this.allQuestions;
+        return;
+      }
+      let questions: Question[] = [];
+      for(let question of this.allQuestions) {
+        if(question.subject === res) {
+          questions.push(question);
+        }
+      }
+
+      this.questions = questions;
+    })
   }
 
   goToExamDetails(examId: number) {
@@ -58,6 +76,15 @@ export class HomeComponent {
       subjects.push(this.allSubjects[i])
     }
     this.allSubjects = subjects;
+  }
+
+  async deleteQuestion(question: Question) {
+    await this._adminService.deleteQuestion(question.questionId);
+
+    const index = this.questions.indexOf(question);
+    if(index > -1) {
+        this.questions.splice(index, 1);
+    }
   }
 
 }

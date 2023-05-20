@@ -85,6 +85,13 @@ export class AdminService {
     return response;
   }
 
+  async deleteQuestion(questionId: number) {
+    let questionURL_extention = '/questions/'+questionId;
+    let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+questionURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
   async createExam(exam: Exam) {
     let examURL_extention = '/exams';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+examURL_extention, exam, this._appService.httpOptions));
