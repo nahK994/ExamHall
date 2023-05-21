@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Exam, Question } from 'src/app/user/user.service';
 
 export interface ResultItem {
@@ -11,12 +12,14 @@ export interface ResultItem {
   templateUrl: './exam-paper.component.html',
   styleUrls: ['./exam-paper.component.scss']
 })
-export class ExamPaperComponent implements OnInit {
+export class ExamPaperComponent {
 
   answers: ResultItem[] = [];
   questions: Question[] = [];
+  timeLeft: number = 0;
 
-  @Output() submitAnswer = new EventEmitter();
+  @Output() startExamEvent = new EventEmitter();
+  @Output() submitAnswerEvent = new EventEmitter();
 
   exam!: Exam;
   @Input('exam') set setExam(exam: Exam) {
@@ -25,6 +28,7 @@ export class ExamPaperComponent implements OnInit {
     }
 
     this.exam = exam;
+    this.timeLeft = this.timeStringToSeconds(this.exam.duration);
     this.questions = this.exam?.questions;
 
     for (let question of this.questions) {
@@ -37,15 +41,15 @@ export class ExamPaperComponent implements OnInit {
     }
   }
 
-  canSubmit !: boolean;
+  canSubmit:boolean = false;
   @Input('canSubmit') set setCanSubmit(canSubmit: boolean) {
     this.canSubmit = canSubmit;
   }
+  examStarted: boolean = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(
+    private _router: Router
+  ) { }
 
   updateAnswerSheet(answerItem: ResultItem) {
     for (let ans of this.answers) {
@@ -56,8 +60,32 @@ export class ExamPaperComponent implements OnInit {
   }
 
   submit() {
-    this.submitAnswer.emit({
+    this.submitAnswerEvent.emit({
       answerSheet: this.answers
     })
+    this._router.navigate(['user']);
+  }
+
+  timeStringToSeconds(time: string) {
+    var a = time.split(':');
+    var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
+    return seconds
+  }
+
+  startExam() {
+    this.examStarted = true;
+    setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      }
+    },1000);
+    this.startExamEvent.emit();
+  }
+  
+  counterToTimeConvert(counter: number) {
+    let hour = Math.floor(counter/3600);
+    let minute = Math.floor((counter%3600)/60);
+    let second = (counter%3600)%60
+    return hour+" : "+minute+" : "+second;
   }
 }

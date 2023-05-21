@@ -42,7 +42,9 @@ export interface Exam {
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
   questions: Question[],
-  subjects?: Subject[]
+  subjects?: Subject[],
+  date: string;
+  duration: string;
 }
 
 export interface Result {
@@ -116,10 +118,22 @@ export class UserService {
     return response;
   }
 
-  async createResult(answerSheet: AnswerSheet) {
-    let resultURL_extention = '/result/exams';
-    let response = await lastValueFrom(this.http.post<AnswerSheet>(this._appService.doamin+resultURL_extention, answerSheet, this._appService.httpOptions));
+  async endExam(examId: number, answerSheet: AnswerSheet) {
+    let exam_extention = '/exam/end';
+    let examInfo = answerSheet;
+    examInfo['examId'] = examId;
+    let response = await lastValueFrom(this.http.post<AnswerSheet>(this._appService.doamin+exam_extention, examInfo, this._appService.httpOptions));
 
     return response;
   }
+
+  async startExam(examId: number) {
+    let exam_extention = '/exam/start';
+    let examInfo = {
+      "examId": examId
+    }
+    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin + exam_extention, examInfo, this._appService.httpOptions));
+
+    return response;
+  }  
 }

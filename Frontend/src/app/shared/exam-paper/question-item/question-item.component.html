@@ -9,27 +9,27 @@
         </ng-template>
     </div>
     <mat-radio-group [formControl]="answer" class="radio-style">
-        <mat-radio-button class="option-text" [value]="question?.option1" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option1" [disabled]="!examStarted">
             {{question?.option1}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option2" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option2" [disabled]="!examStarted">
             {{question?.option2}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option3" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option3" [disabled]="!examStarted">
             {{question?.option3}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option4" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option4" [disabled]="!examStarted">
             {{question?.option4}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option5" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option5" [disabled]="!examStarted">
             {{question?.option5}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option6" [disabled]="!canSubmit">
+        <mat-radio-button class="option-text" [value]="question?.option6" [disabled]="!examStarted">
             {{question?.option6}}
         </mat-radio-button>
     </mat-radio-group>

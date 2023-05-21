@@ -1,7 +1,18 @@
 <div class="exam-paper">
-    <ng-container *ngFor="let question of exam?.questions">
-        <question-item [canSubmit]="canSubmit" (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
+    <ng-container *ngIf="!examStarted; else examStartedTemp">
+        <button mat-raised-button (click)="startExam()">Start exam</button>
+        <ng-container *ngFor="let question of exam?.questions">
+            <question-item [examStarted]="examStarted" (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
+        </ng-container>
     </ng-container>
 
-    <button *ngIf="canSubmit" mat-raised-button (click)="submit()">submit</button>
+    <ng-template #examStartedTemp>
+        <div class="timer" *ngIf="timeLeft">{{counterToTimeConvert(timeLeft)}}</div>
+
+        <ng-container *ngFor="let question of exam?.questions">
+            <question-item [examStarted]="examStarted" (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
+        </ng-container>
+    
+        <button *ngIf="canSubmit && timeLeft" mat-raised-button (click)="submit()">Submit</button>
+    </ng-template>
 </div>

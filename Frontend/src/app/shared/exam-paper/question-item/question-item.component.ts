@@ -22,9 +22,9 @@ export class QuestionItemComponent implements OnInit {
     this.question = question;
   }
 
-  canSubmit !: boolean;
-  @Input('canSubmit') set setCanSubmit(canSubmit: boolean) {
-    this.canSubmit = canSubmit;
+  examStarted !: boolean;
+  @Input('examStarted') set setExamStarted(examStarted: boolean) {
+    this.examStarted = examStarted;
   }
 
   answer: FormControl = new FormControl('');

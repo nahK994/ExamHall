@@ -62,10 +62,10 @@ export class AppService {
       }
     
     async createUser(userInfo: UserInfo) {
-    let updateURL_extention = '/registration';
-    let response = await lastValueFrom(this.http.post<number>(this.doamin + updateURL_extention, userInfo, this.httpOptions));
+        let updateURL_extention = '/registration';
+        let response = await lastValueFrom(this.http.post<number>(this.doamin + updateURL_extention, userInfo, this.httpOptions));
 
-    return response;
+        return response;
     }
 
     logout() {

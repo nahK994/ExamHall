@@ -24,6 +24,6 @@
         </div>
     </ng-container>
     <ng-container>
-        <exam-paper (submitAnswer)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></exam-paper>
+        <exam-paper (startExamEvent)="startExam()" (submitAnswerEvent)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></exam-paper>
     </ng-container>
 </page-container>

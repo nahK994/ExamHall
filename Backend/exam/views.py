@@ -38,8 +38,10 @@ class StartExamViewset(viewsets.ModelViewSet):
         exam = filtered_exam[0]
 
         current_time = datetime.now()
-        if current_time.date() > exam.date:
+        if current_time.date() != exam.date:
             return Response("can not enroll", status=status.HTTP_400_BAD_REQUEST)
+        if ExamParticipantModel.objects.filter(user=request.user, exam=exam).exists():
+            return Response("exam is completed", status=status.HTTP_400_BAD_REQUEST)
 
         ExamParticipantModel.objects.create(
             user=request.user,
@@ -75,15 +77,18 @@ class EndExamViewset(viewsets.ModelViewSet):
         if exam_participant_info.status == ExamEnrollmentStatus.completed:
             return Response("exam is completed", status=status.HTTP_400_BAD_REQUEST)
 
-        current_time = datetime.now()
-        time_duration = timedelta(hours=exam.duration.hour, minutes=exam.duration.minute)
-        if exam_participant_info.exam_start_time + time_duration < utc.localize(current_time):
+        exam_end_time = datetime.now()
+        buffer_time = 2
+        time_duration = timedelta(hours=exam.duration.hour, minutes=exam.duration.minute, seconds=(exam.duration.second+buffer_time))
+        exam_start_time = exam_participant_info.exam_start_time
+        hour = exam_start_time.hour
+        minute = exam_start_time.minute
+        second = exam_start_time.second
+        year = exam_start_time.year
+        month = exam_start_time.month
+        day = exam_start_time.day
+        if datetime(hour=hour, minute=minute, second=second, year=year, month=month, day=day) + time_duration < exam_end_time:
             return Response("cannot submit exam", status=status.HTTP_400_BAD_REQUEST)
-
-        filtered_exam_participant_info.update(
-            exam_end_time=utc.localize(current_time),
-            status=ExamEnrollmentStatus.completed
-        )
 
         if ResultModel.objects.filter(user=request.user, exam__id=exam_id).exists():
             return Response("cannot take part in same exam", status=status.HTTP_400_BAD_REQUEST)
@@ -94,7 +99,7 @@ class EndExamViewset(viewsets.ModelViewSet):
         subject_ids = []
         for q in exam.questions.all():
             if q.subject.id not in subject_ids:
-                subject_ids.append(q.topic.id)
+                subject_ids.append(q.subject.id)
 
         topic_wise_result = {}
         for subject_id in subject_ids:
@@ -104,13 +109,13 @@ class EndExamViewset(viewsets.ModelViewSet):
         number_for_incorrect_answer = exam.number_for_incorrect_answer
         for userAnswer in answer_sheet:
             question = QuestionModel.objects.get(id=userAnswer['questionId'])
-            topic_id = question.topic.id
+            subject_id = question.subject.id
             if question.answer == userAnswer['answer']:
-                topic_wise_result[topic_id].number_of_correct_answer += 1
-                topic_wise_result[topic_id].marks += number_for_correct_answer
+                topic_wise_result[subject_id].number_of_correct_answer += 1
+                topic_wise_result[subject_id].marks += number_for_correct_answer
             else:
-                topic_wise_result[topic_id].number_of_incorrect_answer += 1
-                topic_wise_result[topic_id].marks += number_for_incorrect_answer
+                topic_wise_result[subject_id].number_of_incorrect_answer += 1
+                topic_wise_result[subject_id].marks += number_for_incorrect_answer
 
         for subject_id in subject_ids:
             result_info = ResultModel(
@@ -123,7 +128,12 @@ class EndExamViewset(viewsets.ModelViewSet):
             )
             result_info.save()
 
-        return Response("exam ended", status=status.HTTP_200_OK)
+        filtered_exam_participant_info.update(
+            exam_end_time=exam_end_time,
+            status=ExamEnrollmentStatus.completed
+        )
+
+        return Response("exam ended", status=status.HTTP_201_CREATED)
 
 
 class ResultViewset(viewsets.ViewSet):

@@ -38,7 +38,7 @@ export class ModelTestDetailsComponent implements OnInit {
 
   async submitAnswer(answerSheet: AnswerSheet) {
     answerSheet.examId = this.examId;
-    await this._userService.createResult(answerSheet);
+    await this._userService.endExam(this.examId, answerSheet);
     this._router.navigate(['model-tests']);
   }
 
@@ -46,6 +46,10 @@ export class ModelTestDetailsComponent implements OnInit {
     this._dialog.open(RankListDialogComponent, {
       data: this.result.rankList
     })
+  }
+
+  async startExam() {
+    await this._userService.startExam(this.examId);
   }
 
 }
