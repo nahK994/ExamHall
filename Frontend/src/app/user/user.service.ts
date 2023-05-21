@@ -3,12 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../app.service';
 
-export interface LoginInfo {
-  email: string,
-  password: string;
-}
-
-interface UserInfo {
+export interface UserInfo {
   name: string,
   email: string,
   password: string
@@ -37,14 +32,6 @@ export interface Subject {
 export interface ExamListItem {
   examId: number,
   name: string
-}
-
-export interface UserLoginInfo 
-{
-  isAdmin: boolean,
-  refresh: string,
-  access: string,
-  userId: number
 }
 
 export interface Exam {
@@ -87,19 +74,6 @@ export class UserService {
     private http: HttpClient,
     private _appService: AppService
   ) { }
-
-  async loginUser(loginInfo: LoginInfo) {
-    let loginURL_extention = '/login';
-    let response: UserLoginInfo = await lastValueFrom(this.http.post<UserLoginInfo>(this._appService.doamin + loginURL_extention, loginInfo, this._appService.httpOptions));
-    return response;
-  }
-
-  async createUser(userInfo: UserInfo) {
-    let updateURL_extention = '/registration';
-    let response = await lastValueFrom(this.http.post<number>(this._appService.doamin + updateURL_extention, userInfo, this._appService.httpOptions));
-
-    return response;
-  }
 
   async getUserFavourites() {
     let archiveQuestionURL_extention = '/favourite-questions';

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,7 +15,7 @@ export class RegistrationComponent {
 
   constructor(
     private _fb: FormBuilder,
-    private _userService: UserService,
+    private _appService: AppService,
     private _router: Router
   ) {
     this.registrationForm = this._fb.group({
@@ -26,7 +26,7 @@ export class RegistrationComponent {
   }
 
   async createUser() {
-    await this._userService.createUser(this.registrationForm.value);
+    await this._appService.createUser(this.registrationForm.value);
     this._router.navigate(['login']);
   }
 

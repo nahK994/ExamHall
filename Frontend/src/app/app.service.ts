@@ -3,6 +3,20 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserInfo } from './user/user.service';
+
+interface LoginInfo {
+    email: string,
+    password: string;
+}
+
+export interface UserLoginInfo 
+{
+  isAdmin: boolean,
+  refresh: string,
+  access: string,
+  userId: number
+}
 
 @Injectable({
     providedIn: 'root'
@@ -39,6 +53,19 @@ export class AppService {
     removeAssets() {
         sessionStorage.removeItem(this.refreshToken);
         sessionStorage.removeItem(this.accessToken);
+    }
+
+    async loginUser(loginInfo: LoginInfo) {
+        let loginURL_extention = '/login';
+        let response: UserLoginInfo = await lastValueFrom(this.http.post<UserLoginInfo>(this.doamin + loginURL_extention, loginInfo, this.httpOptions));
+        return response;
+      }
+    
+    async createUser(userInfo: UserInfo) {
+    let updateURL_extention = '/registration';
+    let response = await lastValueFrom(this.http.post<number>(this.doamin + updateURL_extention, userInfo, this.httpOptions));
+
+    return response;
     }
 
     logout() {

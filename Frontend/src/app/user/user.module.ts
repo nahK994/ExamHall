@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,8 +20,6 @@ import { QuestionModule } from '../shared/question/question.module';
 
 @NgModule({
   declarations: [
-    LoginComponent,
-    RegistrationComponent,
     HomeComponent,
     FavouritesComponent
   ],

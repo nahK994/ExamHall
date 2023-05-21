@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AppService } from 'src/app/app.service';
-import { UserLoginInfo, UserService } from '../user.service';
+import { AppService, UserLoginInfo } from 'src/app/app.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +15,6 @@ export class LoginComponent {
 
   constructor(
     private _fb: FormBuilder,
-    private _userService: UserService,
     private _router: Router,
     private _appService: AppService
   ) {
@@ -27,7 +25,7 @@ export class LoginComponent {
   }
 
   async login() {
-    let userInfo: UserLoginInfo = await this._userService.loginUser(this.loginForm.value);
+    let userInfo: UserLoginInfo = await this._appService.loginUser(this.loginForm.value);
     this._appService.setAssets(userInfo.refresh, userInfo.access);
 
     if(userInfo.isAdmin) {
