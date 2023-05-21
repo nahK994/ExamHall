@@ -21,6 +21,8 @@ import { CreateExamComponent } from './create-exam/create-exam.component';
 import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { QuestionModule } from '../shared/question/question.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { QuestionModule } from '../shared/question/question.module';
     MatSelectModule,
     QuestionSelectorModule,
     MatIconModule,
-    QuestionModule
+    QuestionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {
@@ -55,7 +59,8 @@ import { QuestionModule } from '../shared/question/question.module';
       useClass: AccessTokenInterceptor,
       multi: true
     },
-    AdminService
+    AdminService,
+    MatDatepickerModule
   ]
 })
 export class AdminModule { }

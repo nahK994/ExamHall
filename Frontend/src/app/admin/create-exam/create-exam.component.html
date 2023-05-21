@@ -30,6 +30,23 @@
                         <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field color="accent">
+                    <mat-label>Exam date</mat-label>
+                    <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div style="display: flex; justify-content: space-between;">
+                    <mat-form-field appearance="outline" style="width:45%;">
+                        <mat-label>Hour</mat-label>
+                        <input matInput placeholder="Hour" [formControl]="hour" required>
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="outline" style="width:45%;">
+                        <mat-label>Minute</mat-label>
+                        <input matInput placeholder="Minute" [formControl]="minute" required>
+                    </mat-form-field>
+                </div>
             </div>
     
             <ng-container *ngFor="let question of questions">

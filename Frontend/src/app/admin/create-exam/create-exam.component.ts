@@ -15,6 +15,8 @@ export class CreateExamComponent implements OnInit {
   questions: Question[] = [];
   allQuestions: Question[] = [];
   subject: FormControl = new FormControl('');
+  hour: FormControl = new FormControl('');
+  minute: FormControl = new FormControl('');
 
   form: FormGroup;
 
@@ -28,7 +30,9 @@ export class CreateExamComponent implements OnInit {
       numberForCorrectAnswer: [, [Validators.required]],
       numberForIncorrectAnswer: [, [Validators.required]],
       numberOfSeats: [, [Validators.required]],
-      questions: [[]]
+      questions: [[]],
+      date: [],
+      duration: []
     })
   }
 
@@ -73,6 +77,13 @@ export class CreateExamComponent implements OnInit {
 
   createExam() {
     try {
+      let dd = new Date(this.form.value.date);
+      let year = dd.getFullYear();
+      let month = dd.getMonth()+1;
+      let day = dd.getDate();
+      this.form.get('date')?.setValue(year+'-'+month+'-'+day);
+      this.form.get('duration')?.setValue(this.hour.value+":"+this.minute.value);
+
       let numberForCorrectAnswer = Number(this.form.get('numberForCorrectAnswer')?.value);
       let numberForIncorrectAnswer = Number(this.form.get('numberForIncorrectAnswer')?.value);
       let numberOfSeats = Number(this.form.get('numberOfSeats')?.value);
@@ -84,7 +95,7 @@ export class CreateExamComponent implements OnInit {
       this._adminService.createExam(this.form.value)
       this.form.reset();
 
-      this._router.navigate(['admin/home']);
+      this._router.navigate(['admin']);
     }
     catch (e) {
       console.log(e);
