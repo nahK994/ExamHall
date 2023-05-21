@@ -10,18 +10,21 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FavouritesComponent } from './favourites/favourites.component';
 import { UserService } from './user.service';
 import { AccessTokenInterceptor } from '../interceptor/token.interceptor';
 import { PageContainerModule } from '../shared/page-container/page-container.module';
 import { QuestionModule } from '../shared/question/question.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ExamPaperModule } from '../shared/exam-paper/exam-paper.module';
+import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialog.module';
+import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    FavouritesComponent
+    ModelTestDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,10 @@ import { QuestionModule } from '../shared/question/question.module';
     MatSelectModule,
     MatFormFieldModule,
     QuestionModule,
-    PageContainerModule
+    PageContainerModule,
+    MatTabsModule,
+    ExamPaperModule,
+    RankListDialogModule
   ],
   providers: [
     {

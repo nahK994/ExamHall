@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FavouritesComponent } from './favourites/favourites.component';
 import { HomeComponent } from './home/home.component';
+import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
 
 const routes: Routes = [
     {
@@ -9,12 +9,8 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'model-tests',
-        loadChildren: () => import('./model-test/model-test.module').then(m=>m.ModelTestModule)
-    },
-    {
-        path: 'favourites',
-        component: FavouritesComponent
+        path: 'exam/:examId',
+        component: ModelTestDetailsComponent
     }
 ];
 

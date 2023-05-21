@@ -1,10 +1,55 @@
 <page-container>
-    <button class="button" mat-raised-button (click)="goToFavourite()">
-        <mat-icon class="icon">workspace_premium</mat-icon>
-        <div class="text">Favourite Queations</div>
-    </button>
-    <button class="button" style="margin-top: 20px;" mat-raised-button (click)="goModelTests()">
-        <mat-icon class="icon">assignment</mat-icon>
-        <div class="text">Model Tests</div>
-    </button>
+    <mat-tab-group class="user-home">
+        <mat-tab label="Exam Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Exam Section</div>
+                        <div class="sub-title">Here you can see all exam information</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <ng-container *ngFor="let exam of examList">
+                        <div class="exam-item" (click)="goToExam(exam)">{{exam?.name}}</div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Question Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Archived question section</div>
+                        <div class="sub-title">Here you can see all archived question information</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="questions-item">
+                        <div class="subject-select">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Subject</mat-label>
+                                <mat-select [formControl]="subject">
+                                    <mat-option [value]="''">All</mat-option>
+                                    <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    
+                        <div class="list">
+                            <ng-container *ngFor="let question of questions">
+                                    <mat-card class="card">
+                                        <div class="card-content">
+                                            <question [question]="question"></question>
+                                            <button mat-icon-button (click)="deleteFromArchive(question)">
+                                                <mat-icon style="color: #855646;">delete</mat-icon>
+                                            </button>
+                                        </div>
+                                    </mat-card>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </page-container>

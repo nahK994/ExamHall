@@ -32,7 +32,7 @@ export class LoginComponent {
       this._router.navigate(['admin']);
     }
     else {
-      this._router.navigate(['home']);
+      this._router.navigate(['user']);
     }
   }
 

@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResultItem } from 'src/app/shared/exam-paper/exam-paper.component';
 import { RankListDialogComponent } from 'src/app/shared/rank-list-dialog/rank-list-dialog.component';
-import { Exam, Result } from '../../user.service';
-import { ModelTestService } from '../model-test.service';
+import { Exam, Result, UserService } from '../user.service';
+
 
 export interface AnswerSheet {
   answerSheet: ResultItem[],
@@ -25,20 +25,20 @@ export class ModelTestDetailsComponent implements OnInit {
 
   constructor(
     private _activateRoute: ActivatedRoute,
-    private _modelTestService: ModelTestService,
+    private _userService: UserService,
     private _dialog: MatDialog,
     private _router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.examId = Number(this._activateRoute.snapshot.params['examId']);
-    this.result = await this._modelTestService.getResult(this.examId);
-    this.exam = await this._modelTestService.getExam(this.examId);
+    this.result = await this._userService.getResult(this.examId);
+    this.exam = await this._userService.getExam(this.examId);
   }
 
   async submitAnswer(answerSheet: AnswerSheet) {
     answerSheet.examId = this.examId;
-    await this._modelTestService.createResult(answerSheet);
+    await this._userService.createResult(answerSheet);
     this._router.navigate(['model-tests']);
   }
 
