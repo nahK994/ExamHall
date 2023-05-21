@@ -1,0 +1,68 @@
+[
+    {
+        "model": "user.usermodel",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$oCsOZkyaYM31Mi5mUGux17$bO1wLkEXmEJ52WEeG8LaRdFKkCDMG70zw31OimnhlRw=",
+            "last_login": null,
+            "name": "Shomi Khan",
+            "email": "nkskl6@gmail.com",
+            "is_admin": true
+        }
+    },
+    {
+        "model": "user.usermodel",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$KkgQ7I2d9BnhSHzOABUoEs$zKuJsefcAr6uPj9Oxv7auoUzfSvZgrgNgnj3xW0/4uo=",
+            "last_login": null,
+            "name": "Sniper",
+            "email": "sniper@gmail.com",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "user.usermodel",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$FYoxsshaxut9HN6MsA5FDI$et5xQJeq7bViDgWYHotvNe+NE+zK1FZZBn8zr7GPjNo=",
+            "last_login": null,
+            "name": "batman",
+            "email": "batman@gmail.com",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "user.usermodel",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$DjnYR0tl0ad2wiv0GR74Rv$GP8RuZDPGTChkMRh6Q9qIscDahvf9toYstQ54WT5Rx4=",
+            "last_login": null,
+            "name": "haha",
+            "email": "haha@gmail.com",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "user.usermodel",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$KHldGINRTLYHGnnDBKeqzp$rd7DmWynk+GqtJW/N0gdezbgFk+JDC1Gz9ybN7ua6Eo=",
+            "last_login": null,
+            "name": "Youtube",
+            "email": "youtube@gmail.com",
+            "is_admin": false
+        }
+    },
+    {
+        "model": "user.usermodel",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$yGismqYLOWoyl3AnxH4fSw$yPxiTL0qacEmBmgfX8f0MWcArOb9Elu5nzgbCkJyjg0=",
+            "last_login": null,
+            "name": "hihi",
+            "email": "hihi@gmail.com",
+            "is_admin": false
+        }
+    }
+]
