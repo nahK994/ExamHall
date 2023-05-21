@@ -6,7 +6,8 @@ import { RegistrationComponent } from './registration/registration.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./user/user.module').then(m=>m.UserModule)
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'admin',
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
       path: 'registration',
       component: RegistrationComponent
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./user/user.module').then(m=>m.UserModule)
   }
 ];
 
