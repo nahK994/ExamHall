@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { ExamList } from '../admin/admin.service';
 import { AppService } from '../app.service';
 import { AnswerSheet } from './model-test-details/model-test-details.component';
 
@@ -28,11 +29,6 @@ export interface Subject {
   subjectId: number,
   name: string,
   questions: Question[]
-}
-
-export interface ExamListItem {
-  examId: number,
-  name: string
 }
 
 export interface Exam {
@@ -100,7 +96,7 @@ export class UserService {
 
   async getExamList() {
     let examURL_extention = '/exams';
-    let response = await lastValueFrom(this.http.get<ExamListItem[]>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<ExamList[]>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
 
     return response;
   }

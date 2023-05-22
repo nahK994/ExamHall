@@ -10,7 +10,11 @@
                 </div>
                 <div class="content">
                     <ng-container *ngFor="let exam of examList">
-                        <div class="exam-item" (click)="goToExam(exam)">{{exam?.name}}</div>
+                        <div class="exam-item" (click)="goToExam(exam)">
+                            <div class="name">{{exam?.name}}</div>
+                            <div class="date">Date: {{exam?.date}}</div>
+                            <div class="duration">Duration: {{exam?.duration}}</div>
+                        </div>
                     </ng-container>
                 </div>
             </div>
@@ -37,14 +41,14 @@
                     
                         <div class="list">
                             <ng-container *ngFor="let question of questions">
-                                    <mat-card class="card">
+                                    <div class="card">
                                         <div class="card-content">
                                             <question [question]="question"></question>
                                             <button mat-icon-button (click)="deleteFromArchive(question)">
                                                 <mat-icon style="color: #855646;">delete</mat-icon>
                                             </button>
                                         </div>
-                                    </mat-card>
+                                    </div>
                             </ng-container>
                         </div>
                     </div>

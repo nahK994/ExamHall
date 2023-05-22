@@ -6,7 +6,9 @@ import { Exam, Question, Subject } from '../user/user.service';
 
 export interface ExamList {
   examId: number,
-  name: string
+  name: string,
+  duration: string,
+  date: string
 }
 
 export interface UserRank {

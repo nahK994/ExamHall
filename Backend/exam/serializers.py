@@ -11,7 +11,7 @@ class ExamListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExamModel
-        fields = ['examId', 'name']
+        fields = ['examId', 'name', 'date', 'duration']
 
 
 class ExamSerializer(serializers.ModelSerializer):

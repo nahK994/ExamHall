@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExamListItem, Question, Subject, UserService } from '../user.service';
+import { ExamList } from 'src/app/admin/admin.service';
+import { Question, Subject, UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { ExamListItem, Question, Subject, UserService } from '../user.service';
 })
 export class HomeComponent implements OnInit {
 
-  examList: ExamListItem[] = [];
+  examList: ExamList[] = [];
   questions: Question[] = [];
   userArchivedQuestions!: Question[];
   allSubjects: Subject[] = [];
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['favourites'])
   }
 
-  goToExam(exam: ExamListItem) {
+  goToExam(exam: ExamList) {
     this._router.navigate(['exam', exam.examId], {
       relativeTo: this._activatedRoute
     })
