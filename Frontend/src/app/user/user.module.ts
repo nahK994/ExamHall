@@ -7,7 +7,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserService } from './user.service';
@@ -18,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ExamPaperModule } from '../shared/exam-paper/exam-paper.module';
 import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialog.module';
 import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
+import { QuestionListModule } from '../shared/question-list/question-list.module';
 
 
 
@@ -34,14 +34,14 @@ import { ModelTestDetailsComponent } from './model-test-details/model-test-detai
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
-    MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
     QuestionModule,
     PageContainerModule,
     MatTabsModule,
     ExamPaperModule,
-    RankListDialogModule
+    RankListDialogModule,
+    QuestionListModule
   ],
   providers: [
     {

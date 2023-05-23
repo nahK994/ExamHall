@@ -1,0 +1,24 @@
+<div class="questions-item">
+    <div class="subject-select">
+        <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <mat-select [formControl]="subject">
+                <mat-option [value]="''">All</mat-option>
+                <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="list">
+        <ng-container *ngFor="let question of questions">
+                <div class="card">
+                    <div class="card-content">
+                        <question [question]="question"></question>
+                        <button mat-icon-button (click)="deleteQuestion(question)">
+                            <mat-icon style="color: #855646;">delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+        </ng-container>
+    </div>
+</div>

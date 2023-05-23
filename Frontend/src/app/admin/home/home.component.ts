@@ -15,7 +15,7 @@ export class HomeComponent {
   allSubjects: Subject[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
-  subject: FormControl = new FormControl('')
+  subject: FormControl = new FormControl('');
 
   constructor(
     private _router: Router,
@@ -25,29 +25,6 @@ export class HomeComponent {
   async ngOnInit(): Promise<void> {
     this.examList = await this._adminService.getExamList();
     this.allSubjects = await this._adminService.getSubjects();
-    let allQuestions = []
-    for(let subject of this.allSubjects) {
-      for(let question of subject.questions) {
-        allQuestions.push(question);
-      }
-    }
-    this.allQuestions = allQuestions;
-    this.questions = allQuestions;
-
-    this.subject.valueChanges.subscribe(res => {
-      if(res === '') {
-        this.questions = this.allQuestions;
-        return;
-      }
-      let questions: Question[] = [];
-      for(let question of this.allQuestions) {
-        if(question.subject === res) {
-          questions.push(question);
-        }
-      }
-
-      this.questions = questions;
-    })
   }
 
   goToExamDetails(examId: number) {
@@ -78,13 +55,8 @@ export class HomeComponent {
     this.allSubjects = subjects;
   }
 
-  async deleteQuestion(question: Question) {
-    await this._adminService.deleteQuestion(question.questionId);
-
-    const index = this.questions.indexOf(question);
-    if(index > -1) {
-        this.questions.splice(index, 1);
-    }
+  async deleteQuestion(questionId: number) {
+    await this._adminService.deleteQuestion(questionId);
   }
 
 }

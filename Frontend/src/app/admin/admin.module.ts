@@ -4,7 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { AdminService } from './admin.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +22,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { QuestionModule } from '../shared/question/question.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { QuestionListModule } from '../shared/question-list/question-list.module';
 
 
 @NgModule({
@@ -37,7 +37,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     CommonModule,
     AdminRoutingModule,
     MatButtonModule,
-    MatIconModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -48,10 +47,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatSelectModule,
     QuestionSelectorModule,
-    MatIconModule,
     QuestionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    QuestionListModule
   ],
   providers: [
     {
