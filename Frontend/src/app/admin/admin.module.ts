@@ -23,6 +23,7 @@ import { QuestionModule } from '../shared/question/question.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { QuestionListModule } from '../shared/question-list/question-list.module';
+import {MatRippleModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { QuestionListModule } from '../shared/question-list/question-list.module
     QuestionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    QuestionListModule
+    QuestionListModule,
+    MatRippleModule
   ],
   providers: [
     {

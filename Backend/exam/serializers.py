@@ -34,15 +34,13 @@ class ExamSerializer(serializers.ModelSerializer):
 
 class ExamQuerySerializer(serializers.ModelSerializer):
     examId = serializers.IntegerField(source='id', required=False)
-    questions = QuestionQuerySerializer(many=True, required=False)
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer")
     numberForIncorrectAnswer = serializers.IntegerField(source="number_for_incorrect_answer")
     numberOfSeats = serializers.IntegerField(source="number_of_seats")
 
     class Meta:
         model = ExamModel
-        fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
-                  'questions', 'date', 'duration']
+        fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats', 'date', 'duration']
 
     def to_representation(self, instance):
         data = {
@@ -51,24 +49,26 @@ class ExamQuerySerializer(serializers.ModelSerializer):
             'numberForCorrectAnswer': instance.number_for_correct_answer,
             'numberForIncorrectAnswer': instance.number_for_incorrect_answer,
             'numberOfSeats': instance.number_of_seats,
-            'questions': QuestionQuerySerializer(instance.questions, many=True).data,
             'date': instance.date,
             'duration': instance.duration,
             'subjects': []
         }
 
-        subject_ids = []
+        subject_idx = {}
+        index = 0
         for q in instance.questions.all():
-            if q.subject.id not in subject_ids:
-                subject_ids.append(q.subject.id)
-
-        for subject in SubjectModel.objects.filter(id__in=subject_ids):
-            data['subjects'].append(
-                {
-                    'subjectId': subject.id,
-                    'name': subject.name
-                }
-            )
+            if q.subject.id not in subject_idx.keys():
+                data['subjects'].append(
+                    {
+                        'subjectId': q.subject.id,
+                        'name': q.subject.name,
+                        'questions': [QuestionQuerySerializer(q).data]
+                    }
+                )
+                subject_idx[q.subject.id] = index
+                index = index + 1
+            else:
+                data['subjects'][subject_idx[q.subject.id]]['questions'].append(QuestionQuerySerializer(q).data)
 
         return data
 

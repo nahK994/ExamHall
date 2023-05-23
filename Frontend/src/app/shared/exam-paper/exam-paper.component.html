@@ -1,7 +1,7 @@
 <div class="exam-paper">
     <ng-container *ngIf="!examStarted; else examStartedTemp">
         <button mat-raised-button (click)="startExam()">Start exam</button>
-        <ng-container *ngFor="let question of exam?.questions">
+        <ng-container *ngFor="let question of questions">
             <question-item [examStarted]="examStarted" (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
         </ng-container>
     </ng-container>
@@ -9,7 +9,7 @@
     <ng-template #examStartedTemp>
         <div class="timer" *ngIf="timeLeft">{{counterToTimeConvert(timeLeft)}}</div>
 
-        <ng-container *ngFor="let question of exam?.questions">
+        <ng-container *ngFor="let question of questions">
             <question-item [examStarted]="examStarted" (answerOut)="updateAnswerSheet($event)" [question]="question"></question-item>
         </ng-container>
     

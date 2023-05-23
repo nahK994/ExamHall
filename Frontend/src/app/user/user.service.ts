@@ -37,7 +37,6 @@ export interface Exam {
   numberForCorrectAnswer: number,
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
-  questions: Question[],
   subjects?: Subject[],
   date: string;
   duration: string;

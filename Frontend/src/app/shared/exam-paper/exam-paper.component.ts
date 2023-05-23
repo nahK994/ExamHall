@@ -29,7 +29,12 @@ export class ExamPaperComponent {
 
     this.exam = exam;
     this.timeLeft = this.timeStringToSeconds(this.exam.duration);
-    this.questions = this.exam?.questions;
+
+    if(this.exam?.subjects) {
+      for(let i=0 ; i<this.exam?.subjects?.length ; i++)
+        for(let j=0 ; j<this.exam.subjects[i].questions.length ; j++)
+          this.questions.push(this.exam.subjects[i].questions[j])
+    }
 
     for (let question of this.questions) {
       let result: ResultItem = {

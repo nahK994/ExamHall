@@ -1,7 +1,6 @@
 .page{
     display: flex;
     flex-direction: column;
-    // background-color: #ECEFF1;
 
     .top-bar{
         display: flex;
@@ -10,8 +9,9 @@
         padding: 12px;
 
         .logout-button{
-            background-color: #d32f2f;
-            color: white;
+            border-radius: 25px;
+            border: 2px solid #d32f2f;
+            color: #d32f2f;
         }
 
         .back-button {

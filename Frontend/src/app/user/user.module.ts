@@ -18,6 +18,7 @@ import { ExamPaperModule } from '../shared/exam-paper/exam-paper.module';
 import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialog.module';
 import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
 import { QuestionListModule } from '../shared/question-list/question-list.module';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
@@ -41,7 +42,8 @@ import { QuestionListModule } from '../shared/question-list/question-list.module
     MatTabsModule,
     ExamPaperModule,
     RankListDialogModule,
-    QuestionListModule
+    QuestionListModule,
+    MatRippleModule
   ],
   providers: [
     {

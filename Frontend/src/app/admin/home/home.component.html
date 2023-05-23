@@ -15,7 +15,7 @@
                 </div>
                 <div class="content">
                     <ng-container *ngFor="let exam of examList">
-                        <div class="exam-item" (click)="goToExamDetails(exam.examId)">
+                        <div class="exam-item" matRipple (click)="goToExamDetails(exam.examId)">
                             <div class="name">{{exam?.name}}</div>
                             <div class="date">Date: {{exam?.date}}</div>
                             <div class="duration">Duration: {{exam?.duration}}</div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="content">
                     <ng-container *ngFor="let subject of allSubjects">
-                        <div class="subject-item">
+                        <div class="subject-item" matRipple>
                             <div class="text">{{subject?.name}}</div>
                             <div class="action material-icons" (click)="deleteSubject(subject.subjectId)">
                                 delete

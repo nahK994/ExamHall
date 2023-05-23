@@ -10,7 +10,7 @@
                 </div>
                 <div class="content">
                     <ng-container *ngFor="let exam of examList">
-                        <div class="exam-item" (click)="goToExam(exam)">
+                        <div class="exam-item" matRipple (click)="goToExam(exam)">
                             <div class="name">{{exam?.name}}</div>
                             <div class="date">Date: {{exam?.date}}</div>
                             <div class="duration">Duration: {{exam?.duration}}</div>

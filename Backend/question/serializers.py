@@ -17,7 +17,7 @@ class QuestionQuerySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QuestionModel
-        fields = ['questionId', 'questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'subject',
+        fields = ['questionId', 'questionText', 'option1', 'option2', 'option3', 'option4', 'option5', 'option6',
                   'explaination', 'answer']
 
 

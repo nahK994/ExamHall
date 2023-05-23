@@ -37,6 +37,7 @@ class StartExamViewset(viewsets.ModelViewSet):
         exam = filtered_exam[0]
 
         current_time = datetime.now(tz=ZoneInfo("Asia/Dhaka"))
+        print(f"haha ==> {exam.date} {current_time}")
         if current_time.date() != exam.date:
             return Response("can not enroll", status=status.HTTP_400_BAD_REQUEST)
         if ExamParticipantModel.objects.filter(user=request.user, exam=exam).exists():
@@ -80,13 +81,9 @@ class EndExamViewset(viewsets.ModelViewSet):
         buffer_time = 2
         time_duration = timedelta(hours=exam.duration.hour, minutes=exam.duration.minute, seconds=(exam.duration.second+buffer_time))
         exam_start_time = exam_participant_info.exam_start_time
-        hour = exam_start_time.hour
-        minute = exam_start_time.minute
-        second = exam_start_time.second
-        year = exam_start_time.year
-        month = exam_start_time.month
-        day = exam_start_time.day
-        if datetime(hour=hour, minute=minute, second=second, year=year, month=month, day=day) + time_duration < current_time:
+        bdt_timezone = ZoneInfo("Asia/Dhaka")
+
+        if exam_start_time.astimezone(bdt_timezone) + time_duration < current_time:
             return Response("cannot submit exam", status=status.HTTP_400_BAD_REQUEST)
 
         if ResultModel.objects.filter(user=request.user, exam__id=exam_id).exists():
