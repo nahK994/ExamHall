@@ -10,6 +10,7 @@ import { Question, Subject } from 'src/app/user/user.service';
 export class QuestionListComponent implements OnInit {
 
   @Input() allSubjects: Subject[] = [];
+  @Input() canRemove: boolean = false;
   @Output() removeEvent = new EventEmitter();
 
   questions: Question[] = [];

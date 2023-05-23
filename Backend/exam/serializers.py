@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from datetime import datetime
-from question.models import SubjectModel
 from user.models import UserModel
 from .models import ExamModel, ResultModel
 from question.serializers import QuestionQuerySerializer, SubjectSerializer

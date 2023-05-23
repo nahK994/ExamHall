@@ -1,11 +1,18 @@
 <page-container [returnUrl]="'admin'">
-    <div class="exam-details-page">
-        <pre class="exam-info">
-            <div>{{exam | json}}</div>
-        </pre>
-        <h2 style="margin-top: 30px;">Cut marks: {{cutMarks}}</h2>
-        <div style="margin: 40px;">
-            <button mat-raised-button (click)="seeRankList()">Rank List</button>
+    <div class="exam-details-page" *ngIf="exam">
+        <div class="exam-info">
+            <div class="title">{{exam.name}}</div>
+            <div class="info">Date: {{exam.date}}</div>
+            <div class="info">Duration: {{exam.duration}}</div>
+            <div class="info">Number of seats: {{exam.numberOfSeats}}</div>
+            <div class="info">Mark of correct answer: {{exam.numberForCorrectAnswer}}</div>
+            <div class="info">Mark of incorrect answer: {{exam.numberForIncorrectAnswer}}</div>
+        </div>
+        <div class="question-list" *ngIf="exam.subjects">
+            <question-list [canRemove]="true" [allSubjects]="exam.subjects"></question-list>
+        </div>
+        <div class="rank-list">
+            <button class="btn" mat-raised-button (click)="seeRankList()">Rank List</button>
         </div>
     </div>
 </page-container>

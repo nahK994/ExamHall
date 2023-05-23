@@ -1,0 +1,24 @@
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    color: #455A64;
+    width: 300px;
+    row-gap: 8px;
+    .title{
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+    .list {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 16px;
+        .name{
+            width: 90%;
+        }
+        .mark{
+            width: 10%;
+        }
+    }
+}

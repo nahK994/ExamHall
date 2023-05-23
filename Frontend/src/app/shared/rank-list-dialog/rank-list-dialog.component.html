@@ -1,6 +1,9 @@
-<div style="margin-top: 40px; width: 500px;">
-    <h2>Rank list</h2>
-    <pre>
-        {{rankList | json}}
-    </pre>
+<div class="rank-list">
+    <div class="title">Rank list</div>
+    <ng-container *ngFor="let val of rankList">
+        <div class="list">
+            <div class="name">{{val.name}}</div>
+            <div class="mark">{{val.totalMarks}}</div>
+        </div>
+    </ng-container>
 </div>
