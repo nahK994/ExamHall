@@ -1,29 +1,3 @@
 <page-container [returnUrl]="'user'">
-    <ng-container *ngIf="result?.userResult?.length">
-        <div class="result-view">
-            <ng-container *ngFor="let resultItem of result?.userResult">
-                <mat-card class="item">
-                    <h1>{{resultItem?.subject?.name}}</h1>
-                    <div class="details">
-                        <div class="name">Marks</div>
-                        <div class="number">{{resultItem?.marks}}</div>
-                    </div>
-                    <div class="details">
-                        <div class="name">Number of currect answers</div>
-                        <div class="number">{{resultItem?.numberOfCorrectAnswer}}</div>
-                    </div>
-                    <div class="details">
-                        <div class="name">Number of incurrect answers</div>
-                        <div class="number">{{resultItem?.numberOfIncorrectAnswer}}</div>
-                    </div>
-                </mat-card>
-            </ng-container>
-            <div style="margin: 40px;">
-                <button mat-raised-button (click)="seeRankList()">Rank List</button>
-            </div>
-        </div>
-    </ng-container>
-    <ng-container>
-        <exam-paper (startExamEvent)="startExam()" (submitAnswerEvent)="submitAnswer($event)" [canSubmit]="result?.userResult?.length == 0" [exam]="exam"></exam-paper>
-    </ng-container>
+    <exam-paper (startExamEvent)="startExam()" (submitAnswerEvent)="submitAnswer($event)" [canSubmit]="true" [exam]="exam"></exam-paper>
 </page-container>

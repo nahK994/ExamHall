@@ -19,20 +19,16 @@ export interface AnswerSheet {
 export class ModelTestDetailsComponent implements OnInit {
 
   exam !: Exam;
-  result !: Result;
-  userId !: number;
   examId !: number
 
   constructor(
     private _activateRoute: ActivatedRoute,
     private _userService: UserService,
-    private _dialog: MatDialog,
     private _router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.examId = Number(this._activateRoute.snapshot.params['examId']);
-    this.result = await this._userService.getResult(this.examId);
     this.exam = await this._userService.getExam(this.examId);
   }
 
@@ -40,12 +36,6 @@ export class ModelTestDetailsComponent implements OnInit {
     answerSheet.examId = this.examId;
     await this._userService.endExam(this.examId, answerSheet);
     this._router.navigate(['model-tests']);
-  }
-
-  seeRankList() {
-    this._dialog.open(RankListDialogComponent, {
-      data: this.result.rankList
-    })
   }
 
   async startExam() {

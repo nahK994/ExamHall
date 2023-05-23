@@ -18,7 +18,8 @@ from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from question.views import QuestionViewset, SubjectViewset
-from exam.views import ExamViewset, StartExamViewset, EndExamViewset, UserResultViewset, ResultViewset
+from exam.views import ExamViewset, StartExamViewset, EndExamViewset, ResultViewset, RankListViewset, \
+    UserExamListViewset
 from archive.views import ArchiveViewset
 from user.views import UserViewset, UserLoginViewset, UserRegistrationViewset
 from lecture.views import LectureViewset, CourseViewset
@@ -38,12 +39,13 @@ router = OptionalSlashRouter()
 router.register("subjects", SubjectViewset, basename="subjects")
 router.register("questions", QuestionViewset, basename="questions")
 
+router.register("exams-list", UserExamListViewset, basename="exams-list")
 router.register("exams", ExamViewset, basename="exams")
 router.register("exam/start", StartExamViewset, basename="exam-start")
 router.register("exam/end", EndExamViewset, basename="exam-end")
 
-router.register("result/exams", UserResultViewset, basename="user-result")
-router.register("rank-list/exams", ResultViewset, basename="rank-list")
+router.register("result/exams", ResultViewset, basename="user-result")
+router.register("rank-list/exams", RankListViewset, basename="rank-list")
 
 router.register("favourite-questions", ArchiveViewset, basename="archived-questions")
 

@@ -9,11 +9,11 @@ from utils.mixins import ModelManagerMixin
 from utils.constants import ExamEnrollmentStatus
 from .models import ExamModel, ExamParticipantModel
 from .serializers import ExamSerializer, ExamQuerySerializer, ExamEnrollmentSerializer, ResultSerializer, \
-    RankListSerializer, EndExamSerializer
+    RankListSerializer, EndExamSerializer, ExamListSerializer
 from rest_framework import status, permissions
 from rest_framework.response import Response
-
 from zoneinfo import ZoneInfo
+from django.db.models import Q
 
 
 class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
@@ -37,7 +37,6 @@ class StartExamViewset(viewsets.ModelViewSet):
         exam = filtered_exam[0]
 
         current_time = datetime.now(tz=ZoneInfo("Asia/Dhaka"))
-        print(f"haha ==> {exam.date} {current_time}")
         if current_time.date() != exam.date:
             return Response("can not enroll", status=status.HTTP_400_BAD_REQUEST)
         if ExamParticipantModel.objects.filter(user=request.user, exam=exam).exists():
@@ -132,7 +131,7 @@ class EndExamViewset(viewsets.ModelViewSet):
         return Response("exam ended", status=status.HTTP_201_CREATED)
 
 
-class ResultViewset(viewsets.ViewSet):
+class RankListViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def retrieve(self, request, pk):
@@ -140,7 +139,7 @@ class ResultViewset(viewsets.ViewSet):
         return Response(serialized_rank_list.data, status=status.HTTP_200_OK)
 
 
-class UserResultViewset(viewsets.ViewSet):
+class ResultViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
@@ -161,6 +160,38 @@ class UserResultViewset(viewsets.ViewSet):
         }
 
         return Response(response, status=status.HTTP_200_OK)
+
+
+class UserExamListViewset(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ['get']
+
+    def list(self, request):
+        user = request.user
+        response = {
+            "completedExams": get_completed_exams(user),
+            "pendingExams": get_pending_exams(user)
+        }
+        return Response(response, status=status.HTTP_200_OK)
+
+
+def get_completed_exams(user):
+    exam_participation_info = ExamParticipantModel.objects.select_related('exam')\
+        .filter(user=user, status=ExamEnrollmentStatus.completed)
+    exam_ids = [item.exam.id for item in exam_participation_info]
+    exam_list = ExamModel.objects.filter(id__in=exam_ids)
+    serialized_exam_list = ExamListSerializer(exam_list, many=True)
+    return serialized_exam_list.data
+
+
+def get_pending_exams(user):
+    exam_participation_info = ExamParticipantModel.objects.select_related('exam') \
+        .filter(user=user) \
+        .filter(Q(status=ExamEnrollmentStatus.completed) | Q(status=ExamEnrollmentStatus.started))
+    exam_ids = [item.exam.id for item in exam_participation_info]
+    exams_list = ExamModel.objects.exclude(id__in=exam_ids)
+    serialized_exam_list = ExamListSerializer(exams_list, many=True)
+    return serialized_exam_list.data
 
 
 def get_rank_list(exam_id):

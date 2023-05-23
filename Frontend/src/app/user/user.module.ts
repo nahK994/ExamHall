@@ -19,13 +19,15 @@ import { RankListDialogModule } from '../shared/rank-list-dialog/rank-list-dialo
 import { ModelTestDetailsComponent } from './model-test-details/model-test-details.component';
 import { QuestionListModule } from '../shared/question-list/question-list.module';
 import { MatRippleModule } from '@angular/material/core';
+import { ResultComponent } from './result/result.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ModelTestDetailsComponent
+    ModelTestDetailsComponent,
+    ResultComponent
   ],
   imports: [
     CommonModule,

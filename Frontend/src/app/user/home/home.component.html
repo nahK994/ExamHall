@@ -9,8 +9,27 @@
                     </div>
                 </div>
                 <div class="content">
-                    <ng-container *ngFor="let exam of examList">
+                    <ng-container *ngFor="let exam of examList?.pendingExams">
                         <div class="exam-item" matRipple (click)="goToExam(exam)">
+                            <div class="name">{{exam?.name}}</div>
+                            <div class="date">Date: {{exam?.date}}</div>
+                            <div class="duration">Duration: {{exam?.duration}}</div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Result Section">
+            <div class="tab-section">
+                <div class="header">
+                    <div class="text">
+                        <div class="title">Result Section</div>
+                        <div class="sub-title">Here you can see all result information</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <ng-container *ngFor="let exam of examList?.completedExams">
+                        <div class="exam-item" matRipple (click)="goToResult(exam)">
                             <div class="name">{{exam?.name}}</div>
                             <div class="date">Date: {{exam?.date}}</div>
                             <div class="duration">Duration: {{exam?.duration}}</div>

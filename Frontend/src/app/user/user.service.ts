@@ -63,6 +63,11 @@ export interface Result {
   }[]
 }
 
+export interface UserExamList {
+  completedExams: ExamList[],
+  pendingExams: ExamList[]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -94,8 +99,8 @@ export class UserService {
   }
 
   async getExamList() {
-    let examURL_extention = '/exams';
-    let response = await lastValueFrom(this.http.get<ExamList[]>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
+    let examURL_extention = '/exams-list';
+    let response = await lastValueFrom(this.http.get<UserExamList>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
 
     return response;
   }

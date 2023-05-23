@@ -6,7 +6,7 @@ from question.serializers import QuestionQuerySerializer, SubjectSerializer
 
 
 class ExamListSerializer(serializers.ModelSerializer):
-    examId = serializers.CharField(source='exam_id')
+    examId = serializers.IntegerField(source='id')
 
     class Meta:
         model = ExamModel
