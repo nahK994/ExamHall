@@ -19,7 +19,7 @@ from django.db.models import Q
 class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = ExamSerializer
     query_serializer_class = ExamQuerySerializer
-    queryset = ExamModel.objects.all()
+    queryset = ExamModel.objects.all().order_by('-date')
 
 
 class StartExamViewset(viewsets.ModelViewSet):
@@ -35,11 +35,9 @@ class StartExamViewset(viewsets.ModelViewSet):
         if not filtered_exam:
             return Response("no such exam", status=status.HTTP_400_BAD_REQUEST)
         exam = filtered_exam[0]
-
-        bdt_timezone = ZoneInfo("Asia/Dhaka")
         current_time = datetime.now(tz=ZoneInfo("Asia/Dhaka"))
 
-        if current_time.date() != exam.date.astimezone(bdt_timezone):
+        if current_time.date() != exam.date:
             return Response("can not enroll", status=status.HTTP_400_BAD_REQUEST)
         if ExamParticipantModel.objects.filter(user=request.user, exam=exam).exists():
             return Response("exam is completed", status=status.HTTP_400_BAD_REQUEST)
@@ -191,8 +189,11 @@ def get_pending_exams(user):
     exam_participation_info = ExamParticipantModel.objects.select_related('exam') \
         .filter(user=user) \
         .filter(Q(status=ExamEnrollmentStatus.completed) | Q(status=ExamEnrollmentStatus.started))
+
     exam_ids = [item.exam.id for item in exam_participation_info]
-    exams_list = ExamModel.objects.exclude(id__in=exam_ids).filter(date__gte=datetime.now()).order_by('-date')
+    today_bd_date = datetime.now(tz=ZoneInfo("Asia/Dhaka")).date()
+    exams_list = ExamModel.objects.exclude(id__in=exam_ids).filter(date__gte=today_bd_date).order_by('-date')
+
     serialized_exam_list = ExamListSerializer(exams_list, many=True)
     return serialized_exam_list.data
 

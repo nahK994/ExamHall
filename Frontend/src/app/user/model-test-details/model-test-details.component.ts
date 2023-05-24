@@ -35,7 +35,7 @@ export class ModelTestDetailsComponent implements OnInit {
   async submitAnswer(answerSheet: AnswerSheet) {
     answerSheet.examId = this.examId;
     await this._userService.endExam(this.examId, answerSheet);
-    this._router.navigate(['model-tests']);
+    this._router.navigate(['user']);
   }
 
   async startExam() {

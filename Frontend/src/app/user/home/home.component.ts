@@ -42,10 +42,11 @@ export class HomeComponent implements OnInit {
   }
 
   goToExam(exam: ExamList) {
-    if(new Date(exam.date) > new Date()) {
-      this._snackBar.open('Cannot enroll the exam', '', {
+    if(new Date(new Date(exam.date).toDateString()) > new Date()) {
+      this._snackBar.open('Cannot enroll the exam yet', '', {
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
+        duration: 1500
       });
       return;
     }
