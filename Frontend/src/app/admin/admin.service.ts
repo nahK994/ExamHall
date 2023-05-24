@@ -66,6 +66,13 @@ export class AdminService {
     return response;
   }
 
+  async getQuestion(questionId: number) {
+    let questionURL_extention = '/questions/'+questionId;
+    let response = await lastValueFrom(this.http.get<Question>(this._appService.doamin+questionURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
   async createSubject(subject: CreateSubjectModel) {
     let subjectURL_extention = '/subjects';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+subjectURL_extention, subject, this._appService.httpOptions));
@@ -83,6 +90,13 @@ export class AdminService {
   async createQuestion(question: Question) {
     let questionURL_extention = '/questions';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+questionURL_extention, question, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async updateQuestion(questionId: number, question: Question) {
+    let questionURL_extention = '/questions/'+questionId;
+    let response = await lastValueFrom(this.http.put<number>(this._appService.doamin+questionURL_extention, question, this._appService.httpOptions));
 
     return response;
   }

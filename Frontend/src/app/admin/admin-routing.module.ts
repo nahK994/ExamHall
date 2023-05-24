@@ -7,11 +7,6 @@ import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     redirectTo: 'home',
-    //     pathMatch: 'full'
-    // },
     {
         path: '',
         component: HomeComponent
@@ -31,6 +26,10 @@ const routes: Routes = [
     {
         path: 'create-subject',
         component: CreateSubjectComponent
+    },
+    {
+        path: 'update-question/:id',
+        component: CreateQuestionComponent
     }
 ];
 

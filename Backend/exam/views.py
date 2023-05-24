@@ -36,8 +36,10 @@ class StartExamViewset(viewsets.ModelViewSet):
             return Response("no such exam", status=status.HTTP_400_BAD_REQUEST)
         exam = filtered_exam[0]
 
+        bdt_timezone = ZoneInfo("Asia/Dhaka")
         current_time = datetime.now(tz=ZoneInfo("Asia/Dhaka"))
-        if current_time.date() != exam.date:
+
+        if current_time.date() != exam.date.astimezone(bdt_timezone):
             return Response("can not enroll", status=status.HTTP_400_BAD_REQUEST)
         if ExamParticipantModel.objects.filter(user=request.user, exam=exam).exists():
             return Response("exam is completed", status=status.HTTP_400_BAD_REQUEST)
@@ -78,7 +80,8 @@ class EndExamViewset(viewsets.ModelViewSet):
 
         current_time = datetime.now(tz=ZoneInfo("Asia/Dhaka"))
         buffer_time = 2
-        time_duration = timedelta(hours=exam.duration.hour, minutes=exam.duration.minute, seconds=(exam.duration.second+buffer_time))
+        time_duration = timedelta(hours=exam.duration.hour, minutes=exam.duration.minute,
+                                  seconds=(exam.duration.second + buffer_time))
         exam_start_time = exam_participant_info.exam_start_time
         bdt_timezone = ZoneInfo("Asia/Dhaka")
 
@@ -176,10 +179,10 @@ class UserExamListViewset(viewsets.ViewSet):
 
 
 def get_completed_exams(user):
-    exam_participation_info = ExamParticipantModel.objects.select_related('exam')\
+    exam_participation_info = ExamParticipantModel.objects.select_related('exam') \
         .filter(user=user, status=ExamEnrollmentStatus.completed)
     exam_ids = [item.exam.id for item in exam_participation_info]
-    exam_list = ExamModel.objects.filter(id__in=exam_ids)
+    exam_list = ExamModel.objects.filter(id__in=exam_ids).order_by('-date')
     serialized_exam_list = ExamListSerializer(exam_list, many=True)
     return serialized_exam_list.data
 
@@ -189,7 +192,7 @@ def get_pending_exams(user):
         .filter(user=user) \
         .filter(Q(status=ExamEnrollmentStatus.completed) | Q(status=ExamEnrollmentStatus.started))
     exam_ids = [item.exam.id for item in exam_participation_info]
-    exams_list = ExamModel.objects.exclude(id__in=exam_ids)
+    exams_list = ExamModel.objects.exclude(id__in=exam_ids).filter(date__gte=datetime.now()).order_by('-date')
     serialized_exam_list = ExamListSerializer(exams_list, many=True)
     return serialized_exam_list.data
 

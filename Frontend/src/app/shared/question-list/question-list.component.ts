@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Question, Subject } from 'src/app/user/user.service';
 
 @Component({
@@ -11,13 +12,16 @@ export class QuestionListComponent implements OnInit {
 
   @Input() allSubjects: Subject[] = [];
   @Input() canRemove: boolean = false;
+  @Input() updateAction: boolean = false;
   @Output() removeEvent = new EventEmitter();
 
   questions: Question[] = [];
   allQuestions: Question[] = [];
   subject: FormControl = new FormControl('');
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
     let allQuestions = []
@@ -53,6 +57,10 @@ export class QuestionListComponent implements OnInit {
     }
 
     this.removeEvent.emit(question.questionId);
+  }
+
+  updateQuestion(questionId: number) {
+    this._router.navigate(['admin', 'update-question', questionId])
   }
 
 }

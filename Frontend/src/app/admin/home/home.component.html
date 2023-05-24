@@ -64,7 +64,7 @@
                 </div>
                 <div class="content">
                     <ng-container *ngIf="allSubjects.length">
-                        <question-list (removeEvent)="deleteQuestion($event)" [allSubjects]="allSubjects"></question-list>
+                        <question-list [updateAction]="true" (removeEvent)="deleteQuestion($event)" [allSubjects]="allSubjects"></question-list>
                     </ng-container>
                 </div>
             </div>

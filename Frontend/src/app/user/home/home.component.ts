@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExamList } from 'src/app/admin/admin.service';
 import { Question, Subject, UserExamList, UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-home',
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _activatedRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -39,6 +42,13 @@ export class HomeComponent implements OnInit {
   }
 
   goToExam(exam: ExamList) {
+    if(new Date(exam.date) > new Date()) {
+      this._snackBar.open('Cannot enroll the exam', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+      });
+      return;
+    }
     this._router.navigate(['exam', exam.examId], {
       relativeTo: this._activatedRoute
     })

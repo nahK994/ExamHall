@@ -20,7 +20,7 @@ import { ModelTestDetailsComponent } from './model-test-details/model-test-detai
 import { QuestionListModule } from '../shared/question-list/question-list.module';
 import { MatRippleModule } from '@angular/material/core';
 import { ResultComponent } from './result/result.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -45,7 +45,8 @@ import { ResultComponent } from './result/result.component';
     ExamPaperModule,
     RankListDialogModule,
     QuestionListModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSnackBarModule
   ],
   providers: [
     {
