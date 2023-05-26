@@ -10,14 +10,20 @@ import Login from './pages/login';
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: '#e8f5e9', //lighter green
-			dark: '#1b5e20', //darker green
-			light: '#e8f5e9' //lightest green for poppers
+			main: '#2b4f71',
 		},
 		secondary: {
-			main: '#616161',
-			dark: '#37474f', //darker color for font
+			main: '#657a97',
 		},
+		info: {
+			main: '#c9cfdf',
+		},
+		success: {
+			main: '#2e7d32',
+		},
+		error: {
+			main: '#d84315',
+		}
 	},
 	components: {
 		// Name of the component
