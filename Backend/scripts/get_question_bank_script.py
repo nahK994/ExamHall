@@ -2,15 +2,24 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-for serial in range(10, 45):
+for exam_no in range(10, 46):
+    if exam_no >= 25:
+        serial = exam_no-1
+    else:
+        serial = exam_no
+
     URL = f"https://uttoron.academy/question/{serial}th-bcs/"
+    if exam_no == 25:
+        URL = f"https://uttoron.academy/question/{serial}th-bcs-cancelled/"
+
+    print(URL)
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, features="html.parser")
     table = soup.findAll('div', attrs={'class': 'question-item'})
 
     question_list = []
 
-    for i, row in enumerate(table):
+    for row in table:
         question = row.find('div', attrs={'class': 'question'}).p.text
 
         option_unordered_list = row.find('div', attrs={'class': 'options'}).find('ul')
@@ -20,11 +29,6 @@ for serial in range(10, 45):
 
         raw_explanation = row.find('div', attrs={'class': 'question-solve'}).p.get_text()
         explanation = ' '.join(raw_explanation.replace('\n', ' ').split())
-        # print(i+1, question)
-        # print(options)
-        # print(correct_answer)
-        # print(explanation)
-        # print(len(options))
         question_dict = {
             "model": "question.questionmodel",
             "fields": {
@@ -38,10 +42,11 @@ for serial in range(10, 45):
                 "answer": correct_answer,
                 "explaination": explanation,
                 "subject": None,
-                "reference": serial-9,
+                "reference": exam_no-9,
             }
         }
         question_list.append(question_dict)
 
-with open("bank.json", 'w', encoding='utf-8') as f:
+
+with open("bcs_questions.json", 'w+', encoding='utf-8') as f:
     json.dump(question_list, f, ensure_ascii=False)

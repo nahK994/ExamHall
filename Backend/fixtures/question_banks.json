@@ -1,0 +1,254 @@
+[
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "10th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "11th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "12th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "13th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "14th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "15th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "16th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "17th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "18th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "19th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "20th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "21th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "22th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "23th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "24th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "24th BCS (Cancelled)",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "25th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "26th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "27th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "28th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "29th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "30th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "31th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "32th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "33th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "34th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "35th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "36th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "37th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "38th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "39th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "40th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "41th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "42th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "43th BCS",
+            "category": "BCS"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "exam_name": "44th BCS",
+            "category": "BCS"
+        }
+    }
+]

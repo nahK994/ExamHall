@@ -21,7 +21,7 @@ class QuestionBankModel(models.Model):
     category = models.CharField(max_length=50, choices=category_choices)
 
     def __str__(self):
-        return f"{self.exam_name} category={self.category} id={self.id}"
+        return f"{self.exam_name} ({self.category}) ({self.id})"
 
     class Meta:
         db_table = 'question_banks'
