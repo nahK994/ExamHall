@@ -12,6 +12,16 @@ class SubjectModel(models.Model):
         db_table = 'subjects'
 
 
+class QuestionBankModel(models.Model):
+    exam_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.exam_name} ({self.id})"
+
+    class Meta:
+        db_table = 'question_banks'
+
+
 class QuestionModel(models.Model):
     question_text = models.CharField(max_length=100)
     option1 = models.CharField(max_length=100, null=True)
@@ -23,6 +33,7 @@ class QuestionModel(models.Model):
     answer = models.CharField(max_length=100)
     explaination = models.CharField(max_length=500)
     subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.CASCADE)
+    reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True)
     archived_by_users = models.ManyToManyField(UserModel)
 
     def __str__(self):
