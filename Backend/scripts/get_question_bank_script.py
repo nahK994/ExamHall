@@ -1,10 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 URL = "https://uttoron.academy/question/44th-bcs/"
 r = requests.get(URL)
 soup = BeautifulSoup(r.content, features="html.parser")
 table = soup.findAll('div', attrs={'class': 'question-item'})
+
+question_list = []
 
 for i, row in enumerate(table):
     question = row.find('div', attrs={'class': 'question'}).p.text
@@ -16,7 +19,28 @@ for i, row in enumerate(table):
 
     raw_explanation = row.find('div', attrs={'class': 'question-solve'}).p.get_text()
     explanation = ' '.join(raw_explanation.replace('\n', ' ').split())
-    print(i+1, question)
-    print(options)
-    print(correct_answer)
-    print(explanation)
+    # print(i+1, question)
+    # print(options)
+    # print(correct_answer)
+    # print(explanation)
+    # print(len(options))
+    question_dict = {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": question,
+            "option1": options[0],
+            "option2": options[1],
+            "option3": options[2],
+            "option4": options[3],
+            "option5": options[4] if len(options) > 5 else None,
+            "option6": options[5] if len(options) > 6 else None,
+            "answer": correct_answer,
+            "explaination": explanation,
+            "subject": None,
+            "reference": 1,
+        }
+    }
+    question_list.append(question_dict)
+
+with open("bank.json", 'w', encoding='utf-8') as f:
+    json.dump(question_list, f, ensure_ascii=False)

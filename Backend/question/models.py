@@ -32,7 +32,7 @@ class QuestionModel(models.Model):
     option6 = models.CharField(max_length=100, null=True)
     answer = models.CharField(max_length=100)
     explaination = models.CharField(max_length=500)
-    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.CASCADE)
+    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.DO_NOTHING)
     reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True)
     archived_by_users = models.ManyToManyField(UserModel)
 
