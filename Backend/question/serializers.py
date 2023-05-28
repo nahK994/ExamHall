@@ -16,7 +16,7 @@ class QuestionBankSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QuestionBankModel
-        fields = ['examName']
+        fields = ['examName', 'category']
 
 
 class QuestionBankQuerySerializer(serializers.ModelSerializer):
@@ -24,7 +24,7 @@ class QuestionBankQuerySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QuestionBankModel
-        fields = ['id', 'examName']
+        fields = ['id', 'examName', 'category']
 
 
 class QuestionQuerySerializer(serializers.ModelSerializer):
