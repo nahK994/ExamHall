@@ -28,17 +28,17 @@ class QuestionBankModel(models.Model):
 
 
 class QuestionModel(models.Model):
-    question_text = models.CharField(max_length=100)
-    option1 = models.CharField(max_length=100, null=True)
-    option2 = models.CharField(max_length=100, null=True)
-    option3 = models.CharField(max_length=100, null=True)
-    option4 = models.CharField(max_length=100, null=True)
-    option5 = models.CharField(max_length=100, null=True)
-    option6 = models.CharField(max_length=100, null=True)
-    answer = models.CharField(max_length=100)
-    explaination = models.CharField(max_length=500)
-    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.DO_NOTHING)
-    reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True)
+    question_text = models.CharField(max_length=1000)
+    option1 = models.CharField(max_length=1000, null=True)
+    option2 = models.CharField(max_length=1000, null=True)
+    option3 = models.CharField(max_length=1000, null=True)
+    option4 = models.CharField(max_length=1000, null=True)
+    option5 = models.CharField(max_length=1000, null=True)
+    option6 = models.CharField(max_length=1000, null=True)
+    answer = models.CharField(max_length=1000)
+    explaination = models.TextField(blank=True)
+    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
+    reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
     archived_by_users = models.ManyToManyField(UserModel)
 
     def __str__(self):

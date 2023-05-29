@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
+question_list = []
 for exam_no in range(10, 46):
     if exam_no >= 25:
         serial = exam_no-1
@@ -16,8 +17,6 @@ for exam_no in range(10, 46):
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, features="html.parser")
     table = soup.findAll('div', attrs={'class': 'question-item'})
-
-    question_list = []
 
     for row in table:
         question = row.find('div', attrs={'class': 'question'}).p.text
@@ -48,5 +47,5 @@ for exam_no in range(10, 46):
         question_list.append(question_dict)
 
 
-with open("bcs_questions.json", 'w+', encoding='utf-8') as f:
+with open("bcs_questions.json", 'w', encoding='utf-8') as f:
     json.dump(question_list, f, ensure_ascii=False)
