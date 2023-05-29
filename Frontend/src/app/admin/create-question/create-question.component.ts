@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Question, Subject } from 'src/app/user/user.service';
+import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AdminService } from '../admin.service';
 export class CreateQuestionComponent implements OnInit {
 
   question: FormGroup;
-  allSubjects: Subject[] = [];
+  allSubjects: AllQuestions[] = [];
   questionId: number | undefined;
   
   constructor(
@@ -36,7 +36,7 @@ export class CreateQuestionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.questionId = this._activatedRoute.snapshot.params['id'];
-    this.allSubjects = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getAllQuestions();
 
     if(this.questionId !== undefined) {
       let question: Question = await this._adminService.getQuestion(this.questionId);

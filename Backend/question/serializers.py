@@ -11,15 +11,7 @@ class QuestionSerializer(serializers.ModelSerializer):
                   'option1', 'option2', 'option3', 'option4', 'option5', 'option6']
 
 
-class QuestionBankSerializer(serializers.ModelSerializer):
-    examName = serializers.CharField(source='exam_name')
-
-    class Meta:
-        model = QuestionBankModel
-        fields = ['examName', 'category']
-
-
-class QuestionBankQuerySerializer(serializers.ModelSerializer):
+class QuestionReferenceSerializer(serializers.ModelSerializer):
     examName = serializers.CharField(source='exam_name')
 
     class Meta:
@@ -30,7 +22,7 @@ class QuestionBankQuerySerializer(serializers.ModelSerializer):
 class QuestionQuerySerializer(serializers.ModelSerializer):
     questionId = serializers.IntegerField(source='id', required=False)
     questionText = serializers.CharField(source='question_text')
-    reference = QuestionBankQuerySerializer()
+    reference = QuestionReferenceSerializer()
 
     class Meta:
         model = QuestionModel
@@ -48,7 +40,23 @@ class SubjectQuerySerializer(serializers.ModelSerializer):
 
 
 class SubjectSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = SubjectModel
         fields = ['name']
+
+
+class QuestionBankSerializer(serializers.ModelSerializer):
+    examName = serializers.CharField(source='exam_name')
+
+    class Meta:
+        model = QuestionBankModel
+        fields = ['id', 'examName', 'category']
+
+
+class QuestionBankQuerySerializer(serializers.ModelSerializer):
+    examName = serializers.CharField(source='exam_name')
+    questions = QuestionQuerySerializer(many=True)
+
+    class Meta:
+        model = QuestionBankModel
+        fields = ['id', 'examName', 'category', 'questions']

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../app.service';
-import { Exam, Question, Subject } from '../user/user.service';
+import { AllQuestions, Exam, Question, Subject } from '../user/user.service';
 
 export interface ExamList {
   examId: number,
@@ -15,6 +15,13 @@ export interface UserRank {
   userId: number,
   name: string,
   totalMarks: number
+}
+
+export interface QuestionBank {
+  id: number,
+  examName: string,
+  category: "BSC"
+  questions?: Question[]
 }
 
 export interface CreateSubjectModel {
@@ -52,13 +59,6 @@ export class AdminService {
     return response;
   }
 
-  async getSubjects() {
-    let subjectURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
-
-    return response;
-  }
-
   async getQuestions() {
     let questionURL_extention = '/questions';
     let response = await lastValueFrom(this.http.get<Question[]>(this._appService.doamin+questionURL_extention, this._appService.httpOptions));
@@ -69,6 +69,13 @@ export class AdminService {
   async getQuestion(questionId: number) {
     let questionURL_extention = '/questions/'+questionId;
     let response = await lastValueFrom(this.http.get<Question>(this._appService.doamin+questionURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async getAllQuestions() {
+    let subjectURL_extention = '/all-questions';
+    let response = await lastValueFrom(this.http.get<AllQuestions[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }
@@ -111,6 +118,20 @@ export class AdminService {
   async createExam(exam: Exam) {
     let examURL_extention = '/exams';
     let response = await lastValueFrom(this.http.post<number>(this._appService.doamin+examURL_extention, exam, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async getQuestionBanks() {
+    let questionBankURL_extention = '/question-banks';
+    let response = await lastValueFrom(this.http.get<QuestionBank[]>(this._appService.doamin+questionBankURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async getExamQuestions(examReferenceId: number) {
+    let questionBankURL_extention = '/question-banks/'+examReferenceId;
+    let response = await lastValueFrom(this.http.get<QuestionBank>(this._appService.doamin+questionBankURL_extention, this._appService.httpOptions));
 
     return response;
   }

@@ -13,7 +13,7 @@ class ModelManagerMixin:
         return errors
 
     def list(self, request):
-        serialized_data = self.query_serializer_class(self.get_queryset(), many=True, context={"request": request})
+        serialized_data = self.serializer_class(self.get_queryset(), many=True, context={"request": request})
         return Response(serialized_data.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk):

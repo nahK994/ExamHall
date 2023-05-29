@@ -5,6 +5,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { HomeComponent } from './home/home.component';
+import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'update-question/:id',
         component: CreateQuestionComponent
+    },
+    {
+        path: 'question-bank/:id',
+        component: QuestionBankDetailsComponent
     }
 ];
 

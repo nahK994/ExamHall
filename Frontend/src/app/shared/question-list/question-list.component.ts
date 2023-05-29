@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Question, Subject } from 'src/app/user/user.service';
+import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 
 @Component({
   selector: 'question-list',
@@ -10,7 +10,7 @@ import { Question, Subject } from 'src/app/user/user.service';
 })
 export class QuestionListComponent implements OnInit {
 
-  @Input() allSubjects: Subject[] = [];
+  @Input() allSubjects: AllQuestions[] = [];
   @Input() canRemove: boolean = false;
   @Input() updateAction: boolean = false;
   @Output() removeEvent = new EventEmitter();

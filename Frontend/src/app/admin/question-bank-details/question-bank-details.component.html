@@ -1,0 +1,19 @@
+<page-container [returnUrl]="'admin'">
+    <div class="questions-item">    
+        <div class="list">
+            <ng-container *ngFor="let question of questionList?.questions">
+                <div class="card">
+                    <div class="card-content">
+                        <question [question]="question"></question>
+                        <button mat-icon-button (click)="deleteQuestion(question.questionId)">
+                            <mat-icon style="color: #855646;">delete</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="updateQuestion(question.questionId)">
+                            <mat-icon style="color: #855646;">edit</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</page-container>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Question, Subject } from 'src/app/user/user.service';
-import { AdminService, ExamList } from '../admin.service';
+import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
+import { AdminService, ExamList, QuestionBank } from '../admin.service';
 
 @Component({
   selector: 'app-home',
@@ -12,19 +12,21 @@ import { AdminService, ExamList } from '../admin.service';
 export class HomeComponent {
 
   examList!: ExamList[];
-  allSubjects: Subject[] = [];
+  allSubjects: AllQuestions[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
+  questionBanks: QuestionBank[] = [];
   subject: FormControl = new FormControl('');
 
   constructor(
     private _router: Router,
-    private _adminService: AdminService,
+    private _adminService: AdminService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.examList = await this._adminService.getExamList();
-    this.allSubjects = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getAllQuestions();
+    this.questionBanks = await this._adminService.getQuestionBanks();
   }
 
   goToExamDetails(examId: number) {
@@ -41,6 +43,10 @@ export class HomeComponent {
 
   createQuestion() {
     this._router.navigate(['admin', 'create-question'])
+  }
+
+  goToQuestionBank(id: number) {
+    this._router.navigate(['admin', 'question-bank', id])
   }
 
   async deleteSubject(subjectId: number) {

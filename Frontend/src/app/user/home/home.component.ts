@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExamList } from 'src/app/admin/admin.service';
-import { Question, Subject, UserExamList, UserService } from '../user.service';
+import { AllQuestions, Question, Subject, UserExamList, UserService } from '../user.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   questions: Question[] = [];
   userArchivedQuestions!: Question[];
-  allSubjects: Subject[] = [];
+  allSubjects: AllQuestions[] = [];
 
   subject: FormControl = new FormControl('');
 

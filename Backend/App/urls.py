@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from question.views import QuestionViewset, SubjectViewset, QuestionBankViewset
+from question.views import QuestionViewset, SubjectViewset, QuestionBankViewset, AllQuestionsViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, ResultViewset, RankListViewset, \
     UserExamListViewset
 from archive.views import ArchiveViewset
@@ -39,6 +39,7 @@ router = OptionalSlashRouter()
 router.register("subjects", SubjectViewset, basename="subjects")
 
 router.register("questions", QuestionViewset, basename="questions")
+router.register("all-questions", AllQuestionsViewset, basename="questions")
 router.register("question-banks", QuestionBankViewset, basename="question-bank")
 
 router.register("exams-list", UserExamListViewset, basename="exams-list")

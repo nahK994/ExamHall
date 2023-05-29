@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Question, Subject } from 'src/app/user/user.service';
+import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AdminService } from '../admin.service';
 })
 export class CreateExamComponent implements OnInit {
 
-  allSubjects: Subject[] = [];
+  allSubjects: AllQuestions[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
   subject: FormControl = new FormControl('');
@@ -37,7 +37,7 @@ export class CreateExamComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allSubjects = await this._adminService.getSubjects();
+    this.allSubjects = await this._adminService.getAllQuestions();
     let allQuestions = []
     for(let subject of this.allSubjects) {
       for(let question of subject.questions) {

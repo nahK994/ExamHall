@@ -25,6 +25,7 @@ import { QuestionListModule } from '../shared/question-list/question-list.module
 import {MatRippleModule} from '@angular/material/core';
 import { QuestionSelectorComponent } from './create-exam/question-selector/question-selector.component';
 import { MatIconModule } from '@angular/material/icon';
+import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatIconModule } from '@angular/material/icon';
     CreateExamComponent,
     CreateSubjectComponent,
     CreateQuestionComponent,
-    QuestionSelectorComponent
+    QuestionSelectorComponent,
+    QuestionBankDetailsComponent
   ],
   imports: [
     CommonModule,
