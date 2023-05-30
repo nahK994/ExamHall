@@ -74,7 +74,7 @@ export class AdminService {
   }
 
   async getAllQuestions() {
-    let subjectURL_extention = '/all-questions';
+    let subjectURL_extention = '/all-categorized-questions';
     let response = await lastValueFrom(this.http.get<AllQuestions[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;

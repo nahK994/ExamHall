@@ -25,7 +25,7 @@ class QuestionViewset(ModelManagerMixin, viewsets.ModelViewSet):
     queryset = QuestionModel.objects.all()
 
 
-class AllQuestionsViewset(viewsets.ViewSet):
+class AllCategorizedQuestionsViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
