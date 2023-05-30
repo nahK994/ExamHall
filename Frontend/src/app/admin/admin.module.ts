@@ -26,6 +26,10 @@ import {MatRippleModule} from '@angular/material/core';
 import { QuestionSelectorComponent } from './create-exam/question-selector/question-selector.component';
 import { MatIconModule } from '@angular/material/icon';
 import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
+import { ExamOverviewComponent } from './exam-overview/exam-overview.component';
+import { QuestionOverviewComponent } from './question-overview/question-overview.component';
+import { SubjectOverviewComponent } from './subject-overview/subject-overview.component';
+import { QuestionBankOverviewComponent } from './question-bank-overview/question-bank-overview.component';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { QuestionBankDetailsComponent } from './question-bank-details/question-b
     CreateSubjectComponent,
     CreateQuestionComponent,
     QuestionSelectorComponent,
-    QuestionBankDetailsComponent
+    QuestionBankDetailsComponent,
+    ExamOverviewComponent,
+    QuestionOverviewComponent,
+    SubjectOverviewComponent,
+    QuestionBankOverviewComponent
   ],
   imports: [
     CommonModule,

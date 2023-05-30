@@ -21,13 +21,19 @@ import { QuestionListModule } from '../shared/question-list/question-list.module
 import { MatRippleModule } from '@angular/material/core';
 import { ResultComponent } from './result/result.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ArchivedQuestionListComponent } from './archived-question-list/archived-question-list.component';
+import { ExamListComponent } from './exam-list/exam-list.component';
+import { ResultListComponent } from './result-list/result-list.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     ModelTestDetailsComponent,
-    ResultComponent
+    ResultComponent,
+    ArchivedQuestionListComponent,
+    ExamListComponent,
+    ResultListComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,17 @@
+<page-container>
+    <div class="header">
+        <div class="text">
+            <div class="title">Exam Section</div>
+            <div class="sub-title">Here you can see all exam information</div>
+        </div>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let exam of examList">
+            <div class="exam-item" matRipple (click)="goToExam(exam)">
+                <div class="name">{{exam?.name}}</div>
+                <div class="date">Date: {{exam?.date}}</div>
+                <div class="duration">Duration: {{exam?.duration}}</div>
+            </div>
+        </ng-container>
+    </div>
+</page-container>

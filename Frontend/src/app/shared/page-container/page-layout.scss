@@ -1,0 +1,40 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    
+    .text{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+
+        .title{
+            color: #01579b;
+            font-size: 24px;
+            font-weight: 550;
+        }
+
+        .sub-title{
+            color: #0288d1;
+            font-size: 16px;
+        }
+    }
+
+    .action{
+        .create-exam{
+            background-color: #00796b;
+            color: white;
+        }
+    }
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+
+    row-gap: 20px;
+    column-gap: 24px;
+    margin-bottom: 20px;
+}

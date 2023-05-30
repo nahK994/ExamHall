@@ -4,13 +4,32 @@ import { CreateExamComponent } from './create-exam/create-exam.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
-import { HomeComponent } from './home/home.component';
+import { ExamOverviewComponent } from './exam-overview/exam-overview.component';
 import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
+import { QuestionBankOverviewComponent } from './question-bank-overview/question-bank-overview.component';
+import { QuestionOverviewComponent } from './question-overview/question-overview.component';
+import { SubjectOverviewComponent } from './subject-overview/subject-overview.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        redirectTo: 'exam-overview',
+    },
+    {
+        path: 'question-bank-overview',
+        component: QuestionBankOverviewComponent
+    },
+    {
+        path: 'exam-overview',
+        component: ExamOverviewComponent
+    },
+    {
+        path: 'question-overview',
+        component: QuestionOverviewComponent
+    },
+    {
+        path: 'subject-overview',
+        component: SubjectOverviewComponent
     },
     {
         path: 'exam-details/:id',

@@ -103,9 +103,16 @@ export class UserService {
     return response;
   }
 
-  async getExamList() {
-    let examURL_extention = '/exams-list';
-    let response = await lastValueFrom(this.http.get<UserExamList>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
+  async getPendingExamList() {
+    let examURL_extention = '/pending-exams-list';
+    let response = await lastValueFrom(this.http.get<ExamList[]>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async getCompletedExamList() {
+    let examURL_extention = '/completed-exams-list';
+    let response = await lastValueFrom(this.http.get<ExamList[]>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
 
     return response;
   }

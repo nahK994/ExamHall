@@ -87,6 +87,13 @@ export class AdminService {
     return response;
   }
 
+  async getSubjects() {
+    let subjectURL_extention = '/subjects';
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
   async deleteSubject(subjectId: number) {
     let subjectURL_extention = '/subjects/'+subjectId;
     let response = await lastValueFrom(this.http.delete<number>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));

@@ -19,7 +19,7 @@ from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from question.views import QuestionViewset, SubjectViewset, QuestionBankViewset, AllCategorizedQuestionsViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, ResultViewset, RankListViewset, \
-    UserExamListViewset
+    UserPendingExamListViewset, UserCompletedExamListViewset
 from archive.views import ArchiveViewset
 from user.views import UserViewset, UserLoginViewset, UserRegistrationViewset
 from lecture.views import LectureViewset, CourseViewset
@@ -42,7 +42,8 @@ router.register("questions", QuestionViewset, basename="questions")
 router.register("all-categorized-questions", AllCategorizedQuestionsViewset, basename="questions")
 router.register("question-banks", QuestionBankViewset, basename="question-bank")
 
-router.register("exams-list", UserExamListViewset, basename="exams-list")
+router.register("pending-exams-list", UserPendingExamListViewset, basename="exams-list")
+router.register("completed-exams-list", UserCompletedExamListViewset, basename="exams-list")
 router.register("exams", ExamViewset, basename="exams")
 router.register("exam/start", StartExamViewset, basename="exam-start")
 router.register("exam/end", EndExamViewset, basename="exam-end")

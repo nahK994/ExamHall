@@ -1,4 +1,32 @@
-<div class="page">
+<mat-drawer-container class="page">
+    <mat-drawer mode="side" opened class="side-nav">
+        <ng-container *ngIf="userType === userEnum.student; else user">
+            <button class="item" mat-button (click)="goToExamList()">
+                Exam Section
+            </button>
+            <button class="item" mat-button (click)="goToResultList()">
+                Result Section
+            </button>
+            <button class="item" mat-button (click)="goToArchivedQuestionList()">
+                Archived Question Section
+            </button>
+        </ng-container>
+        <ng-template #user>
+            <button class="item" mat-button (click)="goToExamOverview()">
+                Exam Section
+            </button>
+            <button class="item" mat-button (click)="goToSubjectOverview()">
+                Subject Section
+            </button>
+            <button class="item" mat-button (click)="goToQuestionOverview()">
+                Question Section
+            </button>
+            <button class="item" mat-button (click)="goToQuestionBankOverview()">
+                Question Bank Section
+            </button>
+        </ng-template>
+    </mat-drawer>
+
     <div class="top-bar">
         <ng-container *ngIf="returnUrl; else blank">
             <button class="back-button" mat-icon-button (click)="goBack()">
@@ -11,7 +39,5 @@
         <button *ngIf="isLogoutAvailable" class="logout-button" mat-raised-button (click)="logout()">Logout</button>
     </div>
 
-    <div class="content">
-        <ng-content></ng-content>
-    </div>
-</div>
+    <ng-content></ng-content>
+</mat-drawer-container>

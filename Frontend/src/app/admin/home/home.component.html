@@ -1,5 +1,5 @@
 <page-container>
-    <mat-tab-group class="admin-home">
+    <!-- <mat-tab-group class="admin-home">
         <mat-tab label="Exam Section">
             <div class="tab-section">
                 <div class="header">
@@ -77,9 +77,6 @@
                         <div class="sub-title">Here you can see all question bank information</div>
                     </div>
                     <div class="action">
-                        <!-- <button class="create-exam" mat-raised-button (click)="createQuestion()">
-                            Create Question
-                        </button> -->
                     </div>
                 </div>
                 <div class="content">
@@ -91,5 +88,25 @@
                 </div>
             </div>
         </mat-tab>
-    </mat-tab-group>
+    </mat-tab-group> -->
+    <!-- <div class="header">
+        <div class="text">
+            <div class="title">Exam Section</div>
+            <div class="sub-title">Here you can see all exam information</div>
+        </div>
+        <div class="action">
+            <button class="create-exam" mat-raised-button (click)="createExam()">
+                Create Exam
+            </button>
+        </div>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let exam of examList">
+            <div class="exam-item" matRipple (click)="goToExamDetails(exam.examId)">
+                <div class="name">{{exam?.name}}</div>
+                <div class="date">Date: {{exam?.date}}</div>
+                <div class="duration">Duration: {{exam?.duration}}</div>
+            </div>
+        </ng-container>
+    </div> -->
 </page-container>

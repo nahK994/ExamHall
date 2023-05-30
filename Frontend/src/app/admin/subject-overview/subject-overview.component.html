@@ -1,0 +1,23 @@
+<page-container>
+    <div class="header">
+        <div class="text">
+            <div class="title">Subject Section</div>
+            <div class="sub-title">Here you can see all subject information</div>
+        </div>
+        <div class="action">
+            <button class="create-exam" mat-raised-button (click)="createSubject()">
+                Create Subject
+            </button>
+        </div>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let subject of allSubjects">
+            <div class="subject-item" matRipple>
+                <div class="text">{{subject?.name}}</div>
+                <div class="action material-icons" (click)="deleteSubject(subject.subjectId)">
+                    delete
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</page-container>

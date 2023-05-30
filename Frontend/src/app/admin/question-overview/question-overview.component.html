@@ -1,0 +1,18 @@
+<page-container>
+    <div class="header">
+        <div class="text">
+            <div class="title">Question Section</div>
+            <div class="sub-title">Here you can see all question information</div>
+        </div>
+        <div class="action">
+            <button class="create-exam" mat-raised-button (click)="createQuestion()">
+                Create Question
+            </button>
+        </div>
+    </div>
+    <div class="content">
+        <ng-container *ngIf="allSubjects.length">
+            <question-list [updateAction]="true" (removeEvent)="deleteQuestion($event)" [allSubjects]="allSubjects"></question-list>
+        </ng-container>
+    </div>
+</page-container>

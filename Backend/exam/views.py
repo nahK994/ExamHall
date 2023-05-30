@@ -163,17 +163,22 @@ class ResultViewset(viewsets.ViewSet):
         return Response(response, status=status.HTTP_200_OK)
 
 
-class UserExamListViewset(viewsets.ViewSet):
+class UserPendingExamListViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
     def list(self, request):
         user = request.user
-        response = {
-            "completedExams": get_completed_exams(user),
-            "pendingExams": get_pending_exams(user)
-        }
-        return Response(response, status=status.HTTP_200_OK)
+        return Response(get_pending_exams(user), status=status.HTTP_200_OK)
+
+
+class UserCompletedExamListViewset(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ['get']
+
+    def list(self, request):
+        user = request.user
+        return Response(get_completed_exams(user), status=status.HTTP_200_OK)
 
 
 def get_completed_exams(user):

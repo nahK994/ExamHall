@@ -29,31 +29,31 @@ export class HomeComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.examList = await this._userService.getExamList();
-    this.allSubjects = await this._userService.getUserFavourites();
+    // this.examList = await this._userService.getExamList();
+    // this.allSubjects = await this._userService.getUserFavourites();
   }
 
-  goModelTests() {
-    this._router.navigate(['model-tests'])
-  }
+  // goModelTests() {
+  //   this._router.navigate(['model-tests'])
+  // }
 
-  goToFavourite() {
-    this._router.navigate(['favourites'])
-  }
+  // goToFavourite() {
+  //   this._router.navigate(['favourites'])
+  // }
 
-  goToExam(exam: ExamList) {
-    if(new Date(new Date(exam.date).toDateString()) > new Date()) {
-      this._snackBar.open('Cannot enroll the exam yet', '', {
-        horizontalPosition: 'center',
-        verticalPosition: 'bottom',
-        duration: 1500
-      });
-      return;
-    }
-    this._router.navigate(['exam', exam.examId], {
-      relativeTo: this._activatedRoute
-    })
-  }
+  // goToExam(exam: ExamList) {
+  //   if(new Date(new Date(exam.date).toDateString()) > new Date()) {
+  //     this._snackBar.open('Cannot enroll the exam yet', '', {
+  //       horizontalPosition: 'center',
+  //       verticalPosition: 'bottom',
+  //       duration: 1500
+  //     });
+  //     return;
+  //   }
+  //   this._router.navigate(['exam', exam.examId], {
+  //     relativeTo: this._activatedRoute
+  //   })
+  // }
 
   goToResult(exam: ExamList) {
     this._router.navigate(['result', exam.examId], {

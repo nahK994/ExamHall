@@ -1,0 +1,15 @@
+<page-container [userType]="userType.admin">
+    <div class="header">
+        <div class="text">
+            <div class="title">Question bank section</div>
+            <div class="sub-title">Here you can see all question bank information</div>
+        </div>
+        <div class="action">
+        </div>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let exam of questionBanks">
+            <button mat-stroked-button style="width: 200px;" (click)="goToQuestionBank(exam.id)">{{exam?.examName}} ({{exam?.category}})</button>
+        </ng-container>
+    </div>
+</page-container>

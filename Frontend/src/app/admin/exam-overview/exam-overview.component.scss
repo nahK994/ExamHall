@@ -1,0 +1,33 @@
+@import '../../shared/page-container/page-layout.scss';
+
+.exam-item{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    width: 15%;
+    height: 80px;
+    border-radius: 5%;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 2px 3px 6px #b2dfdb;
+    row-gap: 8px;
+    border: 2px solid #b2dfdb;
+
+    .name{
+        color: #00838f;
+        font-size: 18px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .duration{
+        color: #00acc1;
+        font-size: 14px;
+    }
+
+    .date{
+        color: #00acc1;
+        font-size: 14px;
+    }
+}
