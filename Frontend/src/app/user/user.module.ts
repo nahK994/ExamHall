@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
 import { UserRoutingModule } from './user-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -28,7 +27,6 @@ import { ResultListComponent } from './result-list/result-list.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     ModelTestDetailsComponent,
     ResultComponent,
     ArchivedQuestionListComponent,
