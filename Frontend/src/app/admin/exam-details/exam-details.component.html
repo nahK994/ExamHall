@@ -1,18 +1,20 @@
-<page-container [returnUrl]="'admin'">
-    <div class="exam-details-page" *ngIf="exam">
-        <div class="exam-info">
-            <div class="title">{{exam.name}}</div>
-            <div class="info">Date: {{exam.date}}</div>
-            <div class="info">Duration: {{exam.duration}}</div>
-            <div class="info">Number of seats: {{exam.numberOfSeats}}</div>
-            <div class="info">Mark of correct answer: {{exam.numberForCorrectAnswer}}</div>
-            <div class="info">Mark of incorrect answer: {{exam.numberForIncorrectAnswer}}</div>
-        </div>
-        <div class="question-list" *ngIf="exam.subjects">
-            <question-list [canRemove]="true" [allSubjects]="exam.subjects"></question-list>
-        </div>
-        <div class="rank-list">
-            <button class="btn" mat-raised-button (click)="seeRankList()">Rank List</button>
+<page-container [returnUrl]="'admin'" [userType]="userType.admin">
+    <div class="content">
+        <div class="exam-details-page" *ngIf="exam">
+            <div class="exam-info">
+                <div class="title">{{exam.name}}</div>
+                <div class="info">Date: {{exam.date}}</div>
+                <div class="info">Duration: {{exam.duration}}</div>
+                <div class="info">Number of seats: {{exam.numberOfSeats}}</div>
+                <div class="info">Mark of correct answer: {{exam.numberForCorrectAnswer}}</div>
+                <div class="info">Mark of incorrect answer: {{exam.numberForIncorrectAnswer}}</div>
+            </div>
+            <div class="question-list" *ngIf="exam.subjects">
+                <question-list [canRemove]="true" [allSubjects]="exam.subjects"></question-list>
+            </div>
+            <div class="rank-list">
+                <button class="btn" mat-raised-button (click)="seeRankList()">Rank List</button>
+            </div>
         </div>
     </div>
 </page-container>

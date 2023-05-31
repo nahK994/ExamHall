@@ -14,6 +14,7 @@ class ExamListSerializer(serializers.ModelSerializer):
 
 
 class ExamSerializer(serializers.ModelSerializer):
+    examId = serializers.IntegerField(source='id')
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer", min_value=1)
     numberForIncorrectAnswer = serializers.FloatField(source="number_for_incorrect_answer", max_value=0)
     numberOfSeats = serializers.IntegerField(source="number_of_seats", min_value=1)
@@ -22,7 +23,7 @@ class ExamSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ExamModel
-        fields = ['name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
+        fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats',
                   'questions', 'date', 'duration']
 
     def validate(self, validated_data):

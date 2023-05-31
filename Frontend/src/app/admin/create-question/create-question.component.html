@@ -1,72 +1,76 @@
-<page-container [returnUrl]="'admin/question-overview'">
-    <mat-card class="form" [formGroup]="question">
-        <mat-form-field appearance="outline">
-            <mat-label>Enter question text</mat-label>
-            <input matInput placeholder="Enter question text" formControlName="questionText" required>
-        </mat-form-field>
-
-        <div class="options">
-            <div class="side">
+<page-container [returnUrl]="'admin/question-overview'" [userType]="userType.admin">
+    <div class="content">
+        <div class="page">
+            <mat-card class="form" [formGroup]="question">
                 <mat-form-field appearance="outline">
-                    <mat-label>Option 1</mat-label>
-                    <input matInput placeholder="Option 1" formControlName="option1" required>
+                    <mat-label>Enter question text</mat-label>
+                    <input matInput placeholder="Enter question text" formControlName="questionText" required>
                 </mat-form-field>
-    
+        
+                <div class="options">
+                    <div class="side">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 1</mat-label>
+                            <input matInput placeholder="Option 1" formControlName="option1" required>
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 2</mat-label>
+                            <input matInput placeholder="Option 2" formControlName="option2" required>
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 3</mat-label>
+                            <input matInput placeholder="Option 3" formControlName="option3" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="side">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 4</mat-label>
+                            <input matInput placeholder="Option 4" formControlName="option4" required>
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 5</mat-label>
+                            <input matInput placeholder="Option 5" formControlName="option5" required>
+                        </mat-form-field>
+            
+                        <mat-form-field appearance="outline">
+                            <mat-label>Option 6</mat-label>
+                            <input matInput placeholder="Option 6" formControlName="option6" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+        
                 <mat-form-field appearance="outline">
-                    <mat-label>Option 2</mat-label>
-                    <input matInput placeholder="Option 2" formControlName="option2" required>
+                    <mat-label>Answer</mat-label>
+                    <mat-select formControlName="answer">
+                        <mat-option value="1">Option 1</mat-option>
+                        <mat-option value="2">Option 2</mat-option>
+                        <mat-option value="3">Option 3</mat-option>
+                        <mat-option value="4">Option 4</mat-option>
+                        <mat-option value="5">Option 5</mat-option>
+                        <mat-option value="6">Option 6</mat-option>
+                    </mat-select>
                 </mat-form-field>
-    
+        
                 <mat-form-field appearance="outline">
-                    <mat-label>Option 3</mat-label>
-                    <input matInput placeholder="Option 3" formControlName="option3" required>
+                    <mat-label>Explaination</mat-label>
+                    <textarea 
+                        matInput
+                        maxlength="1000" formControlName="explaination" required
+                        placeholder="Explaination">
+                    </textarea>
                 </mat-form-field>
-            </div>
-            <div class="side">
+        
                 <mat-form-field appearance="outline">
-                    <mat-label>Option 4</mat-label>
-                    <input matInput placeholder="Option 4" formControlName="option4" required>
+                    <mat-label>Subject</mat-label>
+                    <mat-select formControlName="subject">
+                        <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
-    
-                <mat-form-field appearance="outline">
-                    <mat-label>Option 5</mat-label>
-                    <input matInput placeholder="Option 5" formControlName="option5" required>
-                </mat-form-field>
-    
-                <mat-form-field appearance="outline">
-                    <mat-label>Option 6</mat-label>
-                    <input matInput placeholder="Option 6" formControlName="option6" required>
-                </mat-form-field>
-            </div>
+            </mat-card>
+            <button mat-raised-button (click)="submit()">Submit</button>
         </div>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Answer</mat-label>
-            <mat-select formControlName="answer">
-                <mat-option value="1">Option 1</mat-option>
-                <mat-option value="2">Option 2</mat-option>
-                <mat-option value="3">Option 3</mat-option>
-                <mat-option value="4">Option 4</mat-option>
-                <mat-option value="5">Option 5</mat-option>
-                <mat-option value="6">Option 6</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Explaination</mat-label>
-            <textarea 
-                matInput
-                maxlength="1000" formControlName="explaination" required
-                placeholder="Explaination">
-            </textarea>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>Subject</mat-label>
-            <mat-select formControlName="subject">
-                <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-card>
-    <button mat-raised-button (click)="submit()">Submit</button>
+    </div>
 </page-container>

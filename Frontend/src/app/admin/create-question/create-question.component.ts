@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
@@ -14,6 +15,7 @@ export class CreateQuestionComponent implements OnInit {
   question: FormGroup;
   allSubjects: AllQuestions[] = [];
   questionId: number | undefined;
+  userType = UserEnum;
   
   constructor(
     private _adminService: AdminService,

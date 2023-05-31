@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { RankListDialogComponent } from 'src/app/shared/rank-list-dialog/rank-list-dialog.component';
 import { Exam } from 'src/app/user/user.service';
 import { AdminService, UserRank } from '../admin.service';
@@ -15,6 +16,7 @@ export class ExamDetailsComponent implements OnInit {
   exam!: Exam;
   rankList!: UserRank[];
   cutMarks!: number;
+  userType = UserEnum;
 
   constructor(
     private _router: Router,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AdminService } from '../admin.service';
 
 
@@ -11,6 +12,7 @@ import { AdminService } from '../admin.service';
 export class CreateSubjectComponent {
 
   topic: FormGroup;
+  userType = UserEnum;
   
   constructor(
     private _adminService: AdminService,

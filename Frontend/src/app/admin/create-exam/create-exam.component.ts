@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
@@ -17,6 +18,7 @@ export class CreateExamComponent implements OnInit {
   subject: FormControl = new FormControl('');
   hour: FormControl = new FormControl('');
   minute: FormControl = new FormControl('');
+  userType = UserEnum;
 
   form: FormGroup;
 

@@ -37,9 +37,7 @@ export class ExamListComponent implements OnInit {
       });
       return;
     }
-    this._router.navigate(['exam', exam.examId], {
-      relativeTo: this._activatedRoute
-    })
+    this._router.navigate(['user', 'exam', exam.examId])
   }
 
 }
