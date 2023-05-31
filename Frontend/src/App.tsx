@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 
 import Login from './pages/login';
+import SignUp from './pages/signup';
 
 const theme = createTheme({
 	palette: {
@@ -62,8 +63,9 @@ const App = () => {
 			<Router
 				basename="/"
 			>
-        <Routes location="/">
-							<Route index path="/" element={<Login />} />
+        <Routes >
+				<Route path="/login" element={<Login />} />
+				<Route path="/signup" element={<SignUp />} />
         </Routes>
 			</Router>
       </ThemeProvider>
