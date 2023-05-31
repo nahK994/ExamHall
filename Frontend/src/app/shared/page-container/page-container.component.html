@@ -1,5 +1,10 @@
 <mat-drawer-container class="page">
     <mat-drawer mode="side" opened class="side-nav">
+        <div class="logo-container" mat-ripple>
+            <div class="logo">
+                <img style="width: 100%; height: 100%;" src="../../../assets/logo1.png" alt="ExamHall">
+            </div>
+        </div>
         <ng-container *ngIf="userType === userEnum.student; else user">
             <button class="item" mat-button (click)="goToExamList()">
                 Exam Section

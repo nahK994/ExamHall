@@ -1,19 +1,17 @@
-<page-container [returnUrl]="'admin/exam-overview'">
-    <div class="questions-item">    
-        <div class="list">
-            <ng-container *ngFor="let question of questionList?.questions">
-                <div class="card">
-                    <div class="card-content">
-                        <question [question]="question"></question>
-                        <button mat-icon-button (click)="deleteQuestion(question.questionId)">
-                            <mat-icon style="color: #855646;">delete</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="updateQuestion(question.questionId)">
-                            <mat-icon style="color: #855646;">edit</mat-icon>
-                        </button>
-                    </div>
+<page-container [returnUrl]="'admin/question-bank-overview'" [userType]="userType.admin">
+    <div class="content">
+        <ng-container *ngFor="let question of questionList?.questions">
+            <div class="card">
+                <div class="card-content">
+                    <question [question]="question"></question>
+                    <button mat-icon-button (click)="deleteQuestion(question.questionId)">
+                        <mat-icon style="color: #855646;">delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="updateQuestion(question.questionId)">
+                        <mat-icon style="color: #855646;">edit</mat-icon>
+                    </button>
                 </div>
-            </ng-container>
-        </div>
+            </div>
+        </ng-container>
     </div>
 </page-container>

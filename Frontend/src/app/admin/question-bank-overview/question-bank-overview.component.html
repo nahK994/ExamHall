@@ -9,7 +9,7 @@
     </div>
     <div class="content">
         <ng-container *ngFor="let exam of questionBanks">
-            <button mat-stroked-button style="width: 200px;" (click)="goToQuestionBank(exam.id)">{{exam?.examName}} ({{exam?.category}})</button>
+            <button mat-stroked-button class="item" (click)="goToQuestionBank(exam.id)">{{exam?.examName}}</button>
         </ng-container>
     </div>
 </page-container>

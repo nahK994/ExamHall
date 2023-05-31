@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AdminService, QuestionBank } from '../admin.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AdminService, QuestionBank } from '../admin.service';
 export class QuestionBankDetailsComponent implements OnInit {
 
   questionList: QuestionBank | undefined;
+  userType = UserEnum;
 
   constructor(
     private _adminService: AdminService,

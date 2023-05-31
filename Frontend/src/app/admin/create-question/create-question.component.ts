@@ -36,6 +36,7 @@ export class CreateQuestionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.questionId = this._activatedRoute.snapshot.params['id'];
+    console.log(this._activatedRoute)
     this.allSubjects = await this._adminService.getAllQuestions();
 
     if(this.questionId !== undefined) {

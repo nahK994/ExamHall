@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
@@ -11,6 +12,7 @@ import { AdminService } from '../admin.service';
 export class SubjectOverviewComponent implements OnInit {
 
   allSubjects: Subject[] = [];
+  userType = UserEnum;
 
   constructor(
     private _router: Router,

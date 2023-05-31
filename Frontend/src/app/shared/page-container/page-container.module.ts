@@ -4,6 +4,7 @@ import { PageContainerComponent } from './page-container.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatRippleModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     CommonModule,
     MatIconModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatRippleModule
   ],
   exports: [
     PageContainerComponent

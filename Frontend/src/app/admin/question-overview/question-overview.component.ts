@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AllQuestions } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
@@ -11,6 +12,7 @@ import { AdminService } from '../admin.service';
 export class QuestionOverviewComponent implements OnInit {
 
   allSubjects: AllQuestions[] = [];
+  userType = UserEnum;
 
   constructor(
     private _router: Router,
