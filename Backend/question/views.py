@@ -3,7 +3,7 @@ from utils.mixins import ModelManagerMixin
 from rest_framework.response import Response
 
 from .models import QuestionModel, SubjectModel, QuestionBankModel
-from .serializers import QuestionSerializer, QuestionQuerySerializer, SubjectSerializer, SubjectQuerySerializer, \
+from .serializers import QuestionSerializer, SubjectSerializer, SubjectQuerySerializer, \
     QuestionBankSerializer, QuestionBankQuerySerializer
 
 
@@ -21,7 +21,7 @@ class QuestionBankViewset(ModelManagerMixin, viewsets.ModelViewSet):
 
 class QuestionViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
-    query_serializer_class = QuestionQuerySerializer
+    query_serializer_class = QuestionSerializer
     queryset = QuestionModel.objects.all()
 
 

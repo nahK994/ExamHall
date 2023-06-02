@@ -2,7 +2,7 @@ from rest_framework import serializers
 from datetime import datetime
 from user.models import UserModel
 from .models import ExamModel, ResultModel
-from question.serializers import QuestionQuerySerializer, SubjectSerializer
+from question.serializers import QuestionSerializer, SubjectSerializer
 
 
 class ExamListSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class ExamListSerializer(serializers.ModelSerializer):
 
 
 class ExamSerializer(serializers.ModelSerializer):
-    examId = serializers.IntegerField(source='id')
+    examId = serializers.IntegerField(source='id', required=False)
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer", min_value=1)
     numberForIncorrectAnswer = serializers.FloatField(source="number_for_incorrect_answer", max_value=0)
     numberOfSeats = serializers.IntegerField(source="number_of_seats", min_value=1)
@@ -62,13 +62,13 @@ class ExamQuerySerializer(serializers.ModelSerializer):
                     {
                         'subjectId': q.subject.id,
                         'name': q.subject.name,
-                        'questions': [QuestionQuerySerializer(q).data]
+                        'questions': [QuestionSerializer(q).data]
                     }
                 )
                 subject_idx[q.subject.id] = index
                 index = index + 1
             else:
-                data['subjects'][subject_idx[q.subject.id]]['questions'].append(QuestionQuerySerializer(q).data)
+                data['subjects'][subject_idx[q.subject.id]]['questions'].append(QuestionSerializer(q).data)
 
         return data
 

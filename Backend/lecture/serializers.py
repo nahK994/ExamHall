@@ -3,16 +3,18 @@ from .models import CourseModel, LectureModel
 
 
 class LectureSerializer(serializers.ModelSerializer):
+    lectureId = serializers.IntegerField(source='id', required=False)
     title = serializers.CharField(max_length=100)
-    course = serializers.IntegerField()
+    courseId = serializers.IntegerField()
     serial = serializers.IntegerField(min_value=1)
+    handnote = serializers.FileField()
 
     class Meta:
         model = LectureModel
-        fields = '__all__'
+        fields = ['lectureId', 'title', 'courseId', 'serial', 'handnote']
 
     def validate(self, attrs):
-        filtered_course = CourseModel.objects.filter(id=attrs['course'])
+        filtered_course = CourseModel.objects.filter(id=attrs['courseId'])
         if not filtered_course:
             raise serializers.ValidationError('no such course')
 
@@ -20,25 +22,35 @@ class LectureSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        del validated_data['courseId']
         lecture = LectureModel(**validated_data)
         lecture.save()
         return lecture
-
-
-class LectureQuerySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(required=False)
-    title = serializers.CharField(max_length=100)
-    handnote = serializers.FileField()
-
-    class Meta:
-        model = LectureModel
-        fields = '__all__'
 
     def to_representation(self, instance):
         request = self.context.get('request')
 
         data = {
-            "id": instance.id,
+            "lectureId": instance.id,
+            "title": instance.title,
+            "description": instance.description,
+            "serial": instance.serial,
+            "handnote": request.build_absolute_uri(instance.handnote.url)
+        }
+        return data
+
+
+class LectureQuerySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LectureModel
+        fields = []
+
+    def to_representation(self, instance):
+        request = self.context.get('request')
+
+        data = {
+            "lectureId": instance.id,
             "title": instance.title,
             "description": instance.description,
             "serial": instance.serial,
@@ -48,20 +60,21 @@ class LectureQuerySerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
+    courseId = serializers.IntegerField(source='id', required=False)
     name = serializers.CharField(max_length=50)
 
     class Meta:
         model = CourseModel
-        fields = ['name']
+        fields = ['courseId', 'name']
 
 
 class CourseQuerySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(required=False)
+    courseId = serializers.IntegerField(source='id', required=False)
     name = serializers.CharField(max_length=50)
 
     class Meta:
         model = CourseModel
-        fields = ['id', 'name', 'lectures']
+        fields = ['courseId', 'name']
 
     def to_representation(self, instance):
         data = {
