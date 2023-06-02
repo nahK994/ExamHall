@@ -65,7 +65,7 @@
         
                 <mat-form-field appearance="outline">
                     <mat-label>Subject</mat-label>
-                    <mat-select formControlName="subject">
+                    <mat-select formControlName="subjectId">
                         <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>

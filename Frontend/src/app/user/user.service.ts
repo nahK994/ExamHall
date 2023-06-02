@@ -22,7 +22,7 @@ export interface Question {
   option6: string,
   answer: string,
   explaination: string,
-  subject: number
+  subjectId: number
 }
 
 export interface Subject {

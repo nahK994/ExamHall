@@ -25,7 +25,7 @@ export class CreateQuestionComponent implements OnInit {
     this.question = this._fb.group({
       questionText: ['', [Validators.required]],
       explaination: ['', [Validators.required]],
-      subject: [, [Validators.required]],
+      subjectId: [, [Validators.required]],
       answer: ['', [Validators.required]],
       option1: ['', [Validators.required]],
       option2: ['', [Validators.required]],
@@ -38,14 +38,13 @@ export class CreateQuestionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.questionId = this._activatedRoute.snapshot.params['id'];
-    console.log(this._activatedRoute)
     this.allSubjects = await this._adminService.getAllQuestions();
 
     if(this.questionId !== undefined) {
       let question: Question = await this._adminService.getQuestion(this.questionId);
 
       this.question.get('questionText')?.setValue(question?.questionText);
-      this.question.get('subject')?.setValue(question?.subject);
+      this.question.get('subjectId')?.setValue(question?.subjectId);
       this.question.get('explaination')?.setValue(question?.explaination);
       this.question.get('answer')?.setValue(this.getOptionNoFromAnswer(question));
       this.question.get('option1')?.setValue(question?.option1);
