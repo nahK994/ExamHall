@@ -1,1 +1,17 @@
-<p>question-banks-details works!</p>
+<div class="page">
+    <div class="top-bar">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon class="back-button-icon">arrow_back</mat-icon>
+        </button>
+        <button class="login-button" mat-raised-button (click)="login()">Login</button>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let question of questionList?.questions">
+            <div class="card">
+                <div class="card-content">
+                    <question [question]="question"></question>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

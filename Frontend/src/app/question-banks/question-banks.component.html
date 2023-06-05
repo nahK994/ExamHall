@@ -1,1 +1,13 @@
-<p>question-banks works!</p>
+<div class="page">
+    <div class="top-bar">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon class="back-button-icon">arrow_back</mat-icon>
+        </button>
+        <button class="login-button" mat-raised-button (click)="login()">Login</button>
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let questionBank of questionBanks">
+            <button mat-stroked-button class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</button>
+        </ng-container>
+    </div>
+</div>

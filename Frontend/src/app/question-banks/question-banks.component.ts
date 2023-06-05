@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService, QuestionBank } from '../admin/admin.service';
 
 @Component({
   selector: 'app-question-banks',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionBanksComponent implements OnInit {
 
-  constructor() { }
+  questionBanks: QuestionBank[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private _adminService: AdminService,
+    private _router: Router
+  ) { }
+
+  async ngOnInit(): Promise<void> {
+    this.questionBanks = await this._adminService.getQuestionBanks();
+  }
+
+  goToQuestionBankDetails(id: number){
+    this._router.navigate(['question-banks', id])
+  }
+
+  login() {
+    this._router.navigate(['login'])
+  }
+
+  goBack() {
+    this._router.navigate([''])
   }
 
 }
