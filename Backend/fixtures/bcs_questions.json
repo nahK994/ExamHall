@@ -51998,5 +51998,565 @@
             "subject": null,
             "reference": 36
         }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "She insisted on ––– leaving the house.",
+            "option1": "he",
+            "option2": "him",
+            "option3": "himself",
+            "option4": "his",
+            "option5": null,
+            "option6": null,
+            "answer": "his",
+            "explaination": "ব্যাখ্যা: Insist on এর পর সর্বদা Possessive form ব্যবহৃত হয়। সুতরাং সঠিক উত্তর She insisted on his leaving the house.",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "The phrase “Achilles’ heel” means––",
+            "option1": "a strong point",
+            "option2": "a strong solution",
+            "option3": "a weak point",
+            "option4": "a permanent solution",
+            "option5": null,
+            "option6": null,
+            "answer": "a weak point",
+            "explaination": "ব্যাখ্যা: Achilles heel একটি idioms and Phrase এর অর্থ -weak point.",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "He does not adhere ––– any principle.",
+            "option1": "by",
+            "option2": "in",
+            "option3": "at",
+            "option4": "to",
+            "option5": null,
+            "option6": null,
+            "answer": "to",
+            "explaination": "ব্যাখ্যা: Adhere to (sth)- লেগে থাকা, অটল থাকা।",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "Millennium is a period of–––",
+            "option1": "100 year",
+            "option2": "1000 year",
+            "option3": "1 million year",
+            "option4": "1 million year",
+            "option5": null,
+            "option6": null,
+            "answer": "1000 year",
+            "explaination": "ব্যাখ্যা: Millennium: a period of 1,000 years.",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "Identify the passive form of the following sentence : Who has broken this jug?",
+            "option1": "By whom has this jug been broken?",
+            "option2": "By whom has this jug broken?",
+            "option3": "By whom this jug has been broken?",
+            "option4": "Whom has this gug been broken?",
+            "option5": null,
+            "option6": null,
+            "answer": "By whom has this jug been broken?",
+            "explaination": "ব্যাখ্যা: Who যুক্ত Interrogative Sentence কে passive করার নিয়ম-By whom + auxiliary verb + Subject + v3 + ? সুতরাং, সঠিক উত্তর- By whom has this jug been broken?",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "Who is not a Victorian poet?",
+            "option1": "Alfred Tennyson",
+            "option2": "Robert Browning",
+            "option3": "William Wordsworth",
+            "option4": "Matthew Arnold",
+            "option5": null,
+            "option6": null,
+            "answer": "William Wordsworth",
+            "explaination": "ব্যাখ্যা: William Wordsworth রোমান্টিক যুগের কবি। তার Perfect to Lyrical Ballads (1798) প্রকাশের পর থেকে রোমান্টিক যুগ শুরু হয়।",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "Which of the following novels was written by George Orwell?",
+            "option1": "\\(\\mathrm{\\underline{1994}}\\)",
+            "option2": "\\(\\mathrm{\\underline{Brave \\ New \\ World}}\\)",
+            "option3": "\\(\\mathrm{\\underline{A \\ clockwork \\ Orange }}\\)",
+            "option4": "\\(\\mathrm{\\underline{For \\ Whom \\ the \\ Bell \\ Tolls }}\\)",
+            "option5": null,
+            "option6": null,
+            "answer": "\\(\\mathrm{\\underline{1994}}\\)",
+            "explaination": "ব্যাখ্যা: George Orwell এর বিখ্যাত উপন্যাস ‘1984’ এতে স্বৈরতন্ত্রের অধীনে মুক্তচিন্তার দুঃসহ জীবন আলোচিত হয়েছে। Brave New World - Aldous Huxley A clockwork orange- Anthony Burgess For Whom the Bell Tolls- Ernest Hemingway",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "Identify the correct sentence:",
+            "option1": "She speaks English like English",
+            "option2": "She speaks the English like English",
+            "option3": "She speaks the English like the English",
+            "option4": "She speaks English like the English",
+            "option5": null,
+            "option6": null,
+            "answer": "She speaks English like the English",
+            "explaination": "ব্যাখ্যা: ভাষার পূর্বে article বসে না, কিন্তু জাতির পূর্বে article the বসে। সঠিক উত্তর- She speaks English like the English.",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "When one makes a promise, one must not go ––– on it.",
+            "option1": "forward",
+            "option2": "back",
+            "option3": "by",
+            "option4": "around",
+            "option5": null,
+            "option6": null,
+            "answer": "back",
+            "explaination": "ব্যাখ্যা: Go back on একটি group verb. এর অর্থ প্রত্যাহার করা।",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "\\(\\mathrm{I \\ can’t\\underline { \\ put \\ up \\ with} \\ him \\ any \\ more. \\ Here \\ “put \\ up \\ with” \\ means: }\\)",
+            "option1": "To protect",
+            "option2": "To terminate",
+            "option3": "To tolerate",
+            "option4": "To prevent",
+            "option5": null,
+            "option6": null,
+            "answer": "To tolerate",
+            "explaination": "ব্যাখ্যা: Put up with- tolerate or endure something.",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "The poem “To his Coy Mistress” Was written by:",
+            "option1": "Andrew Marvell",
+            "option2": "John Donne",
+            "option3": "George Herbert",
+            "option4": "Henry Vaughan",
+            "option5": null,
+            "option6": null,
+            "answer": "Andrew Marvell",
+            "explaination": "ব্যাখ্যা: To his coy Mistress- Andrew Marvell. মেটাফিজিক্যাল ধারার এ কবি তার বিখ্যাত কবিতার ‘Coy Mistress’ অর্থে সম্ভবত কাব্য রচনার ক্রিয়াকেই বুঝিয়েছেন।",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "The synonyms of ‘altitude’ is–––",
+            "option1": "height",
+            "option2": "width",
+            "option3": "length",
+            "option4": "depth",
+            "option5": null,
+            "option6": null,
+            "answer": "height",
+            "explaination": "ব্যাখ্যা: Altitude- এর অর্থ উচ্চতা. Height এর অর্থও উচ্চতা।",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "The character, Elizabeth Bennett, appears in the novel––",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "fields": {
+            "question_text": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "option4": "",
+            "option5": null,
+            "option6": null,
+            "answer": "",
+            "explaination": "ব্যাখ্যা:",
+            "subject": null,
+            "reference": 37
+        }
     }
 ]

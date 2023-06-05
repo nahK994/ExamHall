@@ -3,17 +3,18 @@ from bs4 import BeautifulSoup
 import json
 
 question_list = []
-for exam_no in range(10, 46):
+for exam_no in range(10, 47):
     if exam_no >= 25:
-        serial = exam_no-1
+        exam_serial = exam_no-1
     else:
-        serial = exam_no
+        exam_serial = exam_no
 
-    URL = f"https://uttoron.academy/question/{serial}th-bcs/"
+    URL = f"https://uttoron.academy/question/{exam_serial}th-bcs/"
     if exam_no == 25:
-        URL = f"https://uttoron.academy/question/{serial}th-bcs-cancelled/"
+        URL = f"https://uttoron.academy/question/{exam_serial}th-bcs-cancelled/"
 
     print(URL)
+
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, features="html.parser")
     table = soup.findAll('div', attrs={'class': 'question-item'})
@@ -28,6 +29,7 @@ for exam_no in range(10, 46):
 
         raw_explanation = row.find('div', attrs={'class': 'question-solve'}).p.get_text()
         explanation = ' '.join(raw_explanation.replace('\n', ' ').split())
+
         question_dict = {
             "model": "question.questionmodel",
             "fields": {
