@@ -5,7 +5,7 @@ for exam_no in range(10, 47):
     exam_dict = {
         "model": "question.questionbankmodel",
         "fields": {
-            "pk": exam_no - 9,
+            "id": exam_no - 9,
             "exam_name": "",
             "category": "BCS"
         }
