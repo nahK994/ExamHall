@@ -24,6 +24,14 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m=>m.UserModule)
+  },
+  {
+    path: 'question-banks',
+    loadChildren: () => import('./question-banks/question-banks.module').then(m=>m.QuestionBanksModule)
+  },
+  {
+    path: 'job-solutions',
+    loadChildren: () => import('./job-solutions/job-solutions.module').then(m=>m.JobSolutionsModule)
   }
 ];
 
