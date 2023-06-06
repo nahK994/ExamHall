@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from question.views import QuestionViewset, SubjectViewset, QuestionBankViewset, AllCategorizedQuestionsViewset
+from question.views import QuestionViewset, SubjectViewset, AdminQuestionBankViewset, AllCategorizedQuestionsViewset, QuestionBankViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, ResultViewset, RankListViewset, \
     UserPendingExamListViewset, UserCompletedExamListViewset
 from archive.views import ArchiveViewset
@@ -40,6 +40,7 @@ router.register("subjects", SubjectViewset, basename="subjects")
 
 router.register("questions", QuestionViewset, basename="questions")
 router.register("all-categorized-questions", AllCategorizedQuestionsViewset, basename="questions")
+router.register("admin-question-banks", AdminQuestionBankViewset, basename="admin-question-bank")
 router.register("question-banks", QuestionBankViewset, basename="question-bank")
 
 router.register("pending-exams-list", UserPendingExamListViewset, basename="exams-list")

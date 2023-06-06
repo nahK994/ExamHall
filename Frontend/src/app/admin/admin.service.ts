@@ -130,14 +130,14 @@ export class AdminService {
   }
 
   async getQuestionBanks() {
-    let questionBankURL_extention = '/question-banks';
+    let questionBankURL_extention = '/admin-question-banks';
     let response = await lastValueFrom(this.http.get<QuestionBank[]>(this._appService.doamin+questionBankURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
   async getExamQuestions(examReferenceId: number) {
-    let questionBankURL_extention = '/question-banks/'+examReferenceId;
+    let questionBankURL_extention = '/admin-question-banks/'+examReferenceId;
     let response = await lastValueFrom(this.http.get<QuestionBank>(this._appService.doamin+questionBankURL_extention, this._appService.httpOptions));
 
     return response;

@@ -6,6 +6,7 @@ import { QuestionBanksRoutingModule } from './question-banks-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { QuestionModule } from '../shared/question/question.module';
 import { MatIconModule } from '@angular/material/icon';
+import { QuestionBanksService } from './question-banks.service';
 
 
 @NgModule({
@@ -19,6 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     QuestionModule,
     MatIconModule
+  ],
+  providers: [
+    QuestionBanksService
   ]
 })
 export class QuestionBanksModule { }

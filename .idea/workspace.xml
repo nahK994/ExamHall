@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="095fd2db-c9d5-4aae-bb80-2f719c3329d1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/job-solutions/job-solutions.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/job-solutions/job-solutions.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/job-solutions/job-solutions.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks-details/question-banks-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/app/question-banks/question-banks.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/App/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/App/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/question/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/question/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

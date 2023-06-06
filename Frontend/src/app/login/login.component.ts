@@ -40,4 +40,8 @@ export class LoginComponent {
     this._router.navigate(['registration']);
   }
 
+  goBack() {
+    this._router.navigate([''])
+  }
+
 }

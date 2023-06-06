@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { JobSolutionsComponent } from './job-solutions.component';
 import { JobSolutionsDetailsComponent } from './job-solutions-details/job-solutions-details.component';
 import { JobSolutionsRoutingModule } from './job-solutions-routing.module';
+import { JobSolutionsService } from './job-solutions.service';
 
 
 @NgModule({
@@ -13,6 +14,9 @@ import { JobSolutionsRoutingModule } from './job-solutions-routing.module';
   imports: [
     CommonModule,
     JobSolutionsRoutingModule
+  ],
+  providers: [
+    JobSolutionsService
   ]
 })
 export class JobSolutionsModule { }
