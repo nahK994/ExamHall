@@ -1,26 +1,45 @@
 from rest_framework import serializers
-from .models import QuestionModel, SubjectModel, QuestionBankModel
+from .models import QuestionModel, SubjectModel, QuestionBankModel, ChapterModel
+
+
+class ReferenceSerializer(serializers.ModelSerializer):
+        examName = serializers.CharField(source='exam_name')
+
+        class Meta:
+            model = QuestionBankModel
+            fields = ['id', 'examName', 'category']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     questionText = serializers.CharField(source='question_text')
     questionId = serializers.IntegerField(source='id', required=False)
+    chapterId = serializers.IntegerField()
     subjectId = serializers.IntegerField()
 
     class Meta:
         model = QuestionModel
-        fields = ['questionId', 'questionText', 'explaination', 'subject', 'answer',
+        fields = ['questionId', 'questionText', 'explaination', 'chapterId', 'answer', 'reference',
                   'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'subjectId']
 
     def validate(self, attrs):
+        filtered_chapter = ChapterModel.objects.filter(id=attrs['chapterId'])
+        if not filtered_chapter:
+            raise serializers.ValidationError('no such chapter')
+        
         filtered_subject = SubjectModel.objects.filter(id=attrs['subjectId'])
         if not filtered_subject:
             raise serializers.ValidationError('no such subject')
+        
+        chapter = filtered_chapter[0]
+        subject = filtered_subject[0]
+        if not (chapter in subject.chapters.all()):
+            raise serializers.ValidationError('chapter does not exist in subject')
 
-        attrs['subject'] = filtered_subject[0]
+        attrs['chapter'] = filtered_chapter[0]
         return attrs
 
     def create(self, validated_data):
+        del validated_data['chapterId']
         del validated_data['subjectId']
         question = QuestionModel(**validated_data)
         question.save()
@@ -37,47 +56,47 @@ class QuestionSerializer(serializers.ModelSerializer):
             "option5": instance.option5,
             "option6": instance.option6,
             "answer": instance.answer,
-            "subjectId": instance.subject.id if instance.subject is not None else None,
-            "explaination": instance.explaination
+            "chapterId": instance.chapter.id if instance.chapter is not None else None,
+            "explaination": instance.explaination,
+            "reference": ReferenceSerializer(instance.reference).data
         }
 
         return data
 
 
-class QuestionReferenceSerializer(serializers.ModelSerializer):
-    examName = serializers.CharField(source='exam_name')
-
-    class Meta:
-        model = QuestionBankModel
-        fields = ['id', 'examName', 'category']
-
-
-class QuestionInfoSerializer(serializers.ModelSerializer):
-    questionId = serializers.IntegerField(source='id')
-    questionText = serializers.CharField(source='question_text')
-    reference = QuestionReferenceSerializer()
-
-    class Meta:
-        model = QuestionModel
-        fields = ['questionId', 'questionText', 'explaination', 'answer', 'reference',
-                  'option1', 'option2', 'option3', 'option4', 'option5', 'option6']
-
-
-class SubjectQuerySerializer(serializers.ModelSerializer):
-    questions = QuestionInfoSerializer(many=True)
-    subjectId = serializers.IntegerField(source='id')
-
-    class Meta:
-        model = SubjectModel
-        fields = ['subjectId', 'name', 'questions']
-
-
 class SubjectSerializer(serializers.ModelSerializer):
-    subjectId = serializers.IntegerField(source='id')
+    subjectId = serializers.IntegerField(source='id', required=False)
 
     class Meta:
         model = SubjectModel
         fields = ['subjectId', 'name']
+
+class ChapterSerializer(serializers.ModelSerializer):
+        chapterId = serializers.IntegerField(source='id')
+        questions = QuestionSerializer(many=True, required=False)
+
+        class Meta:
+            model = ChapterModel
+            fields = ['chapterId', 'name', 'questions']
+
+
+class ChapterQuerySerializer(serializers.ModelSerializer):
+    chapterId = serializers.IntegerField(source='id')
+    subject = SubjectSerializer()
+    questions = QuestionSerializer(many=True)
+
+    class Meta:
+        model = ChapterModel
+        fields = ['chapterId', 'name', 'subject', 'questions']
+
+
+class JobSolutionsSerializer(serializers.ModelSerializer):
+    subjectId = serializers.IntegerField(source='id')
+    chapters = ChapterSerializer(many=True)
+
+    class Meta:
+        model = SubjectModel
+        fields = ['subjectId', 'name', 'chapters']
 
 
 class QuestionBankSerializer(serializers.ModelSerializer):
@@ -88,6 +107,22 @@ class QuestionBankSerializer(serializers.ModelSerializer):
         fields = ['id', 'examName', 'category']
 
 
+class SubjectQuerySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SubjectModel
+        fields = []
+    
+    def to_representation(self, instance):
+
+        response = {
+            'subjectId': instance.id,
+            'name': instance.name,
+            'chapters': ChapterSerializer(instance.chapters.all(), many=True).data,
+        }
+        return response
+
+
 class QuestionBankQuerySerializer(serializers.ModelSerializer):
     examName = serializers.CharField(source='exam_name')
     questions = QuestionSerializer(many=True)
@@ -95,3 +130,30 @@ class QuestionBankQuerySerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionBankModel
         fields = ['id', 'examName', 'category', 'questions']
+
+
+class SubjectWiseQuestionsSerializer(serializers.ModelSerializer):
+        questionText = serializers.CharField(source='question_text')
+        questionId = serializers.IntegerField(source='id')
+
+        class Meta:
+            model = QuestionModel
+            fields = ['questionId', 'questionText', 'explaination', 'answer',
+                    'option1', 'option2', 'option3', 'option4', 'option5', 'option6']
+
+
+class SubjectWiseAllQuestionsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SubjectModel
+        fields = []
+    
+    def to_representation(self, instance):
+        all_questions = [SubjectWiseQuestionsSerializer(chapter.questions.all(), many=True).data for chapter in instance.chapters.all() if len(chapter.questions.all())]
+        response = {
+            "subjectId": instance.id,
+            "name": instance.name,
+            "questions": all_questions
+        }
+
+        return response

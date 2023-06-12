@@ -2,9 +2,9 @@ from rest_framework import viewsets, permissions, status
 from utils.mixins import ModelManagerMixin
 from rest_framework.response import Response
 
-from .models import QuestionModel, SubjectModel, QuestionBankModel
-from .serializers import QuestionSerializer, SubjectSerializer, SubjectQuerySerializer, \
-    QuestionBankSerializer, QuestionBankQuerySerializer
+from .models import QuestionModel, SubjectModel, QuestionBankModel, ChapterModel
+from .serializers import SubjectWiseAllQuestionsSerializer, JobSolutionsSerializer, QuestionSerializer, SubjectSerializer, SubjectQuerySerializer, \
+    QuestionBankSerializer, QuestionBankQuerySerializer, ChapterQuerySerializer, ChapterSerializer
 
 
 class SubjectViewset(ModelManagerMixin, viewsets.ModelViewSet):
@@ -39,17 +39,31 @@ class QuestionBankViewset(viewsets.ViewSet):
             return Response("Not found", status=status.HTTP_404_NOT_FOUND)
 
 
+class ChapterViewset(ModelManagerMixin, viewsets.ModelViewSet):
+    serializer_class = ChapterSerializer
+    query_serializer_class = ChapterQuerySerializer
+    queryset = ChapterModel.objects.all()
+
+
 class QuestionViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
     query_serializer_class = QuestionSerializer
     queryset = QuestionModel.objects.all()
 
 
+class JobSolutionsViewset(viewsets.ViewSet):
+    http_method_names = ['get']
+
+    def list(self, request):
+        subjects = SubjectModel.objects.all().prefetch_related('chapters', 'chapters__questions')
+        response = JobSolutionsSerializer(subjects, many=True).data
+        return Response(response, status=status.HTTP_200_OK)
+
 class AllCategorizedQuestionsViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
     def list(self, request):
-        subjects = SubjectModel.objects.all().prefetch_related('questions')
-        response = SubjectQuerySerializer(subjects, many=True).data
+        subjects = SubjectModel.objects.all().prefetch_related('chapters', 'chapters__questions')
+        response = SubjectWiseAllQuestionsSerializer(subjects, many=True).data
         return Response(response, status=status.HTTP_200_OK)

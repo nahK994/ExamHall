@@ -12,6 +12,17 @@ class SubjectModel(models.Model):
         db_table = 'subjects'
 
 
+class ChapterModel(models.Model):
+    name = models.CharField(max_length=100)
+    subject = models.ForeignKey(SubjectModel, related_name='chapters', on_delete=models.DO_NOTHING, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.id})"
+
+    class Meta:
+        db_table = 'chapters'
+
+
 class QuestionBankModel(models.Model):
     category_choices = [
         ("BCS", "BCS")
@@ -37,7 +48,7 @@ class QuestionModel(models.Model):
     option6 = models.CharField(max_length=1000, null=True)
     answer = models.CharField(max_length=1000)
     explaination = models.TextField(blank=True)
-    subject = models.ForeignKey(SubjectModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
+    chapter = models.ForeignKey(ChapterModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
     reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
     archived_by_users = models.ManyToManyField(UserModel)
 

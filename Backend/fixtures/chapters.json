@@ -1,0 +1,138 @@
+[
+    {
+        "model": "question.chaptermodel",
+        "pk": 1,
+        "fields": {
+            "name": "প্রবাদ প্রবচন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 2,
+        "fields": {
+            "name": "এক কথায় প্রকাশ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 3,
+        "fields": {
+            "name": "বিপরীতার্থক শব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 4,
+        "fields": {
+            "name": "ধ্বনি পরিবর্তন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 5,
+        "fields": {
+            "name": "সমাস",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 6,
+        "fields": {
+            "name": "কারক",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 7,
+        "fields": {
+            "name": "সন্ধি",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 8,
+        "fields": {
+            "name": "পদ প্রকরণ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 9,
+        "fields": {
+            "name": "উপসর্গ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 10,
+        "fields": {
+            "name": "অনুসর্গ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 11,
+        "fields": {
+            "name": "দ্বিরুক্ত শব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 12,
+        "fields": {
+            "name": "Right form of verb",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 12,
+        "fields": {
+            "name": "Subject verb agreement",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 12,
+        "fields": {
+            "name": "Vocabulary",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 12,
+        "fields": {
+            "name": "Idioms and phrases",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 13,
+        "fields": {
+            "name": "আধুনিক যুগ",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 14,
+        "fields": {
+            "name": "ঐকিক নিয়ম",
+            "subject": 5
+        }
+    }
+]

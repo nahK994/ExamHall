@@ -1,7 +1,7 @@
 [
     {
         "model": "question.questionmodel",
-        "pk": 1,
+        "id": 1,
         "fields": {
             "question_text": "At all = ?",
             "option1": "আদৌ",
@@ -12,7 +12,7 @@
             "option6": "সবগুলোই",
             "answer": "আদৌ",
             "explaination": "At all = আদৌ",
-            "subject": 7,
+            "chapter": 12,
             "reference": null,
             "archived_by_users": [
                 4
@@ -21,7 +21,7 @@
     },
     {
         "model": "question.questionmodel",
-        "pk": 2,
+        "id": 2,
         "fields": {
             "question_text": "বাংলায় নোবেলজয়ী সাহিত্যিকের নাম কি?",
             "option1": "রবীন্দ্রনাথ ঠাকুর",
@@ -32,7 +32,7 @@
             "option6": "কেওই না",
             "answer": "রবীন্দ্রনাথ ঠাকুর",
             "explaination": "রবীন্দ্রনাথ ঠাকুর",
-            "subject": 5,
+            "chapter": 13,
             "reference": null,
             "archived_by_users": [
                 4
@@ -41,7 +41,7 @@
     },
     {
         "model": "question.questionmodel",
-        "pk": 3,
+        "id": 3,
         "fields": {
             "question_text": "2+2=?",
             "option1": "1",
@@ -52,7 +52,7 @@
             "option6": "6",
             "answer": "4",
             "explaination": "2+2=4",
-            "subject": 11,
+            "chapter": 14,
             "reference": null,
             "archived_by_users": [
                 4

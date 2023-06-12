@@ -1,23 +1,51 @@
 [
     {
         "model": "question.subjectmodel",
+        "pk": 1,
+        "fields": {
+            "name": "বাংলা সাহিত্য"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 2,
+        "fields": {
+            "name": "বাংলা ২য় পত্র"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 3,
+        "fields": {
+            "name": "English 1st paper"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 4,
+        "fields": {
+            "name": "English 2nd paper"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
         "pk": 5,
         "fields": {
-            "name": "Bangla"
+            "name": "পাটিগণিত"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 6,
+        "fields": {
+            "name": "বীজগণিত"
         }
     },
     {
         "model": "question.subjectmodel",
         "pk": 7,
         "fields": {
-            "name": "English"
-        }
-    },
-    {
-        "model": "question.subjectmodel",
-        "pk": 11,
-        "fields": {
-            "name": "Math"
+            "name": "জ্যামিতি"
         }
     }
 ]

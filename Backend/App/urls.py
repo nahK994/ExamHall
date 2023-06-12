@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from question.views import QuestionViewset, SubjectViewset, AdminQuestionBankViewset, AllCategorizedQuestionsViewset, QuestionBankViewset
+from question.views import QuestionViewset, SubjectViewset, AdminQuestionBankViewset, AllCategorizedQuestionsViewset, QuestionBankViewset, ChapterViewset, JobSolutionsViewset
 from exam.views import ExamViewset, StartExamViewset, EndExamViewset, ResultViewset, RankListViewset, \
     UserPendingExamListViewset, UserCompletedExamListViewset
 from archive.views import ArchiveViewset
@@ -26,6 +26,7 @@ from lecture.views import LectureViewset, CourseViewset
 from rest_framework_simplejwt.views import TokenRefreshView
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 
 class OptionalSlashRouter(routers.SimpleRouter):
@@ -37,9 +38,11 @@ class OptionalSlashRouter(routers.SimpleRouter):
 router = OptionalSlashRouter()
 
 router.register("subjects", SubjectViewset, basename="subjects")
+router.register("chapters", ChapterViewset, basename="chapters")
 
 router.register("questions", QuestionViewset, basename="questions")
-router.register("all-categorized-questions", AllCategorizedQuestionsViewset, basename="questions")
+router.register("job-solutions", JobSolutionsViewset, basename="questions")
+router.register("subject-wise-questions", AllCategorizedQuestionsViewset, basename="questions")
 router.register("admin-question-banks", AdminQuestionBankViewset, basename="admin-question-bank")
 router.register("question-banks", QuestionBankViewset, basename="question-bank")
 

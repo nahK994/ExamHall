@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets
-from question.serializers import SubjectQuerySerializer
+from question.serializers import SubjectWiseAllQuestionsSerializer
 from question.models import SubjectModel, QuestionModel
 
 
@@ -9,8 +9,8 @@ class ArchiveViewset(viewsets.ViewSet):
 
     def list(self, request):
         user = request.user
-        topics = SubjectModel.objects.prefetch_related('questions').filter(questions__archived_by_users__in=[user])
-        serialized_topics = SubjectQuerySerializer(topics, many=True)
+        topics = SubjectModel.objects.prefetch_related('chapters', 'chapters__questions').filter(chapters__questions__archived_by_users__in=[user])
+        serialized_topics = SubjectWiseAllQuestionsSerializer(topics, many=True)
         return Response(serialized_topics.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
