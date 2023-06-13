@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
-import { Subject } from 'src/app/user/user.service';
-import { AdminService } from '../admin.service';
+import { AdminService, SubjectInterface } from '../admin.service';
 
 @Component({
   selector: 'app-subject-overview',
@@ -11,7 +10,7 @@ import { AdminService } from '../admin.service';
 })
 export class SubjectOverviewComponent implements OnInit {
 
-  allSubjects: Subject[] = [];
+  allSubjects: SubjectInterface[] = [];
   userType = UserEnum;
 
   constructor(
@@ -31,7 +30,7 @@ export class SubjectOverviewComponent implements OnInit {
     await this._adminService.deleteSubject(subjectId);
     let subjects = [];
     for(let i=0 ; i<this.allSubjects.length ; i++) {
-      if(this.allSubjects[i].subjectId == subjectId)
+      if(this.allSubjects[i].subjectId === subjectId)
         continue
       
       subjects.push(this.allSubjects[i])

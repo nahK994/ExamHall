@@ -149,11 +149,37 @@ class SubjectWiseAllQuestionsSerializer(serializers.ModelSerializer):
         fields = []
     
     def to_representation(self, instance):
-        all_questions = [SubjectWiseQuestionsSerializer(chapter.questions.all(), many=True).data for chapter in instance.chapters.all() if len(chapter.questions.all())]
+        all_questions = []
+        for chapter in instance.chapters.all():
+            for question in chapter.questions.all():
+                all_questions.append(question)
+
         response = {
             "subjectId": instance.id,
             "name": instance.name,
-            "questions": all_questions
+            "questions": SubjectWiseQuestionsSerializer(all_questions, many=True).data
+        }
+
+        return response
+
+
+class SubjectWiseChaptersSerializer(serializers.ModelSerializer):
+    class ChapterSerializer(serializers.ModelSerializer):
+        chapterId = serializers.IntegerField(source='id')
+
+        class Meta:
+            model = ChapterModel
+            fields = ['chapterId', 'name']
+
+    class Meta:
+        model = SubjectModel
+        fields = []
+    
+    def to_representation(self, instance):
+        response = {
+            "subjectId": instance.id,
+            "name": instance.name,
+            "chapters": self.ChapterSerializer(instance.chapters.all(), many=True).data
         }
 
         return response

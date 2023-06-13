@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { AppService } from '../app.service';
-import { AllQuestions, Exam, Question, Subject } from '../user/user.service';
+import { SubjectWiseQuestions, Exam, Question } from '../user/user.service';
 
 export interface ExamList {
   examId: number,
@@ -26,6 +26,17 @@ export interface QuestionBank {
 
 export interface CreateSubjectModel {
   name: string
+}
+
+export interface Chapter {
+  chapterId: string,
+  name: string
+}
+
+export interface SubjectInterface {
+  subjectId: number,
+  name: string,
+  chapters: Chapter[]
 }
 
 @Injectable({
@@ -74,8 +85,8 @@ export class AdminService {
   }
 
   async getAllQuestions() {
-    let subjectURL_extention = '/all-categorized-questions';
-    let response = await lastValueFrom(this.http.get<AllQuestions[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
+    let subjectURL_extention = '/subject-wise-questions';
+    let response = await lastValueFrom(this.http.get<SubjectWiseQuestions[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }
@@ -89,7 +100,7 @@ export class AdminService {
 
   async getSubjects() {
     let subjectURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<SubjectInterface[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }
@@ -139,6 +150,13 @@ export class AdminService {
   async getExamQuestions(examReferenceId: number) {
     let questionBankURL_extention = '/admin-question-banks/'+examReferenceId;
     let response = await lastValueFrom(this.http.get<QuestionBank>(this._appService.doamin+questionBankURL_extention, this._appService.httpOptions));
+
+    return response;
+  }
+
+  async getSubjectWiseChapters() {
+    let subjectWiseChaptersURL_extention = '/subject-wise-chapters/';
+    let response = await lastValueFrom(this.http.get<SubjectInterface[]>(this._appService.doamin+subjectWiseChaptersURL_extention, this._appService.httpOptions));
 
     return response;
   }

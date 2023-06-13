@@ -22,7 +22,8 @@ export interface Question {
   option6: string,
   answer: string,
   explaination: string,
-  subjectId: number
+  chapterId: string,
+  // subjectId?: number
 }
 
 export interface Subject {
@@ -30,7 +31,7 @@ export interface Subject {
   name: string
 }
 
-export interface AllQuestions {
+export interface SubjectWiseQuestions {
   subjectId: number,
   name: string,
   questions: Question[]
@@ -42,7 +43,7 @@ export interface Exam {
   numberForCorrectAnswer: number,
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
-  subjects?: AllQuestions[],
+  subjects?: SubjectWiseQuestions[],
   date: string;
   duration: string;
 }
@@ -85,14 +86,14 @@ export class UserService {
 
   async getUserFavourites() {
     let archiveQuestionURL_extention = '/favourite-questions';
-    let response = await lastValueFrom(this.http.get<AllQuestions[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<SubjectWiseQuestions[]>(this._appService.doamin + archiveQuestionURL_extention, this._appService.httpOptions));
 
     return response;
   }
 
   async getSubjects() {
     let subjectURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.get<AllQuestions[]>(this._appService.doamin + subjectURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<SubjectWiseQuestions[]>(this._appService.doamin + subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }

@@ -63,12 +63,20 @@
                     </textarea>
                 </mat-form-field>
         
-                <mat-form-field appearance="outline">
-                    <mat-label>Subject</mat-label>
-                    <mat-select formControlName="subjectId">
-                        <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div style="display: flex; column-gap: 12px;">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Subject</mat-label>
+                        <mat-select [formControl]="subject">
+                            <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Chapter</mat-label>
+                        <mat-select formControlName="chapterId">
+                            <mat-option *ngFor="let val of chapters" [value]="val?.chapterId">{{val?.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </mat-card>
             <button mat-raised-button (click)="submit()">Submit</button>
         </div>

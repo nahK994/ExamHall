@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
-import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
+import { SubjectWiseQuestions, Question, Subject } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AdminService } from '../admin.service';
 })
 export class CreateExamComponent implements OnInit {
 
-  allSubjects: AllQuestions[] = [];
+  allSubjects: SubjectWiseQuestions[] = [];
   questions: Question[] = [];
   allQuestions: Question[] = [];
   subject: FormControl = new FormControl('');
@@ -51,7 +51,7 @@ export class CreateExamComponent implements OnInit {
     this.subject.valueChanges.subscribe(res => {
       let questions: Question[] = [];
       for (let question of this.allQuestions) {
-        if (question.subjectId === res) {
+        if (question.chapterId === res) {
           questions.push(question);
         }
       }

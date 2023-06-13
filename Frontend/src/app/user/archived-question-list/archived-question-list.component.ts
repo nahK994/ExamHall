@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AllQuestions, UserService } from '../user.service';
+import { SubjectWiseQuestions, UserService } from '../user.service';
 
 @Component({
   selector: 'app-archived-question-list',
@@ -8,7 +8,7 @@ import { AllQuestions, UserService } from '../user.service';
 })
 export class ArchivedQuestionListComponent implements OnInit {
 
-  allSubjects: AllQuestions[] = [];
+  allSubjects: SubjectWiseQuestions[] = [];
 
   constructor(
     private _userService: UserService,

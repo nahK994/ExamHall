@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 from .models import QuestionModel, SubjectModel, QuestionBankModel, ChapterModel
 from .serializers import SubjectWiseAllQuestionsSerializer, JobSolutionsSerializer, QuestionSerializer, SubjectSerializer, SubjectQuerySerializer, \
-    QuestionBankSerializer, QuestionBankQuerySerializer, ChapterQuerySerializer, ChapterSerializer
+    QuestionBankSerializer, QuestionBankQuerySerializer, ChapterQuerySerializer, ChapterSerializer, SubjectWiseChaptersSerializer
 
 
 class SubjectViewset(ModelManagerMixin, viewsets.ModelViewSet):
@@ -59,11 +59,21 @@ class JobSolutionsViewset(viewsets.ViewSet):
         response = JobSolutionsSerializer(subjects, many=True).data
         return Response(response, status=status.HTTP_200_OK)
 
-class AllCategorizedQuestionsViewset(viewsets.ViewSet):
+class SubjectWiseAllQuestionsViewset(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
     def list(self, request):
         subjects = SubjectModel.objects.all().prefetch_related('chapters', 'chapters__questions')
         response = SubjectWiseAllQuestionsSerializer(subjects, many=True).data
+        return Response(response, status=status.HTTP_200_OK)
+
+
+class SubjectWiseChaptersViewset(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ['get']
+
+    def list(self, request):
+        subjects = SubjectModel.objects.all().prefetch_related('chapters')
+        response = SubjectWiseChaptersSerializer(subjects, many=True).data
         return Response(response, status=status.HTTP_200_OK)

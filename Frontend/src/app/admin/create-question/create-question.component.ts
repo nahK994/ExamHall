@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
-import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
-import { AdminService } from '../admin.service';
+import { Question } from 'src/app/user/user.service';
+import { AdminService, Chapter, SubjectInterface } from '../admin.service';
 
 @Component({
   selector: 'app-create-question',
@@ -13,9 +13,11 @@ import { AdminService } from '../admin.service';
 export class CreateQuestionComponent implements OnInit {
 
   question: FormGroup;
-  allSubjects: AllQuestions[] = [];
   questionId: number | undefined;
   userType = UserEnum;
+  allSubjects: SubjectInterface[] = [];
+  chapters: Chapter[] = [];
+  subject: FormControl = new FormControl('');
   
   constructor(
     private _adminService: AdminService,
@@ -26,6 +28,7 @@ export class CreateQuestionComponent implements OnInit {
       questionText: ['', [Validators.required]],
       explaination: ['', [Validators.required]],
       subjectId: [, [Validators.required]],
+      chapterId: [, [Validators.required]],
       answer: ['', [Validators.required]],
       option1: ['', [Validators.required]],
       option2: ['', [Validators.required]],
@@ -38,13 +41,36 @@ export class CreateQuestionComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.questionId = this._activatedRoute.snapshot.params['id'];
-    this.allSubjects = await this._adminService.getAllQuestions();
+    this.allSubjects = await this._adminService.getSubjectWiseChapters();
+
+    this.subject.valueChanges.subscribe(res => {
+      this.question.get('subjectId')?.setValue(res);
+      for(let i=0 ; i<this.allSubjects.length ; i++) {
+        if(this.allSubjects[i].subjectId === res) {
+          this.chapters = this.allSubjects[i].chapters;
+          break;
+        }
+      }
+    })
 
     if(this.questionId !== undefined) {
       let question: Question = await this._adminService.getQuestion(this.questionId);
 
+      let subjectId: number = -1;
+      for(let i=0 ; i<this.allSubjects.length ; i++) {
+        for(let j=0 ; j<this.allSubjects[i].chapters.length ; j++)
+          if(question.chapterId === this.allSubjects[i].chapters[j].chapterId) {
+            subjectId = this.allSubjects[i].subjectId;
+            break;
+          }
+        if(subjectId !== -1) {
+          break;
+        }
+      }
+
       this.question.get('questionText')?.setValue(question?.questionText);
-      this.question.get('subjectId')?.setValue(question?.subjectId);
+      this.question.get('subjectId')?.setValue(subjectId);
+      this.question.get('chapterId')?.setValue(question?.chapterId);
       this.question.get('explaination')?.setValue(question?.explaination);
       this.question.get('answer')?.setValue(this.getOptionNoFromAnswer(question));
       this.question.get('option1')?.setValue(question?.option1);

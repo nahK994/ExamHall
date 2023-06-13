@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
+import { SubjectWiseQuestions, Question, Subject } from 'src/app/user/user.service';
 
 @Component({
   selector: 'question-list',
@@ -10,7 +10,7 @@ import { AllQuestions, Question, Subject } from 'src/app/user/user.service';
 })
 export class QuestionListComponent implements OnInit {
 
-  @Input() allSubjects: AllQuestions[] = [];
+  @Input() allSubjects: SubjectWiseQuestions[] = [];
   @Input() canRemove: boolean = false;
   @Input() updateAction: boolean = false;
   @Output() removeEvent = new EventEmitter();
@@ -40,7 +40,7 @@ export class QuestionListComponent implements OnInit {
       }
       let questions: Question[] = [];
       for (let question of this.allQuestions) {
-        if (question.subjectId === res) {
+        if (question.chapterId === res) {
           questions.push(question);
         }
       }
