@@ -1,1 +1,33 @@
-<p>job-solutions works!</p>
+<div class="page">
+    <div class="top-bar">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon class="back-button-icon">arrow_back</mat-icon>
+        </button>
+        <button class="login-button" mat-raised-button (click)="login()">Login</button>
+    </div>
+    <div class="content">
+        <div class="form-item">
+            <mat-form-field appearance="outline" style="width: 25%;">
+                <mat-label>Subject</mat-label>
+                <mat-select [formControl]="subject">
+                    <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 25%;">
+                <mat-label>Chapter</mat-label>
+                <mat-select [formControl]="chapter">
+                    <mat-option *ngFor="let val of chapters" [value]="val?.chapterId">{{val?.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="list">
+            <ng-container *ngFor="let question of questions">
+                <div class="card">
+                    <div class="card-content">
+                        <question [question]="question"></question>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

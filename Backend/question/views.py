@@ -60,7 +60,7 @@ class JobSolutionsViewset(viewsets.ViewSet):
         return Response(response, status=status.HTTP_200_OK)
 
 class SubjectWiseAllQuestionsViewset(viewsets.ViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
     def list(self, request):
@@ -70,7 +70,7 @@ class SubjectWiseAllQuestionsViewset(viewsets.ViewSet):
 
 
 class SubjectWiseChaptersViewset(viewsets.ViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     http_method_names = ['get']
 
     def list(self, request):
