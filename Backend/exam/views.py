@@ -61,7 +61,7 @@ class EndExamViewset(viewsets.ModelViewSet):
     def create(self, request):
         data = request.data
         exam_id = data.get('examId')
-        filtered_exam = ExamModel.objects.filter(id=exam_id)
+        filtered_exam = ExamModel.objects.prefetch_related('question', 'question__chapter', 'question__chapter__subject').filter(id=exam_id)
         if not filtered_exam:
             return Response("no such exam", status=status.HTTP_400_BAD_REQUEST)
         exam = filtered_exam[0]
@@ -94,8 +94,8 @@ class EndExamViewset(viewsets.ModelViewSet):
 
         subject_ids = []
         for q in exam.questions.all():
-            if q.subject.id not in subject_ids:
-                subject_ids.append(q.subject.id)
+            if q.chapter.subject.id not in subject_ids:
+                subject_ids.append(q.chapter.subject.id)
 
         topic_wise_result = {}
         for subject_id in subject_ids:
