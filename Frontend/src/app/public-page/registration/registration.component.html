@@ -1,0 +1,33 @@
+<div class="page">
+    <div class="top-bar">
+        <button mat-icon-button (click)="goBack()">
+            <mat-icon class="back-button-icon">arrow_back</mat-icon>
+        </button>
+    </div>
+    <div class="content">
+        <mat-card class="card-style">
+            <form [formGroup]="registrationForm" class="form-style">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error>This field is required</mat-error>
+                </mat-form-field>
+    
+                <button class="action" mat-raised-button color="primary" (click)="createUser()">Register</button>
+            </form>
+        </mat-card>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminService, Chapter, SubjectInterface } from '../admin/admin.service';
-import { Question } from '../user/user.service';
-import { JobSolution, JobSolutionsService } from './job-solutions.service';
+import { AdminService, Chapter, SubjectInterface } from 'src/app/admin/admin.service';
+import { Question } from 'src/app/user/user.service';
+import { JobSolution, PublicPageService } from '../public-page.service';
 
 @Component({
   selector: 'app-job-solutions',
@@ -22,12 +22,12 @@ export class JobSolutionsComponent implements OnInit {
   constructor(
     private _router: Router,
     private _adminService: AdminService,
-    private _jobSolutionsService: JobSolutionsService
+    private _publicPageService: PublicPageService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.allSubjects = await this._adminService.getSubjectWiseChapters();
-    this.jobSolutions = await this._jobSolutionsService.getJobSolutions();
+    this.jobSolutions = await this._publicPageService.getJobSolutions();
 
     this.subject.valueChanges.subscribe(res => {
       for(let i=0 ; i<this.allSubjects.length ; i++) {

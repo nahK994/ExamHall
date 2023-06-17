@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService, QuestionBank } from '../admin/admin.service';
-import { QuestionBanksService } from './question-banks.service';
+import { QuestionBank } from 'src/app/admin/admin.service';
+import { PublicPageService } from '../public-page.service';
+
 
 @Component({
   selector: 'app-question-banks',
@@ -13,12 +14,12 @@ export class QuestionBanksComponent implements OnInit {
   questionBanks: QuestionBank[] = [];
 
   constructor(
-    private _questionbanksservice: QuestionBanksService,
+    private _publicPageService: PublicPageService,
     private _router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.questionBanks = await this._questionbanksservice.getQuestionBanks();
+    this.questionBanks = await this._publicPageService.getQuestionBanks();
   }
 
   goToQuestionBankDetails(id: number){

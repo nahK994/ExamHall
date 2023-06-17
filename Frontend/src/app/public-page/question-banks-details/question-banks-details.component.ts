@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminService, QuestionBank } from 'src/app/admin/admin.service';
-import { QuestionBanksService } from '../question-banks.service';
+import { QuestionBank } from 'src/app/admin/admin.service';
+import { PublicPageService } from '../public-page.service';
+
 
 @Component({
   selector: 'app-question-banks-details',
@@ -14,13 +15,13 @@ export class QuestionBanksDetailsComponent implements OnInit {
 
   constructor(
     private _activateRoute: ActivatedRoute,
-    private _questionbanksservice: QuestionBanksService,
+    private _publicPageService: PublicPageService,
     private _router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
     let id = Number(this._activateRoute.snapshot.params['id']);
-    this.questionList = await this._questionbanksservice.getExamQuestions(id);
+    this.questionList = await this._publicPageService.getExamQuestions(id);
   }
 
   login() {
