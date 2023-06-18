@@ -17,6 +17,15 @@ from django.db.models import Q
 from django.core.mail import send_mail
 
 
+def get_all_user_email():
+    users = UserModel.objects.all()
+    email_list = []
+    for user in users:
+        if not user.is_admin:
+            email_list.append(user.email)
+    return email_list
+
+
 class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = ExamSerializer
     retrieve_serializer_class = ExamQuerySerializer
@@ -34,7 +43,7 @@ class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
             subject = 'Exam announcement'
             message = f'An exam has been announced named {instance.name} on {instance.date.strftime("%d-%m-%Y")}'
             from_email = 'examhall95@gmail.com'
-            recipient_list = ['nkskl6@gmail.com'] 
+            recipient_list = get_all_user_email()
             send_mail(subject, message, from_email, recipient_list, fail_silently=False)
 
             return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
