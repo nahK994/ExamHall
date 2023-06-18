@@ -7,11 +7,11 @@ from .serializers import LectureSerializer, CourseSerializer, CourseQuerySeriali
 
 class CourseViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = CourseSerializer
-    query_serializer_class = CourseQuerySerializer
+    retrieve_serializer_class = CourseQuerySerializer
     queryset = CourseModel.objects.all()
 
 
 class LectureViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = LectureSerializer
-    query_serializer_class = LectureQuerySerializer
+    retrieve_serializer_class = LectureQuerySerializer
     queryset = LectureModel.objects.all()

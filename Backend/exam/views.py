@@ -18,7 +18,7 @@ from django.db.models import Q
 
 class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = ExamSerializer
-    query_serializer_class = ExamQuerySerializer
+    retrieve_serializer_class = ExamQuerySerializer
     queryset = ExamModel.objects.all().order_by('-date')
 
 

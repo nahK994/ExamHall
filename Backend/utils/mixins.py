@@ -22,7 +22,7 @@ class ModelManagerMixin:
 
         filtered_data = self.get_queryset().filter(pk=pk)
         if filtered_data:
-            serializer = self.query_serializer_class(filtered_data[0], context={"request": request})
+            serializer = self.retrieve_serializer_class(filtered_data[0], context={"request": request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response("Not found", status=status.HTTP_404_NOT_FOUND)
@@ -35,7 +35,7 @@ class ModelManagerMixin:
         serialized_info = self.get_serializer(data=request_data)
         if serialized_info.is_valid():
             instance = serialized_info.save()
-            return Response(self.query_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
+            return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
 
         validation_error = self.get_validation_errors(serialized_info)
         return Response(validation_error, status=status.HTTP_400_BAD_REQUEST)
@@ -54,7 +54,7 @@ class ModelManagerMixin:
         serialized_info = self.get_serializer(filtered_info[0], data=request.data)
         if serialized_info.is_valid():
             instance = serialized_info.save()
-            return Response(self.query_serializer_class(instance, context={"request": request}).data, status=status.HTTP_200_OK)
+            return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_200_OK)
 
         validation_error = self.get_validation_errors(serialized_info)
         return Response(validation_error, status=status.HTTP_400_BAD_REQUEST)
