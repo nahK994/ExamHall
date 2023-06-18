@@ -1,0 +1,514 @@
+[
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 38,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 39,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 40,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 41,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 42,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 43,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 44,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 45,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 46,
+            "exam_name": "রেজিস্টার্ড বেসরকারী প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১১ (General)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 47,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৯ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 48,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 49,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (পঞ্চম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 50,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 51,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 52,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 53,
+            "exam_name": "প্রাথমিক প্রধান শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 54,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (মুক্তিযোদ্ধা/শহিদ মুক্তিযোদ্ধার সন্তান)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 55,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (মুক্তিযোদ্ধা/শহিদ মুক্তিযোদ্ধার সন্তান)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 56,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক (মুক্তিযোদ্ধা/শহিদ মুক্তিযোদ্ধার সন্তান) নিয়োগ পরীক্ষা – ২০১০ (মুক্তিযোদ্ধা/শহিদ মুক্তিযোদ্ধার সন্তান)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 57,
+            "exam_name": "রেজিস্টার্ড বেসরকারী প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১১ (হাসনাহেনা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 58,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১০ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 59,
+            "exam_name": "রেজিস্টার্ড বেসরকারী প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১১ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 60,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (যমুনা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 61,
+            "exam_name": "রেজিস্টার্ড বেসরকারী প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১১ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 62,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 63,
+            "exam_name": "রেজিস্টার্ড বেসরকারী প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১১ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 64,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 65,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 66,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 67,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 68,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১২ (পদ্মা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 69,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 70,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 71,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (পদ্মা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 72,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (পঞ্চম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 73,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৪ (পুনঃগৃহীত ১৭ জেলা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 74,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 75,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 76,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৪ (পুনঃগৃহীত ১৭ জেলা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 77,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 78,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 79,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 80,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৪ (পুনঃগৃহীত ১৭ জেলা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 81,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 82,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৫ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 83,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 84,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৪ ((পুনঃগৃহীত ১৭ জেলা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 85,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা-২০১৫ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 86,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৮ (স্থগিত-২০১৪)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 87,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৩ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 88,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৫ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 89,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৮ (প্রথম ধাপ) (স্থগিত-২০১৪)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 90,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৯ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 91,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৫ (প্রথম)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 92,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৯ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 93,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৮ (স্থগিত-২০১৪)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 94,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৮ (স্থগিত-২০১৪)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 95,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৯ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 96,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৯ (প্রথম ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 97,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা – ২০১৯ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 98,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা-২০১৯ (চতুর্থ ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 99,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৯ (দ্বিতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 100,
+            "exam_name": "প্রাক-প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা-২০১৬ (মুক্তিযোদ্ধা কোটা)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    },
+    {
+        "model": "question.questionbankmodel",
+        "fields": {
+            "id": 101,
+            "exam_name": "প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা -২০১৯ (তৃতীয় ধাপ)",
+            "category": "PRIMARY_SCHOOL"
+        }
+    }
+]

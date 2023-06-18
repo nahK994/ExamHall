@@ -25,10 +25,11 @@ class ChapterModel(models.Model):
 
 class QuestionBankModel(models.Model):
     category_choices = [
-        ("BCS", "BCS")
+        ("BCS", "BCS"),
+        ("PRIMARY_SCHOOL", "PRIMARY_SCHOOL")
     ]
 
-    exam_name = models.CharField(max_length=100)
+    exam_name = models.CharField(max_length=200)
     category = models.CharField(max_length=50, choices=category_choices)
 
     def __str__(self):
