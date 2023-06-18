@@ -24,10 +24,10 @@
                         <input matInput placeholder="Number for incorrect answer" formControlName="numberForIncorrectAnswer" required>
                     </mat-form-field>
     
-                    <mat-form-field appearance="outline" *ngIf="allSubjects.length">
+                    <mat-form-field appearance="outline" *ngIf="subjectWiseQuestions.length">
                         <mat-label>Select question subject</mat-label>
                         <mat-select [formControl]="subject">
-                            <mat-option *ngFor="let val of allSubjects" [value]="val?.subjectId">{{val?.name}}</mat-option>
+                            <mat-option *ngFor="let val of subjectWiseQuestions" [value]="val?.subjectId">{{val?.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field color="accent">

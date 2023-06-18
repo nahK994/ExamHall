@@ -56,19 +56,20 @@ class ExamQuerySerializer(serializers.ModelSerializer):
 
         subject_idx = {}
         index = 0
-        for q in instance.questions.all():
-            if q.subject.id not in subject_idx.keys():
+        for q in instance.questions.prefetch_related('chapter', 'chapter__subject').all():
+            subject = q.chapter.subject
+            if subject.id not in subject_idx.keys():
                 data['subjects'].append(
                     {
-                        'subjectId': q.subject.id,
-                        'name': q.subject.name,
+                        'subjectId': subject.id,
+                        'name': subject.name,
                         'questions': [QuestionSerializer(q).data]
                     }
                 )
-                subject_idx[q.subject.id] = index
+                subject_idx[subject.id] = index
                 index = index + 1
             else:
-                data['subjects'][subject_idx[q.subject.id]]['questions'].append(QuestionSerializer(q).data)
+                data['subjects'][subject_idx[subject.id]]['questions'].append(QuestionSerializer(q).data)
 
         return data
 

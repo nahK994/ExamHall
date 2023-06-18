@@ -12,9 +12,8 @@ import { AdminService } from '../admin.service';
 })
 export class CreateExamComponent implements OnInit {
 
-  allSubjects: SubjectWiseQuestions[] = [];
+  subjectWiseQuestions: SubjectWiseQuestions[] = [];
   questions: Question[] = [];
-  allQuestions: Question[] = [];
   subject: FormControl = new FormControl('');
   hour: FormControl = new FormControl('');
   minute: FormControl = new FormControl('');
@@ -39,24 +38,14 @@ export class CreateExamComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.allSubjects = await this._adminService.getAllQuestions();
-    let allQuestions = []
-    for(let subject of this.allSubjects) {
-      for(let question of subject.questions) {
-        allQuestions.push(question);
-      }
-    }
-    this.allQuestions = allQuestions;
-
+    this.subjectWiseQuestions = await this._adminService.getAllQuestions();
     this.subject.valueChanges.subscribe(res => {
-      let questions: Question[] = [];
-      for (let question of this.allQuestions) {
-        if (question.chapterId === res) {
-          questions.push(question);
+      for (let item of this.subjectWiseQuestions) {
+        if (item.subjectId === res) {
+          this.questions = item.questions;
+          break
         }
       }
-
-      this.questions = questions;
     })
   }
 
