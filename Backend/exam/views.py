@@ -14,12 +14,34 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from zoneinfo import ZoneInfo
 from django.db.models import Q
+from django.core.mail import send_mail
 
 
 class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
     serializer_class = ExamSerializer
     retrieve_serializer_class = ExamQuerySerializer
     queryset = ExamModel.objects.all().order_by('-date')
+
+    def create(self, request):
+        if not request.user.is_admin:
+            return Response("not allowed", status=status.HTTP_403_FORBIDDEN)
+        request_data = request.data
+
+        serialized_info = self.get_serializer(data=request_data)
+        if serialized_info.is_valid():
+            instance = serialized_info.save()
+
+            subject = 'Exam announcement'
+            message = f'An exam has been announced named {instance.name} on {instance.date.strftime("%d-%m-%Y")}'
+            from_email = 'examhall95@gmail.com'
+            recipient_list = ['nkskl6@gmail.com'] 
+            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
+            return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
+
+        validation_error = self.get_validation_errors(serialized_info)
+
+        return Response(validation_error, status=status.HTTP_400_BAD_REQUEST)
 
 
 class StartExamViewset(viewsets.ModelViewSet):

@@ -14,6 +14,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_APP_PASSWORD')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",

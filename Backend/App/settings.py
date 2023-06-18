@@ -159,3 +159,9 @@ SWAGGER_SETTINGS = {
 STATIC_ROOT = '/home/examhall/ExamHall/static'
 MEDIA_ROOT = BASE_DIR/'uploads'
 MEDIA_URL = 'uploads/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'examhall95@gmail.com'
+EMAIL_USE_TLS = True
