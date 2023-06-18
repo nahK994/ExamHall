@@ -14,7 +14,8 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from zoneinfo import ZoneInfo
 from django.db.models import Q
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 
 def get_all_user_email():
@@ -40,11 +41,13 @@ class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
         if serialized_info.is_valid():
             instance = serialized_info.save()
 
-            subject = 'Exam announcement'
-            message = f'An exam has been announced named {instance.name} on {instance.date.strftime("%d-%m-%Y")}'
-            from_email = 'examhall95@gmail.com'
-            recipient_list = get_all_user_email()
-            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            html_content = render_to_string("email_notification.html", {
+                "name": instance.name,
+                "date": instance.date.strftime("%d-%m-%Y")
+            })
+            msg = EmailMultiAlternatives('Exam announcement', '', 'examhall95@gmail.com', get_all_user_email())
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
 
             return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
 
