@@ -69,7 +69,7 @@ export class CreateQuestionComponent implements OnInit {
       }
 
       this.question.get('questionText')?.setValue(question?.questionText);
-      this.question.get('subjectId')?.setValue(subjectId);
+      this.subject.setValue(subjectId);
       this.question.get('chapterId')?.setValue(question?.chapterId);
       this.question.get('explaination')?.setValue(question?.explaination);
       this.question.get('answer')?.setValue(this.getOptionNoFromAnswer(question));

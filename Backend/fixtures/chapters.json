@@ -107,15 +107,7 @@
         "model": "question.chaptermodel",
         "pk": 12,
         "fields": {
-            "name": "Vocabulary",
-            "subject": 4
-        }
-    },
-    {
-        "model": "question.chaptermodel",
-        "pk": 12,
-        "fields": {
-            "name": "Idioms and phrases",
+            "name": "Word meaning and Spelling",
             "subject": 4
         }
     },
@@ -123,16 +115,136 @@
         "model": "question.chaptermodel",
         "pk": 13,
         "fields": {
-            "name": "আধুনিক যুগ",
-            "subject": 1
+            "name": "Idioms and phrases",
+            "subject": 4
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 14,
         "fields": {
-            "name": "ঐকিক নিয়ম",
-            "subject": 5
+            "name": "Tense",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 15,
+        "fields": {
+            "name": "Parts of Speech",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 16,
+        "fields": {
+            "name": "Voice",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 17,
+        "fields": {
+            "name": "Narration",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 18,
+        "fields": {
+            "name": "Degree",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 19,
+        "fields": {
+            "name": "Synonym and Antonym",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 20,
+        "fields": {
+            "name": "বাংলাদেশের সংবিধান",
+            "subject": 9
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 21,
+        "fields": {
+            "name": "নৈতিকতা",
+            "subject": 11
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 22,
+        "fields": {
+            "name": "মূল্যবোধ",
+            "subject": 11
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 23,
+        "fields": {
+            "name": "সুশাসন",
+            "subject": 11
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 23,
+        "fields": {
+            "name": "শুদ্ধ বানান",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 24,
+        "fields": {
+            "name": "ধ্বনি পরিবর্তন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 25,
+        "fields": {
+            "name": "ণত্ব বিধান ও ষত্ব বিধান",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 26,
+        "fields": {
+            "name": "ধ্বনি ও বর্ণ প্রকরণ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 27,
+        "fields": {
+            "name": "শব্দের উৎসমুল",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 28,
+        "fields": {
+            "name": "শব্দের শ্রেণীবিভাগ",
+            "subject": 2
         }
     }
 ]
