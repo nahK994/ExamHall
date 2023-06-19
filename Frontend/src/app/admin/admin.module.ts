@@ -15,7 +15,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { CreateExamComponent } from './create-exam/create-exam.component';
-import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { QuestionModule } from '../shared/question/question.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -27,7 +26,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
 import { ExamOverviewComponent } from './exam-overview/exam-overview.component';
 import { QuestionOverviewComponent } from './question-overview/question-overview.component';
-import { SubjectOverviewComponent } from './subject-overview/subject-overview.component';
 import { QuestionBankOverviewComponent } from './question-bank-overview/question-bank-overview.component';
 
 
@@ -35,13 +33,11 @@ import { QuestionBankOverviewComponent } from './question-bank-overview/question
   declarations: [
     ExamDetailsComponent,
     CreateExamComponent,
-    CreateSubjectComponent,
     CreateQuestionComponent,
     QuestionSelectorComponent,
     QuestionBankDetailsComponent,
     ExamOverviewComponent,
     QuestionOverviewComponent,
-    SubjectOverviewComponent,
     QuestionBankOverviewComponent
   ],
   imports: [

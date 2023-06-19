@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateExamComponent } from './create-exam/create-exam.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
-import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { ExamOverviewComponent } from './exam-overview/exam-overview.component';
 import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
 import { QuestionBankOverviewComponent } from './question-bank-overview/question-bank-overview.component';
 import { QuestionOverviewComponent } from './question-overview/question-overview.component';
-import { SubjectOverviewComponent } from './subject-overview/subject-overview.component';
 
 const routes: Routes = [
     {
@@ -28,10 +26,6 @@ const routes: Routes = [
         component: QuestionOverviewComponent
     },
     {
-        path: 'subject-overview',
-        component: SubjectOverviewComponent
-    },
-    {
         path: 'exam-details/:id',
         component: ExamDetailsComponent
     },
@@ -42,10 +36,6 @@ const routes: Routes = [
     {
         path: 'create-question',
         component: CreateQuestionComponent
-    },
-    {
-        path: 'create-subject',
-        component: CreateSubjectComponent
     },
     {
         path: 'update-question/:id',

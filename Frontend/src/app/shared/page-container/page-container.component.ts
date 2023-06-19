@@ -41,10 +41,6 @@ export class PageContainerComponent {
     this._router.navigate(['admin', 'question-overview'])
   }
 
-  goToSubjectOverview() {
-    this._router.navigate(['admin', 'subject-overview'])
-  }
-
   goToQuestionBankOverview() {
     this._router.navigate(['admin', 'question-bank-overview'])
   }
