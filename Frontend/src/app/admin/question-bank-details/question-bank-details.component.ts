@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { AdminService, QuestionBank } from '../admin.service';
+import { CreateQuestionComponent } from '../create-question/create-question.component';
 
 @Component({
   selector: 'app-question-bank-details',
@@ -16,7 +18,7 @@ export class QuestionBankDetailsComponent implements OnInit {
   constructor(
     private _adminService: AdminService,
     private _activateRoute: ActivatedRoute,
-    private _router: Router
+    private _dialog: MatDialog
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -29,7 +31,9 @@ export class QuestionBankDetailsComponent implements OnInit {
   }
 
   updateQuestion(questionId: number) {
-    this._router.navigate(['admin', 'update-question', questionId])
+    this._dialog.open(CreateQuestionComponent, {
+      data: questionId
+    })
   }
 
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { SubjectWiseQuestions } from 'src/app/user/user.service';
 import { AdminService } from '../admin.service';
+import { CreateQuestionComponent } from '../create-question/create-question.component';
 
 @Component({
   selector: 'app-question-overview',
@@ -15,8 +17,8 @@ export class QuestionOverviewComponent implements OnInit {
   userType = UserEnum;
 
   constructor(
-    private _router: Router,
-    private _adminService: AdminService
+    private _adminService: AdminService,
+    private _dialog: MatDialog
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -24,7 +26,9 @@ export class QuestionOverviewComponent implements OnInit {
   }
 
   createQuestion() {
-    this._router.navigate(['admin', 'create-question'])
+    this._dialog.open(CreateQuestionComponent, {
+      data: undefined
+    })
   }
 
   async deleteQuestion(questionId: number) {

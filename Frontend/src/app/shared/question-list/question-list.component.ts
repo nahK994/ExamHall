@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CreateQuestionComponent } from 'src/app/admin/create-question/create-question.component';
 import { SubjectWiseQuestions, Question, Subject } from 'src/app/user/user.service';
 
 @Component({
@@ -20,7 +22,7 @@ export class QuestionListComponent implements OnInit {
   subject: FormControl = new FormControl('');
 
   constructor(
-    private _router: Router
+    private _dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -60,7 +62,9 @@ export class QuestionListComponent implements OnInit {
   }
 
   updateQuestion(questionId: number) {
-    this._router.navigate(['admin', 'update-question', questionId])
+    this._dialog.open(CreateQuestionComponent, {
+      data: questionId
+    })
   }
 
 }
