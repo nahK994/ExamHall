@@ -3,11 +3,11 @@ from .models import QuestionModel, SubjectModel, QuestionBankModel, ChapterModel
 
 
 class ReferenceSerializer(serializers.ModelSerializer):
-        examName = serializers.CharField(source='exam_name')
+    examName = serializers.CharField(source='exam_name')
 
-        class Meta:
-            model = QuestionBankModel
-            fields = ['id', 'examName', 'category']
+    class Meta:
+        model = QuestionBankModel
+        fields = ['id', 'examName', 'category']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -72,12 +72,12 @@ class SubjectSerializer(serializers.ModelSerializer):
         fields = ['subjectId', 'name']
 
 class ChapterSerializer(serializers.ModelSerializer):
-        chapterId = serializers.IntegerField(source='id')
-        questions = QuestionSerializer(many=True, required=False)
+    chapterId = serializers.IntegerField(source='id')
+    questions = QuestionSerializer(many=True, required=False)
 
-        class Meta:
-            model = ChapterModel
-            fields = ['chapterId', 'name', 'questions']
+    class Meta:
+        model = ChapterModel
+        fields = ['chapterId', 'name', 'questions']
 
 
 class ChapterQuerySerializer(serializers.ModelSerializer):
@@ -118,18 +118,26 @@ class SubjectQuerySerializer(serializers.ModelSerializer):
         response = {
             'subjectId': instance.id,
             'name': instance.name,
-            'chapters': ChapterSerializer(instance.chapters.all(), many=True).data,
+            'chapters': ChapterSerializer(instance.chapters.all().order_by('id'), many=True).data,
         }
         return response
 
 
 class QuestionBankQuerySerializer(serializers.ModelSerializer):
-    examName = serializers.CharField(source='exam_name')
-    questions = QuestionSerializer(many=True)
 
     class Meta:
         model = QuestionBankModel
-        fields = ['id', 'examName', 'category', 'questions']
+        fields = []
+    
+    def to_representation(self, instance):
+        response = {
+            'id': instance.id,
+            'examName': instance.exam_name,
+            'category': instance.category,
+            'questions': QuestionSerializer(instance.questions.all().order_by('id'), many=True).data
+        }
+
+        return response
 
 
 class SubjectWiseQuestionsSerializer(serializers.ModelSerializer):
