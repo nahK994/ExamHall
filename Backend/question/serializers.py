@@ -133,13 +133,13 @@ class QuestionBankQuerySerializer(serializers.ModelSerializer):
 
 
 class SubjectWiseQuestionsSerializer(serializers.ModelSerializer):
-        questionText = serializers.CharField(source='question_text')
-        questionId = serializers.IntegerField(source='id')
+    questionText = serializers.CharField(source='question_text')
+    questionId = serializers.IntegerField(source='id')
 
-        class Meta:
-            model = QuestionModel
-            fields = ['questionId', 'questionText', 'explaination', 'answer',
-                    'option1', 'option2', 'option3', 'option4', 'option5', 'option6']
+    class Meta:
+        model = QuestionModel
+        fields = ['questionId', 'questionText', 'explaination', 'answer',
+                'option1', 'option2', 'option3', 'option4', 'option5', 'option6']
 
 
 class SubjectWiseAllQuestionsSerializer(serializers.ModelSerializer):

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResultItem } from 'src/app/shared/exam-paper/exam-paper.component';
-import { RankListDialogComponent } from 'src/app/shared/rank-list-dialog/rank-list-dialog.component';
-import { Exam, Result, UserService } from '../user.service';
+import { Exam, UserService } from '../user.service';
 
 
 export interface AnswerSheet {
