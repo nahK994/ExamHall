@@ -29,5 +29,5 @@ for index, subject_name in enumerate(subject_dict):
     subjects.append(subject_item)
 
 
-with open("subjects.json", 'w', encoding='utf-8') as f:
+with open("../fixtures/subjects.json", 'w', encoding='utf-8') as f:
     json.dump(subjects, f, ensure_ascii=False)

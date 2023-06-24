@@ -61,8 +61,8 @@ for index, div in enumerate(list_div):
         question_list.append(question_dict)
 
 
-with open("bcs_question_banks.json", 'w', encoding='utf-8') as f:
+with open("../fixtures/bcs_question_banks.json", 'w', encoding='utf-8') as f:
     json.dump(exams_list, f, ensure_ascii=False)
 
-with open("bcs_questions.json", 'w', encoding='utf-8') as f:
+with open("../fixtures/bcs_questions.json", 'w', encoding='utf-8') as f:
     json.dump(question_list, f, ensure_ascii=False)
