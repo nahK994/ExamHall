@@ -371,7 +371,7 @@
         "model": "question.chaptermodel",
         "pk": 47,
         "fields": {
-            "name": "Degree",
+            "name": "Interjection",
             "subject": 4
         }
     },
@@ -419,7 +419,7 @@
         "model": "question.chaptermodel",
         "pk": 53,
         "fields": {
-            "name": "Comparison of Degree",
+            "name": "Kinds of Sentence",
             "subject": 4
         }
     },
@@ -427,7 +427,7 @@
         "model": "question.chaptermodel",
         "pk": 54,
         "fields": {
-            "name": "Noun",
+            "name": "Comparison of Degree",
             "subject": 4
         }
     },
@@ -435,7 +435,7 @@
         "model": "question.chaptermodel",
         "pk": 55,
         "fields": {
-            "name": "Verb",
+            "name": "Noun",
             "subject": 4
         }
     },
@@ -443,7 +443,7 @@
         "model": "question.chaptermodel",
         "pk": 56,
         "fields": {
-            "name": "Adverb",
+            "name": "Verb",
             "subject": 4
         }
     },
@@ -451,7 +451,7 @@
         "model": "question.chaptermodel",
         "pk": 57,
         "fields": {
-            "name": "Adjective",
+            "name": "Adverb",
             "subject": 4
         }
     },
@@ -459,7 +459,7 @@
         "model": "question.chaptermodel",
         "pk": 58,
         "fields": {
-            "name": "Linking Verb",
+            "name": "Adjective",
             "subject": 4
         }
     },
@@ -467,7 +467,7 @@
         "model": "question.chaptermodel",
         "pk": 59,
         "fields": {
-            "name": "Number",
+            "name": "Linking Verb",
             "subject": 4
         }
     },
@@ -475,7 +475,7 @@
         "model": "question.chaptermodel",
         "pk": 60,
         "fields": {
-            "name": "Usage of Modal Verbs",
+            "name": "Number",
             "subject": 4
         }
     },
@@ -483,7 +483,7 @@
         "model": "question.chaptermodel",
         "pk": 61,
         "fields": {
-            "name": "Conditional Sentence",
+            "name": "Usage of Modal Verbs",
             "subject": 4
         }
     },
@@ -491,7 +491,7 @@
         "model": "question.chaptermodel",
         "pk": 62,
         "fields": {
-            "name": "Pronoun",
+            "name": "Conditional Sentence",
             "subject": 4
         }
     },
@@ -499,7 +499,7 @@
         "model": "question.chaptermodel",
         "pk": 63,
         "fields": {
-            "name": "Analogy",
+            "name": "Pronoun",
             "subject": 4
         }
     },
@@ -507,7 +507,7 @@
         "model": "question.chaptermodel",
         "pk": 64,
         "fields": {
-            "name": "Article",
+            "name": "Analogy",
             "subject": 4
         }
     },
@@ -515,7 +515,7 @@
         "model": "question.chaptermodel",
         "pk": 65,
         "fields": {
-            "name": "Correct Spelling",
+            "name": "Article",
             "subject": 4
         }
     },
@@ -523,7 +523,7 @@
         "model": "question.chaptermodel",
         "pk": 66,
         "fields": {
-            "name": "Proverbs",
+            "name": "Correct Spelling",
             "subject": 4
         }
     },
@@ -531,7 +531,7 @@
         "model": "question.chaptermodel",
         "pk": 67,
         "fields": {
-            "name": "Clauses",
+            "name": "Proverbs",
             "subject": 4
         }
     },
@@ -539,31 +539,31 @@
         "model": "question.chaptermodel",
         "pk": 68,
         "fields": {
-            "name": "নৈতিকতা",
-            "subject": 12
+            "name": "Clauses",
+            "subject": 4
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 69,
         "fields": {
-            "name": "মূল্যবোধ",
-            "subject": 12
+            "name": "Composition",
+            "subject": 4
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 70,
         "fields": {
-            "name": "সুশাসন",
-            "subject": 12
+            "name": "One Word Substitution",
+            "subject": 4
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 71,
         "fields": {
-            "name": "মনীষীদের উক্তি, গ্রন্থ, কাজকর্ম",
+            "name": "নৈতিকতা",
             "subject": 12
         }
     },
@@ -571,7 +571,7 @@
         "model": "question.chaptermodel",
         "pk": 72,
         "fields": {
-            "name": "অধিকার ও কর্তব্য",
+            "name": "মূল্যবোধ",
             "subject": 12
         }
     },
@@ -579,7 +579,7 @@
         "model": "question.chaptermodel",
         "pk": 73,
         "fields": {
-            "name": "সমাজ ও রাষ্ট্র",
+            "name": "সুশাসন",
             "subject": 12
         }
     },
@@ -587,31 +587,31 @@
         "model": "question.chaptermodel",
         "pk": 74,
         "fields": {
-            "name": "ভাশাগত যৌক্তিক বিচার",
-            "subject": 13
+            "name": "মনীষীদের উক্তি, গ্রন্থ, কাজকর্ম",
+            "subject": 12
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 75,
         "fields": {
-            "name": "গাণিতিক সমস্যা",
-            "subject": 13
+            "name": "অধিকার ও কর্তব্য",
+            "subject": 12
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 76,
         "fields": {
-            "name": "বানান ও ভাষা",
-            "subject": 13
+            "name": "সমাজ ও রাষ্ট্র",
+            "subject": 12
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 77,
         "fields": {
-            "name": "সংখ্যাগত যোগ্যতা",
+            "name": "ভাশাগত যৌক্তিক বিচার",
             "subject": 13
         }
     },
@@ -619,7 +619,7 @@
         "model": "question.chaptermodel",
         "pk": 78,
         "fields": {
-            "name": "যান্ত্রিক দক্ষতা",
+            "name": "গাণিতিক সমস্যা",
             "subject": 13
         }
     },
@@ -627,7 +627,7 @@
         "model": "question.chaptermodel",
         "pk": 79,
         "fields": {
-            "name": "স্থানাঙ্ক সম্পর্ক",
+            "name": "বানান ও ভাষা",
             "subject": 13
         }
     },
@@ -635,7 +635,7 @@
         "model": "question.chaptermodel",
         "pk": 80,
         "fields": {
-            "name": "বিমূর্ত ধারণার বিচার-বিশ্লেষণ",
+            "name": "সংখ্যাগত যোগ্যতা",
             "subject": 13
         }
     },
@@ -643,31 +643,31 @@
         "model": "question.chaptermodel",
         "pk": 81,
         "fields": {
-            "name": "বাস্তব সংখ্যা",
-            "subject": 5
+            "name": "যান্ত্রিক দক্ষতা",
+            "subject": 13
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 82,
         "fields": {
-            "name": "গ.সা.গু ও ল.সা.গু",
-            "subject": 5
+            "name": "স্থানাঙ্ক সম্পর্ক",
+            "subject": 13
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 83,
         "fields": {
-            "name": "শতকরা",
-            "subject": 5
+            "name": "বিমূর্ত ধারণার বিচার-বিশ্লেষণ",
+            "subject": 13
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 84,
         "fields": {
-            "name": "সরল ও যৌগিক মুনাফা",
+            "name": "বাস্তব সংখ্যা",
             "subject": 5
         }
     },
@@ -675,7 +675,7 @@
         "model": "question.chaptermodel",
         "pk": 85,
         "fields": {
-            "name": "অনুপাত-সমানুপাত",
+            "name": "গ.সা.গু ও ল.সা.গু",
             "subject": 5
         }
     },
@@ -683,7 +683,7 @@
         "model": "question.chaptermodel",
         "pk": 86,
         "fields": {
-            "name": "লাভ-ক্ষতি",
+            "name": "শতকরা",
             "subject": 5
         }
     },
@@ -691,7 +691,7 @@
         "model": "question.chaptermodel",
         "pk": 87,
         "fields": {
-            "name": "অন্যান্য (পাটিগণিত)",
+            "name": "সরল ও যৌগিক মুনাফা",
             "subject": 5
         }
     },
@@ -699,31 +699,31 @@
         "model": "question.chaptermodel",
         "pk": 88,
         "fields": {
-            "name": "বীজগাণিতিক সূত্রাবলি",
-            "subject": 6
+            "name": "অনুপাত-সমানুপাত",
+            "subject": 5
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 89,
         "fields": {
-            "name": "বহুপদী উৎপাদক",
-            "subject": 6
+            "name": "লাভ-ক্ষতি",
+            "subject": 5
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 90,
         "fields": {
-            "name": "সরল ও দ্বিপদী সমীকরণ",
-            "subject": 6
+            "name": "অন্যান্য (পাটিগণিত)",
+            "subject": 5
         }
     },
     {
         "model": "question.chaptermodel",
         "pk": 91,
         "fields": {
-            "name": "সরল সহ-সমীকরণ",
+            "name": "বীজগাণিতিক সূত্রাবলি",
             "subject": 6
         }
     },
@@ -731,7 +731,7 @@
         "model": "question.chaptermodel",
         "pk": 92,
         "fields": {
-            "name": "সরল ও দ্বিপদী অসমতা",
+            "name": "বহুপদী উৎপাদক",
             "subject": 6
         }
     },
@@ -739,7 +739,7 @@
         "model": "question.chaptermodel",
         "pk": 93,
         "fields": {
-            "name": "সূচক ও লগারিদম",
+            "name": "সরল ও দ্বিপদী সমীকরণ",
             "subject": 6
         }
     },
@@ -747,7 +747,7 @@
         "model": "question.chaptermodel",
         "pk": 94,
         "fields": {
-            "name": "সমান্তর ও গুণোত্তর অনুক্রম ও ধারা",
+            "name": "সরল সহ-সমীকরণ",
             "subject": 6
         }
     },
@@ -755,7 +755,7 @@
         "model": "question.chaptermodel",
         "pk": 95,
         "fields": {
-            "name": "অন্যান্য (বীজগণিত)",
+            "name": "সরল ও দ্বিপদী অসমতা",
             "subject": 6
         }
     },
@@ -763,13 +763,37 @@
         "model": "question.chaptermodel",
         "pk": 96,
         "fields": {
+            "name": "সূচক ও লগারিদম",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 97,
+        "fields": {
+            "name": "সমান্তর ও গুণোত্তর অনুক্রম ও ধারা",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 98,
+        "fields": {
+            "name": "অন্যান্য (বীজগণিত)",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 99,
+        "fields": {
             "name": "রেখা, কোণ, ত্রিভুজ ও চতুর্ভুজ সংক্রান্ত উপপাদ্য",
             "subject": 7
         }
     },
     {
         "model": "question.chaptermodel",
-        "pk": 97,
+        "pk": 100,
         "fields": {
             "name": "বৃত্ত সংক্রান্ত উপপাদ্য",
             "subject": 7
@@ -777,7 +801,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 98,
+        "pk": 101,
         "fields": {
             "name": "পরিমিতি-সমতলীয় ক্ষেত্র ও ঘনবস্তু",
             "subject": 7
@@ -785,7 +809,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 99,
+        "pk": 102,
         "fields": {
             "name": "সেট",
             "subject": 8
@@ -793,7 +817,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 100,
+        "pk": 103,
         "fields": {
             "name": "বিন্যাস ও সমাবেশ",
             "subject": 8
@@ -801,7 +825,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 101,
+        "pk": 104,
         "fields": {
             "name": "পরিসংখ্যান",
             "subject": 8
@@ -809,7 +833,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 102,
+        "pk": 105,
         "fields": {
             "name": "সম্ভাব্যতা",
             "subject": 8
@@ -817,7 +841,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 103,
+        "pk": 106,
         "fields": {
             "name": "বাংলাদেশের সংবিধান",
             "subject": 10
@@ -825,7 +849,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 104,
+        "pk": 107,
         "fields": {
             "name": "বাংলাদেশের অর্থনীতি",
             "subject": 10
@@ -833,7 +857,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 105,
+        "pk": 108,
         "fields": {
             "name": "বাংলাদেশের শিল্প ও বাণিজ্য",
             "subject": 10
@@ -841,7 +865,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 106,
+        "pk": 109,
         "fields": {
             "name": "বাংলাদেশের রাজনৈতিক ব্যবস্থা",
             "subject": 10
@@ -849,7 +873,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 107,
+        "pk": 110,
         "fields": {
             "name": "বাংলাদেশের সরকার ব্যবস্থা",
             "subject": 10
@@ -857,7 +881,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 108,
+        "pk": 111,
         "fields": {
             "name": "বাংলাদেশের কৃষিজ সম্পদ",
             "subject": 10
@@ -865,7 +889,7 @@
     },
     {
         "model": "question.chaptermodel",
-        "pk": 109,
+        "pk": 112,
         "fields": {
             "name": "বাংলাদেশের জাতীয় বিষয়াবলি",
             "subject": 10

@@ -52,12 +52,13 @@ chapter_dict = {
     "Parts of Speech": subject_dict["English language"],
     "Voice": subject_dict["English language"],
     "Narration": subject_dict["English language"],
-    "Degree": subject_dict["English language"],
+    "Interjection": subject_dict["English language"],
     "Synonym and Antonym": subject_dict["English language"],
     "Vocabulary": subject_dict["English language"],
     "Appropriate preposition": subject_dict["English language"],
     "Preposition": subject_dict["English language"],
     "Transformation of Sentences": subject_dict["English language"],
+    "Kinds of Sentence": subject_dict["English language"],
     "Comparison of Degree": subject_dict["English language"],
     "Noun": subject_dict["English language"],
     "Verb": subject_dict["English language"],
@@ -75,6 +76,8 @@ chapter_dict = {
     "Narration": subject_dict["English language"],
     "Proverbs": subject_dict["English language"],
     "Clauses": subject_dict["English language"],
+    "Composition": subject_dict["English language"],
+    "One Word Substitution": subject_dict["English language"],
 
 
     "নৈতিকতা": subject_dict["নৈতিকতা ও মূল্যবোধ"],
@@ -147,5 +150,5 @@ for index, chapter_name in enumerate(chapter_dict):
     chapters.append(chapter_item)
 
 
-with open("chapters.json", 'w', encoding='utf-8') as f:
+with open("../fixtures/chapters.json", 'w', encoding='utf-8') as f:
     json.dump(chapters, f, ensure_ascii=False)
