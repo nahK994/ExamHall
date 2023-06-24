@@ -52,28 +52,42 @@
         "model": "question.subjectmodel",
         "pk": 8,
         "fields": {
-            "name": "কম্পিউটার ও তথ্যপ্রযুক্তি"
+            "name": "সেট, বিন্যাস ও সমাবেশ, পরিসংখ্যান, সম্ভাব্যতা"
         }
     },
     {
         "model": "question.subjectmodel",
         "pk": 9,
         "fields": {
-            "name": "বাংলাদেশ বিষয়াবলি"
+            "name": "কম্পিউটার ও তথ্যপ্রযুক্তি"
         }
     },
     {
         "model": "question.subjectmodel",
         "pk": 10,
         "fields": {
-            "name": "আন্তর্জাতিক বিষয়াবলি"
+            "name": "বাংলাদেশ বিষয়াবলি"
         }
     },
     {
         "model": "question.subjectmodel",
         "pk": 11,
         "fields": {
+            "name": "আন্তর্জাতিক বিষয়াবলি"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 12,
+        "fields": {
             "name": "নৈতিকতা ও মূল্যবোধ"
+        }
+    },
+    {
+        "model": "question.subjectmodel",
+        "pk": 13,
+        "fields": {
+            "name": "মানসিক দক্ষতা"
         }
     }
 ]
