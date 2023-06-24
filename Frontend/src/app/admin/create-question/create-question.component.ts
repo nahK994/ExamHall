@@ -93,6 +93,8 @@ export class CreateQuestionComponent implements OnInit {
     else {
       await this._adminService.updateQuestion(this.questionId, this.questionFormGroup.value);
     }
+
+    this.dialogRef.close();
   }
 
 }

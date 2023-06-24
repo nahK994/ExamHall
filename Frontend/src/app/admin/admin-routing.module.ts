@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateExamComponent } from './create-exam/create-exam.component';
-import { CreateQuestionComponent } from './create-question/create-question.component';
 import { ExamDetailsComponent } from './exam-details/exam-details.component';
 import { ExamOverviewComponent } from './exam-overview/exam-overview.component';
 import { QuestionBankDetailsComponent } from './question-bank-details/question-bank-details.component';
@@ -32,14 +31,6 @@ const routes: Routes = [
     {
         path: 'create-exam',
         component: CreateExamComponent
-    },
-    {
-        path: 'create-question',
-        component: CreateQuestionComponent
-    },
-    {
-        path: 'update-question/:id',
-        component: CreateQuestionComponent
     },
     {
         path: 'question-bank/:id',
