@@ -1,0 +1,874 @@
+[
+    {
+        "model": "question.chaptermodel",
+        "pk": 1,
+        "fields": {
+            "name": "বাগধারা ও প্রবাদ প্রবচন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 2,
+        "fields": {
+            "name": "এক কথায় প্রকাশ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 3,
+        "fields": {
+            "name": "বিপরীতার্থক শব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 4,
+        "fields": {
+            "name": "পারিভাষিক শব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 5,
+        "fields": {
+            "name": "প্রতিশব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 6,
+        "fields": {
+            "name": "ধ্বনি পরিবর্তন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 7,
+        "fields": {
+            "name": "সমাস",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 8,
+        "fields": {
+            "name": "কারক ও বিভক্তি",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 9,
+        "fields": {
+            "name": "সন্ধি",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 10,
+        "fields": {
+            "name": "পদ প্রকরণ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 11,
+        "fields": {
+            "name": "উপসর্গ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 12,
+        "fields": {
+            "name": "অনুসর্গ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 13,
+        "fields": {
+            "name": "দ্বিরুক্ত শব্দ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 14,
+        "fields": {
+            "name": "শুদ্ধ বানান",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 15,
+        "fields": {
+            "name": "ণত্ব বিধান ও ষত্ব বিধান",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 16,
+        "fields": {
+            "name": "ধ্বনি ও বর্ণ প্রকরণ",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 17,
+        "fields": {
+            "name": "শব্দের সম্ভার",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 18,
+        "fields": {
+            "name": "বাক্য রূপান্তর",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 19,
+        "fields": {
+            "name": "প্রকৃতি ও প্রত্যয়",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 20,
+        "fields": {
+            "name": "বাচ্য",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 21,
+        "fields": {
+            "name": "যতি বা ছেদ বা বিরাম চিহ্ন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 22,
+        "fields": {
+            "name": "পদাশ্রিত নির্দেশক",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 23,
+        "fields": {
+            "name": "উক্তি পরিবর্তন",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 24,
+        "fields": {
+            "name": "বানান ও বাক্যশুদ্ধি",
+            "subject": 2
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 25,
+        "fields": {
+            "name": "চর্যাপদ",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 26,
+        "fields": {
+            "name": "মঙ্গলকাব্য",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 27,
+        "fields": {
+            "name": "বাংলা সাহিত্যের মধ্যযুগ",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 28,
+        "fields": {
+            "name": "বাংলা সাহিত্যের আধুনিক যুগ",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 29,
+        "fields": {
+            "name": "পত্রিকা, সাময়িকী ও সম্পাদক",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 30,
+        "fields": {
+            "name": "ভাষা আন্দোলনভিত্তিক গ্রন্থ ও চলচ্চিত্র",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 31,
+        "fields": {
+            "name": "মুক্তিযুদ্ধ গ্রন্থ ও চলচ্চিত্র",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 32,
+        "fields": {
+            "name": "উপন্যাস",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 33,
+        "fields": {
+            "name": "নাটক",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 34,
+        "fields": {
+            "name": "কবিতা",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 35,
+        "fields": {
+            "name": "গ্রন্থ ও চরিত্র",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 36,
+        "fields": {
+            "name": "কাব্যগ্রন্থ",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 37,
+        "fields": {
+            "name": "মহাকাব্য",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 38,
+        "fields": {
+            "name": "গীতিকাব্য",
+            "subject": 1
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 39,
+        "fields": {
+            "name": "Right form of verb",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 40,
+        "fields": {
+            "name": "Subject verb agreement",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 41,
+        "fields": {
+            "name": "Word meaning and Spelling",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 42,
+        "fields": {
+            "name": "Idioms and phrases",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 43,
+        "fields": {
+            "name": "Tense",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 44,
+        "fields": {
+            "name": "Parts of Speech",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 45,
+        "fields": {
+            "name": "Voice",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 46,
+        "fields": {
+            "name": "Narration",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 47,
+        "fields": {
+            "name": "Degree",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 48,
+        "fields": {
+            "name": "Synonym and Antonym",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 49,
+        "fields": {
+            "name": "Vocabulary",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 50,
+        "fields": {
+            "name": "Appropriate preposition",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 51,
+        "fields": {
+            "name": "Preposition",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 52,
+        "fields": {
+            "name": "Transformation of Sentences",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 53,
+        "fields": {
+            "name": "Comparison of Degree",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 54,
+        "fields": {
+            "name": "Noun",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 55,
+        "fields": {
+            "name": "Verb",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 56,
+        "fields": {
+            "name": "Adverb",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 57,
+        "fields": {
+            "name": "Adjective",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 58,
+        "fields": {
+            "name": "Linking Verb",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 59,
+        "fields": {
+            "name": "Number",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 60,
+        "fields": {
+            "name": "Usage of Modal Verbs",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 61,
+        "fields": {
+            "name": "Conditional Sentence",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 62,
+        "fields": {
+            "name": "Pronoun",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 63,
+        "fields": {
+            "name": "Analogy",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 64,
+        "fields": {
+            "name": "Article",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 65,
+        "fields": {
+            "name": "Correct Spelling",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 66,
+        "fields": {
+            "name": "Proverbs",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 67,
+        "fields": {
+            "name": "Clauses",
+            "subject": 4
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 68,
+        "fields": {
+            "name": "নৈতিকতা",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 69,
+        "fields": {
+            "name": "মূল্যবোধ",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 70,
+        "fields": {
+            "name": "সুশাসন",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 71,
+        "fields": {
+            "name": "মনীষীদের উক্তি, গ্রন্থ, কাজকর্ম",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 72,
+        "fields": {
+            "name": "অধিকার ও কর্তব্য",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 73,
+        "fields": {
+            "name": "সমাজ ও রাষ্ট্র",
+            "subject": 12
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 74,
+        "fields": {
+            "name": "ভাশাগত যৌক্তিক বিচার",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 75,
+        "fields": {
+            "name": "গাণিতিক সমস্যা",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 76,
+        "fields": {
+            "name": "বানান ও ভাষা",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 77,
+        "fields": {
+            "name": "সংখ্যাগত যোগ্যতা",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 78,
+        "fields": {
+            "name": "যান্ত্রিক দক্ষতা",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 79,
+        "fields": {
+            "name": "স্থানাঙ্ক সম্পর্ক",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 80,
+        "fields": {
+            "name": "বিমূর্ত ধারণার বিচার-বিশ্লেষণ",
+            "subject": 13
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 81,
+        "fields": {
+            "name": "বাস্তব সংখ্যা",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 82,
+        "fields": {
+            "name": "গ.সা.গু ও ল.সা.গু",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 83,
+        "fields": {
+            "name": "শতকরা",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 84,
+        "fields": {
+            "name": "সরল ও যৌগিক মুনাফা",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 85,
+        "fields": {
+            "name": "অনুপাত-সমানুপাত",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 86,
+        "fields": {
+            "name": "লাভ-ক্ষতি",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 87,
+        "fields": {
+            "name": "অন্যান্য (পাটিগণিত)",
+            "subject": 5
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 88,
+        "fields": {
+            "name": "বীজগাণিতিক সূত্রাবলি",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 89,
+        "fields": {
+            "name": "বহুপদী উৎপাদক",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 90,
+        "fields": {
+            "name": "সরল ও দ্বিপদী সমীকরণ",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 91,
+        "fields": {
+            "name": "সরল সহ-সমীকরণ",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 92,
+        "fields": {
+            "name": "সরল ও দ্বিপদী অসমতা",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 93,
+        "fields": {
+            "name": "সূচক ও লগারিদম",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 94,
+        "fields": {
+            "name": "সমান্তর ও গুণোত্তর অনুক্রম ও ধারা",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 95,
+        "fields": {
+            "name": "অন্যান্য (বীজগণিত)",
+            "subject": 6
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 96,
+        "fields": {
+            "name": "রেখা, কোণ, ত্রিভুজ ও চতুর্ভুজ সংক্রান্ত উপপাদ্য",
+            "subject": 7
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 97,
+        "fields": {
+            "name": "বৃত্ত সংক্রান্ত উপপাদ্য",
+            "subject": 7
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 98,
+        "fields": {
+            "name": "পরিমিতি-সমতলীয় ক্ষেত্র ও ঘনবস্তু",
+            "subject": 7
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 99,
+        "fields": {
+            "name": "সেট",
+            "subject": 8
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 100,
+        "fields": {
+            "name": "বিন্যাস ও সমাবেশ",
+            "subject": 8
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 101,
+        "fields": {
+            "name": "পরিসংখ্যান",
+            "subject": 8
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 102,
+        "fields": {
+            "name": "সম্ভাব্যতা",
+            "subject": 8
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 103,
+        "fields": {
+            "name": "বাংলাদেশের সংবিধান",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 104,
+        "fields": {
+            "name": "বাংলাদেশের অর্থনীতি",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 105,
+        "fields": {
+            "name": "বাংলাদেশের শিল্প ও বাণিজ্য",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 106,
+        "fields": {
+            "name": "বাংলাদেশের রাজনৈতিক ব্যবস্থা",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 107,
+        "fields": {
+            "name": "বাংলাদেশের সরকার ব্যবস্থা",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 108,
+        "fields": {
+            "name": "বাংলাদেশের কৃষিজ সম্পদ",
+            "subject": 10
+        }
+    },
+    {
+        "model": "question.chaptermodel",
+        "pk": 109,
+        "fields": {
+            "name": "বাংলাদেশের জাতীয় বিষয়াবলি",
+            "subject": 10
+        }
+    }
+]
