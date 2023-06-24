@@ -31,9 +31,23 @@ export class QuestionBankDetailsComponent implements OnInit {
   }
 
   updateQuestion(questionId: number) {
-    this._dialog.open(CreateQuestionComponent, {
+    let dialogRef = this._dialog.open(CreateQuestionComponent, {
       data: questionId
-    })
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      let questionList = this.questionList;
+      this.questionList = undefined;
+      if(questionList?.questions !== undefined) {
+        for(let i=0 ; i<questionList?.questions?.length; i++) {
+          if(questionId === questionList.questions[i].questionId) {
+            questionList.questions[i].chapterId = result;
+            break
+          }
+        }
+        this.questionList = questionList
+      }
+    });
   }
 
 }

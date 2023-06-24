@@ -20,7 +20,7 @@ export interface UserRank {
 export interface QuestionBank {
   id: number,
   examName: string,
-  category: "BSC"
+  category: string,
   questions?: Question[]
 }
 

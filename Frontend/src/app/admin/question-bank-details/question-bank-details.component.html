@@ -3,6 +3,7 @@
         <ng-container *ngFor="let question of questionList?.questions">
             <div class="card">
                 <div class="card-content">
+                    <mat-icon *ngIf="question.chapterId" style="margin-right: 8px; color: #009688;">done</mat-icon>
                     <question [question]="question"></question>
                     <button mat-icon-button (click)="deleteQuestion(question.questionId)">
                         <mat-icon style="color: #855646;">delete</mat-icon>
