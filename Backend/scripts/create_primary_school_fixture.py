@@ -9,6 +9,21 @@ list_page_soup = BeautifulSoup(list_page_request.content, features="html.parser"
 list_div = list_page_soup.find('ul', attrs={'class': 'questionBank'}).findAll('li', attrs={'class': 'questionList'})
 
 
+def get_content(html_element):
+    if not len(html_element.findAll('img')):
+        raw_explanation = html_element.p.text
+        return ' '.join(raw_explanation.replace('\n', ' ').split())
+    else:
+        return html_element.findAll('img')[0]['src']
+
+
+def get_option(html_element):
+    if not len(html_element.findAll('img')):
+        return html_element.findAll('span')[1].text
+    else:
+        return html_element.findAll('img')[0]['src']
+
+
 exams_list = []
 question_list = []
 for index, div in enumerate(list_div):
@@ -32,15 +47,14 @@ for index, div in enumerate(list_div):
     table = soup.findAll('div', attrs={'class': 'question-item'})
 
     for row in table:
-        question = row.find('div', attrs={'class': 'question'}).p.text
+        question = get_content(row.find('div', attrs={'class': 'question'}))
 
         option_unordered_list = row.find('div', attrs={'class': 'options'}).find('ul')
         correct_answer_tag = option_unordered_list.find('li', attrs={'class': 'is_right'})
         correct_answer = correct_answer_tag.findAll('span')[1].text if (correct_answer_tag is not None) else ''
-        options = [option.findAll('span')[1].text for option in option_unordered_list.findAll('li')]
+        options = [get_option(option) for option in option_unordered_list.findAll('li')]
 
-        raw_explanation = row.find('div', attrs={'class': 'question-solve'}).p.get_text()
-        explanation = ' '.join(raw_explanation.replace('\n', ' ').split())
+        explanation = get_content(row.find('div', attrs={'class': 'question-solve'}))
 
         question_dict = {
             "model": "question.questionmodel",
