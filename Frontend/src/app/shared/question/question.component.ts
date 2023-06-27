@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Question } from 'src/app/user/user.service';
 import { ExplanationModalComponent } from './explanation-modal/explanation-modal.component';
+import { QuestionService } from './question.service';
 
 @Component({
   selector: 'question',
@@ -15,6 +16,7 @@ export class QuestionComponent implements OnInit {
 
   constructor(
     private _dialog: MatDialog,
+    private _questionService: QuestionService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class QuestionComponent implements OnInit {
 
   seeAnswer() {
     this.displayAnswer = !this.displayAnswer;
+  }
+
+  isURL(str: string | undefined) {
+    return this._questionService.isURL(str);
   }
 
 }

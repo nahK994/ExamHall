@@ -1,5 +1,11 @@
 <div class="explaination-modal">
-    <div>{{explaination}}</div>
+    <ng-container *ngIf="isURL(explaination); else isNotURL">
+        <div>{{explaination}}</div>\
+        <img [src]="explaination" />
+    </ng-container>
+    <ng-template #isNotURL>
+        <div>{{explaination}}</div>
+    </ng-template>
     <div class="action">
         <button mat-raised-button (click)="close()">
             Close

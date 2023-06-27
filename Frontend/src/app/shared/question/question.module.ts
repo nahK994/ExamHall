@@ -4,13 +4,16 @@ import { ExplanationModalComponent } from './explanation-modal/explanation-modal
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuestionComponent } from './question.component';
+import { MathjaxComponent } from './mathjax/mathjax.component';
+import { QuestionService } from './question.service';
 
 
 
 @NgModule({
   declarations: [
     QuestionComponent,
-    ExplanationModalComponent
+    ExplanationModalComponent,
+    MathjaxComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +22,9 @@ import { QuestionComponent } from './question.component';
   ],
   exports: [
     QuestionComponent
+  ],
+  providers: [
+    QuestionService
   ]
 })
 export class QuestionModule { }

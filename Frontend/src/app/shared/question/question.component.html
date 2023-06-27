@@ -1,5 +1,12 @@
 <div class="question">
-    <div class="question-text">{{question?.questionText}}</div>
+    <div class="question-text">
+        <ng-container *ngIf="isURL(question?.questionText); else isNotURL">
+            <img [src]="question?.questionText" />
+        </ng-container>
+        <ng-template #isNotURL>
+            <mathjax [content]="question?.questionText"></mathjax>
+        </ng-template>
+    </div>
     
     <div class="options">
         <div class="option" *ngIf="question?.option1">

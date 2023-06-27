@@ -73,6 +73,7 @@ export class AppService {
         this._router.navigate(['']);
     }
 
+    nativeGlobal() { return window }
 }
 
 interface Assets {
