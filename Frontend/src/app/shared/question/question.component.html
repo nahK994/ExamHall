@@ -13,42 +13,78 @@
             <div class="serial">
                 <div>1</div>
             </div>
-            <div>{{question?.option1}}</div>
+
+            <ng-container *ngIf="isURL(question?.option1); else isNotURL">
+                <img [src]="question?.option1" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option1"></mathjax>
+            </ng-template>
         </div>
     
         <div class="option" *ngIf="question?.option2">
             <div class="serial">
                 <div>2</div>
             </div>
-            <div>{{question?.option2}}</div>
+
+            <ng-container *ngIf="isURL(question?.option2); else isNotURL">
+                <img [src]="question?.option2" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option2"></mathjax>
+            </ng-template>
         </div>
     
         <div class="option" *ngIf="question?.option3">
             <div class="serial">
                 <div>3</div>
             </div>
-            <div>{{question?.option3}}</div>
+
+            <ng-container *ngIf="isURL(question?.option3); else isNotURL">
+                <img [src]="question?.option3" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option3"></mathjax>
+            </ng-template>
         </div>
     
         <div class="option" *ngIf="question?.option4">
             <div class="serial">
                 <div>4</div>
             </div>
-            <div>{{question?.option4}}</div>
+
+            <ng-container *ngIf="isURL(question?.option4); else isNotURL">
+                <img [src]="question?.option4" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option4"></mathjax>
+            </ng-template>
         </div>
     
         <div class="option" *ngIf="question?.option5">
             <div class="serial">
                 <div>5</div>
             </div>
-            <div>{{question?.option5}}</div>
+
+            <ng-container *ngIf="isURL(question?.option5); else isNotURL">
+                <img [src]="question?.option5" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option5"></mathjax>
+            </ng-template>
         </div>
     
         <div class="option" *ngIf="question?.option6">
             <div class="serial">
                 <div>6</div>
             </div>
-            <div>{{question?.option6}}</div>
+
+            <ng-container *ngIf="isURL(question?.option6); else isNotURL">
+                <img [src]="question?.option6" />
+            </ng-container>
+            <ng-template #isNotURL>
+                <mathjax [content]="question?.option6"></mathjax>
+            </ng-template>
         </div>
     </div>
 

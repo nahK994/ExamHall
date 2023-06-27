@@ -1,10 +1,9 @@
 <div class="explaination-modal">
     <ng-container *ngIf="isURL(explaination); else isNotURL">
-        <div>{{explaination}}</div>\
         <img [src]="explaination" />
     </ng-container>
     <ng-template #isNotURL>
-        <div>{{explaination}}</div>
+        <mathjax [content]="explaination"></mathjax>
     </ng-template>
     <div class="action">
         <button mat-raised-button (click)="close()">
