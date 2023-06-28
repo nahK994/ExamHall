@@ -7,7 +7,7 @@
     </div>
     <div class="content">
         <ng-container *ngFor="let questionBank of questionBanks">
-            <button mat-stroked-button class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</button>
+            <div class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</div>
         </ng-container>
     </div>
 </div>
