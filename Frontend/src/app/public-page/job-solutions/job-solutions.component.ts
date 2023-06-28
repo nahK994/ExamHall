@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AdminService, Chapter, SubjectInterface } from 'src/app/admin/admin.service';
-import { Question } from 'src/app/user/user.service';
-import { JobSolution, PublicPageService } from '../public-page.service';
+import { Chapter, Subject } from '../../admin/admin.service';
+import { Question } from '../../user/user.service';
+import { PublicPageService } from '../public-page.service';
 
 @Component({
   selector: 'app-job-solutions',
@@ -14,44 +14,29 @@ export class JobSolutionsComponent implements OnInit {
 
   subject: FormControl = new FormControl('');
   chapter: FormControl = new FormControl('');
-  allSubjects: SubjectInterface[] = [];
-  jobSolutions: JobSolution[] = [];
+  jobSolutions: Subject[] = [];
   chapters: Chapter[] = [];
   questions: Question[] = [];
 
   constructor(
     private _router: Router,
-    private _adminService: AdminService,
     private _publicPageService: PublicPageService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.allSubjects = await this._adminService.getSubjectWiseChapters();
     this.jobSolutions = await this._publicPageService.getJobSolutions();
 
     this.subject.valueChanges.subscribe(res => {
-      for(let i=0 ; i<this.allSubjects.length ; i++) {
-        if(this.allSubjects[i].subjectId === res) {
-          this.chapters = this.allSubjects[i].chapters;
-          break;
-        }
+      this.questions = []
+      this.chapters = this.jobSolutions[res].chapters;
+      for(let chapterIndex=0 ; chapterIndex<this.chapters.length ; chapterIndex++) {
+        this.questions = this.questions.concat(this.chapters[chapterIndex].questions!)
       }
     })
 
     this.chapter.valueChanges.subscribe(res => {
       this.questions = [];
-      for(let i=0 ; i<this.jobSolutions.length ; i++) {
-        if(this.jobSolutions[i].subjectId === this.subject.value) {
-          for(let j=0 ; j<this.jobSolutions[i].chapters.length ; j++) {
-            if(this.jobSolutions[i].chapters[j].chapterId === this.chapter.value) {
-              this.questions = this.jobSolutions[i].chapters[j].questions;
-              break
-            }
-          }
-        }
-        if(this.questions.length)
-          break;
-      }
+      this.questions = this.questions.concat(this.chapters[res].questions!)
     })
   }
 

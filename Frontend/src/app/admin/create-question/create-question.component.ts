@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserEnum } from 'src/app/shared/page-container/page-container.component';
 import { Question } from 'src/app/user/user.service';
-import { AdminService, Chapter, SubjectInterface } from '../admin.service';
+import { AdminService, Chapter, Subject } from '../admin.service';
 
 @Component({
   selector: 'app-create-question',
@@ -16,7 +16,7 @@ export class CreateQuestionComponent implements OnInit {
   question!: Question;
   questionId: number | undefined;
   userType = UserEnum;
-  allSubjects: SubjectInterface[] = [];
+  allSubjects: Subject[] = [];
   chapters: Chapter[] = [];
   subject: FormControl = new FormControl('');
   

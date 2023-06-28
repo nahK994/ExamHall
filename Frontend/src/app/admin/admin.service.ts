@@ -30,10 +30,11 @@ export interface CreateSubjectModel {
 
 export interface Chapter {
   chapterId: string,
-  name: string
+  name: string,
+  questions?: Question[]
 }
 
-export interface SubjectInterface {
+export interface Subject {
   subjectId: number,
   name: string,
   chapters: Chapter[]
@@ -100,7 +101,7 @@ export class AdminService {
 
   async getSubjects() {
     let subjectURL_extention = '/subjects';
-    let response = await lastValueFrom(this.http.get<SubjectInterface[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectURL_extention, this._appService.httpOptions));
 
     return response;
   }
@@ -156,7 +157,7 @@ export class AdminService {
 
   async getSubjectWiseChapters() {
     let subjectWiseChaptersURL_extention = '/subject-wise-chapters/';
-    let response = await lastValueFrom(this.http.get<SubjectInterface[]>(this._appService.doamin+subjectWiseChaptersURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<Subject[]>(this._appService.doamin+subjectWiseChaptersURL_extention, this._appService.httpOptions));
 
     return response;
   }
