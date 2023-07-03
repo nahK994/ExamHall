@@ -59,15 +59,12 @@ export class CreateQuestionComponent implements OnInit {
       this.question = await this._adminService.getQuestion(this.questionId);
 
       let subjectId: number = -1;
-      for(let i=0 ; i<this.allSubjects.length ; i++) {
+      for(let i=0 ; i<this.allSubjects.length && subjectId === -1 ; i++) {
         for(let j=0 ; j<this.allSubjects[i].chapters.length ; j++)
           if(this.question.chapterId === this.allSubjects[i].chapters[j].chapterId) {
             subjectId = this.allSubjects[i].subjectId;
             break;
           }
-        if(subjectId !== -1) {
-          break;
-        }
       }
 
       this.questionFormGroup.get('questionText')?.setValue(this.question?.questionText);
