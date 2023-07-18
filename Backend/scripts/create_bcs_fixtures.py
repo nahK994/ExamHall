@@ -33,7 +33,7 @@ for index, div in enumerate(list_div):
     print(index+1, exam_name, URL)
 
     exam_dict = {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": index+1,
             "exam_name": exam_name,

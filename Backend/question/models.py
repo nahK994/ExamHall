@@ -23,7 +23,7 @@ class ChapterModel(models.Model):
         db_table = 'chapters'
 
 
-class QuestionBankModel(models.Model):
+class ReferenceExam(models.Model):
     category_choices = [
         ("BCS", "BCS"),
         ("PRIMARY_SCHOOL", "PRIMARY_SCHOOL")
@@ -50,7 +50,7 @@ class QuestionModel(models.Model):
     answer = models.CharField(max_length=1000)
     explaination = models.TextField(blank=True)
     chapter = models.ForeignKey(ChapterModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
-    reference = models.ForeignKey(QuestionBankModel, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
+    reference = models.ForeignKey(ReferenceExam, related_name="questions", on_delete=models.DO_NOTHING, null=True, blank=True)
     archived_by_users = models.ManyToManyField(UserModel)
 
     def __str__(self):

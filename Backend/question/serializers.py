@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import QuestionModel, SubjectModel, QuestionBankModel, ChapterModel
+from .models import QuestionModel, SubjectModel, ReferenceExam, ChapterModel
 
 
 class ReferenceSerializer(serializers.ModelSerializer):
     examName = serializers.CharField(source='exam_name')
 
     class Meta:
-        model = QuestionBankModel
+        model = ReferenceExam
         fields = ['id', 'examName', 'category']
 
 
@@ -99,11 +99,11 @@ class JobSolutionsSerializer(serializers.ModelSerializer):
         fields = ['subjectId', 'name', 'chapters']
 
 
-class QuestionBankSerializer(serializers.ModelSerializer):
+class ReferenceExamSerializer(serializers.ModelSerializer):
     examName = serializers.CharField(source='exam_name')
 
     class Meta:
-        model = QuestionBankModel
+        model = ReferenceExam
         fields = ['id', 'examName', 'category']
 
 
@@ -123,10 +123,10 @@ class SubjectQuerySerializer(serializers.ModelSerializer):
         return response
 
 
-class QuestionBankQuerySerializer(serializers.ModelSerializer):
+class ReferenceExamQuerySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = QuestionBankModel
+        model = ReferenceExam
         fields = []
     
     def to_representation(self, instance):
