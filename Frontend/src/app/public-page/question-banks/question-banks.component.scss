@@ -14,7 +14,10 @@
         align-items: center;
         height: 50px;
         padding: 12px 24px;
-        // background-color: #e1f5fe;
+        
+        .back-button-icon {
+            color: white;
+        }
 
         .login-button{
             border-radius: 12px;

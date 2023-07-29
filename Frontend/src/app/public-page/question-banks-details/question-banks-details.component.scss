@@ -2,7 +2,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    
+    background-image: url("../../../assets/bg2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
     .top-bar{
         display: flex;
@@ -10,12 +14,15 @@
         align-items: center;
         height: 50px;
         padding: 12px 24px;
-        background-color: #e1f5fe;
+
+        .back-button-icon {
+            color: white;
+        }
 
         .login-button{
-            border-radius: 25px;
-            border: 2px solid #26a69a;
-            color: #26a69a;
+            border-radius: 12px;
+            background-color: red;
+            color: white;
         }
     }
 
@@ -28,16 +35,5 @@
         height: 100%;
         row-gap: 12px;
         column-gap: 12px;
-
-        .card{
-            width: 500px;
-            box-shadow: 2px 3px 6px #b2dfdb;
-            padding: 20px 16px 20px 20px;
-            border-radius: 12px;
-            border: 2px solid #b2dfdb;
-            .card-content{
-                display: flex;
-            }
-        }
     }
 }

@@ -1,7 +1,7 @@
 <div class="question">
     <div class="question-text">
         <ng-container *ngIf="isURL(question?.questionText); else isNotURL">
-            <img [src]="question?.questionText" />
+            <img class="image" [src]="question?.questionText" />
         </ng-container>
         <ng-template #isNotURL>
             <mathjax [content]="question?.questionText"></mathjax>
@@ -15,7 +15,7 @@
             </div>
 
             <ng-container *ngIf="isURL(question?.option1); else isNotURL">
-                <img [src]="question?.option1" />
+                <img class="image" [src]="question?.option1" />
             </ng-container>
             <ng-template #isNotURL>
                 <mathjax [content]="question?.option1"></mathjax>
@@ -28,7 +28,7 @@
             </div>
 
             <ng-container *ngIf="isURL(question?.option2); else isNotURL">
-                <img [src]="question?.option2" />
+                <img class="image" [src]="question?.option2" />
             </ng-container>
             <ng-template #isNotURL>
                 <mathjax [content]="question?.option2"></mathjax>
@@ -41,7 +41,7 @@
             </div>
 
             <ng-container *ngIf="isURL(question?.option3); else isNotURL">
-                <img [src]="question?.option3" />
+                <img class="image" [src]="question?.option3" />
             </ng-container>
             <ng-template #isNotURL>
                 <mathjax [content]="question?.option3"></mathjax>
@@ -54,7 +54,7 @@
             </div>
 
             <ng-container *ngIf="isURL(question?.option4); else isNotURL">
-                <img [src]="question?.option4" />
+                <img class="image" [src]="question?.option4" />
             </ng-container>
             <ng-template #isNotURL>
                 <mathjax [content]="question?.option4"></mathjax>

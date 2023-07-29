@@ -7,11 +7,12 @@
     </div>
     <div class="content">
         <ng-container *ngFor="let question of questionList?.questions">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-content">
                     <question [question]="question"></question>
                 </div>
-            </div>
+            </div> -->
+            <question [question]="question"></question>
         </ng-container>
     </div>
 </div>
