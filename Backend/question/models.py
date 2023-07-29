@@ -36,7 +36,7 @@ class ReferenceExam(models.Model):
         return f"{self.exam_name} ({self.category}) ({self.id})"
 
     class Meta:
-        db_table = 'question_banks'
+        db_table = 'reference_exams'
 
 
 class QuestionModel(models.Model):

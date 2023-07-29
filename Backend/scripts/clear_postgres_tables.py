@@ -13,7 +13,7 @@ sql_command = """
     delete from users;
     delete from questions;
     delete from exams;
-    delete from question_banks;
+    delete from reference_exams;
     delete from subjects;
 """
 

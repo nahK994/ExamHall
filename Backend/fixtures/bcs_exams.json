@@ -1,6 +1,6 @@
 [
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 1,
             "exam_name": "45th BCS",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 2,
             "exam_name": "44th BCS",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 3,
             "exam_name": "43rd BCS",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 4,
             "exam_name": "41st BCS",
@@ -32,7 +32,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 5,
             "exam_name": "42nd BCS",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 6,
             "exam_name": "40th BCS",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 7,
             "exam_name": "39th BCS",
@@ -56,7 +56,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 8,
             "exam_name": "38th BCS",
@@ -64,7 +64,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 9,
             "exam_name": "37th BCS",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 10,
             "exam_name": "36th BCS",
@@ -80,7 +80,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 11,
             "exam_name": "35th BCS",
@@ -88,7 +88,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 12,
             "exam_name": "34th BCS",
@@ -96,7 +96,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 13,
             "exam_name": "33rd BCS",
@@ -104,7 +104,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 14,
             "exam_name": "32nd BCS",
@@ -112,7 +112,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 15,
             "exam_name": "31st BCS",
@@ -120,7 +120,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 16,
             "exam_name": "30th BCS",
@@ -128,7 +128,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 17,
             "exam_name": "29th BCS",
@@ -136,7 +136,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 18,
             "exam_name": "28th BCS",
@@ -144,7 +144,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 19,
             "exam_name": "27th BCS",
@@ -152,7 +152,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 20,
             "exam_name": "26th BCS",
@@ -160,7 +160,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 21,
             "exam_name": "25th BCS",
@@ -168,7 +168,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 22,
             "exam_name": "24th BCS (Cancelled)",
@@ -176,7 +176,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 23,
             "exam_name": "24th BCS",
@@ -184,7 +184,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 24,
             "exam_name": "23rd BCS",
@@ -192,7 +192,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 25,
             "exam_name": "22nd BCS",
@@ -200,7 +200,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 26,
             "exam_name": "21st BCS",
@@ -208,7 +208,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 27,
             "exam_name": "20th BCS",
@@ -216,7 +216,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 28,
             "exam_name": "19th BCS",
@@ -224,7 +224,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 29,
             "exam_name": "18th BCS",
@@ -232,7 +232,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 30,
             "exam_name": "17th BCS",
@@ -240,7 +240,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 31,
             "exam_name": "16th BCS",
@@ -248,7 +248,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 32,
             "exam_name": "15th BCS",
@@ -256,7 +256,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 33,
             "exam_name": "14th BCS",
@@ -264,7 +264,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 34,
             "exam_name": "13th BCS",
@@ -272,7 +272,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 35,
             "exam_name": "12th BCS",
@@ -280,7 +280,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 36,
             "exam_name": "11th BCS",
@@ -288,7 +288,7 @@
         }
     },
     {
-        "model": "question.questionbankmodel",
+        "model": "question.referenceexam",
         "fields": {
             "id": 37,
             "exam_name": "10th BCS",

@@ -75,7 +75,7 @@ for index, div in enumerate(list_div):
         question_list.append(question_dict)
 
 
-with open("../fixtures/primary_school_question_banks.json", 'w', encoding='utf-8') as f:
+with open("../fixtures/primary_school_exams.json", 'w', encoding='utf-8') as f:
     json.dump(exams_list, f, ensure_ascii=False)
 
 with open("../fixtures/primary_school_questions.json", 'w', encoding='utf-8') as f:
