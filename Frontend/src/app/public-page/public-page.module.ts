@@ -17,6 +17,7 @@ import { PageContainerModule } from '../shared/page-container/page-container.mod
 import { MatInputModule } from '@angular/material/input';
 import { QuestionBanksDetailsComponent } from './question-banks-details/question-banks-details.component';
 import { QuestionBanksComponent } from './question-banks/question-banks.component';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
@@ -41,7 +42,8 @@ import { QuestionBanksComponent } from './question-banks/question-banks.componen
     MatCardModule,
     FormsModule,
     PageContainerModule,
-    MatInputModule
+    MatInputModule,
+    MatRippleModule
   ],
   providers: [
     PublicPageService
