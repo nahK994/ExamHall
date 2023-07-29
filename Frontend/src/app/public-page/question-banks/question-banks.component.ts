@@ -12,6 +12,8 @@ import { PublicPageService } from '../public-page.service';
 export class QuestionBanksComponent implements OnInit {
 
   questionBanks: QuestionBank[] = [];
+  bcsQuestionBanks: QuestionBank[] = [];
+  primarySchoolQuestionBanks: QuestionBank[] = [];
 
   constructor(
     private _publicPageService: PublicPageService,
@@ -20,6 +22,14 @@ export class QuestionBanksComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.questionBanks = await this._publicPageService.getQuestionBanks();
+    for(let i=0 ; i<this.questionBanks.length ; i++) {
+      if(this.questionBanks[i].category == 'BCS') {
+        this.bcsQuestionBanks.push(this.questionBanks[i]);
+      }
+      else {
+        this.primarySchoolQuestionBanks.push(this.questionBanks[i]);
+      }
+    }
   }
 
   goToQuestionBankDetails(id: number){

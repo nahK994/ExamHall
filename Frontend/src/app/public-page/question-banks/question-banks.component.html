@@ -6,8 +6,15 @@
         <button class="login-button" mat-raised-button (click)="login()">Login</button>
     </div>
     <div class="content">
-        <ng-container *ngFor="let questionBank of questionBanks">
-            <div class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</div>
-        </ng-container>
+        <div class="question-bank">
+            <ng-container *ngFor="let questionBank of bcsQuestionBanks">
+                <div class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</div>
+            </ng-container>
+        </div>
+        <div class="question-bank">
+            <ng-container *ngFor="let questionBank of primarySchoolQuestionBanks">
+                <div class="item" (click)="goToQuestionBankDetails(questionBank.id)">{{questionBank?.examName}}</div>
+            </ng-container>
+        </div>
     </div>
 </div>
