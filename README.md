@@ -12,10 +12,10 @@ Follow these instructions to create superuser for local env--
 
 
 In local env--
-Frontend is available on-- http://localhost:4200/
+Frontend is available on-- http://localhost:4200<br/>
 API documentation URL: http://localhost:8000/api/docs
 
 
 In production env--
-Frontend is available on-- https://nahk994.github.io/ExamHall/
+Frontend is available on-- https://nahk994.github.io/ExamHall<br/>
 API documentation URL: https://examhall.pythonanywhere.com/api/docs
