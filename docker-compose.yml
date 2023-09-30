@@ -9,6 +9,8 @@ services:
       - POSTGRES_USER=skhan
       - POSTGRES_PASSWORD=haha
       - POSTGRES_DB=exam_hall
+    ports:
+      - 5000:5432
 
   backend:
     container_name: backend
@@ -16,7 +18,7 @@ services:
     restart: always
     ports:
       - 8000:8000
-    command: bash -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python3 manage.py migrate && python3 manage.py loaddata fixtures/* && python3 manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
 
