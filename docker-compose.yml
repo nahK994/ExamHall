@@ -18,11 +18,11 @@ services:
     restart: always
     ports:
       - 8000:8000
-    command: bash -c "python3 manage.py migrate && cd scripts && bash load_fixtures.sh && cd .. && python3 manage.py runserver 0.0.0.0:8000"
     environment:
       - POSTGRES_USER=skhan
       - POSTGRES_PASSWORD=haha
       - POSTGRES_DB=exam_hall
+    command: bash -c "python3 manage.py migrate && python3 manage.py loaddata fixtures/* && python3 manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
 
