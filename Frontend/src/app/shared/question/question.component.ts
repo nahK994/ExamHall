@@ -12,6 +12,7 @@ import { QuestionService } from './question.service';
 export class QuestionComponent implements OnInit {
 
   displayAnswer: boolean = false;
+  options: string[] = [];
   @Input() question: Question | undefined;
 
   constructor(
@@ -20,6 +21,14 @@ export class QuestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.question) {
+      this.options.push(this.question.option1);
+      this.options.push(this.question.option2);
+      this.options.push(this.question.option3);
+      this.options.push(this.question.option4);
+      this.options.push(this.question.option5);
+      this.options.push(this.question.option6);
+    }
   }
 
   seeExplanation() {

@@ -8,7 +8,6 @@ import { MathjaxComponent } from './mathjax/mathjax.component';
 import { QuestionService } from './question.service';
 
 
-
 @NgModule({
   declarations: [
     QuestionComponent,
