@@ -23,7 +23,6 @@ export interface Question {
   answer: string,
   explaination: string,
   chapterId: string,
-  // subjectId?: number
 }
 
 export interface Subject {
