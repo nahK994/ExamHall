@@ -6,24 +6,24 @@
             </div>
         </div>
         <ng-container *ngIf="userType === userEnum.student; else user">
-            <button class="item" mat-button (click)="goToExamList()">
+            <button class="item" mat-button (click)="goToRoute('user', 'exam-list')">
                 Exam Section
             </button>
-            <button class="item" mat-button (click)="goToResultList()">
+            <button class="item" mat-button (click)="goToRoute('user', 'result-list')">
                 Result Section
             </button>
-            <button class="item" mat-button (click)="goToArchivedQuestionList()">
+            <button class="item" mat-button (click)="goToRoute('user', 'archived-question-list')">
                 Archived Question Section
             </button>
         </ng-container>
         <ng-template #user>
-            <button class="item" mat-button (click)="goToExamOverview()">
+            <button class="item" mat-button (click)="goToRoute('admin', 'exam-overview')">
                 Exam Section
             </button>
-            <button class="item" mat-button (click)="goToQuestionOverview()">
+            <button class="item" mat-button (click)="goToRoute('admin', 'question-overview')">
                 Question Section
             </button>
-            <button class="item" mat-button (click)="goToQuestionBankOverview()">
+            <button class="item" mat-button (click)="goToRoute('admin', 'question-bank-overview')">
                 Question Bank Section
             </button>
         </ng-template>

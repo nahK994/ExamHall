@@ -33,28 +33,8 @@ export class PageContainerComponent {
     this._appService.logout();
   }
 
-  goToExamOverview() {
-    this._router.navigate(['admin', 'exam-overview'])
-  }
-
-  goToQuestionOverview() {
-    this._router.navigate(['admin', 'question-overview'])
-  }
-
-  goToQuestionBankOverview() {
-    this._router.navigate(['admin', 'question-bank-overview'])
-  }
-
-  goToArchivedQuestionList() {
-    this._router.navigate(['user', 'archived-question-list'])
-  }
-
-  goToExamList() {
-    this._router.navigate(['user', 'exam-list'])
-  }
-
-  goToResultList() {
-    this._router.navigate(['user', 'result-list'])
+  goToRoute(a: string, b: string) {
+    this._router.navigate([a, b])
   }
 
 }

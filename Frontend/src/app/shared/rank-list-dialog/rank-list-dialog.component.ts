@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './rank-list-dialog.component.html',
   styleUrls: ['./rank-list-dialog.component.scss']
 })
-export class RankListDialogComponent implements OnInit {
+export class RankListDialogComponent {
 
   rankList: {
     name: string,
@@ -19,9 +19,6 @@ export class RankListDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.rankList = data;
-  }
-
-  ngOnInit(): void {
   }
 
   close() {
