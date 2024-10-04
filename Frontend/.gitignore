@@ -41,3 +41,5 @@ testem.log
 Thumbs.db
 .vscode
 .angular
+
+package-lock.json
