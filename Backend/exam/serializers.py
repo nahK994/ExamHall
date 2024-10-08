@@ -78,14 +78,14 @@ class ExamEnrollmentSerializer(serializers.Serializer):
     examId = serializers.IntegerField()
 
 
-class ExamAnswerSheetSerializer(serializers.Serializer):
+class AnswerSheetSerializer(serializers.Serializer):
     questionId = serializers.IntegerField()
     answer = serializers.CharField()
 
 
 class EndExamSerializer(serializers.Serializer):
     examId = serializers.IntegerField()
-    answerSheet = ExamAnswerSheetSerializer(many=True)
+    answerSheet = AnswerSheetSerializer(many=True)
 
 
 class ResultSerializer(serializers.ModelSerializer):

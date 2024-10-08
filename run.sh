@@ -11,7 +11,7 @@ read -p "Type: " cmd
 if [[ $cmd == 1 ]]; then
     cd Backend/
     source env/bin/activate
-    python3 manage.py migrate
+    python manage.py migrate django_celery_results
     python3 manage.py loaddata fixtures/*
     python3 manage.py runserver 0.0.0.0:8000
     deactivate
