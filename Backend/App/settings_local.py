@@ -8,7 +8,7 @@ DATABASES = {
         'NAME': 'exam_hall',
         'USER': 'skhan',
         'PASSWORD': 'haha',
-        'HOST': 'db',
+        'HOST': os.getenv('db', 'localhost'),
         'PORT': '5432',
     }
 }

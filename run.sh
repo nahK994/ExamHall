@@ -5,6 +5,7 @@ echo "4) Restart database"
 echo "5) Load fixtures"
 echo "6) Kill frontend and backend"
 echo "7) Run everything"
+echo "8) Deploy frontend"
 
 read -p "Type: " cmd
 if [[ $cmd == 1 ]]; then
@@ -40,4 +41,6 @@ elif [[ $cmd == 6 ]]; then
     sudo kill -9 $(sudo lsof -t -i:4200)
 elif [[ $cmd == 7 ]]; then
     docker compose -f docker-compose.yml up -d
+elif [[ $cmd == 8 ]]; then
+    ng deploy --base-href=https://nahK994.github.io/ExamHall/
 fi
