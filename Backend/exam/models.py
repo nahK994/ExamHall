@@ -26,6 +26,8 @@ class ExamParticipantModel(models.Model):
     status = models.CharField(max_length=20, default=ExamEnrollmentStatus.not_started)
     exam_start_time = models.DateTimeField()
     exam_end_time = models.DateTimeField(default=None, null=True)
+    is_evaluated = models.BooleanField(default=False)
+    answer_sheet = models.JSONField(default=None, blank=True, null=True)
 
     class Meta:
         db_table = 'exam_participants'

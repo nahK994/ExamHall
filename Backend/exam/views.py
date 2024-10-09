@@ -27,7 +27,7 @@ def get_all_user_email():
     return email_list
 
 
-class ExamViewset(ModelManagerMixin, viewsets.ModelViewSet):
+class ExamViewset(viewsets.ModelViewSet):
     serializer_class = ExamSerializer
     retrieve_serializer_class = ExamQuerySerializer
     queryset = ExamModel.objects.all().order_by('-date')
@@ -95,7 +95,7 @@ class EndExamViewset(viewsets.ModelViewSet):
     def create(self, request):
         data = request.data
         exam_id = data.get('examId')
-        filtered_exam = ExamModel.objects.prefetch_related('question', 'question__chapter', 'question__chapter__subject').filter(id=exam_id)
+        filtered_exam = ExamModel.objects.prefetch_related('questions', 'questions__chapter', 'questions__chapter__subject').filter(id=exam_id)
         if not filtered_exam:
             return Response("no such exam", status=status.HTTP_400_BAD_REQUEST)
         exam = filtered_exam[0]
@@ -123,44 +123,10 @@ class EndExamViewset(viewsets.ModelViewSet):
         if ResultModel.objects.filter(user=request.user, exam__id=exam_id).exists():
             return Response("cannot take part in same exam", status=status.HTTP_400_BAD_REQUEST)
 
-        answer_sheet = request.data['answerSheet']
-        exam = ExamModel.objects.get(id=exam_id)
-
-        subject_ids = []
-        for q in exam.questions.all():
-            if q.chapter.subject.id not in subject_ids:
-                subject_ids.append(q.chapter.subject.id)
-
-        topic_wise_result = {}
-        for subject_id in subject_ids:
-            topic_wise_result[subject_id] = UserDetailedResultInfo()
-
-        number_for_correct_answer = exam.number_for_correct_answer
-        number_for_incorrect_answer = exam.number_for_incorrect_answer
-        for userAnswer in answer_sheet:
-            question = QuestionModel.objects.get(id=userAnswer['questionId'])
-            subject_id = question.subject.id
-            if question.answer == userAnswer['answer']:
-                topic_wise_result[subject_id].number_of_correct_answer += 1
-                topic_wise_result[subject_id].marks += number_for_correct_answer
-            else:
-                topic_wise_result[subject_id].number_of_incorrect_answer += 1
-                topic_wise_result[subject_id].marks += number_for_incorrect_answer
-
-        for subject_id in subject_ids:
-            result_info = ResultModel(
-                exam=exam,
-                user=request.user,
-                subject=SubjectModel.objects.get(id=subject_id),
-                number_of_correct_answer=topic_wise_result[subject_id].number_of_correct_answer,
-                number_of_incorrect_answer=topic_wise_result[subject_id].number_of_incorrect_answer,
-                marks=topic_wise_result[subject_id].marks
-            )
-            result_info.save()
-
         filtered_exam_participant_info.update(
             exam_end_time=current_time,
-            status=ExamEnrollmentStatus.completed
+            status=ExamEnrollmentStatus.completed,
+            answer_sheet=request.data['answerSheet']
         )
 
         return Response("exam ended", status=status.HTTP_201_CREATED)
@@ -252,9 +218,3 @@ def get_cut_marks(exam, rank_list):
         else:
             cut_mark = 0
     return cut_mark
-
-
-class UserDetailedResultInfo:
-    number_of_correct_answer: int = 0
-    number_of_incorrect_answer: int = 0
-    marks: int = 0
