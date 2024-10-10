@@ -53,7 +53,7 @@ export interface ExamDetails {
   numberForCorrectAnswer: number,
   numberForIncorrectAnswer: number,
   numberOfSeats: number,
-  questions: number[],
+  questions: Question[],
   date: string;
   duration: string;
 }

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from datetime import datetime
+from question.models import QuestionModel
 from user.models import UserModel
 from .models import ExamModel, ResultModel
 from question.serializers import QuestionSerializer, SubjectSerializer
@@ -13,7 +14,7 @@ class ExamListSerializer(serializers.ModelSerializer):
         fields = ['examId', 'name', 'date', 'duration']
 
 
-class ExamSerializer(serializers.ModelSerializer):
+class ExamCommandSerializer(serializers.ModelSerializer):
     examId = serializers.IntegerField(source='id', required=False)
     numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer", min_value=1)
     numberForIncorrectAnswer = serializers.FloatField(source="number_for_incorrect_answer", max_value=0)
@@ -33,14 +34,32 @@ class ExamSerializer(serializers.ModelSerializer):
 
 
 class ExamQuerySerializer(serializers.ModelSerializer):
-    examId = serializers.IntegerField(source='id', required=False)
-    numberForCorrectAnswer = serializers.IntegerField(source="number_for_correct_answer")
-    numberForIncorrectAnswer = serializers.IntegerField(source="number_for_incorrect_answer")
-    numberOfSeats = serializers.IntegerField(source="number_of_seats")
+
+    class QuestionSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = QuestionModel
+            fields = []
+
+        def to_representation(self, instance):
+            data = {
+                "questionId": instance.id,
+                "questionText": instance.question_text,
+                "option1": instance.option1,
+                "option2": instance.option2,
+                "option3": instance.option3,
+                "option4": instance.option4,
+                "option5": instance.option5,
+                "option6": instance.option6,
+                "answer": instance.answer,
+                "chapterId": instance.chapter.id if instance.chapter is not None else None,
+                "explaination": instance.explaination
+            }
+
+            return data
 
     class Meta:
         model = ExamModel
-        fields = ['examId', 'name', 'numberForCorrectAnswer', 'numberForIncorrectAnswer', 'numberOfSeats', 'date', 'duration']
+        fields = []
 
     def to_representation(self, instance):
         data = {
@@ -51,26 +70,8 @@ class ExamQuerySerializer(serializers.ModelSerializer):
             'numberOfSeats': instance.number_of_seats,
             'date': instance.date,
             'duration': instance.duration,
-            'subjects': []
+            'questions': self.QuestionSerializer(instance.questions.all(), many=True).data
         }
-
-        subject_idx = {}
-        index = 0
-        for q in instance.questions.prefetch_related('chapter', 'chapter__subject').all():
-            subject = q.chapter.subject
-            if subject.id not in subject_idx.keys():
-                data['subjects'].append(
-                    {
-                        'subjectId': subject.id,
-                        'name': subject.name,
-                        'questions': [QuestionSerializer(q).data]
-                    }
-                )
-                subject_idx[subject.id] = index
-                index = index + 1
-            else:
-                data['subjects'][subject_idx[subject.id]]['questions'].append(QuestionSerializer(q).data)
-
         return data
 
 

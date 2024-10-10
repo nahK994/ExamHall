@@ -6,7 +6,7 @@ from user.models import UserModel
 from .models import ResultModel
 from utils.constants import ExamEnrollmentStatus
 from .models import ExamModel, ExamParticipantModel
-from .serializers import ExamSerializer, ExamQuerySerializer, ExamEnrollmentSerializer, ResultSerializer, \
+from .serializers import ExamCommandSerializer, ExamEnrollmentSerializer, ExamQuerySerializer, ResultSerializer, \
     RankListSerializer, EndExamSerializer, ExamListSerializer
 from rest_framework import status, permissions
 from rest_framework.response import Response
@@ -16,9 +16,15 @@ from .tasks import send_email
 
 
 class ExamViewset(viewsets.ModelViewSet):
-    serializer_class = ExamSerializer
-    retrieve_serializer_class = ExamQuerySerializer
     queryset = ExamModel.objects.all().order_by('-date')
+    http_method_names = ["post", "delete", "get", "put"]
+
+    def get_serializer_class(self):
+        if self.action in ["create", "update", "list"]:
+            return ExamCommandSerializer
+        elif self.action == "retrieve":
+            return ExamQuerySerializer
+        return ExamCommandSerializer
 
     def create(self, request):
         if not request.user.is_admin:
@@ -29,7 +35,9 @@ class ExamViewset(viewsets.ModelViewSet):
         if serialized_info.is_valid():
             send_email.delay(instance)
             instance = serialized_info.save()
-            return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
+            return Response({
+                "examId": instance.id
+            }, status=status.HTTP_201_CREATED)
 
         validation_error = self.get_validation_errors(serialized_info)
 

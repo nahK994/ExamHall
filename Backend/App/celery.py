@@ -12,6 +12,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "evaluate_answersheet": {
         "task": "exam.tasks.evaluate_answersheet",
-        "schedule": crontab(minute="*/1"),
+        "schedule": crontab(minute=0, hour=0),
     },
 }
