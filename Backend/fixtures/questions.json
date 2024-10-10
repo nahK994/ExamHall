@@ -1,0 +1,50 @@
+[
+    {
+        "model": "question.questionmodel",
+        "pk": 1,
+        "fields": {
+            "question_text": "‘Equivocation’ means-",
+            "option1": "A true statement",
+            "option2": "Equal opportunity to get a job",
+            "option3": "Free expression of opinions",
+            "option4": "Two contrary things in the same statement",
+            "option5": null,
+            "option6": null,
+            "answer": "Two contrary things in the same statement",
+            "explaination": "ব্যাখ্যা: ‘Equivocation’ – এর অর্থ- দুটি অর্থ প্রকাশ করে এমন বা বিপরীত ধর্মী বিষয় ভিন্নধর্মী বিষয় একত্রে কখন বা বাকচাতুরী।",
+            "chapter": 220
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "pk": 2,
+        "fields": {
+            "question_text": "৮১, ২৭, -, ৩, ১ লুপ্ত সংখ্যাটি কত?",
+            "option1": "৬",
+            "option2": "৯",
+            "option3": "১২",
+            "option4": "১৫",
+            "option5": null,
+            "option6": null,
+            "answer": "৯",
+            "explaination": "ব্যাখ্যা: ৮১ ÷ ৩ = ২৭, ২৭ ÷ ৩ = ৯, ৯ ÷ ৩ = ৩, ৩ ÷ ৩ =১",
+            "chapter": 356
+        }
+    },
+    {
+        "model": "question.questionmodel",
+        "pk": 3,
+        "fields": {
+            "question_text": "কোন বানানটি শুদ্ধ?",
+            "option1": "পিপিলিকা",
+            "option2": "পিপীলিকা",
+            "option3": "পীপিলিকা",
+            "option4": "রোহিনী",
+            "option5": null,
+            "option6": null,
+            "answer": "পিপীলিকা",
+            "explaination": "ব্যাখ্যা:",
+            "chapter": 83
+        }
+    }
+]

@@ -3,90 +3,12 @@
         "model": "exam.exammodel",
         "pk": 1,
         "fields": {
-            "name": "45th BCS model test 1",
+            "name": "Test model test",
             "number_for_correct_answer": 1,
             "number_for_incorrect_answer": -1.0,
             "number_of_seats": 10,
             "date": "2023-05-31",
             "duration": "00:05:00",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 2,
-        "fields": {
-            "name": "45th BCS model test 2",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-05-23",
-            "duration": "00:00:20",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 3,
-        "fields": {
-            "name": "45th BCS model test 3",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-05-24",
-            "duration": "00:00:20",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 4,
-        "fields": {
-            "name": "NSI model test",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-08-15",
-            "duration": "00:00:20",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 5,
-        "fields": {
-            "name": "Govt bank model test",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-05-23",
-            "duration": "00:00:20",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 6,
-        "fields": {
-            "name": "Private bank model test",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-05-01",
-            "duration": "00:00:20",
-            "questions": [1, 2, 3]
-        }
-    },
-    {
-        "model": "exam.exammodel",
-        "pk": 7,
-        "fields": {
-            "name": "Private bank model test 2",
-            "number_for_correct_answer": 1,
-            "number_for_incorrect_answer": -1.0,
-            "number_of_seats": 10,
-            "date": "2024-05-28",
-            "duration": "00:00:20",
             "questions": [1, 2, 3]
         }
     }

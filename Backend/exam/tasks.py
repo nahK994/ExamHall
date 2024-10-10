@@ -1,8 +1,7 @@
 from celery import shared_task
-
 from question.models import QuestionModel, SubjectModel
-
 from .models import ExamParticipantModel, ResultModel
+
 
 class UserDetailedResultInfo:
     number_of_correct_answer: int = 0
@@ -50,8 +49,8 @@ def evaluate(exam_participant_info):
 
 @shared_task
 def evaluate_answersheet():
-    # print("Cron job works")
-    partipant_info = ExamParticipantModel.objects.filter(is_evaluated=True)
+    partipant_info = ExamParticipantModel.objects.filter(is_evaluated=False)
     for item in partipant_info:
         evaluate(item)
-        item.update(is_evaluated=True)
+        item.is_evaluated = True
+        item.save()
