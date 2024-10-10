@@ -14,12 +14,9 @@ export class QuestionItemComponent implements OnInit {
   @Output() answerOut = new EventEmitter();
 
   question: Question | undefined;
-  @Input('question') set setQuestion(question: Question) {
-    if(!question) {
-      return;
-    }
-
-    this.question = question;
+  questionId: number = -1
+  @Input('questionId') set setQuestion(questionId: number) {
+    this.questionId = questionId;
   }
 
   examStarted !: boolean;
@@ -33,7 +30,8 @@ export class QuestionItemComponent implements OnInit {
     private _examPaperService: ExamPaperService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.question = await this._examPaperService.getQuestion(this.questionId)
     this.answer.valueChanges.subscribe(res => {
       this.answerOut.emit({
         "questionId": this.question?.questionId,

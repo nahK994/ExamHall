@@ -47,6 +47,17 @@ export interface Exam {
   duration: string;
 }
 
+export interface ExamDetails {
+  examId: number,
+  name: string,
+  numberForCorrectAnswer: number,
+  numberForIncorrectAnswer: number,
+  numberOfSeats: number,
+  questions: number[],
+  date: string;
+  duration: string;
+}
+
 export interface Result {
   examInfo: {
     numberForCorrectAnswer: number,
@@ -119,7 +130,7 @@ export class UserService {
 
   async getExam(examId: number) {
     let examURL_extention = '/exams/'+examId;
-    let response = await lastValueFrom(this.http.get<Exam>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
+    let response = await lastValueFrom(this.http.get<ExamDetails>(this._appService.doamin+examURL_extention, this._appService.httpOptions));
 
     return response;
   }

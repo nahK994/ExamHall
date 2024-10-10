@@ -27,7 +27,7 @@ def evaluate(exam_participant_info):
     number_for_incorrect_answer = exam.number_for_incorrect_answer
     for userAnswer in answer_sheet:
         question = QuestionModel.objects.get(id=userAnswer['questionId'])
-        subject_id = question.subject.id
+        subject_id = question.chapter.subject.id
         if question.answer == userAnswer['answer']:
             topic_wise_result[subject_id].number_of_correct_answer += 1
             topic_wise_result[subject_id].marks += number_for_correct_answer
@@ -47,6 +47,16 @@ def evaluate(exam_participant_info):
         result_info.save()
 
 
+def get_all_user_email():
+    from user.models import UserModel
+    users = UserModel.objects.all()
+    email_list = []
+    for user in users:
+        if not user.is_admin:
+            email_list.append(user.email)
+    return email_list
+
+
 @shared_task
 def evaluate_answersheet():
     partipant_info = ExamParticipantModel.objects.filter(is_evaluated=False)
@@ -54,3 +64,16 @@ def evaluate_answersheet():
         evaluate(item)
         item.is_evaluated = True
         item.save()
+
+
+@shared_task
+def send_email(instance):
+    from django.core.mail import EmailMultiAlternatives
+    from django.template.loader import render_to_string
+    html_content = render_to_string("email_notification.html", {
+        "name": instance.name,
+        "date": instance.date.strftime("%d-%m-%Y")
+    })
+    msg = EmailMultiAlternatives('Exam announcement', '', 'examhall95@gmail.com', get_all_user_email())
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()

@@ -25,11 +25,11 @@
             {{question?.option4}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option5" [disabled]="!examStarted">
+        <mat-radio-button *ngIf="question?.option5" class="option-text" [value]="question?.option5" [disabled]="!examStarted">
             {{question?.option5}}
         </mat-radio-button>
 
-        <mat-radio-button class="option-text" [value]="question?.option6" [disabled]="!examStarted">
+        <mat-radio-button *ngIf="question?.option6" class="option-text" [value]="question?.option6" [disabled]="!examStarted">
             {{question?.option6}}
         </mat-radio-button>
     </mat-radio-group>

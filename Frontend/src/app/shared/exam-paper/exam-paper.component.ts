@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Exam, Question } from 'src/app/user/user.service';
+import { ExamDetails } from 'src/app/user/user.service';
 
 export interface ResultItem {
   questionId: number,
@@ -15,14 +15,13 @@ export interface ResultItem {
 export class ExamPaperComponent {
 
   answers: ResultItem[] = [];
-  questions: Question[] = [];
   timeLeft: number = 0;
 
   @Output() startExamEvent = new EventEmitter();
   @Output() submitAnswerEvent = new EventEmitter();
 
-  exam!: Exam;
-  @Input('exam') set setExam(exam: Exam) {
+  exam!: ExamDetails;
+  @Input('exam') set setExam(exam: ExamDetails) {
     if (!exam) {
       return;
     }
@@ -30,16 +29,10 @@ export class ExamPaperComponent {
     this.exam = exam;
     this.timeLeft = this.timeStringToSeconds(this.exam.duration);
 
-    if(this.exam?.subjects) {
-      for(let i=0 ; i<this.exam?.subjects?.length ; i++)
-        for(let j=0 ; j<this.exam.subjects[i].questions.length ; j++)
-          this.questions.push(this.exam.subjects[i].questions[j])
-    }
-
-    for (let question of this.questions) {
+    for (let questionId of this.exam.questions) {
       let result: ResultItem = {
         answer: "",
-        questionId: question.questionId
+        questionId: questionId
       }
 
       this.answers.push(result);

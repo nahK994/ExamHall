@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResultItem } from 'src/app/shared/exam-paper/exam-paper.component';
-import { Exam, UserService } from '../user.service';
+import { Exam, ExamDetails, UserService } from '../user.service';
 
 
 export interface AnswerSheet {
@@ -16,7 +16,7 @@ export interface AnswerSheet {
 })
 export class ModelTestDetailsComponent implements OnInit {
 
-  exam !: Exam;
+  exam !: ExamDetails;
   examId !: number
 
   constructor(

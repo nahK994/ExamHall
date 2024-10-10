@@ -4,8 +4,6 @@ from datetime import datetime, timedelta
 
 from user.models import UserModel
 from .models import ResultModel
-from question.models import QuestionModel, SubjectModel
-from utils.mixins import ModelManagerMixin
 from utils.constants import ExamEnrollmentStatus
 from .models import ExamModel, ExamParticipantModel
 from .serializers import ExamSerializer, ExamQuerySerializer, ExamEnrollmentSerializer, ResultSerializer, \
@@ -14,17 +12,7 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from zoneinfo import ZoneInfo
 from django.db.models import Q
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-
-
-def get_all_user_email():
-    users = UserModel.objects.all()
-    email_list = []
-    for user in users:
-        if not user.is_admin:
-            email_list.append(user.email)
-    return email_list
+from .tasks import send_email
 
 
 class ExamViewset(viewsets.ModelViewSet):
@@ -39,16 +27,8 @@ class ExamViewset(viewsets.ModelViewSet):
 
         serialized_info = self.get_serializer(data=request_data)
         if serialized_info.is_valid():
+            send_email.delay(instance)
             instance = serialized_info.save()
-
-            html_content = render_to_string("email_notification.html", {
-                "name": instance.name,
-                "date": instance.date.strftime("%d-%m-%Y")
-            })
-            msg = EmailMultiAlternatives('Exam announcement', '', 'examhall95@gmail.com', get_all_user_email())
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
-
             return Response(self.retrieve_serializer_class(instance, context={"request": request}).data, status=status.HTTP_201_CREATED)
 
         validation_error = self.get_validation_errors(serialized_info)
